@@ -60,6 +60,41 @@ Usar encabezados de sección visibles (ej. `▐ 1. IDENTIFICACIÓN`) para separa
 - Cobertura (fichas completas / totales)
 - Vacíos de información detectados en la fuente (campos que el cliente debería completar)
 
+## Arquitectura de la base de datos (aprendizajes de campo)
+
+Cuando el entregable alimenta a un agente comercial (no solo a humanos), la
+ficha vertical es una *vista*; la fuente de verdad es una **tabla ancha**:
+
+- **Productos en filas, características en columnas.** Una hoja maestra con
+  todas las columnas agrupadas por las 10 secciones.
+- **Filtro maestro.** Detectar la variable que gobierna toda la
+  recomendación del cliente (en EdFan: el espesor disponible en obra →
+  `es_bajo_espesor`) y ponerla como primera columna de filtrado.
+- **Columnas comparables obligatorias.** Toda característica sobre la que un
+  cliente puede objetar (alto tránsito, atérmico, etc.) lleva su propia
+  columna **aunque el valor sea idéntico en todas las filas**. Sin columna,
+  el agente inventa. La respuesta se da en clave comparativa dentro de la
+  familia ("todos son alto tránsito"), no en absoluto.
+- **Hoja EMPRESA única.** Los datos idénticos para todos los productos
+  (showroom, horario, routing, trayectoria) van en una hoja aparte, no como
+  columna repetida.
+- **Diccionario de columnas.** Antes de poblar filas, construir un esquema
+  que defina por cada columna: sección, tipo de dato, nivel (producto/
+  empresa), si es comparable, la regla de clasificación y el estado
+  (dato disponible / falta pedir al cliente).
+
+## Fronteras entre características (evitar mezclar columnas)
+
+- **Uso vs Ambiente vs Aplicación**: lo decide el comprador (uso/ambiente) o
+  lo ejecuta el aplicador (aplicación). "Vehicular" es uso, no ambiente.
+- **Ventaja vs Propuesta de valor vs Diferenciación**: según el comparado —
+  ninguno / externo (competencia) / interno (otro producto del cliente).
+- **Dato técnico vs Criterio de elección**: valor con unidad vs regla "si X
+  entonces Y".
+- **Objeción/FAQ vs Mantenimiento**: momento de compra (futuro/condicional)
+  vs producto ya aplicado (rutina).
+- **Presentación vs Composición**: se cuenta en envases vs en componentes.
+
 ## Notas importantes
 
 - **Sin stock**: si el cliente produce a pedido, no incluir columna de inventario; marcar modalidad "a pedido / a cargo"

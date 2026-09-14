@@ -113,6 +113,7 @@ button{font-family:inherit}
 #n-audiencias:checked~.shell .nav[data-t=audiencias],
 #n-insights:checked~.shell .nav[data-t=insights],
 #n-evolucion:checked~.shell .nav[data-t=evolucion],
+#n-cruce:checked~.shell .nav[data-t=cruce],
 #n-integracion:checked~.shell .nav[data-t=integracion]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
 #n-panorama:checked~.shell .nav[data-t=panorama] svg,
 #n-demanda:checked~.shell .nav[data-t=demanda] svg,
@@ -121,6 +122,7 @@ button{font-family:inherit}
 #n-audiencias:checked~.shell .nav[data-t=audiencias] svg,
 #n-insights:checked~.shell .nav[data-t=insights] svg,
 #n-evolucion:checked~.shell .nav[data-t=evolucion] svg,
+#n-cruce:checked~.shell .nav[data-t=cruce] svg,
 #n-integracion:checked~.shell .nav[data-t=integracion] svg{stroke:#fff}
 #n-panorama:checked~.shell .nav[data-t=panorama] .dot,
 #n-demanda:checked~.shell .nav[data-t=demanda] .dot,
@@ -129,6 +131,7 @@ button{font-family:inherit}
 #n-audiencias:checked~.shell .nav[data-t=audiencias] .dot,
 #n-insights:checked~.shell .nav[data-t=insights] .dot,
 #n-evolucion:checked~.shell .nav[data-t=evolucion] .dot,
+#n-cruce:checked~.shell .nav[data-t=cruce] .dot,
 #n-integracion:checked~.shell .nav[data-t=integracion] .dot{background:rgba(255,255,255,.25);color:#fff}
 
 /* ---- Main ---- */
@@ -159,12 +162,73 @@ button{font-family:inherit}
 #n-audiencias:checked~.shell .p-audiencias,
 #n-insights:checked~.shell .p-insights,
 #n-evolucion:checked~.shell .p-evolucion,
+#n-cruce:checked~.shell .p-cruce,
 #n-integracion:checked~.shell .p-integracion{display:block}
-.adv-only{display:none!important}
-#mode-adv:checked~.shell .adv-only{display:block!important}
-#mode-adv:checked~.shell .ins.adv-only{display:flex!important}
+.adv-only,.avz{display:none!important}
+#mode-adv:checked~.shell .adv-only,#mode-adv:checked~.shell .avz{display:block!important}
+#mode-adv:checked~.shell .ins.adv-only,#mode-adv:checked~.shell .ins.avz{display:flex!important}
+.bsc{display:block!important}
+#mode-adv:checked~.shell .bsc{display:none!important}
 .simple-note{display:none}
 #mode-simple:checked~.shell .simple-note{display:flex}
+/* ===== fuente mini-cards + jerarquía + objetivos (feedback Sofi) ===== */
+.srclegend{display:flex;flex-wrap:wrap;gap:10px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:12px 15px;box-shadow:var(--shadow);margin-bottom:12px}
+.slg{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink3);line-height:1.3;flex:1;min-width:170px}
+.slg .mc{font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;padding:3px 8px;border-radius:7px;white-space:nowrap;flex-shrink:0}
+.slg b{color:var(--ink2);font-weight:600}
+.mc-meta{background:var(--src-meta)}.mc-pro{background:var(--src-pro)}.mc-calc{background:var(--src-calc)}.mc-costo{background:#B5751F}
+.hierbar{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.hcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:13px 15px 14px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--hc)}
+.hcard .hn{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;margin-bottom:4px}
+.hcard .hstep{width:20px;height:20px;border-radius:6px;background:var(--hc);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+.hcard .hd{font-size:11.5px;color:var(--ink3);line-height:1.4}
+.hcard .hsrc{font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--hc);margin-top:7px}
+.obj{display:inline-flex;font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.obj-msg{background:var(--vio-soft);color:var(--vio)}
+.obj-ret{background:var(--pnk-soft);color:#B14C86}
+.obj-lal{background:var(--blu-soft);color:var(--src-meta)}
+.obj-traf{background:#DCF0EC;color:#1F7A63}
+.obj-alc{background:#FAF0DF;color:#8E5A17}
+[data-theme=dark] .obj-traf{background:#123028;color:#57C7A6}[data-theme=dark] .obj-alc{background:#3A2E1A;color:#E7B872}[data-theme=dark] .obj-ret{color:#E39BC4}
+/* big campaign summary cards (modo básico) */
+.bigcamp{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.bc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);padding:18px 18px 17px;box-shadow:var(--shadow);border-top:3px solid var(--bcac)}
+.bc-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px}
+.bc-nm{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.bc-o{font-size:11.5px;color:var(--ink3);margin-bottom:15px;display:flex;align-items:center;gap:6px}
+.bc-big{display:flex;align-items:flex-end;gap:7px}
+.bc-big .n{font-size:42px;font-weight:700;letter-spacing:-.03em;line-height:.85;font-variant-numeric:tabular-nums}
+.bc-big .u{font-size:12px;color:var(--ink3);font-weight:600;padding-bottom:5px}
+.bc-cap{font-size:11.5px;color:var(--ink3);margin:5px 0 15px}
+.bc-cap b{color:var(--ink2)}
+.bc-row{display:flex;gap:9px}
+.bc-row>div{flex:1;background:var(--surface2);border:1px solid var(--line2);border-radius:var(--r-s);padding:10px 11px;text-align:left}
+.bc-row .v{font-size:19px;font-weight:700;letter-spacing:-.01em;line-height:1;font-variant-numeric:tabular-nums}
+.bc-row .k{font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;font-weight:600;margin-top:4px;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.bc-verd{margin-top:14px;padding-top:13px;border-top:1px solid var(--line2);font-size:12px;color:var(--ink2);line-height:1.45;display:flex;gap:8px;align-items:flex-start}
+.bc-verd b{color:var(--ink)}
+.bc-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.mc-in{font-size:8px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:#fff;padding:1px 5px;border-radius:6px}
+/* pre / post Prometheo */
+.prepost{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pp{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:15px 16px;box-shadow:var(--shadow)}
+.pp-l{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);margin-bottom:11px}
+.pp-flow{display:flex;align-items:center;gap:10px}
+.pp-a .v{font-size:17px;font-weight:600;color:var(--ink3);line-height:1;font-variant-numeric:tabular-nums}
+.pp-a .t{font-size:8.5px;color:var(--ink4);text-transform:uppercase;letter-spacing:.03em;margin-top:3px;font-weight:700}
+.pp-ar svg{width:17px;height:17px;stroke:var(--vio)}
+.pp-b .v{font-size:25px;font-weight:700;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.pp-b .t{font-size:8.5px;color:var(--src-pro);text-transform:uppercase;letter-spacing:.03em;margin-top:3px;font-weight:800}
+.pp-d{margin-top:10px;font-size:11px;font-weight:700}
+/* cross matrix (Demanda × Campaña) */
+.xwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-m);box-shadow:var(--shadow);background:var(--surface)}
+table.xtab{min-width:920px}
+table.xtab thead th{background:var(--surface2)}
+.xcamp td{background:var(--inset)!important;font-weight:700;color:var(--ink)!important;text-transform:uppercase;font-size:10px;letter-spacing:.03em;text-align:left!important}
+.xcamp .obj{margin-left:8px}
+@media(max-width:900px){.bigcamp,.prepost{grid-template-columns:1fr 1fr}.hierbar{grid-template-columns:1fr}}
+@media(max-width:600px){.bigcamp,.prepost{grid-template-columns:1fr}.bc-row{flex-wrap:wrap}}
 @media (prefers-reduced-motion:reduce){.panel{animation:none}}
 
 /* ============ COMMON PIECES ============ */
@@ -492,6 +556,7 @@ tbody tr:hover td{background:var(--surface2)}
 <input type="radio" name="nav" id="n-insights" class="st">
 <input type="radio" name="nav" id="n-evolucion" class="st">
 <input type="radio" name="nav" id="n-integracion" class="st">
+<input type="radio" name="nav" id="n-cruce" class="st">
 <input type="radio" name="mode" id="mode-simple" class="st" checked>
 <input type="radio" name="mode" id="mode-adv" class="st">
 <input type="radio" name="evo" id="ev-ano" class="st">
@@ -510,6 +575,7 @@ tbody tr:hover td{background:var(--surface2)}
     <label class="nav" data-t="panorama" for="n-panorama"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13h8V3H3v10Zm10 8h8V3h-8v18ZM3 21h8v-6H3v6Z"/></svg>Panorama</label>
     <label class="nav" data-t="demanda" for="n-demanda"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10.5h8M8 14h5M21 12a9 9 0 1 1-3.6-7.2L21 4v5h-5"/></svg>Demanda</label>
     <label class="nav" data-t="campanas" for="n-campanas"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12v-1.5A1.5 1.5 0 0 1 4.5 9H8l9-5v16l-9-5H4.5A1.5 1.5 0 0 1 3 13.5V12Zm14-3a3 3 0 0 1 0 6"/></svg>Campañas</label>
+    <label class="nav" data-t="cruce" for="n-cruce"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8 8v8M10.5 7l4 3M10.5 17l4-3"/></svg>Cruce D×C</label>
     <label class="nav" data-t="meta" for="n-meta"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7c0 5 3.5 10 8 10s8-5 8-10M4 7c0-2 1.6-3 3-3 3 0 4 4 5 8M20 7c0-2-1.6-3-3-3-3 0-4 4-5 8"/></svg>Meta</label>
     <label class="nav" data-t="audiencias" for="n-audiencias"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M16 19v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 17.5V19M10 10.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM20 19v-1.5a3.5 3.5 0 0 0-2.6-3.4M15.5 4.6a3 3 0 0 1 0 5.8"/></svg>Audiencias</label>
     <label class="nav" data-t="insights" for="n-insights"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2H14.5c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3Z"/></svg>Insights</label>
@@ -534,7 +600,7 @@ tbody tr:hover td{background:var(--surface2)}
         <span class="upd"><span class="dotb" style="background:var(--src-meta)"></span>Meta <b>15 ago</b></span>
         <span class="upd"><span class="dotb" style="background:var(--src-wpp)"></span>WhatsApp <b>15 ago</b></span>
         <div class="mode">
-          <label for="mode-simple"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h10M4 18h7"/></svg>Simple</label>
+          <label for="mode-simple"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h10M4 18h7"/></svg>Básico</label>
           <label for="mode-adv"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4v16M6 8h4M14 4v16M14 14h4"/></svg>Avanzada</label>
         </div>
       </div>
@@ -767,7 +833,22 @@ tbody tr:hover td{background:var(--surface2)}
       <div class="sec-head">
         <div class="eyebrow"><span class="eb-orb"></span>El cruce · campaña › conjunto › anuncio</div>
         <h1 class="sec">Qué generó resultados, <em>con calidad.</em></h1>
-        <p class="lead">El objetivo de estas campañas es <b>mensajes</b>. La performance la trae Meta; el perfil y la calificación del lead los trae Prometheo. Así sabemos no solo cuántos calificaron, sino <b>qué perfil trajo cada anuncio.</b></p>
+        <p class="lead">La performance la trae Meta; el perfil y la calificación del lead los trae Prometheo. Así sabemos no solo cuántos calificaron, sino <b>qué perfil trajo cada anuncio.</b></p>
+      </div>
+
+      <!-- Título de jerarquía (feedback Sofi) -->
+      <div class="eyebrow"><span class="eb-orb"></span>Cómo se lee la pauta · de mayor a menor</div>
+      <div class="hierbar">
+        <div class="hcard" style="--hc:var(--vio)"><div class="hn"><span class="hstep">1</span>Campaña</div><div class="hd">Reúne conjuntos bajo un mismo <b>objetivo</b> (mensajes, retargeting, lookalike…).</div><div class="hsrc">La estructura la trae Meta</div></div>
+        <div class="hcard" style="--hc:var(--blu)"><div class="hn"><span class="hstep">2</span>Conjunto de anuncios</div><div class="hd">Dentro de la campaña, agrupa anuncios por <b>público</b> (intereses, retargeting, LAA…).</div><div class="hsrc">La estructura la trae Meta</div></div>
+        <div class="hcard" style="--hc:var(--src-pro)"><div class="hn"><span class="hstep">3</span>Anuncio / creativo</div><div class="hd">El aviso concreto. Prometheo le pega el <b>perfil del lead</b> que trajo.</div><div class="hsrc">Nombre: Meta · Perfil: Prometheo</div></div>
+      </div>
+
+      <!-- Mini-cards de fuente (META / PROMETHEO / CÁLCULO) -->
+      <div class="srclegend">
+        <div class="slg"><span class="mc mc-meta">Meta</span><span>Performance de pauta: <b>gasto, clics, CTR, mensajes iniciados</b>.</span></div>
+        <div class="slg"><span class="mc mc-pro">Prometheo</span><span>Lo que pasó después del clic: <b>mensajes reales, calificado, ventas</b>.</span></div>
+        <div class="slg"><span class="mc mc-calc">Cálculo</span><span>Derivados: <b>% compran y costo por comprador</b> (gasto ÷ resultado).</span></div>
       </div>
 
       <div class="hl-grid">
@@ -777,13 +858,59 @@ tbody tr:hover td{background:var(--surface2)}
         <div class="hl"><span class="hl-dot" style="background:var(--blu)"></span><div class="hl-b"><div class="hl-n">VID_DardaParteHormigon_IG</div><div class="hl-c">Demolición Sin Polvo › Intereses · Constructora · Demolición</div></div><div class="hl-m"><div><div class="v tnum">38%</div><div class="k">califican</div></div><div><div class="v tnum">$8.667</div><div class="k">c/comprador</div></div></div></div>
       </div>
 
-      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>El cruce, por campaña</div><p class="lead">Tocá cada campaña para abrir el detalle anuncio por anuncio. En gris, bajo cada creativo, el <b>perfil que trae Prometheo</b>.</p></div>
+      <!-- ===== BÁSICO: resumen por campaña, métricas grandes, sin desplegables ===== -->
+      <div class="bsc">
+        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Resumen por campaña</div></div>
+        <div class="bigcamp">
+          <div class="bc" style="--bcac:var(--vio)">
+            <div class="bc-hd"><div class="bc-nm">Demolición sin polvo</div><span class="obj obj-msg">Mensajes</span></div>
+            <div class="bc-o">Reúne 3 conjuntos · 4 anuncios · <b style="color:var(--ink2)">$160.000</b> de gasto</div>
+            <div class="bc-big"><div class="n tnum">45</div><div class="u">mensajes <span class="mc-in mc-pro">PRO</span></div></div>
+            <div class="bc-cap">de los que <b>13 compraron</b> · un comprador real cada <b>$12.308</b></div>
+            <div class="bc-row">
+              <div><div class="v tnum">13</div><div class="k">Compran <span class="mc-in mc-pro">PRO</span></div></div>
+              <div><div class="v tnum">29%</div><div class="k">% Compran <span class="mc-in mc-calc">CÁLC</span></div></div>
+              <div><div class="v tnum">$12.308</div><div class="k">C/comprador <span class="mc-in mc-calc">CÁLC</span></div></div>
+            </div>
+            <div class="bc-verd"><span class="bc-dot" style="background:var(--good)"></span><div>Escalar <b>SprayStream Retargeting</b> (50% compran) y pausar <b>Broad</b> ($44.000 por comprador).</div></div>
+          </div>
+          <div class="bc" style="--bcac:var(--blu)">
+            <div class="bc-hd"><div class="bc-nm">Compactos interiores</div><span class="obj obj-msg">Mensajes</span></div>
+            <div class="bc-o">Reúne 2 conjuntos · 2 anuncios · <b style="color:var(--ink2)">$70.000</b> de gasto</div>
+            <div class="bc-big"><div class="n tnum">20</div><div class="u">mensajes <span class="mc-in mc-pro">PRO</span></div></div>
+            <div class="bc-cap">de los que <b>7 compraron</b> · un comprador real cada <b>$10.000</b></div>
+            <div class="bc-row">
+              <div><div class="v tnum">7</div><div class="k">Compran <span class="mc-in mc-pro">PRO</span></div></div>
+              <div><div class="v tnum">35%</div><div class="k">% Compran <span class="mc-in mc-calc">CÁLC</span></div></div>
+              <div><div class="v tnum">$10.000</div><div class="k">C/comprador <span class="mc-in mc-calc">CÁLC</span></div></div>
+            </div>
+            <div class="bc-verd"><span class="bc-dot" style="background:var(--blu)"></span><div><b>Sherpa subsuelo</b> rinde (38% compran). Mantener e ir subiendo.</div></div>
+          </div>
+          <div class="bc" style="--bcac:var(--pnk)">
+            <div class="bc-hd"><div class="bc-nm">Cero emisiones</div><span class="obj obj-msg">Mensajes</span></div>
+            <div class="bc-o">Reúne 2 conjuntos · 2 anuncios · <b style="color:var(--ink2)">$41.000</b> de gasto</div>
+            <div class="bc-big"><div class="n tnum">9</div><div class="u">mensajes <span class="mc-in mc-pro">PRO</span></div></div>
+            <div class="bc-cap">de los que <b>3 compraron</b> · un comprador real cada <b>$13.667</b></div>
+            <div class="bc-row">
+              <div><div class="v tnum">3</div><div class="k">Compran <span class="mc-in mc-pro">PRO</span></div></div>
+              <div><div class="v tnum">33%</div><div class="k">% Compran <span class="mc-in mc-calc">CÁLC</span></div></div>
+              <div><div class="v tnum">$13.667</div><div class="k">C/comprador <span class="mc-in mc-calc">CÁLC</span></div></div>
+            </div>
+            <div class="bc-verd"><span class="bc-dot" style="background:var(--vio)"></span><div>Nicho <b>HG</b>: 60% compran con poco volumen. Subir con techo.</div></div>
+          </div>
+        </div>
+        <div class="banner info" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg></div><div>¿Querés el detalle anuncio por anuncio y las columnas técnicas? Pasá a <b>Avanzada</b> arriba a la derecha.</div></div>
+      </div>
+
+      <!-- ===== AVANZADA: detalle anuncio por anuncio (desplegables) ===== -->
+      <div class="avz">
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>El cruce, por campaña · detalle</div><p class="lead">Tocá cada campaña para abrir el detalle anuncio por anuncio. En gris, bajo cada creativo, el <b>perfil que trae Prometheo</b>.</p></div>
 
       <!-- Campaign 1 -->
       <details class="camp" open>
         <summary class="camp-s"><span class="camp-dot" style="background:var(--vio)"></span><div class="camp-t"><div class="camp-n">Demolición sin polvo <span class="src s-meta">Meta</span></div><div class="camp-o">Objetivo: Mensajes · reúne 3 conjuntos</div></div><div class="camp-m"><div><div class="v tnum">$160.000</div><div class="k">gasto</div></div><div><div class="v tnum">45</div><div class="k">mensajes</div></div><div><div class="v tnum">29%</div><div class="k">% compran</div></div><div><div class="v tnum">$12.308</div><div class="k">c/comprador</div></div></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary>
         <div class="tblwrap"><table>
-          <thead><tr><th>Anuncio (creativo)</th><th>Conjunto <span class="th-src" style="background:var(--src-meta)">META</span></th><th>Mensajes</th><th>Compran</th><th>% Compran</th><th>Costo/comp. <span class="th-src" style="background:var(--src-calc)">CÁLC</span></th><th>Gasto</th><th>CTR</th><th>Clics</th><th>Lectura</th></tr></thead>
+          <thead><tr><th>Anuncio (creativo)</th><th>Conjunto <span class="th-src" style="background:var(--src-meta)">META</span></th><th>Mensajes <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>Compran <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>% Compran <span class="th-src" style="background:var(--src-calc)">CÁLC</span></th><th>Costo/comp. <span class="th-src" style="background:var(--src-calc)">CÁLC</span></th><th>Gasto <span class="th-src" style="background:var(--src-meta)">META</span></th><th>CTR</th><th>Clics</th><th>Lectura</th></tr></thead>
           <tbody>
             <tr><td class="anm">VID_DardaParteHormigon_IG<span class="prof">Constructora · Demolición</span></td><td>Intereses · Constructoras</td><td>16</td><td>6</td><td>38%</td><td class="calc">$8.667</td><td>$52.000</td><td>1,9%</td><td>310</td><td><span class="pill pi-esc">Escalar</span></td></tr>
             <tr><td class="anm">EST_DardaCorteSilencioso_WPP<span class="prof">Contratista · Demolición urbana</span></td><td>Intereses · Constructoras</td><td>9</td><td>2</td><td>22%</td><td class="calc">$19.000</td><td>$38.000</td><td>1,4%</td><td>180</td><td><span class="pill pi-mant">Mantener</span></td></tr>
@@ -797,7 +924,7 @@ tbody tr:hover td{background:var(--surface2)}
       <details class="camp">
         <summary class="camp-s"><span class="camp-dot" style="background:var(--blu)"></span><div class="camp-t"><div class="camp-n">Compactos interiores <span class="src s-meta">Meta</span></div><div class="camp-o">Objetivo: Mensajes · reúne 2 conjuntos</div></div><div class="camp-m"><div><div class="v tnum">$70.000</div><div class="k">gasto</div></div><div><div class="v tnum">20</div><div class="k">mensajes</div></div><div><div class="v tnum">35%</div><div class="k">% compran</div></div><div><div class="v tnum">$10.000</div><div class="k">c/comprador</div></div></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary>
         <div class="tblwrap"><table>
-          <thead><tr><th>Anuncio (creativo)</th><th>Conjunto <span class="th-src" style="background:var(--src-meta)">META</span></th><th>Mensajes</th><th>Compran</th><th>% Compran</th><th>Costo/comp. <span class="th-src" style="background:var(--src-calc)">CÁLC</span></th><th>Gasto</th><th>CTR</th><th>Clics</th><th>Lectura</th></tr></thead>
+          <thead><tr><th>Anuncio (creativo)</th><th>Conjunto <span class="th-src" style="background:var(--src-meta)">META</span></th><th>Mensajes <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>Compran <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>% Compran <span class="th-src" style="background:var(--src-calc)">CÁLC</span></th><th>Costo/comp. <span class="th-src" style="background:var(--src-calc)">CÁLC</span></th><th>Gasto <span class="th-src" style="background:var(--src-meta)">META</span></th><th>CTR</th><th>Clics</th><th>Lectura</th></tr></thead>
           <tbody>
             <tr><td class="anm">VID_SherpaSubsuelo_LAA<span class="prof">Reformista · Interiores</span></td><td>LAA · Demolición interior</td><td>13</td><td>5</td><td>38%</td><td class="calc">$8.200</td><td>$41.000</td><td>2,1%</td><td>270</td><td><span class="pill pi-esc">Escalar</span></td></tr>
             <tr><td class="anm">EST_SherpaEspaciosReducidos_IG<span class="prof">Contratista · Espacios reducidos</span></td><td>Intereses · Reformas</td><td>7</td><td>2</td><td>29%</td><td class="calc">$14.500</td><td>$29.000</td><td>1,6%</td><td>130</td><td><span class="pill pi-mant">Mantener</span></td></tr>
@@ -809,7 +936,7 @@ tbody tr:hover td{background:var(--surface2)}
       <details class="camp">
         <summary class="camp-s"><span class="camp-dot" style="background:var(--pnk)"></span><div class="camp-t"><div class="camp-n">Cero emisiones <span class="src s-meta">Meta</span></div><div class="camp-o">Objetivo: Mensajes · reúne 2 conjuntos</div></div><div class="camp-m"><div><div class="v tnum">$41.000</div><div class="k">gasto</div></div><div><div class="v tnum">9</div><div class="k">mensajes</div></div><div><div class="v tnum">33%</div><div class="k">% compran</div></div><div><div class="v tnum">$13.667</div><div class="k">c/comprador</div></div></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary>
         <div class="tblwrap"><table>
-          <thead><tr><th>Anuncio (creativo)</th><th>Conjunto <span class="th-src" style="background:var(--src-meta)">META</span></th><th>Mensajes</th><th>Compran</th><th>% Compran</th><th>Costo/comp. <span class="th-src" style="background:var(--src-calc)">CÁLC</span></th><th>Gasto</th><th>CTR</th><th>Clics</th><th>Lectura</th></tr></thead>
+          <thead><tr><th>Anuncio (creativo)</th><th>Conjunto <span class="th-src" style="background:var(--src-meta)">META</span></th><th>Mensajes <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>Compran <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>% Compran <span class="th-src" style="background:var(--src-calc)">CÁLC</span></th><th>Costo/comp. <span class="th-src" style="background:var(--src-calc)">CÁLC</span></th><th>Gasto <span class="th-src" style="background:var(--src-meta)">META</span></th><th>CTR</th><th>Clics</th><th>Lectura</th></tr></thead>
           <tbody>
             <tr><td class="anm">EST_HGceroEmisiones_IG<span class="prof">Municipio · Obra urbana</span></td><td>Intereses · Obra urbana</td><td>5</td><td>3</td><td>60%</td><td class="calc">$7.333</td><td>$22.000</td><td>1,4%</td><td>95</td><td><span class="pill pi-subir">Subir (nicho)</span></td></tr>
             <tr><td class="anm">VID_HGnocturno_BROAD<span class="prof">Mixto · Obra urbana</span></td><td>Broad</td><td>4</td><td>0</td><td>0%</td><td class="calc">sin datos</td><td>$19.000</td><td>1,2%</td><td>90</td><td><span class="pill pi-pausar">Pausar</span></td></tr>
@@ -817,25 +944,87 @@ tbody tr:hover td{background:var(--surface2)}
         </table></div>
       </details>
 
+      </div><!-- /avz -->
+
       <div>
-        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>¿Qué es cada columna?</div></div>
+        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>¿Qué es cada columna? · disponible en los dos modos</div></div>
         <div class="card" style="padding:18px 20px">
           <div class="glossary">
             <div class="gl"><b>Gasto</b><span><span class="src s-meta" style="margin-right:4px">Meta</span>lo que se invirtió en ese anuncio</span></div>
-            <div class="gl"><b>Result.</b><span><span class="src s-meta" style="margin-right:4px">Meta</span>mensajes iniciados (objetivo de la campaña)</span></div>
-            <div class="gl"><b>Costo/res.</b><span><span class="src s-meta" style="margin-right:4px">Meta</span>gasto ÷ mensajes</span></div>
+            <div class="gl"><b>Mensajes</b><span><span class="src s-pro" style="margin-right:4px">Prometheo</span>personas que escribieron y entraron al CRM</span></div>
+            <div class="gl"><b>Compran</b><span><span class="src s-pro" style="margin-right:4px">Prometheo</span>de esos mensajes, cuántos eran comprador real</span></div>
+            <div class="gl"><b>% Compran</b><span><span class="src s-calc" style="margin-right:4px">Cálculo</span>compran ÷ mensajes</span></div>
+            <div class="gl"><b>Costo/comp.</b><span><span class="src s-calc" style="margin-right:4px">Cálculo</span>gasto ÷ compradores</span></div>
             <div class="gl"><b>CTR</b><span><span class="src s-meta" style="margin-right:4px">Meta</span>clics ÷ impresiones</span></div>
             <div class="gl"><b>Clics</b><span><span class="src s-meta" style="margin-right:4px">Meta</span>clics en el enlace</span></div>
-            <div class="gl"><b>Calif.</b><span><span class="src s-pro" style="margin-right:4px">Prometheo</span>de esos mensajes, cuántos eran comprador real</span></div>
-            <div class="gl"><b>% Calif</b><span><span class="src s-calc" style="margin-right:4px">Cálculo</span>calificados ÷ mensajes</span></div>
-            <div class="gl"><b>Costo/calif</b><span><span class="src s-calc" style="margin-right:4px">Cálculo</span>gasto ÷ calificados</span></div>
+            <div class="gl"><b>Conjunto</b><span><span class="src s-meta" style="margin-right:4px">Meta</span>el público al que se mostró el anuncio</span></div>
           </div>
-          <p class="lead" style="margin-top:14px">Además de estas columnas, Prometheo trae el <b>perfil de cada lead</b> (tipo de comprador, industria, máquina, objeción). Aparece en gris bajo cada anuncio.</p>
+          <p class="lead" style="margin-top:14px"><b>Mensajes</b> y <b>Compran</b> (ventas) son resultado de <span class="src s-pro">Prometheo</span>, no de Meta: se leen del CRM tras el cruce por ID de anuncio. Además, Prometheo trae el <b>perfil de cada lead</b> (tipo de comprador, industria, máquina, objeción), en gris bajo cada anuncio.</p>
         </div>
       </div>
       <div class="adv-only">
         <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Cómo se calcula la calidad · modo avanzado</div></div>
         <div class="banner info"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6M9 12h6M9 17h4M5 3h14v18H5z"/></svg></div><div>Las columnas <b>% Calif</b> y <b>Costo/calif</b> no las da Meta: salen del cruce por ID de anuncio con Prometheo. Meta reporta gasto y mensajes; Prometheo dice cuántos de esos mensajes eran <b>comprador real</b>. Por eso un anuncio con mucho clic puede tener el peor costo por comprador.</div></div>
+      </div>
+    </section>
+
+    <!-- ================= CRUCE D×C (Demanda × Campaña) ================= -->
+    <section class="panel p-cruce">
+      <div class="sec-head">
+        <div class="eyebrow"><span class="eb-orb"></span>Cruce · Demanda × Campaña</div>
+        <h1 class="sec">Qué demanda trajo <em>cada campaña.</em></h1>
+        <p class="lead">Cruzamos las dos pestañas: <b>qué pidió el mercado</b> (Demanda) con <b>qué campaña lo trajo</b> (Campañas), bajado a conjunto y anuncio. Mezcla todos los objetivos —mensajes, retargeting, lookalike, tráfico— y suma los resultados de Prometheo: visitas, reuniones, derivado/calificado y ventas.</p>
+      </div>
+
+      <div class="eyebrow"><span class="eb-orb"></span>Objetivos de campaña · cómo leerlos</div>
+      <div class="srclegend" style="margin-bottom:14px">
+        <div class="slg"><span class="obj obj-msg">Mensajes</span><span>que escriban por WhatsApp</span></div>
+        <div class="slg"><span class="obj obj-ret">Retargeting</span><span>volver a quien ya visitó</span></div>
+        <div class="slg"><span class="obj obj-lal">Lookalike</span><span>públicos similares al comprador</span></div>
+        <div class="slg"><span class="obj obj-traf">Tráfico</span><span>llevar a la ficha del producto</span></div>
+      </div>
+      <div class="srclegend">
+        <div class="slg"><span class="mc mc-meta">Meta</span><span>Objetivo, conjunto y gasto de cada campaña.</span></div>
+        <div class="slg"><span class="mc mc-pro">Prometheo</span><span>Máquina, industria, <b>visitas, reuniones, calificado y ventas</b>.</span></div>
+        <div class="slg"><span class="mc mc-calc">Cálculo</span><span>Costo por venta (gasto ÷ ventas).</span></div>
+      </div>
+
+      <!-- ===== BÁSICO ===== -->
+      <div class="bsc">
+        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Resumen por campaña · demanda y resultado</div></div>
+        <div class="bigcamp">
+          <div class="bc" style="--bcac:var(--vio)"><div class="bc-hd"><div class="bc-nm">Demolición sin polvo</div><span class="obj obj-msg">Mensajes</span></div><div class="bc-o">Máquina top <b style="color:var(--ink2)">Darda</b> · Demolición <span class="mc-in mc-pro">PRO</span></div><div class="bc-big"><div class="n tnum">3</div><div class="u">ventas <span class="mc-in mc-pro">PRO</span></div></div><div class="bc-cap">de <b>45 mensajes</b> · 8 reuniones virtuales</div><div class="bc-row"><div><div class="v tnum">45</div><div class="k">Mensajes</div></div><div><div class="v tnum">22</div><div class="k">Visitas</div></div><div><div class="v tnum">8</div><div class="k">Reuniones</div></div></div></div>
+          <div class="bc" style="--bcac:var(--blu)"><div class="bc-hd"><div class="bc-nm">Compactos interiores</div><span class="obj obj-msg">Mensajes</span></div><div class="bc-o">Máquina top <b style="color:var(--ink2)">Sherpa</b> · Reformas <span class="mc-in mc-pro">PRO</span></div><div class="bc-big"><div class="n tnum">1</div><div class="u">venta <span class="mc-in mc-pro">PRO</span></div></div><div class="bc-cap">de <b>20 mensajes</b> · 4 reuniones virtuales</div><div class="bc-row"><div><div class="v tnum">20</div><div class="k">Mensajes</div></div><div><div class="v tnum">14</div><div class="k">Visitas</div></div><div><div class="v tnum">4</div><div class="k">Reuniones</div></div></div></div>
+          <div class="bc" style="--bcac:var(--pnk)"><div class="bc-hd"><div class="bc-nm">Cero emisiones</div><span class="obj obj-msg">Mensajes</span></div><div class="bc-o">Máquina top <b style="color:var(--ink2)">HG</b> · Obra urbana <span class="mc-in mc-pro">PRO</span></div><div class="bc-big"><div class="n tnum">0</div><div class="u">ventas <span class="mc-in mc-pro">PRO</span></div></div><div class="bc-cap">de <b>9 mensajes</b> · 2 reuniones virtuales</div><div class="bc-row"><div><div class="v tnum">9</div><div class="k">Mensajes</div></div><div><div class="v tnum">6</div><div class="k">Visitas</div></div><div><div class="v tnum">2</div><div class="k">Reuniones</div></div></div></div>
+          <div class="bc" style="--bcac:var(--pnk)"><div class="bc-hd"><div class="bc-nm">Retargeting visitantes</div><span class="obj obj-ret">Retargeting</span></div><div class="bc-o">Máquina top <b style="color:var(--ink2)">SprayStream</b> · Control polvo <span class="mc-in mc-pro">PRO</span></div><div class="bc-big"><div class="n tnum">2</div><div class="u">ventas <span class="mc-in mc-pro">PRO</span></div></div><div class="bc-cap">de <b>14 mensajes</b> · 5 reuniones virtuales</div><div class="bc-row"><div><div class="v tnum">14</div><div class="k">Mensajes</div></div><div><div class="v tnum">18</div><div class="k">Visitas</div></div><div><div class="v tnum">5</div><div class="k">Reuniones</div></div></div></div>
+          <div class="bc" style="--bcac:var(--blu)"><div class="bc-hd"><div class="bc-nm">Público Lookalike</div><span class="obj obj-lal">Lookalike</span></div><div class="bc-o">Máquina top <b style="color:var(--ink2)">Darda</b> · Demolición <span class="mc-in mc-pro">PRO</span></div><div class="bc-big"><div class="n tnum">2</div><div class="u">ventas <span class="mc-in mc-pro">PRO</span></div></div><div class="bc-cap">de <b>11 mensajes</b> · 4 reuniones virtuales</div><div class="bc-row"><div><div class="v tnum">11</div><div class="k">Mensajes</div></div><div><div class="v tnum">12</div><div class="k">Visitas</div></div><div><div class="v tnum">4</div><div class="k">Reuniones</div></div></div></div>
+          <div class="bc" style="--bcac:var(--vio)"><div class="bc-hd"><div class="bc-nm">Tráfico a ficha</div><span class="obj obj-traf">Tráfico</span></div><div class="bc-o">Máquina top <b style="color:var(--ink2)">Mixto</b> · Varias <span class="mc-in mc-pro">PRO</span></div><div class="bc-big"><div class="n tnum">1</div><div class="u">venta <span class="mc-in mc-pro">PRO</span></div></div><div class="bc-cap">de <b>8 mensajes</b> · 26 visitas a la ficha</div><div class="bc-row"><div><div class="v tnum">8</div><div class="k">Mensajes</div></div><div><div class="v tnum">26</div><div class="k">Visitas</div></div><div><div class="v tnum">3</div><div class="k">Reuniones</div></div></div></div>
+        </div>
+        <div class="banner info" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg></div><div>Pasá a <b>Avanzada</b> para ver la matriz anuncio por anuncio con todas las variables de Prometheo (visitas, reuniones, derivado/calificado y venta).</div></div>
+      </div>
+
+      <!-- ===== AVANZADA: matriz ===== -->
+      <div class="avz">
+        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Matriz · campaña › conjunto › anuncio × demanda × resultado</div><p class="lead">Cada fila es un anuncio. En violeta la campaña con su <b>objetivo</b>; el resto son variables de Prometheo del clic a la venta.</p></div>
+        <div class="xwrap"><table class="xtab">
+          <thead><tr>
+            <th>Anuncio / conjunto</th><th>Máquina <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>Industria <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>Mensajes <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>Visitas <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>Reun. virt. <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>Deriv/Calif <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>Ventas <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>Costo/venta <span class="th-src" style="background:var(--src-calc)">CÁLC</span></th>
+          </tr></thead>
+          <tbody>
+            <tr class="xcamp"><td colspan="9">Demolición sin polvo <span class="obj obj-msg">Mensajes</span></td></tr>
+            <tr><td class="anm">VID_DardaParteHormigon_IG<span class="prof">Intereses · Constructoras</span></td><td>Darda</td><td>Demolición</td><td>16</td><td>9</td><td>3</td><td>6</td><td>1</td><td class="calc">$52.000</td></tr>
+            <tr><td class="anm">VID_SprayStreamPolvo_RET<span class="prof">Retargeting · visitó y no escribió</span></td><td>SprayStream</td><td>Control polvo</td><td>8</td><td>7</td><td>2</td><td>4</td><td>1</td><td class="calc">$26.000</td></tr>
+            <tr class="xcamp"><td colspan="9">Compactos interiores <span class="obj obj-msg">Mensajes</span></td></tr>
+            <tr><td class="anm">VID_SherpaSubsuelo_LAA<span class="prof">LAA · Demolición interior</span></td><td>Sherpa</td><td>Reformas</td><td>13</td><td>8</td><td>3</td><td>5</td><td>1</td><td class="calc">$41.000</td></tr>
+            <tr class="xcamp"><td colspan="9">Cero emisiones <span class="obj obj-msg">Mensajes</span></td></tr>
+            <tr><td class="anm">EST_HGceroEmisiones_IG<span class="prof">Intereses · Obra urbana</span></td><td>HG</td><td>Obra urbana</td><td>5</td><td>4</td><td>2</td><td>3</td><td>0</td><td class="calc">sin datos</td></tr>
+            <tr class="xcamp"><td colspan="9">Retargeting visitantes <span class="obj obj-ret">Retargeting</span></td></tr>
+            <tr><td class="anm">CAR_RetargetingObra_RET<span class="prof">Visitó ficha · no escribió</span></td><td>Mixto</td><td>Varias</td><td>14</td><td>18</td><td>5</td><td>5</td><td>2</td><td class="calc">$28.000</td></tr>
+            <tr class="xcamp"><td colspan="9">Público Lookalike <span class="obj obj-lal">Lookalike</span></td></tr>
+            <tr><td class="anm">VID_DardaLAL1_LAL<span class="prof">LAL 1% · compradores reales</span></td><td>Darda</td><td>Demolición</td><td>11</td><td>12</td><td>4</td><td>7</td><td>2</td><td class="calc">$30.000</td></tr>
+          </tbody>
+        </table></div>
+        <div class="banner info" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6M10.5 8H8a4 4 0 0 0 0 8h2.5M13.5 8H16a4 4 0 0 1 0 8h-2.5"/></svg></div><div><b>Derivado/Calificado</b>, <b>reuniones virtuales</b> y <b>ventas</b> viven en Prometheo. Meta solo aporta el objetivo y el conjunto; el recorrido del clic a la venta lo completa el CRM por el ID de anuncio.</div></div>
       </div>
     </section>
 
@@ -950,7 +1139,17 @@ tbody tr:hover td{background:var(--surface2)}
         <h1 class="sec">El mismo presupuesto, <em>rindiendo cada vez más.</em></h1>
         <p class="lead">Resumen general desde julio 2024. Bajamos el costo por comprador un <b>73%</b> — de $44.667 a $12.043 — con inversión casi constante, y las cotizaciones se multiplicaron por <b>3,3×</b>.</p>
       </div>
-      <div class="evo-hero">
+
+      <!-- Comparación pre / post Prometheo (feedback Sofi) -->
+      <div class="sec-head" style="margin-top:4px"><div class="eyebrow"><span class="eb-orb"></span>Antes vs con Prometheo · el cambio en las variables</div><p class="lead">Con el mismo presupuesto de pauta. Los valores <b>antes</b> son estimados sobre el arranque (jul 2024, sin medición de calidad); <b>con Prometheo</b> es el último mes cerrado (jun 2026).</p></div>
+      <div class="prepost">
+        <div class="pp"><div class="pp-l">Mensajes por mes</div><div class="pp-flow"><div class="pp-a"><div class="v tnum">38</div><div class="t">antes (est.)</div></div><div class="pp-ar"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-7 7 7-7 7"/></svg></div><div class="pp-b"><div class="v tnum">75</div><div class="t">con Prometheo</div></div></div><div class="pp-d" style="color:var(--good)">+97% de mensajes</div></div>
+        <div class="pp"><div class="pp-l">Costo por comprador</div><div class="pp-flow"><div class="pp-a"><div class="v tnum">$44.667</div><div class="t">antes (est.)</div></div><div class="pp-ar"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-7 7 7-7 7"/></svg></div><div class="pp-b"><div class="v tnum">$12.043</div><div class="t">con Prometheo</div></div></div><div class="pp-d" style="color:var(--good)">−73% · menos es mejor</div></div>
+        <div class="pp"><div class="pp-l">% Calificación</div><div class="pp-flow"><div class="pp-a"><div class="v">s/d</div><div class="t">no se medía</div></div><div class="pp-ar"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-7 7 7-7 7"/></svg></div><div class="pp-b"><div class="v tnum">31%</div><div class="t">con Prometheo</div></div></div><div class="pp-d" style="color:var(--vio)">medible por primera vez</div></div>
+        <div class="pp"><div class="pp-l">Cotizaciones por mes</div><div class="pp-flow"><div class="pp-a"><div class="v tnum">3</div><div class="t">antes (est.)</div></div><div class="pp-ar"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-7 7 7-7 7"/></svg></div><div class="pp-b"><div class="v tnum">10</div><div class="t">con Prometheo</div></div></div><div class="pp-d" style="color:var(--good)">×3,3</div></div>
+      </div>
+
+      <div class="evo-hero" style="margin-top:14px">
         <div class="hero" style="box-shadow:var(--shadow)">
           
           <div class="hero-top"><span class="hero-kick">Costo por comprador real · 24 meses</span><span class="hero-per">menos es mejor</span></div>
@@ -1081,7 +1280,7 @@ tbody tr:hover td{background:var(--surface2)}
     </section>
 
     <div class="simple-note" style="margin-top:22px;align-items:center;gap:9px;font-size:12px;color:var(--ink3)">
-      <span class="eb-orb" style="width:13px;height:13px"></span>Estás en modo <b style="color:var(--ink2);margin:0 3px">Simple</b>. Activá <b style="color:var(--ink2);margin:0 3px">Avanzada</b> para ver métricas técnicas, glosario y cruces por sección.
+      <span class="eb-orb" style="width:13px;height:13px"></span>Estás en modo <b style="color:var(--ink2);margin:0 3px">Básico</b> — métricas grandes, sin desplegables. Activá <b style="color:var(--ink2);margin:0 3px">Avanzada</b> para el detalle anuncio por anuncio, las tablas y las columnas técnicas.
     </div>
 
     <div class="footer">

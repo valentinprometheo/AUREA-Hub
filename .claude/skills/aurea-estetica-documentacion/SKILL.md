@@ -18,6 +18,22 @@ description: >-
 
 # AUREA Hub · Estética y Documentación
 
+## ⛔ PARA EMPEZAR (leé esto antes que nada, siempre)
+
+**Para cualquier documento de Familia A (deck / guía / propuesta / presupuesto / one-pager): NO se arma a mano. Se CLONA un ejemplo real y se reemplaza el contenido.** Este es el primer paso, no una opción.
+
+1. **Clasificá el género** (tabla más abajo) y elegí el ejemplo a clonar:
+   - Guía de implementación → `assets/ejemplos/guia-mia-seguimientos.html`
+   - Deck oficial / propuesta / presupuesto / institucional → `assets/ejemplos/drakon-ventas-marketing.html`
+2. **Copiá ese archivo entero** y mantené intactos: el `<head>` (los 3 links de fuente), el `<style>` (o el `<link>` a `aurea-drakon.css`) y el `<main class="container">` con sus secciones.
+3. **Reemplazá solo el contenido** (textos, números, íconos del set) usando las MISMAS clases. No inventes clases. No uses `.wrap`. No cambies el CSS.
+4. **El logo y la esfera salen SIEMPRE de los assets embebidos** (`assets/deck/logo.txt`, `sphere.txt`). Nunca una URL de Google Drive, nunca una esfera de CSS, nunca un placeholder.
+5. **Antes de entregar, QA por render** (ver `references/uso-de-marca.md` y `references/sistema-drakon.md`): logo real en portada y cierre, bandas oscuras con texto blanco, íconos que no salgan como cuadraditos, paleta completa (no mono-violeta).
+
+Si te salteás esto, el documento sale plano y mal (logo roto, mono-violeta, sin bandas). El detalle completo está en `references/sistema-drakon.md` (deck) y `references/genero-guia.md` (guía). **Para Familia B (docx legal), el equivalente es: nunca reconstruir, editar el template oficial** (`references/documentacion-formal.md`).
+
+---
+
 Conductor, repositorio y generador de los documentos de marca AUREA. Hace cuatro cosas:
 
 1. **Conductor.** Clasifica el pedido, ubica la familia y el género, chequea dependencias y pide los inputs que falten antes de generar.

@@ -56,8 +56,8 @@ Con eso sabés qué recursos abrir.
 
 | Estoy en… | Cargá (proceso) | Sumá según ejes |
 |---|---|---|
-| Etapa 0 — auditoría web | `references/02-skills/01-ETAPA1/prometheo-auditoria-web/SKILL.md` | rubro (para saber qué buscar) |
-| Etapa 1 — discovery | `references/01-metodologia/01-ETAPA1-Discovery/` + `references/02-skills/01-ETAPA1/prometheo-discovery-transversal/SKILL.md` | rubro (slots verticales) |
+| Etapa 0 — auditoría web | `references/02-skills/01-ETAPA1/prometheo-auditoria-web/SKILL.reference.md` | rubro (para saber qué buscar) |
+| Etapa 1 — discovery | `references/01-metodologia/01-ETAPA1-Discovery/` + `references/02-skills/01-ETAPA1/prometheo-discovery-transversal/SKILL.reference.md` | rubro (slots verticales) |
 | Etapa 2 — diseño CRM | `references/01-metodologia/02-ETAPA2-Diseno/embudos-y-tags.md` + `references/01-metodologia/02-ETAPA2-Diseno/arquitectura-crm-por-rubro.md` | rubro, transversal |
 | Etapa 2 — diseño prompt | `references/01-metodologia/02-ETAPA2-Diseno/05-estructura-prompt-agente.md` | rubro + integración + transversal |
 | Etapa 2 — iteración prompt | `references/01-metodologia/02-ETAPA2-Diseno/feedback-demo-iteracion.md` + `references/01-metodologia/02-ETAPA2-Diseno/metodologia-correccion-agente.md` | transversal + el prompt vigente del cliente |

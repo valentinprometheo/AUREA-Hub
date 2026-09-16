@@ -1,0 +1,49 @@
+# Género · Deck oficial multi-sección
+
+> Género dentro de la **Familia A (deck)**. Es el documento **largo, con índice de navegación**, que integra toda la oferta AUREA en un solo hilo: Ventas (Prometheo) primero, Marketing y medición después. Caso de referencia del formato: **DRAKON — Ventas & Marketing**.
+
+Usa la estética de la Familia A (deck AUREA). Para el render, leé `estetica-deck.md` + `estetica-deck-system.md`. La diferencia con una propuesta o un presupuesto: es **más largo, tiene índice navegable, y presenta la oferta completa como un ecosistema**, no un solo frente.
+
+## Cuándo se hace
+
+Cuando el prospecto necesita ver **toda la oferta integrada** (no un frente suelto): cómo se ordena la venta con Prometheo y cómo, sobre esa base, se activa y se mide el marketing. Es el documento "institucional-comercial" completo, el que muestra el círculo entero.
+
+## El ángulo central (el hilo)
+
+Un solo proceso: **vender mejor y saber qué funciona.** Primero ordenamos la venta con Prometheo; después activamos y medimos la demanda con marketing. Dos frentes, un mismo dato. El documento entero se cuelga de que **el círculo solo cierra si el dato vuelve**: la Inteligencia Comercial le dice a los canales de generación qué anuncio y qué lead valen la pena.
+
+## Estructura (esqueleto; adaptar el contenido al caso)
+
+**Header con índice navegable.** Barra superior con las dos ramas y sus anclas: VENTAS (Diagnóstico · Presupuesto · Plan) y MARKETING (Diagnóstico · Marketing 360 · Inteligencia · Contrato anual). El índice es parte de la estética de este género: se navega como una web.
+
+**Portada / hero.** Marca + cliente. Una línea de estrategia ("Un solo proceso: vender mejor y saber qué funciona"). Bajada que separa los dos frentes y explica que se lee con el índice.
+
+**Diagnóstico general · el círculo comercial.** Quién genera hoy (pauta, base), qué falta (convertir mejor y medir), y dónde entra AUREA (la capa que convierte y mide). El diagrama del ecosistema: Generan → Convertimos → Medimos, y la vuelta del dato. Los puntos a resolver para que el círculo cierre.
+
+**Parte 1 · Ventas.** Ordenar la venta con Prometheo: CRM, agente IA y chat omnicanal. Es la base sobre la que se apoya el marketing. Sub-secciones típicas: Diagnóstico de la operación (canales dispersos, sin trazabilidad), el diseño de la solución, el presupuesto del frente de ventas, el plan.
+
+**Parte 2 · Marketing.** Sobre la base ordenada: Marketing 360 (Email y WhatsApp sobre la base del cliente) e **Inteligencia Comercial** (medir cada canal, costo por comprador real, qué anuncio y qué lead valen). El modelo de contrato anual cuando aplique. Ver `nuevos-servicios.md`.
+
+**Cierre · el círculo que cierra.** El párrafo que resuelve el hilo: el dato que vuelve hace que cada peso de generación rinda más la próxima vez. Cierre de marca.
+
+## Reglas propias de este género
+
+- **El orden es doctrina:** ventas primero, marketing después. Nunca al revés. Prometheo ordena y convierte demanda existente; el marketing la genera y la mide **sobre** esa base.
+- **El índice tiene que funcionar:** anclas reales (`id` en cada sección, links en la barra). Es lo que distingue este género de un one-pager.
+- **Separar los dos frentes visualmente:** "Parte 1 de 2 · Ventas" y "Parte 2 de 2 · Marketing" como marcadores claros. No se funden en un continuo indistinto.
+- Cada número defendible y marcado como estimado cuando lo sea.
+- Voseo, AUREA en mayúsculas, cero em-dashes.
+
+## Checklist de inputs
+
+| Necesitás | De dónde sale |
+|---|---|
+| Nombre del cliente y su situación (quién genera demanda hoy) | la reunión / auditoría |
+| Los dolores de ventas (canales, trazabilidad, qué se cae) | la reunión |
+| El alcance de marketing que aplica (Email, WhatsApp, medición) | lo acordado |
+| Los canales de generación del cliente (pauta, base, redes) | la reunión |
+| Presupuestos de cada frente (o "a definir" en rojo) | lo acordado |
+
+## Tooling
+
+Render con el sistema de la Familia A. Como es largo, cuidá especialmente el QA por chunks (cada sección) y que las anclas del índice resuelvan. HTML por defecto; PDF solo con aprobación. Presentá siempre el archivo.

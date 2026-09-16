@@ -139,6 +139,7 @@ Si el pedido es ambiguo entre dos familias o dos géneros, **preguntá cuál** a
 ## Tooling (resumen; el detalle en cada módulo)
 
 - **Deck HTML (Familia A):** copiá `assets/deck/` a tu directorio de trabajo (trae `aurea_kit.py`, `logo.txt`, `sphere.txt`). Escribí las `<section>` con las clases del sistema, envolvé con `aurea_page()`, guardá el `.html` (ese es el entregable). QA con `screenshot_html()` por chunks. PDF **solo con aprobación** vía `render_single_page_pdf()` (screenshot Playwright + img2pdf), **nunca** el motor de impresión de Chromium.
+- **Auditar SIEMPRE antes de empaquetar o entregar:** `python scripts/audit.py` (estructura, un solo SKILL.md, description <=1024, referencias, assets, limpieza). No se entrega la skill con la auditoría en rojo.
 - **DOCX legal (Familia B):** **nunca reconstruir.** Copiá `assets/nda/NDA-AUREA-template-base.docx`, unpack con `/mnt/skills/public/docx/scripts/office/unpack.py`, editá el XML quirúrgicamente, pack con `pack.py --original`, QA visual a PDF. Placeholders en rojo `C00000` bold, nunca `highlight: yellow`.
 - **Dependencias del render del deck:** `playwright` (+ chromium) e `img2pdf`. En este entorno Chromium ya está en `/opt/pw-browsers`; no corras `playwright install`.
 - **Google Drive:** subí el `.docx`/binario y abrilo con Google Docs; subir markdown lo renderiza como texto.

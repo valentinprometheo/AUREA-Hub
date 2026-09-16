@@ -1,26 +1,19 @@
 ---
 name: aurea-estetica-documentacion
 description: >-
-  Skill de Estética y Documentación de AUREA Hub / Prometheo. Conductor,
-  repositorio y generador de los documentos de marca AUREA, con dos estéticas
-  canónicas (una por familia, nunca mezcladas) más una capa de mejora continua.
-  Familia A · ESTÉTICA (deck HTML de marca): propuestas comerciales, presupuestos,
-  el deck oficial multi-sección, guías, one-pagers e institucionales, con la
-  estética AUREA (base blanca, bandas de gradiente azul-violeta-rosa de baja
-  saturación, esfera iridiscente, Helvetica + itálica de acento Fraunces, íconos
-  SVG inline, orbe en los eyebrows). HTML por defecto, PDF de una hoja solo con
-  aprobación (screenshot Playwright a img2pdf, nunca el motor de impresión de
-  Chromium). Familia B · DOCUMENTACIÓN FORMAL (docx legal): NDA, acuerdos de
-  confidencialidad, contratos de servicios, cláusulas, anexos y condiciones
-  comerciales, SIEMPRE editando el template oficial (unpack a XML, edición
-  quirúrgica, repack), NUNCA reconstruido desde cero. Incluye los géneros clave:
-  deck oficial, presupuesto, propuesta comercial y proyectual (tipo MAMUT), guía
-  de consultoría, y los nuevos servicios (Ventas + Marketing 360 + Inteligencia
-  Comercial, modelo hub tipo DRAKON). Usala SIEMPRE que se pida crear, restyle,
-  adaptar o iterar un documento, propuesta, presupuesto, deck, one-pager, guía,
-  NDA, contrato o cláusula de AUREA / Prometheo, se mencione la estética de AUREA,
-  el deck oficial, un presupuesto, la propuesta MAMUT, o "armá algo con la estética
-  de AUREA". Español rioplatense (voseo), AUREA sin tilde, cero em-dashes.
+  Estética y documentación de marca de AUREA Hub / Prometheo. Genera los documentos
+  AUREA en dos familias que nunca se mezclan, más una capa de mejora continua.
+  Familia A, estética deck HTML (base blanca, bandas de gradiente azul-violeta-rosa,
+  esfera iridiscente, Helvetica + itálica Fraunces): propuestas, presupuestos, el
+  deck oficial multi-sección, guías, one-pagers e institucionales; HTML por defecto,
+  PDF de una hoja solo con aprobación. Familia B,
+  documentación formal docx (NDA, acuerdos de confidencialidad, contratos, cláusulas,
+  condiciones comerciales): SIEMPRE editando el template oficial, nunca reconstruido
+  desde cero. Cubre los géneros clave: deck oficial, presupuesto (PAVIR), propuesta
+  comercial (MAMUT), guía de consultoría y los nuevos servicios (Ventas + Marketing
+  360 + Inteligencia Comercial, tipo DRAKON). Usala SIEMPRE que se pida crear, adaptar
+  o iterar un documento, propuesta, presupuesto, deck, one-pager, guía, NDA, contrato
+  o cláusula de AUREA / Prometheo, o se mencione la estética de AUREA.
 ---
 
 # AUREA Hub · Estética y Documentación

@@ -1,6 +1,15 @@
 # Género · Deck oficial multi-sección
 
-> Género dentro de la **Familia A (deck)**. Es el documento **largo, con índice de navegación**, que integra toda la oferta AUREA en un solo hilo: Ventas (Prometheo) primero, Marketing y medición después. Caso de referencia del formato: **DRAKON — Ventas & Marketing**.
+> Género dentro de la **Familia A (deck)**. Es el documento **largo, con índice de navegación**, que integra toda la oferta AUREA en un solo hilo: Ventas (Prometheo) primero, Marketing y medición después.
+
+## Dos variantes del deck oficial
+
+Este género tiene dos usos, misma estética y misma estructura de fondo:
+
+1. **Deck Oficial institucional (AUREA).** El deck maestro de marca: presenta a AUREA Hub, Prometheo y la oferta completa, sin adaptar a un cliente puntual. Es la pieza de referencia canónica del look y la narrativa institucional. Documento fuente: **`Aurea_Hub - Deck Oficial.pdf`** (deck renderizado con esta estética; vive en el Drive de AUREA como la versión vigente). Cuando armes o actualices el deck institucional, partí de ese documento como fuente de verdad de contenido y orden, y respetá su copy validado.
+2. **Deck oficial de cliente.** El mismo formato largo con índice, pero adaptado a un prospecto concreto: integra su Ventas + Marketing con sus datos y dolores. Caso de referencia: **DRAKON — Ventas & Marketing**.
+
+La diferencia es el **contenido y el destinatario**, no la estética ni la mecánica de render. Lo que sigue aplica a las dos; donde diga "[CLIENTE]", en el institucional va AUREA/el rubro genérico.
 
 Usa la estética de la Familia A (deck AUREA). Para el render, leé `estetica-deck.md` + `estetica-deck-system.md`. La diferencia con una propuesta o un presupuesto: es **más largo, tiene índice navegable, y presenta la oferta completa como un ecosistema**, no un solo frente.
 

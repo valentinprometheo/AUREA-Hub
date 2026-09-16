@@ -57,3 +57,15 @@ Estos vienen de la experiencia ya codificada en las skills originales. Nacen com
 ## Aprendizajes nuevos
 
 <!-- Agregá acá las entradas nuevas, las más recientes arriba. -->
+
+### [2026-09-16] · Empaquetado de la skill · claude.ai
+- **Qué pasó:** subir un zip con varias skills juntas falla ("Zip must contain exactly one SKILL.md file. Currently there are 14"); el sistema exige un solo SKILL.md por paquete.
+- **Aprendizaje:** una skill por zip, exactamente un archivo llamado SKILL.md; los demás .md van con otro nombre; description ≤ 1024 caracteres. Detalle en EMPAQUETADO.md.
+- **Aplica a:** transversal (empaquetado)
+- **Estado:** ascendido → EMPAQUETADO.md
+
+### [2026-09-16] · Deck oficial · AUREA (institucional)
+- **Qué pasó:** se sumó el `Aurea_Hub - Deck Oficial.pdf` como pieza institucional, distinta del deck de cliente (DRAKON).
+- **Aprendizaje:** el género "deck oficial" tiene dos variantes (institucional AUREA vs. cliente), misma estética; el PDF oficial es la fuente de verdad del contenido institucional.
+- **Aplica a:** género deck oficial
+- **Estado:** ascendido → genero-deck-oficial.md

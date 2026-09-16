@@ -29,7 +29,7 @@ con la skill cargada**, en vez de entregar sin logo. Entregar sin logo no es una
 |---|---|---|---|
 | **Logo (wordmark)** | `assets/deck/logo.txt` | "áurea" + orbe, transparente, PNG 460×416 | Portada (hero) y cierre. Es el logo principal. Idéntico a DRAKON. |
 | **Esfera** | `assets/deck/sphere.txt` | esfera iridiscente, PNG 560×560 | Decoración secundaria, SIEMPRE detrás del contenido. Idéntica a DRAKON. |
-| **Isotipo (marca sola)** | `assets/deck/isotipo.txt` | el orbe/marca sin el texto | Favicon, lockups chicos, sellos. **Ver estado abajo.** |
+| **Isotipo (marca sola)** | `assets/deck/isotipo.svg` (+ `isotipo.txt` data URI) | el orbe/marca sin el texto, **vector SVG escalable** | Favicon, lockups chicos, sellos, avatar. `from aurea_kit import ISOTIPO`. |
 
 ### Dónde va el logo en un deck
 
@@ -50,8 +50,9 @@ con la skill cargada**, en vez de entregar sin logo. Entregar sin logo no es una
 
 ## Estado del isotipo
 
-El isotipo (la marca sola, sin el texto "aurea") **todavía no está embebido** como asset
-propio, porque no se puede recortar limpio del wordmark (el texto está rasterizado sobre el
-orbe). Para sumarlo hace falta el archivo suelto (PNG o SVG con fondo transparente). Cuando
-esté, se guarda como `assets/deck/isotipo.txt` (data URI) y se completa la fila de arriba.
-Mientras tanto, para un uso chico se puede usar el `.mini-orb` que genera el kit por CSS.
+El isotipo está **integrado como SVG vectorial** (`assets/deck/isotipo.svg`, también expuesto
+como data URI en `isotipo.txt` y como constante `ISOTIPO` en el kit). Reproduce la marca
+AUREA (orbe con mordida + accent flotante) con el gradiente iridiscente, y al ser vector es
+nítido a cualquier tamaño (ideal para favicon y usos chicos). Si algún día se quiere el PNG
+mesh exacto de la marca, se reemplaza el contenido de `isotipo.txt` por su data URI y listo;
+la referencia por `ISOTIPO` no cambia.

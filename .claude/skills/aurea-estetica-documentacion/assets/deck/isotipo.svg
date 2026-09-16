@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 560" width="480" height="560">
+  <defs>
+    <radialGradient id="pink" cx="34%" cy="24%" r="50%">
+      <stop offset="0%" stop-color="#ff9ecb"/><stop offset="100%" stop-color="#ff9ecb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="peach" cx="60%" cy="30%" r="34%">
+      <stop offset="0%" stop-color="#ffe0c6"/><stop offset="100%" stop-color="#ffe0c6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="white" cx="46%" cy="40%" r="20%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cyan" cx="46%" cy="60%" r="40%">
+      <stop offset="0%" stop-color="#4fc3f7"/><stop offset="100%" stop-color="#4fc3f7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blue" cx="42%" cy="84%" r="46%">
+      <stop offset="0%" stop-color="#5a6cf5"/><stop offset="100%" stop-color="#5a6cf5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="purple" cx="74%" cy="82%" r="50%">
+      <stop offset="0%" stop-color="#9b6bf2"/><stop offset="100%" stop-color="#9b6bf2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="accentg" cx="28%" cy="38%" r="85%">
+      <stop offset="0%" stop-color="#5ec6f2"/><stop offset="58%" stop-color="#7b83e8"/><stop offset="100%" stop-color="#9b6bf2"/>
+    </radialGradient>
+    <clipPath id="blob">
+      <path d="M232 172
+        C 198 170 150 186 126 224
+        C 100 264 98 322 116 368
+        C 138 424 190 466 252 466
+        C 320 466 382 424 382 356
+        C 382 320 352 306 330 320
+        C 312 331 320 300 330 278
+        C 344 246 330 200 296 180
+        C 278 170 252 173 232 172 Z"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#blob)">
+    <rect x="90" y="160" width="310" height="320" fill="#cbb0f7"/>
+    <rect x="90" y="160" width="310" height="320" fill="url(#purple)"/>
+    <rect x="90" y="160" width="310" height="320" fill="url(#blue)"/>
+    <rect x="90" y="160" width="310" height="320" fill="url(#cyan)"/>
+    <rect x="90" y="160" width="310" height="320" fill="url(#pink)"/>
+    <rect x="90" y="160" width="310" height="320" fill="url(#peach)"/>
+    <rect x="90" y="160" width="310" height="320" fill="url(#white)"/>
+  </g>
+  <ellipse cx="298" cy="120" rx="44" ry="18" transform="rotate(-25 298 120)" fill="url(#accentg)"/>
+</svg>

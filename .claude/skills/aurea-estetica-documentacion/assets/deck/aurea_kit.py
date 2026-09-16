@@ -21,6 +21,7 @@ def _read(p):
 # Brand assets as data URIs (transparent PNG, ready to drop into <img src=...>)
 LOGO   = _read("logo.txt")     # full AUREA wordmark + orb, transparent
 SPHERE = _read("sphere.txt")   # iridescent glass sphere, perfect circular cut
+ISOTIPO = _read("isotipo.txt") # AUREA mark only (no wordmark), vector SVG, scalable
 
 # ---------------------------------------------------------------- FONTS
 # Body + titles: Helvetica (Arimo = metric-compatible, embeds in PDF via Google Fonts).

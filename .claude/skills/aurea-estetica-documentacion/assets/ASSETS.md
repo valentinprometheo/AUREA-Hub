@@ -10,6 +10,7 @@ renderizan, y las tipografías cargan.
 |---|---|---|---|
 | `deck/logo.txt` | Logo AUREA (wordmark "áurea" + orbe), fondo transparente | data URI PNG 460×416 | ✅ vigente, verificado por render |
 | `deck/sphere.txt` | Esfera iridiscente (decoración secundaria) | data URI PNG 560×560 | ✅ vigente, verificado por render |
+| `deck/isotipo.svg` / `deck/isotipo.txt` | Isotipo AUREA (marca sola, sin wordmark) | SVG vectorial (+ data URI) | ✅ integrado, `ISOTIPO` en el kit, verificado por render |
 | `deck/aurea_kit.py` | Motor del deck: CSS canónico, íconos SVG inline, wrappers HTML, render a PDF | Python | ✅ importa y genera HTML válido |
 | `nda/NDA-AUREA-template-base.docx` | Template legal oficial (Familia B) | .docx | ✅ presente, fuente de verdad |
 | `ejemplos/drakon-ventas-marketing.html` | Deck oficial real (referencia de diseño exacta) | .html con CSS + contenido | ✅ presente, con `<body>` |

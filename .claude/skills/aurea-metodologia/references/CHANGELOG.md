@@ -5,6 +5,25 @@
 
 ---
 
+## v1.20 - 16 septiembre 2026
+
+Suma aditiva del entregable real de MIA App y auditoría de un ZIP externo de
+"Optimización de Metodología en Tags, embudos y variables".
+
+**Nuevo - asset de referencia (`08-casos-referencia/MIA-App-marketplace/`)**
+- Se agrega `MIA-App-Diseno-de-CRM.docx`, el DOCX real del Diseño de CRM de MIA,
+  junto al `.html` que ya estaba. Es el entregable visual completo (referencia de
+  formato), no doctrina.
+
+**Auditado y NO integrado (evita regresión)**
+- El ZIP externo traía una versión ANTERIOR de la skill `prometheo-etapa2-design`
+  (modelo de tags viejo "2 tags visibles: estadío + tipología") y su
+  `PROMPT_DE_TRANSFERENCIA.md`. La doctrina vigente ya usa el modelo más nuevo
+  "una tag por dimensión" (v1.12, refinado en v1.18: variable única + hija). Se
+  decide NO sobrescribir los módulos ni sumar el prompt de transferencia, para no
+  revertir el modelo de tags. El resto del ZIP externo (los 7 módulos etapa2,
+  `MIA-App-Prompt-V6.md`) ya estaba presente en igual o mejor versión.
+
 ## v1.19 - 16 septiembre 2026
 
 Conversión de la metodología a Skill nativo de Claude, sin tocar la doctrina. Es reenvase,

@@ -64,6 +64,12 @@ Estos vienen de la experiencia ya codificada en las skills originales. Nacen com
 - **Aplica a:** transversal (empaquetado)
 - **Estado:** ascendido → EMPAQUETADO.md
 
+### [2026-09-16] · Assets de marca · auditoría
+- **Qué pasó:** se dudó si el logo, la esfera y la tipografía estaban bien integrados; se auditó decodificando los data URI y renderizando una página de prueba con Chromium.
+- **Aprendizaje:** logo.txt (PNG 460×416) y sphere.txt (PNG 560×560) son reales y renderizan; la fuente de acento es Fraunces (confirmado igual en el deck real DRAKON), "Rischie" es solo un swap opcional futuro, no un archivo faltante. Manifiesto en assets/ASSETS.md con chequeo de integridad.
+- **Aplica a:** transversal (Familia A)
+- **Estado:** ascendido → assets/ASSETS.md
+
 ### [2026-09-16] · Referencias de diseño · transversal
 - **Qué pasó:** los HTML/PDF/ZIP adjuntos a veces llegan vacíos a Claude (no se pueden leer), y el diseño exacto se aproximaba de memoria en vez de replicarlo.
 - **Aprendizaje:** los ejemplos de diseño exactos se guardan como archivos DENTRO de la skill (`assets/ejemplos/`), no como adjuntos sueltos ni solo en memoria del proyecto; así viajan con la skill y siempre se pueden leer. Antes de armar un deck, abrir el ejemplo y copiar de ahí.

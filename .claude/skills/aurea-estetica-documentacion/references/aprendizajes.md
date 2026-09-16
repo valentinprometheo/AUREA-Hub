@@ -58,6 +58,12 @@ Estos vienen de la experiencia ya codificada en las skills originales. Nacen com
 
 <!-- Agregá acá las entradas nuevas, las más recientes arriba. -->
 
+### [2026-09-16] · Voz y contacto · guía MIA
+- **Qué pasó:** el documento usaba "ataque"/"atacar" (palabra de estilo/combate) para implementadores profesionales, y faltaba el ofrecimiento de contacto por sección.
+- **Aprendizaje:** cero palabras de estilo o combate (ataque, cazar, pelea); verbos neutros. Contacto de AUREA al pie de cada sección y en el cierre (componente .contact). Secuencia MIA confirmada: 6h → 7 días → 3 semanas. Emojis como placeholder, sin coloquialismos.
+- **Aplica a:** género guía / voz transversal
+- **Estado:** ascendido → genero-guia.md (Voz y contacto), guia-mia-seguimientos.html
+
 ### [2026-09-16] · Cierre · disposición de la gráfica
 - **Qué pasó:** en la guía MIA el cierre no renderizaba (sphere-side absoluto rompía el grid) y, al armarlo, la esfera quedaba a la izquierda.
 - **Aprendizaje:** el closer es un grid de 2 columnas (closer-text + closer-sphere). Preferencia de Valentín: esfera a la DERECHA, texto a la IZQUIERDA (texto primero, text-align:left). Nunca sphere-side absoluto en el closer.

@@ -41,3 +41,10 @@ El `.closer` es un **grid de 2 columnas**. Estructura correcta (no usar sphere-s
 ```
 
 **Preferencia de Valentín: la gráfica (esfera) va a la DERECHA y el texto a la IZQUIERDA.** Por eso el texto va primero (columna izquierda, `text-align:left`) y la esfera segunda (columna derecha). El default de DRAKON trae la esfera a la izquierda; para estos documentos se invierte.
+
+## Voz y contacto (preferencias de Valentín)
+
+- **Sin palabras de estilo ni de combate.** El lector es un implementador profesional. Nada de "ataque", "atacar", "cazar", "pelea". Verbos neutros y precisos: "seguimiento", "reactivación", "trabajar el lead". (Refuerza la regla transversal de voz de la skill.)
+- **Contacto en cada sección y en el cierre.** Cada parte cierra con una nota tipo `.contact` ("¿Dudas con esta configuración? Escribinos: el equipo de AUREA las resuelve con ustedes.") y el cierre repite el ofrecimiento de acompañamiento. El componente `.contact` (icono en caja oscura + texto sobre `--aurea-purple-soft`) está en el ejemplo `guia-mia-seguimientos.html`.
+- **Secuencia de seguimientos MIA (dato confirmado):** 6 horas → 7 días → 3 semanas.
+- **Mensajes del agente:** tono claro y cordial, sin coloquialismos ("picando", etc.). Emojis como placeholder `(emoji de saludo)`, no reales, en el cuerpo del documento.

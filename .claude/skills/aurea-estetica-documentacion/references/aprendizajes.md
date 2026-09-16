@@ -58,6 +58,12 @@ Estos vienen de la experiencia ya codificada en las skills originales. Nacen com
 
 <!-- Agregá acá las entradas nuevas, las más recientes arriba. -->
 
+### [2026-09-16] · Género guía · caso MIA (documento "muy mal")
+- **Qué pasó:** una guía real (MIA seguimientos + Instagram) salió pobre: logo por URL de Drive con fallback feo, esfera hecha con radial-gradient de CSS, paleta de un solo violeta, sin bandas oscuras. No usó la skill.
+- **Aprendizaje:** prohibido el logo por URL de Drive y la esfera CSS: usar SIEMPRE los assets reales embebidos; usar la paleta completa y las bandas oscuras de DRAKON. Se documentó el género "guía" con su suplemento de componentes (ref, touches, rules, cols ok/no, alts) sobre tokens DRAKON. Ejemplo corregido y validado por render: guia-mia-seguimientos.html.
+- **Aplica a:** género guía (Familia A)
+- **Estado:** ascendido → genero-guia.md, assets/ejemplos/guia-mia-seguimientos.html
+
 ### [2026-09-16] · Sistema de diseño · causa raíz de "sale plano"
 - **Qué pasó:** los decks generados salían faltos de paleta, gráfica e iconografía vs DRAKON. Auditando por render se vio que el kit `aurea_kit.py` es una versión REDUCIDA: no tiene bandas oscuras, callouts, cc, hs ni price dark, que sí están en el sistema real de DRAKON (43 KB de CSS + 20 íconos SVG). Además armar a mano con `.wrap` (clase inexistente) rompía el ancho y dejaba las bandas en blanco.
 - **Aprendizaje:** para un deck tipo DRAKON hay que CLONAR el sistema real (aurea-drakon.css + drakon-ventas-marketing.html), no armar a mano ni usar el kit reducido; contenedor `<main class="container">`, nunca `.wrap`. QA por render obligatorio (íconos, bandas oscuras, price cards). Doctrina y vocabulario en sistema-drakon.md.

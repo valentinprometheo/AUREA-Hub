@@ -54,14 +54,15 @@ Cada pedido cae en **una** familia. La familia define el formato y la estética.
 
 ## Géneros dentro de la Familia A (deck)
 
-La estética es una sola; lo que cambia entre géneros es la **estructura narrativa** y el **timing**. Todos rinden con `aurea_kit.py`.
+La estética es una sola; lo que cambia entre géneros es la **estructura narrativa** y el **timing**. Todos se arman clonando el sistema DRAKON (`references/sistema-drakon.md`), no con el kit reducido.
 
 | Género | Qué es | Cuándo | Estructura / módulo |
 |---|---|---|---|
 | **Propuesta Comercial y Proyectual** | el "porqué" de un plan, adaptado a lo que el prospecto contó en la reunión (caso MAMUT) | post-reunión con un prospecto | `references/genero-propuesta-comercial.md` |
 | **Presupuesto** | la estimación de inversión de un proyecto, como deck de referencia (caso PAVIR) | cuando el prospecto pide números | `references/genero-presupuesto.md` |
 | **Deck oficial multi-sección** | el documento largo con índice de navegación que integra Ventas + Marketing (caso DRAKON) | presentación integral de la oferta completa | `references/genero-deck-oficial.md` |
-| **Guía / one-pager / institucional** | guías de consultoría, one-pagers, piezas de marca | venta · institucional · cualquier etapa | estética base (`estetica-deck.md`), sin estructura fija |
+| **Guía de sugerencias / implementación** | guías que acompañan una implementación (secuencias, reglas, links al ebook). Caso: guía MIA | acompaña la implementación | `references/genero-guia.md` |
+| **One-pager / institucional** | one-pagers, piezas de marca sueltas | venta · institucional | estética base (`estetica-deck.md`) + sistema DRAKON |
 
 Los **nuevos servicios** de AUREA (Ventas con Prometheo, Marketing 360, Inteligencia Comercial, el modelo hub) y cómo nombrarlos y presentarlos viven en `references/nuevos-servicios.md`. Léelo cuando el documento tenga que presentar la oferta o parte de ella.
 
@@ -127,6 +128,7 @@ Si el pedido es ambiguo entre dos familias o dos géneros, **preguntá cuál** a
 | Género: propuesta comercial y proyectual | `references/genero-propuesta-comercial.md` |
 | Género: presupuesto | `references/genero-presupuesto.md` |
 | Género: deck oficial multi-sección | `references/genero-deck-oficial.md` |
+| Género: guía de sugerencias / implementación | `references/genero-guia.md` |
 | Los servicios de AUREA y cómo nombrarlos | `references/nuevos-servicios.md` |
 | Documentación formal (NDA, contratos) | `references/documentacion-formal.md` (+ `-tokens.md`, `-qa.md`) |
 | Mejora continua (cómo aprende la skill) | `references/mejora-continua.md` |

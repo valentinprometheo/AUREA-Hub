@@ -36,6 +36,10 @@ Cada pedido cae en **una** familia. La familia define el formato y la estética.
 | **A · Estética (deck)** | propuestas, presupuestos, deck oficial, guías, one-pagers, institucionales, decks de venta | **HTML** de marca: base blanca, bandas de gradiente azul-violeta-rosa a ~15%, esfera, Helvetica + itálica de acento. PDF de una hoja **solo con aprobación** | `references/estetica-deck.md` + `estetica-deck-system.md` (+ los géneros) |
 | **B · Documentación formal** | NDA, acuerdo, contrato, cláusula, anexo, condiciones comerciales | **.docx** legal editando el **template oficial** (Calibri, violeta de marca, firmas). Nunca reconstruir desde cero | `references/documentacion-formal.md` (+ `-tokens.md`, `-qa.md`) |
 
+### Regla de marca (OBLIGATORIA)
+
+**Todo documento de la Familia A lleva el logo AUREA embebido desde la skill, en la portada y en el cierre. Siempre.** Los assets (logo, esfera) ya viven en `assets/deck/` y son byte-idénticos a los del deck real de DRAKON. Se usan con `from aurea_kit import LOGO, SPHERE` (o leyendo `assets/deck/logo.txt` / `sphere.txt`). **Nunca** buscar el logo en Drive, nunca una URL externa, nunca un placeholder, nunca aproximarlo. Entregar sin logo no es una opción. Detalle y QA de marca en `references/uso-de-marca.md`, leelo antes de armar cualquier deck.
+
 ### Regla de oro: una familia, una estética. Nunca mezclar.
 
 - Una propuesta, presupuesto o guía visual va en el **deck HTML** (Familia A), **nunca** como docx de trabajo ni como PDF impreso desde el motor de Chromium.
@@ -112,6 +116,7 @@ Si el pedido es ambiguo entre dos familias o dos géneros, **preguntá cuál** a
 
 | Necesitás | Leé |
 |---|---|
+| Uso de marca: logo, isotipo, esfera (OBLIGATORIO) | `references/uso-de-marca.md` |
 | Estética del deck (reglas y recetas) | `references/estetica-deck.md` |
 | Detalle de tokens, componentes y assets del deck | `references/estetica-deck-system.md` |
 | Género: propuesta comercial y proyectual | `references/genero-propuesta-comercial.md` |

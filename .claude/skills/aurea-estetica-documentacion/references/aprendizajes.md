@@ -64,6 +64,12 @@ Estos vienen de la experiencia ya codificada en las skills originales. Nacen com
 - **Aplica a:** transversal (empaquetado)
 - **Estado:** ascendido → EMPAQUETADO.md
 
+### [2026-09-16] · Uso de marca · integración dura
+- **Qué pasó:** en un chat sin la skill cargada, el logo se buscó en Drive (AUREAHUB_logo.png, 1-4MB) y se entregó sin logo real; se dudó de si el logo estaba integrado.
+- **Aprendizaje:** logo.txt y sphere.txt de la skill son byte-idénticos (SHA256) a los que usa el DRAKON real; están integrados y renderizan en portada y cierre. La regla de marca es obligatoria: usar LOGO/SPHERE del kit, nunca Drive ni placeholder. Detalle en uso-de-marca.md.
+- **Aplica a:** transversal (Familia A)
+- **Estado:** ascendido → uso-de-marca.md, SKILL.md (Regla de marca)
+
 ### [2026-09-16] · Assets de marca · auditoría
 - **Qué pasó:** se dudó si el logo, la esfera y la tipografía estaban bien integrados; se auditó decodificando los data URI y renderizando una página de prueba con Chromium.
 - **Aprendizaje:** logo.txt (PNG 460×416) y sphere.txt (PNG 560×560) son reales y renderizan; la fuente de acento es Fraunces (confirmado igual en el deck real DRAKON), "Rischie" es solo un swap opcional futuro, no un archivo faltante. Manifiesto en assets/ASSETS.md con chequeo de integridad.

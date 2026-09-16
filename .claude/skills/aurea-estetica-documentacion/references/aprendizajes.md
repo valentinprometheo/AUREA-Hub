@@ -58,6 +58,12 @@ Estos vienen de la experiencia ya codificada en las skills originales. Nacen com
 
 <!-- Agregá acá las entradas nuevas, las más recientes arriba. -->
 
+### [2026-09-16] · Cierre · disposición de la gráfica
+- **Qué pasó:** en la guía MIA el cierre no renderizaba (sphere-side absoluto rompía el grid) y, al armarlo, la esfera quedaba a la izquierda.
+- **Aprendizaje:** el closer es un grid de 2 columnas (closer-text + closer-sphere). Preferencia de Valentín: esfera a la DERECHA, texto a la IZQUIERDA (texto primero, text-align:left). Nunca sphere-side absoluto en el closer.
+- **Aplica a:** Familia A (todos los cierres)
+- **Estado:** ascendido → genero-guia.md (Cierre), guia-mia-seguimientos.html
+
 ### [2026-09-16] · Género guía · caso MIA (documento "muy mal")
 - **Qué pasó:** una guía real (MIA seguimientos + Instagram) salió pobre: logo por URL de Drive con fallback feo, esfera hecha con radial-gradient de CSS, paleta de un solo violeta, sin bandas oscuras. No usó la skill.
 - **Aprendizaje:** prohibido el logo por URL de Drive y la esfera CSS: usar SIEMPRE los assets reales embebidos; usar la paleta completa y las bandas oscuras de DRAKON. Se documentó el género "guía" con su suplemento de componentes (ref, touches, rules, cols ok/no, alts) sobre tokens DRAKON. Ejemplo corregido y validado por render: guia-mia-seguimientos.html.

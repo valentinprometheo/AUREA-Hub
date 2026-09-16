@@ -28,3 +28,16 @@ Están en el `<style>` del ejemplo `guia-mia-seguimientos.html`. Copiá de ahí:
 ## Regla de armado
 
 **Cloná `guia-mia-seguimientos.html`** (head con fuentes + `aurea-drakon.css` inline + el suplemento) y reemplazá el contenido. No inventes una paleta ni un logo: los assets y los tokens ya están. QA de deck y de marca obligatorio (ver `sistema-drakon.md` y `uso-de-marca.md`).
+
+## Cierre (closer): estructura y disposición
+
+El `.closer` es un **grid de 2 columnas**. Estructura correcta (no usar sphere-side absoluto, que lo rompe):
+
+```html
+<section class="closer" style="grid-template-columns:1.15fr .85fr">
+  <div class="closer-text" style="text-align:left"> eyebrow + h2 (con em) + p + closer-links </div>
+  <div class="closer-sphere"><img src="{SPHERE}"></div>
+</section>
+```
+
+**Preferencia de Valentín: la gráfica (esfera) va a la DERECHA y el texto a la IZQUIERDA.** Por eso el texto va primero (columna izquierda, `text-align:left`) y la esfera segunda (columna derecha). El default de DRAKON trae la esfera a la izquierda; para estos documentos se invierte.

@@ -64,6 +64,12 @@ Estos vienen de la experiencia ya codificada en las skills originales. Nacen com
 - **Aplica a:** transversal (empaquetado)
 - **Estado:** ascendido → EMPAQUETADO.md
 
+### [2026-09-16] · Referencias de diseño · transversal
+- **Qué pasó:** los HTML/PDF/ZIP adjuntos a veces llegan vacíos a Claude (no se pueden leer), y el diseño exacto se aproximaba de memoria en vez de replicarlo.
+- **Aprendizaje:** los ejemplos de diseño exactos se guardan como archivos DENTRO de la skill (`assets/ejemplos/`), no como adjuntos sueltos ni solo en memoria del proyecto; así viajan con la skill y siempre se pueden leer. Antes de armar un deck, abrir el ejemplo y copiar de ahí.
+- **Aplica a:** transversal (Familia A)
+- **Estado:** ascendido → genero-deck-oficial.md (`assets/ejemplos/drakon-ventas-marketing.html`)
+
 ### [2026-09-16] · Deck oficial · AUREA (institucional)
 - **Qué pasó:** se sumó el `Aurea_Hub - Deck Oficial.pdf` como pieza institucional, distinta del deck de cliente (DRAKON).
 - **Aprendizaje:** el género "deck oficial" tiene dos variantes (institucional AUREA vs. cliente), misma estética; el PDF oficial es la fuente de verdad del contenido institucional.

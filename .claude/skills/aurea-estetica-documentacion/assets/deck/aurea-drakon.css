@@ -158,6 +158,8 @@ h1 em,.sec-head h2 em,.closer h2 em{font-family:var(--accent);font-style:italic;
 .hero>*{position:relative;z-index:1}
 .hero .sphere-side{z-index:0}
 .sphere-hero{right:-120px;top:118px;width:208px;opacity:.82}
+/* hero sin esfera flotante (regla AUREA): el logo ya trae su blob; la esfera va solo en el closer */
+.hero .sphere-hero,.hero .sphere-side{display:none!important}
 .sphere-side img{width:100%;display:block}
 
 /* closer: sphere on one side, text right-aligned, on WHITE for impact */

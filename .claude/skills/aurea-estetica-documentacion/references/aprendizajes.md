@@ -58,6 +58,12 @@ Estos vienen de la experiencia ya codificada en las skills originales. Nacen com
 
 <!-- Agregá acá las entradas nuevas, las más recientes arriba. -->
 
+### [2026-09-16] · Hero · sin esfera flotante
+- **Qué pasó:** en el hero la esfera aparecía encima del logo (el `display:none` de sphere-hero estaba solo en el media query de mobile).
+- **Aprendizaje:** el hero NO lleva esfera flotante (el logo ya trae su blob); la esfera va solo en el closer, a la derecha. Blindado en aurea-drakon.css con `.hero .sphere-side{display:none!important}` y quitado del ejemplo.
+- **Aplica a:** Familia A (todos los heroes)
+- **Estado:** ascendido → aurea-drakon.css, uso-de-marca.md, guia-mia-seguimientos.html
+
 ### [2026-09-16] · Voz y contacto · guía MIA
 - **Qué pasó:** el documento usaba "ataque"/"atacar" (palabra de estilo/combate) para implementadores profesionales, y faltaba el ofrecimiento de contacto por sección.
 - **Aprendizaje:** cero palabras de estilo o combate (ataque, cazar, pelea); verbos neutros. Contacto de AUREA al pie de cada sección y en el cierre (componente .contact). Secuencia MIA confirmada: 6h → 7 días → 3 semanas. Emojis como placeholder, sin coloquialismos.

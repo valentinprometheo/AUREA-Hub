@@ -56,3 +56,8 @@ AUREA (orbe con mordida + accent flotante) con el gradiente iridiscente, y al se
 nítido a cualquier tamaño (ideal para favicon y usos chicos). Si algún día se quiere el PNG
 mesh exacto de la marca, se reemplaza el contenido de `isotipo.txt` por su data URI y listo;
 la referencia por `ISOTIPO` no cambia.
+
+## La esfera: dónde va y dónde NO
+
+- **El hero NO lleva esfera flotante.** El logo áurea ya trae su propio orbe iridiscente; una esfera extra en la portada choca con el logo y ensucia. Regla blindada en el CSS (`.hero .sphere-side{display:none!important}`).
+- **La esfera va solo en el cierre (closer), a la DERECHA** (ver `genero-guia.md`). Ese es su único lugar.

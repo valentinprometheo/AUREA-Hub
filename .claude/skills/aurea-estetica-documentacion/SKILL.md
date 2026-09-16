@@ -36,6 +36,10 @@ Cada pedido cae en **una** familia. La familia define el formato y la estética.
 | **A · Estética (deck)** | propuestas, presupuestos, deck oficial, guías, one-pagers, institucionales, decks de venta | **HTML** de marca: base blanca, bandas de gradiente azul-violeta-rosa a ~15%, esfera, Helvetica + itálica de acento. PDF de una hoja **solo con aprobación** | `references/estetica-deck.md` + `estetica-deck-system.md` (+ los géneros) |
 | **B · Documentación formal** | NDA, acuerdo, contrato, cláusula, anexo, condiciones comerciales | **.docx** legal editando el **template oficial** (Calibri, violeta de marca, firmas). Nunca reconstruir desde cero | `references/documentacion-formal.md` (+ `-tokens.md`, `-qa.md`) |
 
+### Regla del sistema de diseño (OBLIGATORIA)
+
+**Para que un deck salga como DRAKON (bandas oscuras, price cards, callouts, íconos, paleta completa), se CLONA el sistema real de DRAKON, no se arma a mano.** El CSS canónico está en `assets/deck/aurea-drakon.css` (43 KB) y el ejemplo de oro en `assets/ejemplos/drakon-ventas-marketing.html`. Cloná ese HTML (head con fuentes + style + `<main class="container">` + secciones) y reemplazá solo el contenido con las mismas clases. **Nunca** inventes clases ni uses `.wrap` (no existe: rompe el ancho y las bandas). El kit `aurea_kit.py` es una versión **reducida** para un one-pager simple y NO tiene bandas, cc, hs ni price dark: si el resultado se ve plano, pasá a clonar DRAKON. Todo el vocabulario de componentes y el QA en `references/sistema-drakon.md`, leelo antes de armar cualquier deck.
+
 ### Regla de marca (OBLIGATORIA)
 
 **Todo documento de la Familia A lleva el logo AUREA embebido desde la skill, en la portada y en el cierre. Siempre.** Los assets (logo, esfera) ya viven en `assets/deck/` y son byte-idénticos a los del deck real de DRAKON. Se usan con `from aurea_kit import LOGO, SPHERE` (o leyendo `assets/deck/logo.txt` / `sphere.txt`). **Nunca** buscar el logo en Drive, nunca una URL externa, nunca un placeholder, nunca aproximarlo. Entregar sin logo no es una opción. Detalle y QA de marca en `references/uso-de-marca.md`, leelo antes de armar cualquier deck.
@@ -116,6 +120,7 @@ Si el pedido es ambiguo entre dos familias o dos géneros, **preguntá cuál** a
 
 | Necesitás | Leé |
 |---|---|
+| Sistema de diseño DRAKON: cómo clonar el deck (OBLIGATORIO) | `references/sistema-drakon.md` |
 | Uso de marca: logo, isotipo, esfera (OBLIGATORIO) | `references/uso-de-marca.md` |
 | Estética del deck (reglas y recetas) | `references/estetica-deck.md` |
 | Detalle de tokens, componentes y assets del deck | `references/estetica-deck-system.md` |

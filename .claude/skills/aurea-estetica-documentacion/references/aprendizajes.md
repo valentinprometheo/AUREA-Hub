@@ -58,6 +58,13 @@ Estos vienen de la experiencia ya codificada en las skills originales. Nacen com
 
 <!-- Agregá acá las entradas nuevas, las más recientes arriba. -->
 
+### [2026-09-16] · Sistema de diseño · causa raíz de "sale plano"
+- **Qué pasó:** los decks generados salían faltos de paleta, gráfica e iconografía vs DRAKON. Auditando por render se vio que el kit `aurea_kit.py` es una versión REDUCIDA: no tiene bandas oscuras, callouts, cc, hs ni price dark, que sí están en el sistema real de DRAKON (43 KB de CSS + 20 íconos SVG). Además armar a mano con `.wrap` (clase inexistente) rompía el ancho y dejaba las bandas en blanco.
+- **Aprendizaje:** para un deck tipo DRAKON hay que CLONAR el sistema real (aurea-drakon.css + drakon-ventas-marketing.html), no armar a mano ni usar el kit reducido; contenedor `<main class="container">`, nunca `.wrap`. QA por render obligatorio (íconos, bandas oscuras, price cards). Doctrina y vocabulario en sistema-drakon.md.
+- **Aplica a:** Familia A (todos los decks)
+- **Estado:** ascendido → sistema-drakon.md, SKILL.md (Regla del sistema de diseño), assets/deck/aurea-drakon.css
+
+
 ### [2026-09-16] · Empaquetado de la skill · claude.ai
 - **Qué pasó:** subir un zip con varias skills juntas falla ("Zip must contain exactly one SKILL.md file. Currently there are 14"); el sistema exige un solo SKILL.md por paquete.
 - **Aprendizaje:** una skill por zip, exactamente un archivo llamado SKILL.md; los demás .md van con otro nombre; description ≤ 1024 caracteres. Detalle en EMPAQUETADO.md.

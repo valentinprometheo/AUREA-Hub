@@ -203,6 +203,14 @@ h2.sec em{font-weight:500}
 .bar-val span{color:var(--ink3);font-weight:600;margin-left:4px}
 .bar-track{grid-column:1/-1;height:7px;border-radius:20px;background:var(--inset);overflow:hidden}
 .bar-fill{height:100%;border-radius:20px;background:var(--grad)}
+.spanall{grid-column:1/-1}
+.mkgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 24px;margin-top:4px}
+.mkgrp .subl{display:flex;align-items:center;gap:7px;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);margin:0 0 11px}
+.mkgrp .subl .dot{width:8px;height:8px;border-radius:50%}
+.st-chip{font-size:8px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:1px}
+.sc-on{background:var(--good-bg,var(--blu-soft));color:var(--good-ink,var(--blu))}
+.sc-off{background:var(--warn-bg);color:var(--warn-ink)}
+@media(max-width:1080px){.mkgrid{grid-template-columns:1fr}}
 
 /* tables */
 .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-m);box-shadow:var(--shadow);background:var(--surface)}
@@ -467,11 +475,32 @@ tbody tr:hover td{background:var(--surface2)}
     <section class="panel p-demanda">
       <div class="sec-head">
         <div class="sec-band"><span class="eb-orb"></span><span>Demanda · 165 consultas por día</span></div>
-        <h2 class="sec">Qué entra por los canales, <em>en números.</em></h2>
-        <p class="lead">El grueso es consumidor final y se deriva al distribuidor de su zona. PAVIR no vende directo (salvo por caja en el local). Con Prometheo, cada consulta entra al CRM calificada y con la línea de interés taggeada.</p>
+        <h2 class="sec">De dónde viene y qué pide, <em>en números.</em></h2>
+        <p class="lead">Cada consulta tiene un <b>origen</b> (el canal de marketing que la genera) y una <b>puerta de entrada</b> (por donde llega). El grueso es consumidor final y se deriva al distribuidor de su zona: PAVIR no vende directo, salvo por caja en el local. Con Prometheo cada consulta entra al CRM calificada, atribuida al canal y con la línea de interés taggeada.</p>
       </div>
       <div class="vargrid">
-        <div class="varcard"><div class="ghdr">Canal de entrada</div>
+        <div class="varcard spanall"><div class="ghdr">Origen de la demanda · canales de marketing<span class="r">estimado · real al conectar Meta + Prometheo</span></div>
+          <div class="mkgrid">
+            <div class="mkgrp">
+              <div class="subl"><span class="dot" style="background:var(--blu)"></span>Pago</div>
+              <div class="bar-row"><span class="bar-lab">Meta Ads<span class="st-chip sc-on">Activa</span></span><span class="bar-val tnum">52 <span>32%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--blu)"></div></div></div>
+              <div class="bar-row"><span class="bar-lab">Google Ads<span class="st-chip sc-off">Pausado</span></span><span class="bar-val tnum">0 <span>oportunidad</span></span><div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--warn)"></div></div></div>
+            </div>
+            <div class="mkgrp">
+              <div class="subl"><span class="dot" style="background:var(--vio)"></span>Orgánico</div>
+              <div class="bar-row"><span class="bar-lab">Instagram @pavir.aberturas</span><span class="bar-val tnum">38 <span>23%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--vio)"></div></div></div>
+              <div class="bar-row"><span class="bar-lab">Web pavir.com.ar</span><span class="bar-val tnum">26 <span>16%</span></span><div class="bar-track"><div class="bar-fill" style="width:68%;background:var(--vio)"></div></div></div>
+              <div class="bar-row"><span class="bar-lab">Facebook + YouTube</span><span class="bar-val tnum">11 <span>7%</span></span><div class="bar-track"><div class="bar-fill" style="width:29%;background:var(--vio)"></div></div></div>
+            </div>
+            <div class="mkgrp">
+              <div class="subl"><span class="dot" style="background:var(--pnk)"></span>Directo y feria</div>
+              <div class="bar-row"><span class="bar-lab">Referido / boca a boca</span><span class="bar-val tnum">30 <span>18%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--pnk)"></div></div></div>
+              <div class="bar-row"><span class="bar-lab">BATEV · feria<span class="st-chip sc-off">Estacional</span></span><span class="bar-val tnum">8 <span>pico</span></span><div class="bar-track"><div class="bar-fill" style="width:27%;background:var(--pnk)"></div></div></div>
+            </div>
+          </div>
+          <div style="margin-top:15px;font-size:11.5px;color:var(--ink3);line-height:1.55">Marketing genera la demanda <b>hasta el clic</b>; después entra por WhatsApp, IG, mail o teléfono y <b>Prometheo</b> la califica del clic a la venta. Hoy el cierre no se atribuye al canal: cruzar pauta con derivación es lo que suma Prometheo + Meta.</div>
+        </div>
+        <div class="varcard"><div class="ghdr">Puerta de entrada · por dónde llega</div>
           <div class="bar-row"><span class="bar-lab">WhatsApp</span><span class="bar-val tnum">100 <span>61%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
           <div class="bar-row"><span class="bar-lab">Instagram</span><span class="bar-val tnum">30 <span>18%</span></span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
           <div class="bar-row"><span class="bar-lab">Mail</span><span class="bar-val tnum">30 <span>18%</span></span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>

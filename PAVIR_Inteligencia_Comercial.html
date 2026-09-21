@@ -680,15 +680,20 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
 <input type="radio" name="nav" id="dn-panorama" class="st" checked>
 <input type="radio" name="nav" id="dn-ventacrm" class="st">
 <input type="radio" name="nav" id="dn-distrib" class="st">
-<input type="radio" name="nav" id="dn-demanda" class="st">
 <input type="radio" name="nav" id="dn-catalogo" class="st">
 <input type="radio" name="nav" id="dn-corredores" class="st">
 <input type="radio" name="nav" id="dn-insights" class="st">
+<input type="radio" name="nav" id="dn-metaprom" class="st">
+<input type="radio" name="nav" id="dn-audiencias" class="st">
+<input type="radio" name="nav" id="dn-evolucion" class="st">
 <input type="radio" name="nav" id="dn-metaads" class="st">
 <input type="radio" name="nav" id="dn-googleads" class="st">
 <input type="radio" name="nav" id="dn-integraciones" class="st">
 <input type="radio" name="mode" id="mode-simple" class="st" checked>
 <input type="radio" name="mode" id="mode-adv" class="st">
+<input type="radio" name="evo" id="ev-ano" class="st">
+<input type="radio" name="evo" id="ev-tri" class="st">
+<input type="radio" name="evo" id="ev-mes" class="st" checked>
 <style>
 /* ===== PAVIR extra nav + pieces ===== */
 #dn-distrib:checked~.shell .nav[data-t=distrib],#dn-demanda:checked~.shell .nav[data-t=demanda],#dn-catalogo:checked~.shell .nav[data-t=catalogo],#dn-corredores:checked~.shell .nav[data-t=corredores]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
@@ -717,10 +722,12 @@ td.semc{text-align:right!important}
     <label class="nav" data-t="panorama" for="dn-panorama"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13h8V3H3v10Zm10 8h8V3h-8v18ZM3 21h8v-6H3v6Z"/></svg>Panorama</label>
     <label class="nav" data-t="ventacrm" for="dn-ventacrm"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10.5h8M8 14h5M21 12a9 9 0 1 1-3.6-7.2L21 4v5h-5"/></svg>Venta · CRM</label>
     <label class="nav" data-t="distrib" for="dn-distrib"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg>Distribuidores</label>
-    <label class="nav" data-t="demanda" for="dn-demanda"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v9Z"/></svg>Demanda</label>
     <label class="nav" data-t="catalogo" for="dn-catalogo"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v14H4zM4 9h16M8 3v4M16 3v4"/></svg>Catálogo</label>
     <label class="nav" data-t="corredores" for="dn-corredores"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M7 15l4-5 3 3 5-7"/></svg>Corredores</label>
     <label class="nav" data-t="insights" for="dn-insights"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2H14.5c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3Z"/></svg>Insights</label>
+    <label class="nav" data-t="metaprom" for="dn-metaprom"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7c0 5 3.5 10 8 10s8-5 8-10M4 7c0-2 1.6-3 3-3 3 0 4 4 5 8M20 7c0-2-1.6-3-3-3-3 0-4 4-5 8"/></svg>Meta en Prometheo</label>
+    <label class="nav" data-t="audiencias" for="dn-audiencias"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M16 19v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 17.5V19M10 10.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM20 19v-1.5a3.5 3.5 0 0 0-2.6-3.4M15.5 4.6a3 3 0 0 1 0 5.8"/></svg>Audiencias</label>
+    <label class="nav" data-t="evolucion" for="dn-evolucion"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M7 15l4-5 3 3 5-7"/></svg>Evolución</label>
     <div class="navlab2">Canales · Marketing</div>
     <label class="nav" data-t="metaads" for="dn-metaads"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12v-1.5A1.5 1.5 0 0 1 4.5 9H8l9-5v16l-9-5H4.5A1.5 1.5 0 0 1 3 13.5V12Zm14-3a3 3 0 0 1 0 6"/></svg>Meta Ads<span class="chch"></span></label>
     <label class="nav" data-t="googleads" for="dn-googleads"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 8.5 12H12V9.5h8.8A9 9 0 0 0 12 3Z"/></svg>Google Ads<span class="chch" style="background:var(--warn)"></span></label>
@@ -800,6 +807,31 @@ td.semc{text-align:right!important}
         <div class="kpi"><div class="k-ic blu"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v9Z"/></svg></div><div class="k-l">Consultas / mes</div><div class="k-row"><div class="k-n tnum">4.950</div><span class="delta d-up"><svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>+6%</span></div><div class="k-s">~165 por día</div></div>
         <div class="kpi"><div class="k-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg></div><div class="k-l">Pedidos cobrados</div><div class="k-row"><div class="k-n tnum">341</div><span class="delta d-up"><svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>+9%</span></div><div class="k-s">89% de los levantados</div></div>
         <div class="kpi"><div class="k-ic pnk"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="k-l">Deuda en calle</div><div class="k-row"><div class="k-n tnum">$42,8 M</div><span class="delta d-dn-good"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>-4%</span></div><div class="k-s">84 distribuidores · menos es mejor</div></div>
+      </div>
+
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Origen de la demanda · marketing genera hasta el clic</div></div>
+      <div class="vargrid">
+        <div class="varcard spanall"><div class="ghdr">Origen de la demanda · canales de marketing<span class="r">estimado · real al conectar Meta + Prometheo</span></div>
+          <div class="mkgrid">
+            <div class="mkgrp">
+              <div class="subl"><span class="dot2" style="background:var(--src-meta)"></span>Pago</div>
+              <div class="bar-row"><span class="bar-lab">Meta Ads<span class="st-chip sc-on">Activa</span></span><span class="bar-val tnum">52 <span>32%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--src-meta)"></div></div></div>
+              <div class="bar-row"><span class="bar-lab">Google Ads<span class="st-chip sc-off">Pausado</span></span><span class="bar-val tnum">0 <span>oportunidad</span></span><div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--src-goog)"></div></div></div>
+            </div>
+            <div class="mkgrp">
+              <div class="subl"><span class="dot2" style="background:var(--vio)"></span>Orgánico</div>
+              <div class="bar-row"><span class="bar-lab">Instagram @pavir.aberturas</span><span class="bar-val tnum">38 <span>23%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--vio)"></div></div></div>
+              <div class="bar-row"><span class="bar-lab">Web pavir.com.ar</span><span class="bar-val tnum">26 <span>16%</span></span><div class="bar-track"><div class="bar-fill" style="width:68%;background:var(--vio)"></div></div></div>
+              <div class="bar-row"><span class="bar-lab">Facebook + YouTube</span><span class="bar-val tnum">11 <span>7%</span></span><div class="bar-track"><div class="bar-fill" style="width:29%;background:var(--vio)"></div></div></div>
+            </div>
+            <div class="mkgrp">
+              <div class="subl"><span class="dot2" style="background:var(--pnk)"></span>Directo y feria</div>
+              <div class="bar-row"><span class="bar-lab">Referido / boca a boca</span><span class="bar-val tnum">30 <span>18%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--pnk)"></div></div></div>
+              <div class="bar-row"><span class="bar-lab">BATEV · feria<span class="st-chip sc-off">Estacional</span></span><span class="bar-val tnum">8 <span>pico</span></span><div class="bar-track"><div class="bar-fill" style="width:27%;background:var(--pnk)"></div></div></div>
+            </div>
+          </div>
+          <div style="margin-top:15px;font-size:11.5px;color:var(--ink3);line-height:1.55">Marketing genera la demanda <b>hasta el clic</b>; después entra por WhatsApp, IG, mail o teléfono y <b>Prometheo</b> la califica del clic a la venta. Hoy el cierre no se atribuye al canal: cruzar pauta con derivación es lo que suma Prometheo + Meta.</div>
+        </div>
       </div>
 
       <div class="adv-only">
@@ -919,6 +951,40 @@ td.semc{text-align:right!important}
         </div>
       </div>
 
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Qué pide la demanda que entra <span class="src s-pro" style="margin-left:6px">Prometheo</span></div></div>
+      <div class="vargrid">
+        <div class="varcard"><div class="ghdr">Puerta de entrada · por dónde llega</div>
+          <div class="bar-row"><span class="bar-lab">WhatsApp</span><span class="bar-val tnum">100 <span>61%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Instagram</span><span class="bar-val tnum">30 <span>18%</span></span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Mail</span><span class="bar-val tnum">30 <span>18%</span></span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Teléfono</span><span class="bar-val tnum">5 <span>3%</span></span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div></div>
+        </div>
+        <div class="varcard"><div class="ghdr">Tipo de contacto</div>
+          <div class="bar-row"><span class="bar-lab">Consumidor final</span><span class="bar-val tnum">149 <span>90%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Distribuidor</span><span class="bar-val tnum">13 <span>8%</span></span><div class="bar-track"><div class="bar-fill" style="width:9%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Arquitecto / obra</span><span class="bar-val tnum">3 <span>2%</span></span><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div></div>
+        </div>
+        <div class="varcard"><div class="ghdr">Línea de interés</div>
+          <div class="bar-row"><span class="bar-lab">Puertas de acero</span><span class="bar-val tnum">86 <span>52%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Ventanas</span><span class="bar-val tnum">50 <span>30%</span></span><div class="bar-track"><div class="bar-fill" style="width:58%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Pivotantes</span><span class="bar-val tnum">29 <span>18%</span></span><div class="bar-track"><div class="bar-fill" style="width:34%"></div></div></div>
+        </div>
+        <div class="varcard"><div class="ghdr">Smart tags · qué piden</div>
+          <div class="bar-row"><span class="bar-lab">Pidió cotización</span><span class="bar-val tnum">76 <span>46%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Pidió ficha técnica</span><span class="bar-val tnum">36 <span>22%</span></span><div class="bar-track"><div class="bar-fill" style="width:48%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Comparando marca</span><span class="bar-val tnum">23 <span>14%</span></span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Cerradura electrónica</span><span class="bar-val tnum">15 <span>9%</span></span><div class="bar-track"><div class="bar-fill" style="width:20%"></div></div></div>
+        </div>
+        <div class="varcard"><div class="ghdr">Zona del lead</div>
+          <div class="bar-row"><span class="bar-lab">AMBA</span><span class="bar-val tnum">58 <span>35%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Centro</span><span class="bar-val tnum">40 <span>24%</span></span><div class="bar-track"><div class="bar-fill" style="width:69%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Litoral</span><span class="bar-val tnum">28 <span>17%</span></span><div class="bar-track"><div class="bar-fill" style="width:48%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Cuyo</span><span class="bar-val tnum">21 <span>13%</span></span><div class="bar-track"><div class="bar-fill" style="width:36%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">NOA / NEA / Sur</span><span class="bar-val tnum">18 <span>11%</span></span><div class="bar-track"><div class="bar-fill" style="width:31%"></div></div></div>
+        </div>
+      </div>
+      <div class="banner info" style="margin-top:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg></div><div>La regla del agente: calificar primero <b>consumidor final o distribuidor</b>. Si es consumidor final, pedir zona y derivar al distribuidor de esa zona. Nunca ofrecer venta directa.</div></div>
+
       <div class="avz">
         <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Cruces accionables · modo avanzado</div></div>
         <details class="mincard" open><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg></div><div class="mc-t"><b>Corralón × AMBA × solo puertas</b><span>el cruce con más upside de ventanas</span></div><div class="mc-v tnum">64<small>dist.</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body"><div class="bc-row" style="padding:12px 10px 4px"><div><div class="v tnum">64</div><div class="k">distribuidores</div></div><div><div class="v tnum">0</div><div class="k">compran ventanas</div></div><div><div class="v tnum">10 puertas</div><div class="k">ya habilita descuento</div></div></div><ul class="insx-b" style="padding:6px 10px 12px"><li>Guion de cruce: sumar <b>ventanas PVC</b> al pedido de puertas</li><li>Corredor de AMBA los visita esta semana</li></ul></div></details>
@@ -967,68 +1033,6 @@ td.semc{text-align:right!important}
         </div>
       </div>
       <div class="banner info" style="margin-top:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg></div><div>El reparto por provincia y las señales son <b>ilustrativos</b>. Se vuelven reales al conectar <b>Producí</b> (padrón de clientes, cuenta corriente y pedidos).</div></div>
-    </section>
-
-    <!-- ===== DEMANDA ===== -->
-    <section class="panel p-demanda">
-      <div class="sec-head">
-        <div class="eyebrow"><span class="eb-orb"></span>Demanda · 165 consultas por día</div>
-        <h1 class="sec">De dónde viene y qué pide, <em>en números.</em></h1>
-        <p class="lead">Cada consulta tiene un <b>origen</b> (el canal de marketing que la genera) y una <b>puerta de entrada</b> (por donde llega). El grueso es consumidor final y se deriva al distribuidor de su zona. Con Prometheo cada consulta entra al CRM calificada, atribuida al canal y con la línea de interés taggeada.</p>
-      </div>
-      <div class="vargrid">
-        <div class="varcard spanall"><div class="ghdr">Origen de la demanda · canales de marketing<span class="r">estimado · real al conectar Meta + Prometheo</span></div>
-          <div class="mkgrid">
-            <div class="mkgrp">
-              <div class="subl"><span class="dot2" style="background:var(--src-meta)"></span>Pago</div>
-              <div class="bar-row"><span class="bar-lab">Meta Ads<span class="st-chip sc-on">Activa</span></span><span class="bar-val tnum">52 <span>32%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--src-meta)"></div></div></div>
-              <div class="bar-row"><span class="bar-lab">Google Ads<span class="st-chip sc-off">Pausado</span></span><span class="bar-val tnum">0 <span>oportunidad</span></span><div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--src-goog)"></div></div></div>
-            </div>
-            <div class="mkgrp">
-              <div class="subl"><span class="dot2" style="background:var(--vio)"></span>Orgánico</div>
-              <div class="bar-row"><span class="bar-lab">Instagram @pavir.aberturas</span><span class="bar-val tnum">38 <span>23%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--vio)"></div></div></div>
-              <div class="bar-row"><span class="bar-lab">Web pavir.com.ar</span><span class="bar-val tnum">26 <span>16%</span></span><div class="bar-track"><div class="bar-fill" style="width:68%;background:var(--vio)"></div></div></div>
-              <div class="bar-row"><span class="bar-lab">Facebook + YouTube</span><span class="bar-val tnum">11 <span>7%</span></span><div class="bar-track"><div class="bar-fill" style="width:29%;background:var(--vio)"></div></div></div>
-            </div>
-            <div class="mkgrp">
-              <div class="subl"><span class="dot2" style="background:var(--pnk)"></span>Directo y feria</div>
-              <div class="bar-row"><span class="bar-lab">Referido / boca a boca</span><span class="bar-val tnum">30 <span>18%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--pnk)"></div></div></div>
-              <div class="bar-row"><span class="bar-lab">BATEV · feria<span class="st-chip sc-off">Estacional</span></span><span class="bar-val tnum">8 <span>pico</span></span><div class="bar-track"><div class="bar-fill" style="width:27%;background:var(--pnk)"></div></div></div>
-            </div>
-          </div>
-          <div style="margin-top:15px;font-size:11.5px;color:var(--ink3);line-height:1.55">Marketing genera la demanda <b>hasta el clic</b>; después entra por WhatsApp, IG, mail o teléfono y <b>Prometheo</b> la califica del clic a la venta. Hoy el cierre no se atribuye al canal: cruzar pauta con derivación es lo que suma Prometheo + Meta.</div>
-        </div>
-        <div class="varcard"><div class="ghdr">Puerta de entrada · por dónde llega</div>
-          <div class="bar-row"><span class="bar-lab">WhatsApp</span><span class="bar-val tnum">100 <span>61%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Instagram</span><span class="bar-val tnum">30 <span>18%</span></span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Mail</span><span class="bar-val tnum">30 <span>18%</span></span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Teléfono</span><span class="bar-val tnum">5 <span>3%</span></span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div></div>
-        </div>
-        <div class="varcard"><div class="ghdr">Tipo de contacto</div>
-          <div class="bar-row"><span class="bar-lab">Consumidor final</span><span class="bar-val tnum">149 <span>90%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Distribuidor</span><span class="bar-val tnum">13 <span>8%</span></span><div class="bar-track"><div class="bar-fill" style="width:9%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Arquitecto / obra</span><span class="bar-val tnum">3 <span>2%</span></span><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div></div>
-        </div>
-        <div class="varcard"><div class="ghdr">Línea de interés</div>
-          <div class="bar-row"><span class="bar-lab">Puertas de acero</span><span class="bar-val tnum">86 <span>52%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Ventanas</span><span class="bar-val tnum">50 <span>30%</span></span><div class="bar-track"><div class="bar-fill" style="width:58%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Pivotantes</span><span class="bar-val tnum">29 <span>18%</span></span><div class="bar-track"><div class="bar-fill" style="width:34%"></div></div></div>
-        </div>
-        <div class="varcard"><div class="ghdr">Smart tags · qué piden</div>
-          <div class="bar-row"><span class="bar-lab">Pidió cotización</span><span class="bar-val tnum">76 <span>46%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Pidió ficha técnica</span><span class="bar-val tnum">36 <span>22%</span></span><div class="bar-track"><div class="bar-fill" style="width:48%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Comparando marca</span><span class="bar-val tnum">23 <span>14%</span></span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Cerradura electrónica</span><span class="bar-val tnum">15 <span>9%</span></span><div class="bar-track"><div class="bar-fill" style="width:20%"></div></div></div>
-        </div>
-        <div class="varcard"><div class="ghdr">Zona del lead</div>
-          <div class="bar-row"><span class="bar-lab">AMBA</span><span class="bar-val tnum">58 <span>35%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Centro</span><span class="bar-val tnum">40 <span>24%</span></span><div class="bar-track"><div class="bar-fill" style="width:69%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Litoral</span><span class="bar-val tnum">28 <span>17%</span></span><div class="bar-track"><div class="bar-fill" style="width:48%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Cuyo</span><span class="bar-val tnum">21 <span>13%</span></span><div class="bar-track"><div class="bar-fill" style="width:36%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">NOA / NEA / Sur</span><span class="bar-val tnum">18 <span>11%</span></span><div class="bar-track"><div class="bar-fill" style="width:31%"></div></div></div>
-        </div>
-      </div>
-      <div class="banner info" style="margin-top:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg></div><div>La regla del agente: calificar primero <b>consumidor final o distribuidor</b>. Si es consumidor final, pedir zona y derivar al distribuidor de esa zona. Nunca ofrecer venta directa.</div></div>
     </section>
 
     <!-- ===== CATÁLOGO ===== -->
@@ -1205,6 +1209,118 @@ td.semc{text-align:right!important}
       <div class="adv-only">
         <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Cómo se arma el insight · modo avanzado</div></div>
         <details class="mincard" open><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/></svg></div><div class="mc-t"><b>Criterio · de dónde sale cada tarjeta</b><span>cuando el dato esté conectado</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body"><div class="bc-row" style="padding:12px 10px 4px"><div><div class="v tnum">Producí</div><div class="k">padrón, cuenta corriente, pedidos <span class="mc-in mc-calc">CRM</span></div></div><div><div class="v tnum">Prometheo</div><div class="k">consulta calificada + tags <span class="mc-in mc-pro">PRO</span></div></div><div><div class="v tnum">Meta</div><div class="k">gasto y origen del clic <span class="mc-in mc-meta">META</span></div></div></div><ul class="insx-b" style="padding:6px 10px 12px"><li>Comercial: cruza recompra, deuda y línea comprada del padrón</li><li>Marketing: cruza origen del clic con la consulta calificada</li><li>Cada tarjeta es <b>cuantitativa</b>: el tablero muestra, no ejecuta</li></ul></div></details>
+      </div>
+    </section>
+
+    <!-- ===== META EN PROMETHEO ===== -->
+    <section class="panel p-metaprom">
+      <div class="sec-head">
+        <div class="eyebrow"><span class="eb-orb"></span>Meta en Prometheo · WhatsApp API</div>
+        <h1 class="sec">El puente <em>con Meta.</em></h1>
+        <p class="lead">Prometheo devuelve datos <b>a Meta</b> para que la pauta aprenda del negocio real: eventos de conversión (CAPI), audiencias desde el CRM y Lead Forms mapeados a la línea. Solo cuentan las consultas que entraron por <b>anuncios de click-to-WhatsApp</b>.</p>
+      </div>
+      <div class="metagrid">
+        <div class="mt"><div class="mt-hd"><div class="mt-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4h6M4 8h16M6 8v11a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V8M9 12h6M9 16h4"/></svg></div><span class="tag t-mkt">MKT</span></div><h3>Lead Forms</h3><p>La consulta cae al CRM con el anuncio de origen.</p><div class="acts"><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-3-3v6"/></svg></div><div class="a-t">Cada consulta entra con su <b>anuncio</b> y campaña de origen.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg></div><div class="a-t">Se mapea al tag de línea: <code>puerta</code> · <code>ventana</code> · <code>pivotante</code>.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></svg></div><div class="a-t">El agente califica y marca zona para <b>derivar al distribuidor</b>.</div></div></div></div>
+        <div class="mt"><div class="mt-hd"><div class="mt-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12h4l2-7 4 14 2-7h4"/></svg></div><span class="tag t-mkt">MKT</span></div><h3>Ads · CAPI</h3><p>Smart tags a eventos de Meta, servidor a servidor.</p><div class="acts"><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg></div><div class="a-t">Mapear el tag <code>derivado</code> al evento <b>Cliente potencial</b> de Meta.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v4M12 17v4M3 12h4M17 12h4M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/></svg></div><div class="a-t">Optimizar la pauta hacia <b>distribuidor real</b>, no hacia mensaje de consumidor.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/></svg></div><div class="a-t">Validar en Events Manager que el evento <b>llegó</b> al dataset.</div></div></div></div>
+        <div class="mt"><div class="mt-hd"><div class="mt-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M16 19v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 17.5V19M9.5 10.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg></div><span class="tag t-mkt">MKT</span></div><h3>Audiencias</h3><p>Custom + Lookalike desde el CRM.</p><div class="acts"><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg></div><div class="a-t">Custom filtrando tag <code>distribuidor_activo</code> desde Producí.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/></svg></div><div class="a-t">Lookalike de distribuidores: junta al menos <b>1.000</b> (ver Audiencias).</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M18 6 6 18M6 6l12 12"/></svg></div><div class="a-t">Excluir tag <code>ya_distribuidor</code> (700) de la captación.</div></div></div></div>
+      </div>
+      <div class="adv-only">
+        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Mapeo de smart tags a eventos · modo avanzado</div></div>
+        <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:600px">
+          <thead><tr><th>Smart tag <span class="th-src" style="background:var(--src-pro)">PRO</span></th><th>Consultas/mes</th><th>Evento de Meta <span class="th-src" style="background:var(--src-meta)">META</span></th><th>Etapa del embudo</th></tr></thead>
+          <tbody>
+            <tr><td class="anm">mensaje</td><td>4.950</td><td>Conversación iniciada</td><td>Consulta nueva</td></tr>
+            <tr><td class="anm">calificado</td><td>3.180</td><td class="calc">Lead calificado ★</td><td>Con línea y zona</td></tr>
+            <tr><td class="anm">derivado_a_distribuidor</td><td>4.460</td><td>Cliente potencial</td><td>Derivada</td></tr>
+            <tr><td class="anm">cierre_reportado</td><td>340</td><td>Compra</td><td>Cierre en distribuidor</td></tr>
+          </tbody>
+        </table></div></div>
+        <div class="banner info" style="margin-top:12px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg></div><div>Recomendado: optimizar la pauta hacia el evento <b>derivado</b> (o <b>cierre</b> cuando se trackee con Producí), no hacia mensaje. Así Meta aprende del distribuidor y del consumidor con intención real, no del volumen de consumidor final.</div></div>
+      </div>
+    </section>
+
+    <!-- ===== AUDIENCIAS ===== -->
+    <section class="panel p-audiencias">
+      <div class="sec-head">
+        <div class="eyebrow"><span class="eb-orb"></span>Listas para pauta</div>
+        <h1 class="sec">Audiencias, <em>listas para exportar.</em></h1>
+        <p class="lead">Las listas del CRM se sincronizan a Meta. Ojo con la diferencia: una <b>Custom Audience</b> funciona con cualquier tamaño (remarketing, exclusión, segmentación); un <b>Lookalike</b> necesita al menos <b>1.000 coincidencias</b> para que Meta lo habilite. La joya de PAVIR: Lookalike de <b>distribuidores</b>, para captar nuevos puntos de venta.</p>
+      </div>
+
+      <div class="eyebrow"><span class="eb-orb"></span>Audiencias personalizadas · Custom · cualquier tamaño</div>
+      <details class="aucard" open><summary class="au-s"><div class="au-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5"/></svg></div><div class="au-t"><div class="au-n">Consultó y no derivó <span class="au-badge" style="background:var(--vio-soft);color:var(--vio)">Custom</span> <span class="tag t-mkt">MKT</span> <span class="tag t-ventas">VENTAS</span></div><div class="au-ss">Remarketing con la línea que preguntó</div></div><div class="au-c tnum">640<span>consultas</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Tags: <code>consulto</code> sin <code>derivado</code></li><li>MKT: retargeting con el producto que preguntó · VENTAS: recontacto del corredor</li><li>Sirve como Custom Audience aunque sea &lt; 1.000</li></ul></div></details>
+      <details class="aucard"><summary class="au-s"><div class="au-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div><div class="au-t"><div class="au-n">Interés en pivotantes <span class="au-badge" style="background:var(--vio-soft);color:var(--vio)">Custom</span> <span class="tag t-mkt">MKT</span></div><div class="au-ss">Por línea de producto · ticket alto</div></div><div class="au-c tnum">290<span>consultas</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Tags: <code>interesado</code> + <code>pivotante</code></li><li>Línea premium de aluminio, margen alto</li><li>Custom audience por línea con creativo de pivotantes</li></ul></div></details>
+      <details class="aucard"><summary class="au-s"><div class="au-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM3 12c2.5-4.5 6-6.7 9-6.7s6.5 2.2 9 6.7c-2.5 4.5-6 6.7-9 6.7S5.5 16.5 3 12Z"/></svg></div><div class="au-t"><div class="au-n">Pidió cotización sin cerrar <span class="au-badge" style="background:var(--vio-soft);color:var(--vio)">Custom</span> <span class="tag t-mkt">MKT</span> <span class="tag t-ventas">VENTAS</span></div><div class="au-ss">Objeción de precio · caso de terminación</div></div><div class="au-c tnum">410<span>consultas</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Tags: <code>pidio_cotizacion</code> sin <code>cierre_reportado</code></li><li>MKT: creativo de terminación y durabilidad · VENTAS: seguir con el distribuidor de la zona</li></ul></div></details>
+      <details class="aucard"><summary class="au-s"><div class="au-ic" style="background:var(--ink3)"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M18 6 6 18M6 6l12 12"/></svg></div><div class="au-t"><div class="au-n">Ya es distribuidor <span class="au-badge" style="background:var(--crit-bg);color:var(--crit-ink)">Exclusión</span> <span class="tag t-mkt">MKT</span></div><div class="au-ss">No captar a quien ya está en la red</div></div><div class="au-c tnum">700<span>clientes</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Tag: <code>ya_distribuidor</code></li><li>Acción: <b>excluir</b> de las campañas de captación B2B</li><li>Evita gastar pauta en la red que ya compra</li></ul></div></details>
+
+      <div class="eyebrow" style="margin-top:22px"><span class="eb-orb"></span>Seed Lookalike · requiere ≥ 1.000 coincidencias</div>
+      <details class="aucard" open><summary class="au-s"><div class="au-ic" style="background:var(--good)"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7l7-4Z"/></svg></div><div class="au-t"><div class="au-n">Consumidor final calificado · todas las líneas <span class="au-badge" style="background:var(--good-bg);color:var(--good-ink)">Habilita Lookalike</span> <span class="tag t-mkt">MKT</span></div><div class="au-ss">Semilla del que realmente compra puertas y ventanas</div></div><div class="au-c tnum">1.180<span>leads</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Tags: <code>calificado</code> (todas las líneas)</li><li>Supera las <b>1.000 coincidencias</b>: Meta habilita Lookalike 1%</li><li>Mejor semilla para bajar el costo de la consulta útil</li></ul></div></details>
+      <details class="aucard"><summary class="au-s"><div class="au-ic" style="background:var(--warn)"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/></svg></div><div class="au-t"><div class="au-n">Distribuidores activos · semilla B2B <span class="au-badge" style="background:var(--warn-bg);color:var(--warn-ink)">Faltan 300</span> <span class="tag t-mkt">MKT</span> <span class="tag t-ventas">VENTAS</span></div><div class="au-ss">La joya: buscar nuevos puntos de venta parecidos a los mejores</div></div><div class="au-c tnum">700<span>clientes</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Fuente: padrón de <b>Producí</b> (razón social, contacto, teléfono)</li><li>Con 700 todavía no llega a 1.000 solo: sumar contactos de BATEV y prospectos</li><li>Al habilitarse: Lookalike para <b>captar distribuidores nuevos</b> en las 7 provincias pasivas</li></ul></div></details>
+      <details class="aucard"><summary class="au-s"><div class="au-ic" style="background:var(--warn)"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/></svg></div><div class="au-t"><div class="au-n">Interesados en pivotantes <span class="au-badge" style="background:var(--warn-bg);color:var(--warn-ink)">Faltan 710</span> <span class="tag t-mkt">MKT</span></div><div class="au-ss">Aún chica para Lookalike · usar como Custom</div></div><div class="au-c tnum">290<span>leads</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Tags: <code>interesado</code> + <code>pivotante</code></li><li>Todavía no llega a 1.000: no habilita Lookalike sola</li><li>Por ahora: Custom Audience + sumar a la semilla combinada</li></ul></div></details>
+
+      <div class="adv-only">
+        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Requisitos y match rate · modo avanzado</div></div>
+        <details class="mincard" open><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/></svg></div><div class="mc-t"><b>Cómo sube el match rate</b><span>coincidencias que Meta reconoce</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body"><div class="bc-row" style="padding:12px 10px 4px"><div><div class="v tnum">Teléfono</div><div class="k">~90% match</div></div><div><div class="v tnum">Email</div><div class="k">~70% match</div></div><div><div class="v tnum">Nombre</div><div class="k">refuerzo</div></div></div><ul class="insx-b" style="padding:6px 10px 12px"><li>Lookalike habilita desde <b>1.000</b> coincidencias reales (no leads cargados)</li><li>El padrón de Producí ya trae teléfono: alto match para el Lookalike B2B</li><li>La integración prepara la audiencia; <b>la optimización la hace Meta</b></li></ul></div></details>
+      </div>
+    </section>
+
+    <!-- ===== EVOLUCIÓN ===== -->
+    <section class="panel p-evolucion">
+      <div class="sec-head">
+        <div class="eyebrow"><span class="eb-orb"></span>Evolución · el potencial en el tiempo <span class="tag t-mkt" style="margin-left:6px">Proyección</span></div>
+        <h1 class="sec">Lo que hoy no se ve, <em>medible mes a mes.</em></h1>
+        <p class="lead">Así evolucionaría el negocio al conectar <b>Prometheo + Producí</b>: cierre atribuido, recompra gestionada y cobranza sin fricción. Números de referencia sobre la operación actual (165 consultas/día, pico marzo-mayo, piso diciembre-febrero).</p>
+      </div>
+
+      <div class="sec-head" style="margin-top:4px"><div class="eyebrow"><span class="eb-orb"></span>Hoy vs con Prometheo · el cambio en las variables</div></div>
+      <div class="prepost">
+        <div class="pp"><div class="pp-l">Cierre atribuido</div><div class="pp-flow"><div class="pp-a"><div class="v">0%</div><div class="t">no se trackea</div></div><div class="pp-ar"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-7 7 7-7 7"/></svg></div><div class="pp-b"><div class="v tnum">89%</div><div class="t">con Prometheo</div></div></div><div class="pp-d" style="color:var(--vio)">medible por primera vez</div></div>
+        <div class="pp"><div class="pp-l">Recompra en ventana</div><div class="pp-flow"><div class="pp-a"><div class="v">manual</div><div class="t">de memoria</div></div><div class="pp-ar"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-7 7 7-7 7"/></svg></div><div class="pp-b"><div class="v tnum">62%</div><div class="t">gestionada</div></div></div><div class="pp-d" style="color:var(--good)">alerta automática</div></div>
+        <div class="pp"><div class="pp-l">Deuda en calle</div><div class="pp-flow"><div class="pp-a"><div class="v tnum">$61,4 M</div><div class="t">pico marzo</div></div><div class="pp-ar"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-7 7 7-7 7"/></svg></div><div class="pp-b"><div class="v tnum">$42,8 M</div><div class="t">mes en curso</div></div></div><div class="pp-d" style="color:var(--good)">−30% · menos es mejor</div></div>
+        <div class="pp"><div class="pp-l">Dormidos reactivados</div><div class="pp-flow"><div class="pp-a"><div class="v">s/d</div><div class="t">no se detectan</div></div><div class="pp-ar"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-7 7 7-7 7"/></svg></div><div class="pp-b"><div class="v tnum">73</div><div class="t">detectados +45d</div></div></div><div class="pp-d" style="color:var(--vio)">difusión dirigida</div></div>
+      </div>
+
+      <div class="evo-hero" style="margin-top:14px">
+        <div class="hero" style="box-shadow:var(--shadow)">
+          <div class="hero-top"><span class="hero-kick">Pedidos por mes · 12 meses</span><span class="hero-per">estacional</span></div>
+          <div class="chartbox" style="margin-top:14px">
+            <div class="chart-scale"><span>pico may · 512 pedidos</span><span>más es mejor ↑</span></div>
+            <div class="chart"><svg viewBox="0 0 600 150" preserveAspectRatio="none" role="img" aria-label="Pedidos por mes"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><path d="M 6 120 L 60 108 L 114 70 L 168 40 L 222 30 L 276 52 L 330 74 L 384 92 L 438 110 L 492 128 L 546 122 L 594 96 L 594 150 L 6 150 Z" fill="url(#hg2)"/><path d="M 6 120 L 60 108 L 114 70 L 168 40 L 222 30 L 276 52 L 330 74 L 384 92 L 438 110 L 492 128 L 546 122 L 594 96" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><circle cx="594" cy="96" r="4.5" fill="#fff"/></svg><div class="endtag">384<span>en curso</span></div></div>
+            <div class="chart-x"><span>oct</span><span>ene</span><span>abr</span><span>jul</span><span>en curso</span></div>
+          </div>
+        </div>
+        <div class="stat-2">
+          <div class="statbox"><div class="l">Pedidos año</div><div class="v tnum">4.980</div><div class="m">pico mar-may · piso dic-feb</div></div>
+          <div class="statbox"><div class="l">Recompra 30d</div><div class="v tnum">62%</div><div class="m">objetivo 75% con alerta</div></div>
+          <div class="statbox"><div class="l">Cobranza en término</div><div class="v tnum">88%</div><div class="m">sin deuda que frene despacho</div></div>
+          <div class="statbox"><div class="l">Consultas/día</div><div class="v tnum">165</div><div class="m">se derivan al distribuidor</div></div>
+        </div>
+      </div>
+
+      <div class="sec-head" style="margin-top:20px"><div class="eyebrow"><span class="eb-orb"></span>Historial · elegí la vista <span class="tag t-mkt" style="margin-left:6px">Proyección</span></div></div>
+      <div class="evo-tabs"><label for="ev-ano">Por año</label><label for="ev-tri">Por trimestre</label><label for="ev-mes">Por mes</label></div>
+      <div class="evo-table evt-ano"><div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:640px"><thead><tr><th>Año</th><th>Consultas</th><th>Derivadas</th><th>Pedidos</th><th>% Cobrado</th><th>Recompra 30d</th><th>Deuda media</th></tr></thead><tbody><tr><td>Año en curso (proy.)</td><td>59.400</td><td>53.520</td><td>4.980</td><td>89%</td><td>62%</td><td class="calc">$48,6 M</td></tr><tr><td>Con Prometheo (meta)</td><td>59.400</td><td>55.400</td><td>5.450</td><td>94%</td><td>75%</td><td class="calc">$34,0 M</td></tr></tbody></table></div></div></div>
+      <div class="evo-table evt-tri"><div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:640px"><thead><tr><th>Trimestre</th><th>Consultas</th><th>Derivadas</th><th>Pedidos</th><th>% Cobrado</th><th>Recompra 30d</th><th>Deuda media</th></tr></thead><tbody><tr><td>Q · dic-feb (piso)</td><td>12.100</td><td>10.900</td><td>930</td><td>86%</td><td>55%</td><td class="calc">$39,0 M</td></tr><tr><td>Q · mar-may (pico)</td><td>17.600</td><td>15.840</td><td>1.510</td><td>90%</td><td>66%</td><td class="calc">$58,0 M</td></tr><tr><td>Q · jun-ago</td><td>15.200</td><td>13.680</td><td>1.320</td><td>89%</td><td>63%</td><td class="calc">$47,0 M</td></tr><tr><td>Q · sep-nov</td><td>14.500</td><td>13.100</td><td>1.220</td><td>88%</td><td>61%</td><td class="calc">$44,0 M</td></tr></tbody></table></div></div></div>
+      <div class="evo-table evt-mes"><div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:640px"><thead><tr><th>Mes</th><th>Consultas</th><th>Derivadas</th><th>Pedidos</th><th>% Cobrado</th><th>Recompra 30d</th><th>Deuda en calle</th></tr></thead><tbody>
+        <tr><td>oct</td><td>4.850</td><td>4.370</td><td>372</td><td>88%</td><td>60%</td><td class="calc">$43,0 M</td></tr>
+        <tr><td>nov</td><td>4.700</td><td>4.230</td><td>360</td><td>87%</td><td>59%</td><td class="calc">$41,0 M</td></tr>
+        <tr><td>dic</td><td>3.900</td><td>3.510</td><td>300</td><td>85%</td><td>55%</td><td class="calc">$38,0 M</td></tr>
+        <tr><td>ene</td><td>3.700</td><td>3.330</td><td>285</td><td>85%</td><td>54%</td><td class="calc">$37,5 M</td></tr>
+        <tr><td>feb</td><td>4.500</td><td>4.050</td><td>345</td><td>86%</td><td>56%</td><td class="calc">$41,5 M</td></tr>
+        <tr><td>mar</td><td>5.600</td><td>5.040</td><td>486</td><td>90%</td><td>64%</td><td class="calc">$61,4 M</td></tr>
+        <tr><td>abr</td><td>5.900</td><td>5.310</td><td>512</td><td>91%</td><td>67%</td><td class="calc">$59,0 M</td></tr>
+        <tr><td>may</td><td>6.100</td><td>5.490</td><td>512</td><td>90%</td><td>66%</td><td class="calc">$54,0 M</td></tr>
+        <tr><td>jun</td><td>5.300</td><td>4.770</td><td>452</td><td>89%</td><td>64%</td><td class="calc">$49,0 M</td></tr>
+        <tr><td>jul</td><td>5.050</td><td>4.545</td><td>420</td><td>89%</td><td>63%</td><td class="calc">$47,0 M</td></tr>
+        <tr><td>ago</td><td>4.850</td><td>4.365</td><td>398</td><td>88%</td><td>62%</td><td class="calc">$45,0 M</td></tr>
+        <tr><td>en curso</td><td>4.950</td><td>4.460</td><td>384</td><td>89%</td><td>62%</td><td class="calc">$42,8 M</td></tr>
+      </tbody></table></div></div></div>
+      <div class="adv-only">
+        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Qué desbloquea cada conexión · modo avanzado</div></div>
+        <div class="stat-2">
+          <div class="statbox"><div class="l">Producí conectado</div><div class="v tnum" style="font-size:22px">Cobranza + recompra</div><div class="m">padrón, cuenta corriente y periodicidad reales</div></div>
+          <div class="statbox"><div class="l">Prometheo conectado</div><div class="v tnum" style="font-size:22px">Cierre atribuido</div><div class="m">de la consulta a la derivación y al pedido</div></div>
+        </div>
       </div>
     </section>
 

@@ -1601,6 +1601,24 @@ td.semc{text-align:right!important}
 <script>
 (function(){try{var s=localStorage.getItem('pavir-theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}})();
 function tgl(){var r=document.documentElement,c=r.getAttribute('data-theme');var sd=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;var n=c?(c==='dark'?'light':'dark'):(sd?'light':'dark');r.setAttribute('data-theme',n);try{localStorage.setItem('pavir-theme',n);}catch(e){}}
+/* respaldo de navegacion: garantiza el cambio de panel aunque el visor no soporte el selector CSS ~ */
+(function(){
+  function syncNav(){
+    var chk=document.querySelector('input[name="nav"]:checked');
+    var id=chk?chk.id.replace('dn-',''):'panorama';
+    var panels=document.querySelectorAll('.panel');
+    for(var i=0;i<panels.length;i++){panels[i].style.display=panels[i].classList.contains('p-'+id)?'block':'none';}
+  }
+  function syncEvo(){
+    var chk=document.querySelector('input[name="evo"]:checked');
+    var id=chk?chk.id.replace('ev-',''):'mes';
+    var t=document.querySelectorAll('.evo-table');
+    for(var i=0;i<t.length;i++){t[i].style.display=t[i].classList.contains('evt-'+id)?'block':'none';}
+  }
+  function bind(name,fn){var r=document.querySelectorAll('input[name="'+name+'"]');for(var i=0;i<r.length;i++){r[i].addEventListener('change',fn);}}
+  bind('nav',syncNav); bind('evo',syncEvo);
+  if(document.readyState!=='loading'){syncNav();syncEvo();}else{document.addEventListener('DOMContentLoaded',function(){syncNav();syncEvo();});}
+})();
 </script>
 </body>
 </html>

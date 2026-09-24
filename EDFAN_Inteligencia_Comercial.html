@@ -1114,53 +1114,98 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
     <!-- ===== CALIDAD DE DATOS ===== -->
     <section class="panel p-calidad">
       <div class="sec-head">
-        <div class="eyebrow"><span class="eb-orb"></span>Calidad de datos · qué falta cargar</div>
-        <h1 class="sec">Los insights que hoy <em>no se pueden ver.</em></h1>
-        <p class="lead">Somos transparentes con el dato: estas variables existen en el CRM pero están poco o nada completadas. Cada una que se llene abre un insight nuevo. El porcentaje es sobre los 1.017 contactos reales.</p>
+        <div class="eyebrow"><span class="eb-orb"></span>Calidad de datos · qué falta y qué hay que cambiar</div>
+        <h1 class="sec">El CRM está bien diseñado, <em>y a medio usar.</em></h1>
+        <p class="lead">Somos transparentes con el dato. Las variables y los tags <b>ya existen en Prometheo</b>: el problema no es de diseño, es de carga. Cada campo que se complete abre un insight que hoy está bloqueado. Todo sobre los 1.017 contactos reales.</p>
       </div>
 
       <div class="qgrid">
-        <div class="qcard"><div class="q-pct">campo sin uso</div><div class="q-n tnum">0</div><div class="q-t">Reuniones registradas (en 1.017)</div></div>
-        <div class="qcard"><div class="q-pct">solo 9%</div><div class="q-n tnum">90</div><div class="q-t">Contactos con presupuesto cargado</div></div>
-        <div class="qcard"><div class="q-pct">solo 26%</div><div class="q-n tnum">263</div><div class="q-t">Con tipo de perfil</div></div>
-        <div class="qcard"><div class="q-pct">solo 10%</div><div class="q-n tnum">102</div><div class="q-t">Con objeción registrada</div></div>
+        <div class="qcard"><div class="q-pct">embudo humano</div><div class="q-n tnum">2%</div><div class="q-t">Contactos con tag de venta o cierre</div></div>
+        <div class="qcard"><div class="q-pct">sin clasificar</div><div class="q-n tnum">26%</div><div class="q-t">Contactos sin ningún tag (260)</div></div>
+        <div class="qcard"><div class="q-pct">campo sin uso</div><div class="q-n tnum">0</div><div class="q-t">Reuniones registradas en 1.017</div></div>
+        <div class="qcard"><div class="q-pct">tags</div><div class="q-n tnum">25</div><div class="q-t">Usados al menos una vez · 11 están muertos</div></div>
       </div>
 
-      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Nivel de carga por variable</div></div>
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>El hallazgo · hay dos embudos y solo uno funciona</div></div>
+      <div class="bigcamp">
+        <div class="bc" style="--bcac:var(--good)"><div class="bc-hd"><div class="bc-nm">Embudo del agente</div><span class="obj obj-traf">Vivo</span></div><div class="bc-o">Recepción y calificación · lo conduce la IA</div><div class="bc-big"><div class="n tnum">64%</div><div class="u">de los contactos</div></div><div class="bc-cap">653 contactos con tag de este embudo. <b>Funciona</b>.</div><div class="bc-row"><div><div class="v tnum">436</div><div class="k">en conversación</div></div><div><div class="v tnum">96</div><div class="k">en seguimiento</div></div><div><div class="v tnum">86</div><div class="k">derivado</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--good)"></span><div><b>El agente hace su parte.</b> Recibe, conversa, deriva y descarta. Los tags de su tramo están vivos.</div></div></div>
+        <div class="bc" style="--bcac:var(--crit)"><div class="bc-hd"><div class="bc-nm">Embudo humano</div><span class="obj obj-ret">Muerto</span></div><div class="bc-o">Venta y cierre · lo conduce el equipo</div><div class="bc-big"><div class="n tnum">2%</div><div class="u">de los contactos</div></div><div class="bc-cap">Solo 21 contactos. <b>Está diseñado completo y no se usa</b>.</div><div class="bc-row"><div><div class="v tnum">6</div><div class="k">calificado</div></div><div><div class="v tnum">4</div><div class="k">visita agendada</div></div><div><div class="v tnum">2</div><div class="k">reservado</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--crit)"></span><div><b>Acá se corta la medición.</b> Existen hasta "Reunión Realizada", "Reservado" y "No Concretado": el recorrido está pensado, nadie lo marca.</div></div></div>
+        <div class="bc" style="--bcac:var(--warn)"><div class="bc-hd"><div class="bc-nm">Sin clasificar</div><span class="obj obj-alc">Fuga</span></div><div class="bc-o">Contactos que no entraron a ningún embudo</div><div class="bc-big"><div class="n tnum">26%</div><div class="u">sin ningún tag</div></div><div class="bc-cap">260 contactos. La mayoría nunca respondió o se fue en 3 mensajes.</div><div class="bc-row"><div><div class="v tnum">473</div><div class="k">tienen 1 solo tag</div></div><div><div class="v tnum">284</div><div class="k">tienen 2 o más</div></div><div><div class="v tnum">1,4</div><div class="k">tags promedio</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--warn)"></span><div><b>Entran y no se clasifican.</b> Sin tag no hay embudo, y sin embudo no hay seguimiento ni medición posible.</div></div></div>
+      </div>
+
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Inventario de tags · cuáles se usan y cuáles no <span class="r">25 tags vistos en el export</span></div></div>
       <div class="vargrid">
-        <div class="varcard"><div class="ghdr">Bien cargadas <span class="src s-pro">útiles hoy</span></div>
-          <div class="qbar"><span class="lb">Canal / Fecha / Teléfono</span><span class="tk"><span class="fl" style="width:100%;background:var(--good)"></span></span><span class="vv">100%</span></div>
+        <div class="varcard"><div class="ghdr">Vivos<span class="lvl lvl-h">Se usan</span><span class="r">estructuran el embudo</span></div>
+          <div class="qbar"><span class="lb">En Conversación</span><span class="tk"><span class="fl" style="width:100%;background:var(--good)"></span></span><span class="vv">436</span></div>
+          <div class="qbar"><span class="lb">Uso Propio</span><span class="tk"><span class="fl" style="width:28%;background:var(--good)"></span></span><span class="vv">124</span></div>
+          <div class="qbar"><span class="lb">En Seguimiento</span><span class="tk"><span class="fl" style="width:22%;background:var(--good)"></span></span><span class="vv">96</span></div>
+          <div class="qbar"><span class="lb">Derivado</span><span class="tk"><span class="fl" style="width:20%;background:var(--good)"></span></span><span class="vv">86</span></div>
+          <div class="qbar"><span class="lb">Forma de pago</span><span class="tk"><span class="fl" style="width:19%;background:var(--good)"></span></span><span class="vv">82</span></div>
+          <div class="qbar"><span class="lb">Inversor</span><span class="tk"><span class="fl" style="width:13%;background:var(--vio)"></span></span><span class="vv">57</span></div>
+        </div>
+        <div class="varcard"><div class="ghdr">A medias<span class="lvl lvl-s">Se usan poco</span><span class="r">sirven, pero no siempre</span></div>
+          <div class="qbar"><span class="lb">Financiación a preparar</span><span class="tk"><span class="fl" style="width:100%;background:var(--vio)"></span></span><span class="vv">43</span></div>
+          <div class="qbar"><span class="lb">Proveedor</span><span class="tk"><span class="fl" style="width:95%;background:var(--vio)"></span></span><span class="vv">41</span></div>
+          <div class="qbar"><span class="lb">Inmobiliaria</span><span class="tk"><span class="fl" style="width:84%;background:var(--vio)"></span></span><span class="vv">36</span></div>
+          <div class="qbar"><span class="lb">Inmo x Contactar</span><span class="tk"><span class="fl" style="width:70%;background:var(--warn)"></span></span><span class="vv">30</span></div>
+          <div class="qbar"><span class="lb">No Fit</span><span class="tk"><span class="fl" style="width:65%;background:var(--warn)"></span></span><span class="vv">28</span></div>
+          <div class="qbar"><span class="lb">Seguir SEM</span><span class="tk"><span class="fl" style="width:28%;background:var(--warn)"></span></span><span class="vv">12</span></div>
+        </div>
+        <div class="varcard"><div class="ghdr">Muertos<span class="lvl lvl-i">Casi sin uso</span><span class="r">son los del cierre</span></div>
+          <div class="qbar"><span class="lb">Inmo en Gestión</span><span class="tk"><span class="fl" style="width:100%;background:var(--crit)"></span></span><span class="vv">8</span></div>
+          <div class="qbar"><span class="lb">Nuevo Lead</span><span class="tk"><span class="fl" style="width:88%;background:var(--crit)"></span></span><span class="vv">7</span></div>
+          <div class="qbar"><span class="lb">Calificado</span><span class="tk"><span class="fl" style="width:75%;background:var(--crit)"></span></span><span class="vv">6</span></div>
+          <div class="qbar"><span class="lb">En Negociación</span><span class="tk"><span class="fl" style="width:62%;background:var(--crit)"></span></span><span class="vv">5</span></div>
+          <div class="qbar"><span class="lb">Visita Agendada</span><span class="tk"><span class="fl" style="width:50%;background:var(--crit)"></span></span><span class="vv">4</span></div>
+          <div class="qbar"><span class="lb">Reservado · R. Realizada</span><span class="tk"><span class="fl" style="width:25%;background:var(--crit)"></span></span><span class="vv">2</span></div>
+          <div style="margin-top:12px;font-size:10.5px;color:var(--ink4);line-height:1.45">Todos los del tramo de cierre. <b>El recorrido está diseñado; falta que alguien lo marque.</b></div>
+        </div>
+      </div>
+      <div class="banner info" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg></div><div>El export solo muestra tags que se <b>usaron al menos una vez</b>. Un tag configurado en Prometheo y nunca aplicado es invisible acá: para el inventario completo hace falta el <b>catálogo de tags</b> de la cuenta.</div></div>
+
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Variables · nivel de carga sobre su base correcta</div></div>
+      <div class="vargrid">
+        <div class="varcard"><div class="ghdr">Útiles hoy<span class="lvl lvl-h">Hecho o Señal</span></div>
+          <div class="qbar"><span class="lb">Canal · Fecha · Teléfono</span><span class="tk"><span class="fl" style="width:100%;background:var(--good)"></span></span><span class="vv">100%</span></div>
           <div class="qbar"><span class="lb">Tags</span><span class="tk"><span class="fl" style="width:74%;background:var(--good)"></span></span><span class="vv">74%</span></div>
           <div class="qbar"><span class="lb">Canal de origen</span><span class="tk"><span class="fl" style="width:66%;background:var(--good)"></span></span><span class="vv">66%</span></div>
-          <div class="qbar"><span class="lb">Anuncio / ID anuncio</span><span class="tk"><span class="fl" style="width:64%;background:var(--good)"></span></span><span class="vv">64%</span></div>
+          <div class="qbar"><span class="lb">Anuncio · ID anuncio</span><span class="tk"><span class="fl" style="width:64%;background:var(--good)"></span></span><span class="vv">64%</span></div>
           <div class="qbar"><span class="lb">Proyecto de interés</span><span class="tk"><span class="fl" style="width:53%;background:var(--vio)"></span></span><span class="vv">53%</span></div>
-          <div class="qbar"><span class="lb">Zona de interés</span><span class="tk"><span class="fl" style="width:51%;background:var(--vio)"></span></span><span class="vv">51%</span></div>
+          <div class="qbar"><span class="lb">Inversión Finalidad <b style="color:var(--good-ink)">(hija)</b></span><span class="tk"><span class="fl" style="width:51%;background:var(--vio)"></span></span><span class="vv">51%</span></div>
+          <div style="margin-top:12px;font-size:10.5px;color:var(--ink4);line-height:1.45"><b>Inversión Finalidad</b> se completa solo si el perfil es Inversión: sobre esos 61 está al 51%, no al 3% del total. Es variable hija, no un campo vacío.</div>
         </div>
-        <div class="varcard"><div class="ghdr">A medias <span class="src s-calc" style="background:var(--warn)">mejorables</span></div>
+        <div class="varcard"><div class="ghdr">Mejorables<span class="lvl lvl-i">Indicio</span></div>
+          <div class="qbar"><span class="lb">Zona de interés</span><span class="tk"><span class="fl" style="width:51%;background:var(--vio)"></span></span><span class="vv">51%</span></div>
           <div class="qbar"><span class="lb">Tipo de unidad</span><span class="tk"><span class="fl" style="width:38%;background:var(--warn)"></span></span><span class="vv">38%</span></div>
           <div class="qbar"><span class="lb">Estado del proyecto</span><span class="tk"><span class="fl" style="width:37%;background:var(--warn)"></span></span><span class="vv">37%</span></div>
           <div class="qbar"><span class="lb">Tipo de perfil</span><span class="tk"><span class="fl" style="width:26%;background:var(--warn)"></span></span><span class="vv">26%</span></div>
           <div class="qbar"><span class="lb">Horizonte de compra</span><span class="tk"><span class="fl" style="width:18%;background:var(--warn)"></span></span><span class="vv">18%</span></div>
           <div class="qbar"><span class="lb">Forma de pago</span><span class="tk"><span class="fl" style="width:17%;background:var(--warn)"></span></span><span class="vv">17%</span></div>
-          <div class="qbar"><span class="lb">Objeción principal</span><span class="tk"><span class="fl" style="width:10%;background:var(--warn)"></span></span><span class="vv">10%</span></div>
         </div>
-        <div class="varcard"><div class="ghdr">Casi vacías <span class="src s-calc" style="background:var(--crit)">insight bloqueado</span></div>
+        <div class="varcard"><div class="ghdr">Bloqueadas<span class="lvl lvl-i">No reportable</span></div>
+          <div class="qbar"><span class="lb">Objeción principal</span><span class="tk"><span class="fl" style="width:10%;background:var(--crit)"></span></span><span class="vv">10%</span></div>
           <div class="qbar"><span class="lb">Tipo de derivación</span><span class="tk"><span class="fl" style="width:9%;background:var(--crit)"></span></span><span class="vv">9%</span></div>
           <div class="qbar"><span class="lb">Presupuesto</span><span class="tk"><span class="fl" style="width:9%;background:var(--crit)"></span></span><span class="vv">9%</span></div>
           <div class="qbar"><span class="lb">Dolor principal</span><span class="tk"><span class="fl" style="width:5%;background:var(--crit)"></span></span><span class="vv">5%</span></div>
-          <div class="qbar"><span class="lb">Reunión características</span><span class="tk"><span class="fl" style="width:3%;background:var(--crit)"></span></span><span class="vv">3%</span></div>
-          <div class="qbar"><span class="lb">Inversión finalidad</span><span class="tk"><span class="fl" style="width:3%;background:var(--crit)"></span></span><span class="vv">3%</span></div>
+          <div class="qbar"><span class="lb">Contexto VIP</span><span class="tk"><span class="fl" style="width:2%;background:var(--crit)"></span></span><span class="vv">0,5%</span></div>
           <div class="qbar"><span class="lb">Reuniones</span><span class="tk"><span class="fl" style="width:1%;background:var(--crit)"></span></span><span class="vv">0%</span></div>
+          <div style="margin-top:12px;font-size:10.5px;color:var(--ink4);line-height:1.45">Son <b>señales blandas</b> (objeción, dolor, VIP): las que más fácil se pierden si el prompt no las prioriza.</div>
         </div>
       </div>
 
-      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Qué insight se desbloquea al completar cada campo</div></div>
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Qué cambiar · por dónde se arregla cada cosa</div></div>
       <div class="order3">
-        <div class="ord"><div class="n"><span class="num">1</span>Reuniones y visitas</div><div class="d">Hoy el campo está en 0 para los 1.017. Registrarlas permite medir la conversión <b>lead → visita → reserva</b>, el número que hoy no existe.</div><div class="who">Desbloquea · tasa de conversión</div></div>
-        <div class="ord"><div class="n"><span class="num">2</span>Presupuesto</div><div class="d">Solo 90 contactos tienen monto. Cargándolo se puede <b>segmentar por ticket</b> y priorizar a quien puede pagar el proyecto que mira.</div><div class="who">Desbloquea · segmentación por ticket</div></div>
-        <div class="ord"><div class="n"><span class="num">3</span>Tipo de perfil y objeción</div><div class="d">Perfil al 26% y objeción al 10%. Completarlos da el <b>mapa de intención y fricción</b> para guiones de venta por segmento.</div><div class="who">Desbloquea · guiones por segmento</div></div>
+        <div class="ord"><div class="n"><span class="num">1</span>Campos requeridos por etapa</div><div class="d">Que el agente <b>no pueda marcar una etapa avanzada</b> sin la evidencia mínima cargada (proyecto, zona, perfil). Hoy hay 386 leads con evidencia y solo 6 marcados.</div><div class="who">Config de Prometheo · dueño: AUREA</div></div>
+        <div class="ord"><div class="n"><span class="num">2</span>Reforzar señales blandas</div><div class="d">Objeción, dolor y VIP se extraen mal porque el prompt no las prioriza. Las señales duras (zona, tipología) ya se extraen solas y <b>no hace falta reforzarlas</b>.</div><div class="who">Prompt del agente · dueño: AUREA</div></div>
+        <div class="ord"><div class="n"><span class="num">3</span>Activar el embudo de cierre</div><div class="d">Los tags existen hasta "Reservado". Falta que el equipo los use al agendar y cerrar, o que se disparen desde una acción. Sin eso <b>no hay tasa de conversión posible</b>.</div><div class="who">Proceso del equipo · dueño: EDFAN</div></div>
       </div>
-      <div class="banner good" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg></div><div>La buena noticia: lo que más importa para leer la demanda <b>ya está</b> (anuncio, proyecto, zona, tags). Lo que falta es carga de calificación, y eso se ordena afinando el prompt del agente y el proceso del equipo.</div></div>
+
+      <div class="avz">
+        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Defectos de modelo detectados · modo avanzado</div></div>
+        <details class="mincard" open><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.3a2 2 0 0 1 3.4 0l7 12a2 2 0 0 1-1.7 3H5a2 2 0 0 1-1.7-3z"/></svg></div><div class="mc-t"><b>Tags que compiten por el mismo cajón</b><span>una dimensión admite un solo valor a la vez</span></div><div class="mc-v tnum">22<small>contactos</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body"><div class="bc-row" style="padding:12px 10px 4px"><div><div class="v tnum">10</div><div class="k">Inversor + Uso Propio</div></div><div><div class="v tnum">8</div><div class="k">dos estadíos a la vez</div></div><div><div class="v tnum">2</div><div class="k">Finalidad sin perfil Inversión</div></div></div><div style="padding:6px 12px 14px;font-size:12px;color:var(--ink2);line-height:1.5">Son pocos (1% de la base) pero rompen la lectura del panel: un lead no puede ser <b>Inversor y Uso Propio</b> a la vez, ni estar en dos etapas del mismo embudo. Se corrige haciendo la dimensión excluyente en la configuración, no a mano.</div></div></details>
+      </div>
+
+      <div class="banner good" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg></div><div>La buena noticia: <b>no hay que rediseñar nada</b>. Lo que hace falta para leer la demanda ya está (anuncio, proyecto, zona, tags del agente). Lo que falta es carga en el tramo de cierre, y eso se ordena con configuración, prompt y proceso, en ese orden.</div></div>
     </section>
 
     <!-- ===== INTEGRACIONES ===== -->

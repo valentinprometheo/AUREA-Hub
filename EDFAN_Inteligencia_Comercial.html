@@ -691,6 +691,10 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
 #dn-panorama:checked~.shell .nav[data-t=panorama] svg,#dn-demanda:checked~.shell .nav[data-t=demanda] svg,#dn-ventacrm:checked~.shell .nav[data-t=ventacrm] svg,#dn-insights:checked~.shell .nav[data-t=insights] svg,#dn-calidad:checked~.shell .nav[data-t=calidad] svg,#dn-integraciones:checked~.shell .nav[data-t=integraciones] svg{stroke:#fff}
 #dn-panorama:checked~.shell .p-panorama,#dn-demanda:checked~.shell .p-demanda,#dn-ventacrm:checked~.shell .p-ventacrm,#dn-insights:checked~.shell .p-insights,#dn-calidad:checked~.shell .p-calidad,#dn-integraciones:checked~.shell .p-integraciones{display:block}
 .spanall{grid-column:1/-1}
+.lvl{font-size:8px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:20px;margin-left:7px;vertical-align:1px}
+.lvl-h{background:var(--good-bg);color:var(--good-ink)}
+.lvl-s{background:var(--vio-soft);color:var(--vio)}
+.lvl-i{background:var(--warn-bg);color:var(--warn-ink)}
 .miss{font-size:8px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:20px;background:var(--warn-bg);color:var(--warn-ink);margin-left:6px;vertical-align:1px}
 .adtag{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;color:var(--src-meta);background:var(--blu-soft);padding:3px 9px;border-radius:20px}
 .qbar{display:grid;grid-template-columns:150px 1fr auto;gap:10px;align-items:center;margin-bottom:9px;font-size:12px}
@@ -839,6 +843,16 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
         <p class="lead">Todo lo que sigue sale de la base de Prometheo. La atribución de anuncio es lo más valioso: <b>cada campaña alimenta un proyecto distinto</b>. Donde dice "sin dato" es una variable que el agente todavía no completó.</p>
       </div>
 
+      <div class="sec-head" style="margin-top:4px"><div class="eyebrow"><span class="eb-orb"></span>Sobre qué base leemos la demanda <span class="src s-calc" style="margin-left:6px">Curado</span></div></div>
+      <div class="card" style="padding:18px 20px;margin-bottom:8px">
+        <div class="recorrido">
+          <div class="rec"><div class="st">Export</div><div class="n grad-txt tnum">1.017</div><div class="l">Contactos</div><span class="c sm">todo lo que trae Prometheo</span></div>
+          <div class="rec"><div class="st">menos 117</div><div class="n tnum">900</div><div class="l">Demanda de compra</div><span class="c">saca proveedores e inmobiliarias</span></div>
+          <div class="rec"><div class="st">menos 187</div><div class="n tnum">713</div><div class="l">Y además conversó</div><span class="c sm">al menos 1 respuesta</span></div>
+        </div>
+        <div style="margin-top:15px;font-size:11.5px;color:var(--ink3);line-height:1.55">No todo contacto es demanda: se excluyen <b>proveedores (41)</b>, <b>inmobiliarias (55)</b>, <b>no fit (28)</b> y <b>desarrolladores (4)</b>, con solapamiento entre ellos. El volumen de canal corre sobre los <b>1.017</b>; los cortes de intención corren sobre <b>la base que declara cada variable</b>, indicada en cada tarjeta.</div>
+      </div>
+
       <div class="eyebrow"><span class="eb-orb"></span>De qué anuncio vino, y qué pasó con cada uno <span class="src s-meta" style="margin-left:6px">Meta / IG</span></div>
       <div class="bigcamp">
         <div class="bc" style="--bcac:var(--vio)"><div class="bc-hd"><div class="bc-nm">VIVÍ VILLA CRESPO</div><span class="obj obj-msg">31%</span></div><div class="bc-o">"Viví la experiencia, viví Villa Crespo" · 320 consultas</div><div class="bc-big"><div class="n tnum">95%</div><div class="u">respondió</div></div><div class="bc-cap">8,6 mensajes promedio, <b>el más comprometido</b>. Solo 16 no contestaron.</div><div class="bc-row"><div><div class="v tnum">72%</div><div class="k">pide Vervé Crespo</div></div><div><div class="v tnum">2 amb</div><div class="k">unidad top · uso propio</div></div><div><div class="v tnum">Financ.</div><div class="k">69 vs 5 contado</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--vio)"></span><div><b>El más fuerte.</b> Uso propio, unidad chica y financiado, casi todo en construcción. Es el anuncio a escalar.</div></div></div>
@@ -848,7 +862,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
 
       <div class="eyebrow" style="margin-top:26px"><span class="eb-orb"></span>Qué dice la demanda, sin depender del anuncio <span class="src s-pro" style="margin-left:6px">Prometheo</span></div>
       <div class="bigcamp">
-        <div class="bc" style="--bcac:var(--vio)"><div class="bc-hd"><div class="bc-nm">Villa Crespo es el imán</div><span class="obj obj-msg">Zona</span></div><div class="bc-o">La zona más pedida de toda la base</div><div class="bc-big"><div class="n tnum">283</div><div class="u">consultas</div></div><div class="bc-cap">28% del total y <b>56% de los que declaran zona</b>.</div><div class="bc-row"><div><div class="v tnum">84</div><div class="k">San Telmo</div></div><div><div class="v tnum">71</div><div class="k">Chacarita</div></div><div><div class="v tnum">24</div><div class="k">Villa Urquiza</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--vio)"></span><div><b>El barrio ancla.</b> La demanda se concentra donde está el producto estrella: reforzar stock y comunicación ahí.</div></div></div>
+        <div class="bc" style="--bcac:var(--vio)"><div class="bc-hd"><div class="bc-nm">Villa Crespo es el imán</div><span class="obj obj-msg">Zona</span></div><div class="bc-o">La zona más pedida de toda la base</div><div class="bc-big"><div class="n tnum">283</div><div class="u">consultas</div></div><div class="bc-cap">28% del total y <b>55% de los que declaran zona</b> (base 518).</div><div class="bc-row"><div><div class="v tnum">84</div><div class="k">San Telmo</div></div><div><div class="v tnum">71</div><div class="k">Chacarita</div></div><div><div class="v tnum">24</div><div class="k">Villa Urquiza</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--vio)"></span><div><b>El barrio ancla.</b> La demanda se concentra donde está el producto estrella: reforzar stock y comunicación ahí.</div></div></div>
         <div class="bc" style="--bcac:var(--blu)"><div class="bc-hd"><div class="bc-nm">El 2 ambientes manda</div><span class="obj obj-lal">Producto</span></div><div class="bc-o">La tipología más buscada</div><div class="bc-big"><div class="n tnum">115</div><div class="u">consultas</div></div><div class="bc-cap">Seguida de monoambiente y 3 ambientes: <b>unidad de entrada</b>.</div><div class="bc-row"><div><div class="v tnum">61</div><div class="k">monoambiente</div></div><div><div class="v tnum">54</div><div class="k">3 ambientes</div></div><div><div class="v tnum">20</div><div class="k">1 ambiente</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--blu)"></span><div><b>Ticket de entrada.</b> El mix chico sirve a inversor y a primera vivienda: priorizar ese stock en la oferta.</div></div></div>
         <div class="bc" style="--bcac:var(--pnk)"><div class="bc-hd"><div class="bc-nm">Financiado, 9 a 1</div><span class="obj obj-ret">Pago</span></div><div class="bc-o">Forma de pago dominante</div><div class="bc-big"><div class="n tnum">143</div><div class="u">financiado</div></div><div class="bc-cap">Contra solo <b>16 al contado</b> entre los que lo declaran.</div><div class="bc-row"><div><div class="v tnum">16</div><div class="k">contado</div></div><div><div class="v tnum">9×</div><div class="k">más financiado</div></div><div><div class="v tnum">43</div><div class="k">financiación a preparar</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--pnk)"></span><div><b>La financiación es la compra.</b> No es un extra: conviene abrir la charla con el plan de cuotas, no con el precio.</div></div></div>
         <div class="bc" style="--bcac:var(--good)"><div class="bc-hd"><div class="bc-nm">La obra en marcha vende</div><span class="obj obj-traf">Estado</span></div><div class="bc-o">Estado del proyecto más buscado</div><div class="bc-big"><div class="n tnum">271</div><div class="u">construcción</div></div><div class="bc-cap">72% de los que declaran estado. <b>El comprador quiere ver avance.</b></div><div class="bc-row"><div><div class="v tnum">51</div><div class="k">entrega inmediata</div></div><div><div class="v tnum">45</div><div class="k">pozo</div></div><div><div class="v tnum">3×</div><div class="k">más que pozo</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--good)"></span><div><b>Argumento de venta.</b> Mostrar la obra avanzando pesa más que el pozo: usar fotos y avance real en el seguimiento.</div></div></div>
@@ -856,57 +870,66 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
         <div class="bc" style="--bcac:var(--src-meta)"><div class="bc-hd"><div class="bc-nm">El inversor está</div><span class="obj obj-lal">Perfil</span></div><div class="bc-o">Segmento de inversión, chico pero claro</div><div class="bc-big"><div class="n tnum">57</div><div class="u">tag inversor</div></div><div class="bc-cap">Más 61 con perfil inversión y <b>32 que declaran renta</b>.</div><div class="bc-row"><div><div class="v tnum">124</div><div class="k">uso propio</div></div><div><div class="v tnum">61</div><div class="k">perfil inversión</div></div><div><div class="v tnum">32</div><div class="k">busca renta</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--src-meta)"></span><div><b>Nicho a nutrir.</b> Producto de inversión (mono y 1 amb) con guion de renta: es el que trae "Invertí Puerto Madero".</div></div></div>
       </div>
       <div class="vargrid" style="margin-top:14px">
-        <div class="varcard"><div class="ghdr">Todos los anuncios · reparto</div>
-          <div class="bar-row"><span class="bar-lab">VIVÍ VILLA CRESPO</span><span class="bar-val tnum">320 <span>31%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">INVERTÍ PUERTO MADERO</span><span class="bar-val tnum">142 <span>14%</span></span><div class="bar-track"><div class="bar-fill" style="width:44%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">VIVI EN CHACARITA</span><span class="bar-val tnum">88 <span>9%</span></span><div class="bar-track"><div class="bar-fill" style="width:28%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Chatea con nosotros (CTA sitio)</span><span class="bar-val tnum">75 <span>7%</span></span><div class="bar-track"><div class="bar-fill" style="width:23%;background:var(--ink4)"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Sin anuncio identificado</span><span class="bar-val tnum">366 <span>36%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--warn)"></div></div></div>
+        <div class="varcard"><div class="ghdr">Todos los anuncios<span class="lvl lvl-s">Señal</span><span class="r">base declarada: 651</span></div>
+          <div class="bar-row"><span class="bar-lab">VIVÍ VILLA CRESPO</span><span class="bar-val tnum">320 <span>49%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">INVERTÍ PUERTO MADERO</span><span class="bar-val tnum">142 <span>22%</span></span><div class="bar-track"><div class="bar-fill" style="width:44%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">VIVI EN CHACARITA</span><span class="bar-val tnum">88 <span>14%</span></span><div class="bar-track"><div class="bar-fill" style="width:28%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Chatea con nosotros (CTA sitio)</span><span class="bar-val tnum">75 <span>12%</span></span><div class="bar-track"><div class="bar-fill" style="width:23%;background:var(--ink4)"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Sin dato</span><span class="bar-val tnum">366 <span>36% del total</span></span><div class="bar-track"><div class="bar-fill" style="width:36%;background:var(--warn)"></div></div></div>
+          <div style="margin-top:10px;font-size:10.5px;color:var(--ink4);line-height:1.4">Porcentajes sobre los 651 con anuncio identificado. El 36% sin atribuir tapa el ROI por campaña.</div>
         </div>
-        <div class="varcard"><div class="ghdr">Proyecto de interés <span class="r">47% sin dato</span></div>
-          <div class="bar-row"><span class="bar-lab">Vervé Crespo</span><span class="bar-val tnum">276 <span>27%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Astilleros</span><span class="bar-val tnum">112 <span>11%</span></span><div class="bar-track"><div class="bar-fill" style="width:41%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Vervé Chacarita</span><span class="bar-val tnum">76 <span>7%</span></span><div class="bar-track"><div class="bar-fill" style="width:28%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Eden</span><span class="bar-val tnum">13 <span>1%</span></span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Blanco Encalada</span><span class="bar-val tnum">8 <span>1%</span></span><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div></div>
+        <div class="varcard"><div class="ghdr">Proyecto de interés<span class="lvl lvl-s">Señal</span><span class="r">base declarada: 535</span></div>
+          <div class="bar-row"><span class="bar-lab">Vervé Crespo</span><span class="bar-val tnum">276 <span>52%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Astilleros</span><span class="bar-val tnum">112 <span>21%</span></span><div class="bar-track"><div class="bar-fill" style="width:41%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Vervé Chacarita</span><span class="bar-val tnum">76 <span>14%</span></span><div class="bar-track"><div class="bar-fill" style="width:28%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Eden</span><span class="bar-val tnum">13 <span>2%</span></span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Sin dato</span><span class="bar-val tnum">482 <span>47% del total</span></span><div class="bar-track"><div class="bar-fill" style="width:47%;background:var(--warn)"></div></div></div>
         </div>
-        <div class="varcard"><div class="ghdr">Zona de interés <span class="r">49% sin dato</span></div>
-          <div class="bar-row"><span class="bar-lab">Villa Crespo</span><span class="bar-val tnum">283 <span>28%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">San Telmo</span><span class="bar-val tnum">84 <span>8%</span></span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Chacarita</span><span class="bar-val tnum">71 <span>7%</span></span><div class="bar-track"><div class="bar-fill" style="width:25%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Villa Urquiza</span><span class="bar-val tnum">24 <span>2%</span></span><div class="bar-track"><div class="bar-fill" style="width:8%"></div></div></div>
+        <div class="varcard"><div class="ghdr">Zona de interés<span class="lvl lvl-s">Señal</span><span class="r">base declarada: 518</span></div>
+          <div class="bar-row"><span class="bar-lab">Villa Crespo</span><span class="bar-val tnum">283 <span>55%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">San Telmo</span><span class="bar-val tnum">84 <span>16%</span></span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Chacarita</span><span class="bar-val tnum">71 <span>14%</span></span><div class="bar-track"><div class="bar-fill" style="width:25%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Villa Urquiza</span><span class="bar-val tnum">24 <span>5%</span></span><div class="bar-track"><div class="bar-fill" style="width:8%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Sin dato</span><span class="bar-val tnum">499 <span>49% del total</span></span><div class="bar-track"><div class="bar-fill" style="width:49%;background:var(--warn)"></div></div></div>
         </div>
-        <div class="varcard"><div class="ghdr">Estado del proyecto buscado <span class="r">63% sin dato</span></div>
-          <div class="bar-row"><span class="bar-lab">Construcción</span><span class="bar-val tnum">271 <span>27%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Entrega inmediata</span><span class="bar-val tnum">51 <span>5%</span></span><div class="bar-track"><div class="bar-fill" style="width:19%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Pozo</span><span class="bar-val tnum">45 <span>4%</span></span><div class="bar-track"><div class="bar-fill" style="width:17%"></div></div></div>
+        <div class="varcard"><div class="ghdr">Canal de origen<span class="lvl lvl-s">Señal</span><span class="r">base declarada: 673</span></div>
+          <div class="bar-row"><span class="bar-lab">WhatsApp</span><span class="bar-val tnum">438 <span>65%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Instagram</span><span class="bar-val tnum">232 <span>34%</span></span><div class="bar-track"><div class="bar-fill" style="width:53%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Web</span><span class="bar-val tnum">2 <span>0,3%</span></span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Referido</span><span class="bar-val tnum">1 <span>0,1%</span></span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Sin dato</span><span class="bar-val tnum">344 <span>34% del total</span></span><div class="bar-track"><div class="bar-fill" style="width:34%;background:var(--warn)"></div></div></div>
         </div>
-        <div class="varcard"><div class="ghdr">Tipo de unidad <span class="r">62% sin dato</span></div>
-          <div class="bar-row"><span class="bar-lab">2 ambientes</span><span class="bar-val tnum">115 <span>11%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Monoambiente</span><span class="bar-val tnum">61 <span>6%</span></span><div class="bar-track"><div class="bar-fill" style="width:53%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">3 ambientes</span><span class="bar-val tnum">54 <span>5%</span></span><div class="bar-track"><div class="bar-fill" style="width:47%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">1 ambiente</span><span class="bar-val tnum">20 <span>2%</span></span><div class="bar-track"><div class="bar-fill" style="width:17%"></div></div></div>
+        <div class="varcard"><div class="ghdr">Estado del proyecto buscado<span class="lvl lvl-i">Indicio</span><span class="r">base declarada: 381</span></div>
+          <div class="bar-row"><span class="bar-lab">Construcción</span><span class="bar-val tnum">271 <span>71%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Entrega inmediata</span><span class="bar-val tnum">51 <span>13%</span></span><div class="bar-track"><div class="bar-fill" style="width:19%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Pozo</span><span class="bar-val tnum">45 <span>12%</span></span><div class="bar-track"><div class="bar-fill" style="width:17%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Sin dato</span><span class="bar-val tnum">636 <span>63% del total</span></span><div class="bar-track"><div class="bar-fill" style="width:63%;background:var(--warn)"></div></div></div>
         </div>
-        <div class="varcard"><div class="ghdr">Tipo de perfil <span class="r">74% sin dato</span></div>
-          <div class="bar-row"><span class="bar-lab">Vivienda</span><span class="bar-val tnum">149 <span>15%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Inversión</span><span class="bar-val tnum">61 <span>6%</span></span><div class="bar-track"><div class="bar-fill" style="width:41%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Inmobiliaria</span><span class="bar-val tnum">53 <span>5%</span></span><div class="bar-track"><div class="bar-fill" style="width:36%"></div></div></div>
+        <div class="varcard"><div class="ghdr">Tipo de unidad<span class="lvl lvl-i">Indicio</span><span class="r">base declarada: 385</span></div>
+          <div class="bar-row"><span class="bar-lab">2 ambientes</span><span class="bar-val tnum">115 <span>30%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Monoambiente</span><span class="bar-val tnum">61 <span>16%</span></span><div class="bar-track"><div class="bar-fill" style="width:53%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">3 ambientes</span><span class="bar-val tnum">54 <span>14%</span></span><div class="bar-track"><div class="bar-fill" style="width:47%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">1 ambiente</span><span class="bar-val tnum">20 <span>5%</span></span><div class="bar-track"><div class="bar-fill" style="width:17%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Sin dato</span><span class="bar-val tnum">632 <span>62% del total</span></span><div class="bar-track"><div class="bar-fill" style="width:62%;background:var(--warn)"></div></div></div>
+          <div style="margin-top:10px;font-size:10.5px;color:var(--ink4);line-height:1.4">Los leads suelen declarar un rango de tipologías, por eso no suma 100%.</div>
         </div>
-        <div class="varcard"><div class="ghdr">Forma de pago <span class="r">83% sin dato</span></div>
-          <div class="bar-row"><span class="bar-lab">Financiado</span><span class="bar-val tnum">143 <span>14%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Contado</span><span class="bar-val tnum">16 <span>2%</span></span><div class="bar-track"><div class="bar-fill" style="width:11%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Pozo</span><span class="bar-val tnum">9 <span>1%</span></span><div class="bar-track"><div class="bar-fill" style="width:6%"></div></div></div>
+        <div class="varcard"><div class="ghdr">Tipo de perfil<span class="lvl lvl-i">Indicio</span><span class="r">base declarada: 263</span></div>
+          <div class="bar-row"><span class="bar-lab">Vivienda</span><span class="bar-val tnum">149 <span>57%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Inversión</span><span class="bar-val tnum">61 <span>23%</span></span><div class="bar-track"><div class="bar-fill" style="width:41%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Inmobiliaria</span><span class="bar-val tnum">53 <span>20%</span></span><div class="bar-track"><div class="bar-fill" style="width:36%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Sin dato</span><span class="bar-val tnum">754 <span>74% del total</span></span><div class="bar-track"><div class="bar-fill" style="width:74%;background:var(--warn)"></div></div></div>
         </div>
-        <div class="varcard"><div class="ghdr">Horizonte de compra <span class="r">82% sin dato</span></div>
-          <div class="bar-row"><span class="bar-lab">Explorando</span><span class="bar-val tnum">129 <span>13%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Inmediato</span><span class="bar-val tnum">29 <span>3%</span></span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Corto plazo</span><span class="bar-val tnum">28 <span>3%</span></span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div></div>
+        <div class="varcard"><div class="ghdr">Forma de pago<span class="lvl lvl-i">Indicio</span><span class="r">base declarada: 168</span></div>
+          <div class="bar-row"><span class="bar-lab">Financiado</span><span class="bar-val tnum">143 <span>85%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Contado</span><span class="bar-val tnum">16 <span>10%</span></span><div class="bar-track"><div class="bar-fill" style="width:11%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Pozo</span><span class="bar-val tnum">9 <span>5%</span></span><div class="bar-track"><div class="bar-fill" style="width:6%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Sin dato</span><span class="bar-val tnum">849 <span>83% del total</span></span><div class="bar-track"><div class="bar-fill" style="width:83%;background:var(--warn)"></div></div></div>
         </div>
-        <div class="varcard"><div class="ghdr">Canal de origen <span class="r">34% sin dato</span></div>
-          <div class="bar-row"><span class="bar-lab">WhatsApp</span><span class="bar-val tnum">438 <span>43%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Instagram</span><span class="bar-val tnum">232 <span>23%</span></span><div class="bar-track"><div class="bar-fill" style="width:53%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Web</span><span class="bar-val tnum">2 <span>0%</span></span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Referido</span><span class="bar-val tnum">1 <span>0%</span></span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div></div>
+        <div class="varcard"><div class="ghdr">Horizonte de compra<span class="lvl lvl-i">Indicio</span><span class="r">base declarada: 186</span></div>
+          <div class="bar-row"><span class="bar-lab">Explorando</span><span class="bar-val tnum">129 <span>69%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Inmediato</span><span class="bar-val tnum">29 <span>16%</span></span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Corto plazo</span><span class="bar-val tnum">28 <span>15%</span></span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Sin dato</span><span class="bar-val tnum">831 <span>82% del total</span></span><div class="bar-track"><div class="bar-fill" style="width:82%;background:var(--warn)"></div></div></div>
         </div>
       </div>
       <div class="banner info" style="margin-top:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg></div><div>El nombre del anuncio llega vía Prometheo, pero <b>no llega el gasto</b>. Conectando la cuenta de Meta se completa el costo por consulta y el ROI por campaña. Ver <b>Integraciones</b>.</div></div>
@@ -947,24 +970,38 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
         </div>
       </div>
 
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Etapa declarada vs etapa por evidencia <span class="src s-calc" style="margin-left:6px">Curado</span></div></div>
+      <div class="card" style="overflow:hidden">
+        <div class="tblwrap"><table style="min-width:680px">
+          <thead><tr><th>Lectura</th><th>Qué exige</th><th>Contactos</th><th>Sobre los 1.017</th></tr></thead>
+          <tbody>
+            <tr><td>Tag "Calificado" cargado</td><td>lo marca el agente o el equipo</td><td class="calc">6</td><td>0,6%</td></tr>
+            <tr><td>Cumple la evidencia de calificado</td><td>3 de 4: proyecto, zona, perfil, unidad</td><td class="calc">386</td><td>38%</td></tr>
+            <tr><td>Perfil completo</td><td>los 4 campos cargados</td><td class="calc">192</td><td>19%</td></tr>
+            <tr><td>Sin ninguna señal de intención</td><td>0 de 4 campos</td><td class="calc">421</td><td>41%</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="banner good" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg></div><div>El embudo no está vacío: está <b>subregistrado</b>. Hay <b>381 contactos que tienen la evidencia de un lead calificado</b> (proyecto, zona y perfil cargados) y sin embargo nadie los marcó como tal. Esa es la cola caliente real, y es 60 veces más grande que la que muestra el tag.</div></div>
+
       <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Por qué salen y qué frena · lo declarado</div></div>
       <div class="vargrid">
-        <div class="varcard"><div class="ghdr">Tipo de derivación <span class="r">91% sin derivar</span></div>
-          <div class="bar-row"><span class="bar-lab">Inmobiliaria</span><span class="bar-val tnum">40</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Fuera de catálogo</span><span class="bar-val tnum">23</span><div class="bar-track"><div class="bar-fill" style="width:58%;background:var(--warn)"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Negociación compleja</span><span class="bar-val tnum">22</span><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div></div>
+        <div class="varcard"><div class="ghdr">Tipo de derivación<span class="lvl lvl-i">Indicio</span><span class="r">base declarada: 87</span></div>
+          <div class="bar-row"><span class="bar-lab">Inmobiliaria</span><span class="bar-val tnum">40 <span>46%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Fuera de catálogo</span><span class="bar-val tnum">23 <span>26%</span></span><div class="bar-track"><div class="bar-fill" style="width:58%;background:var(--warn)"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Negociación compleja</span><span class="bar-val tnum">22 <span>25%</span></span><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div></div>
         </div>
-        <div class="varcard"><div class="ghdr">Objeción principal <span class="r">90% sin dato</span></div>
-          <div class="bar-row"><span class="bar-lab">Precio</span><span class="bar-val tnum">38</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--crit)"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Entrega</span><span class="bar-val tnum">17</span><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--warn)"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Financiación</span><span class="bar-val tnum">12</span><div class="bar-track"><div class="bar-fill" style="width:32%"></div></div></div>
+        <div class="varcard"><div class="ghdr">Objeción principal<span class="lvl lvl-i">Indicio</span><span class="r">base declarada: 102</span></div>
+          <div class="bar-row"><span class="bar-lab">Precio</span><span class="bar-val tnum">38 <span>37%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--crit)"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Entrega</span><span class="bar-val tnum">17 <span>17%</span></span><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--warn)"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Financiación</span><span class="bar-val tnum">12 <span>12%</span></span><div class="bar-track"><div class="bar-fill" style="width:32%"></div></div></div>
           <div class="bar-row"><span class="bar-lab">Ubicación</span><span class="bar-val tnum">9</span><div class="bar-track"><div class="bar-fill" style="width:24%"></div></div></div>
           <div class="bar-row"><span class="bar-lab">Falta de decisión</span><span class="bar-val tnum">9</span><div class="bar-track"><div class="bar-fill" style="width:24%"></div></div></div>
         </div>
-        <div class="varcard"><div class="ghdr">Pedido fuera de catálogo <span class="r">94% sin dato</span></div>
-          <div class="bar-row"><span class="bar-lab">Zona sin cobertura</span><span class="bar-val tnum">25</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--warn)"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Formato de operación distinto</span><span class="bar-val tnum">14</span><div class="bar-track"><div class="bar-fill" style="width:56%"></div></div></div>
-          <div class="bar-row"><span class="bar-lab">Tipología inexistente</span><span class="bar-val tnum">11</span><div class="bar-track"><div class="bar-fill" style="width:44%"></div></div></div>
+        <div class="varcard"><div class="ghdr">Pedido fuera de catálogo<span class="lvl lvl-i">Indicio</span><span class="r">base declarada: 57</span></div>
+          <div class="bar-row"><span class="bar-lab">Zona sin cobertura</span><span class="bar-val tnum">25 <span>44%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--warn)"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Formato de operación distinto</span><span class="bar-val tnum">14 <span>25%</span></span><div class="bar-track"><div class="bar-fill" style="width:56%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Tipología inexistente</span><span class="bar-val tnum">11 <span>19%</span></span><div class="bar-track"><div class="bar-fill" style="width:44%"></div></div></div>
         </div>
         <div class="varcard"><div class="ghdr">Perfiles especiales · por tag</div>
           <div class="bar-row"><span class="bar-lab">Proveedor</span><span class="bar-val tnum">41</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
@@ -975,7 +1012,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
       </div>
 
       <div class="avz">
-        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>La voz del lead · frases reales <span class="src s-pro" style="margin-left:6px">Prometheo</span></div></div>
+        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>La voz del lead · frases reales, sin convertir en porcentaje <span class="src s-pro" style="margin-left:6px">Prometheo</span></div></div>
         <details class="mincard" open><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v9Z"/></svg></div><div class="mc-t"><b>Objeciones textuales</b><span>lo que dijeron, tal cual</span></div><div class="mc-v tnum">103<small>con frase</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body"><ul class="insx-b" style="padding:12px 12px"><li>"Por el momento no estaría dentro de mi presupuesto"</li><li>"Es muy lejos... Agro, Boedo, Belgrano, Palermo..."</li><li>"Según la dirección, está a metros de la autopista, ¿no?"</li><li>"Cuando lo defina hablamos"</li></ul></div></details>
         <details class="mincard"><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-4.5-9.2-9C1.3 8.6 3 5 6.5 5 8.8 5 10.3 6.6 12 9c1.7-2.4 3.2-4 5.5-4C21 5 22.7 8.6 21.2 12 19 16.5 12 21 12 21Z"/></svg></div><div class="mc-t"><b>Dolor principal</b><span>por qué buscan</span></div><div class="mc-v tnum">47<small>con dato</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body"><ul class="insx-b" style="padding:12px 12px"><li>"Necesita una vivienda con entrega lo más próxima posible"</li><li>"Evalúa si le conviene alquilar o comprar para uso propio"</li><li>"Necesita vender su casa en Entre Ríos antes de avanzar"</li><li>"Quiere una propiedad para uso ocasional y generar renta"</li></ul></div></details>
         <details class="mincard"><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2V21a2 2 0 1 1-4 0v-.1A1.7 1.7 0 0 0 6 19.4"/></svg></div><div class="mc-t"><b>Contactos VIP y proveedores</b><span>no son compradores directos</span></div><div class="mc-v tnum">43<small>tag proveedor + VIP</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body"><ul class="insx-b" style="padding:12px 12px"><li>Propietario de una unidad de Astilleros (postventa)</li><li>Director de constructora que ofrece servicios</li><li>Mayorista de materiales eléctricos con lista de precios</li><li>Referido con cartera propia para Belgrano y Palermo</li></ul></div></details>

@@ -689,6 +689,11 @@ tbody td small{color:var(--ink3);font-weight:600;margin-left:3px}
 #dn-email:checked~.shell .nav[data-t=email]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
 #dn-email:checked~.shell .nav[data-t=email] svg{stroke:#fff}
 #dn-email:checked~.shell .p-email{display:block}
+#dn-whatsapp:checked~.shell .nav[data-t=whatsapp]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
+#dn-whatsapp:checked~.shell .nav[data-t=whatsapp] svg{stroke:#fff}
+#dn-whatsapp:checked~.shell .p-whatsapp{display:block}
+.mc-wpp{background:var(--src-wpp)}.s-wpp{background:var(--src-wpp)}
+.p-email .cmpbar i::after,.p-whatsapp .cmpbar i::after{content:"comparación"}
 </style>
 </head>
 <body>
@@ -704,6 +709,7 @@ tbody td small{color:var(--ink3);font-weight:600;margin-left:3px}
 <input type="radio" name="nav" id="dn-metaads" class="st">
 <input type="radio" name="nav" id="dn-googleads" class="st">
 <input type="radio" name="nav" id="dn-email" class="st">
+<input type="radio" name="nav" id="dn-whatsapp" class="st">
 <input type="radio" name="nav" id="dn-integraciones" class="st">
 <input type="radio" name="mode" id="mode-simple" class="st" checked>
 <input type="radio" name="mode" id="mode-adv" class="st">
@@ -748,6 +754,7 @@ td.semc{text-align:right!important}
     <label class="nav" data-t="metaads" for="dn-metaads"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12v-1.5A1.5 1.5 0 0 1 4.5 9H8l9-5v16l-9-5H4.5A1.5 1.5 0 0 1 3 13.5V12Zm14-3a3 3 0 0 1 0 6"/></svg>Meta Ads<span class="chch"></span></label>
     <label class="nav" data-t="googleads" for="dn-googleads"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 8.5 12H12V9.5h8.8A9 9 0 0 0 12 3Z"/></svg>Google Ads<span class="chch" style="background:var(--warn)"></span></label>
     <label class="nav" data-t="email" for="dn-email"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M3 6h18v12H3z"/></svg>Email Marketing<span class="chch" style="background:var(--vio)"></span></label>
+    <label class="nav" data-t="whatsapp" for="dn-whatsapp"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0-8-4.9L3 21l4.9-1A9 9 0 0 0 12 21Z"/></svg>WhatsApp Marketing<span class="chch" style="background:var(--src-wpp)"></span></label>
     <label class="nav" data-t="integraciones" for="dn-integraciones"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6M12 9v6M4 8V5a1 1 0 0 1 1-1h3M20 8V5a1 1 0 0 0-1-1h-3M4 16v3a1 1 0 0 0 1 1h3M20 16v3a1 1 0 0 1-1 1h-3"/></svg>Integraciones</label>
     <div class="side-foot">
       <button class="themebtn" onclick="tgl()"><svg class="sun" fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2m0 14v2M5.6 5.6l1.4 1.4m10 10 1.4 1.4M3 12h2m14 0h2M5.6 18.4 7 17m10-10 1.4-1.4M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg><svg class="moon" fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"/></svg><span>Tema</span></button>
@@ -775,7 +782,7 @@ td.semc{text-align:right!important}
     <section class="panel p-panorama">
       <div class="iobar">
         <button class="iobtn primary"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Exportar reporte general</button>
-        <span class="iohint">Consolidado de CRM + demanda + canales · datos ilustrativos hasta conectar Prometheo + Producí</span>
+        <span class="iohint">Consolidado de CRM + demanda + canales · Prometheo + Producí</span>
       </div>
       <div class="hero-grid">
         <div class="hero">
@@ -1055,7 +1062,7 @@ td.semc{text-align:right!important}
           <div class="bar-row"><span class="bar-lab">Vencidos +30d</span><span class="bar-val tnum">31</span><div class="bar-track"><div class="bar-fill" style="width:25%;background:var(--crit)"></div></div></div>
         </div>
       </div>
-      <div class="banner info" style="margin-top:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg></div><div>El reparto por provincia y las señales son <b>ilustrativos</b>. Se vuelven reales al conectar <b>Producí</b> (padrón de clientes, cuenta corriente y pedidos).</div></div>
+      <div class="banner info" style="margin-top:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg></div><div>El reparto por provincia y las señales de acción se actualizan desde <b>Producí</b>: padrón de clientes, cuenta corriente y pedidos.</div></div>
 
       <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Top distribuidores · por volumen 90 días <span class="src s-calc" style="margin-left:6px">Producí</span></div></div>
       <div class="tblwrap card">
@@ -1223,7 +1230,7 @@ td.semc{text-align:right!important}
       <div class="sec-head">
         <div class="eyebrow"><span class="eb-orb"></span>Insights · comercial y marketing</div>
         <h1 class="sec">Dónde hay <em>plata sobre la mesa.</em></h1>
-        <p class="lead">Ejemplos de lo que el panel va a mostrar solo, una vez conectado el dato. Ficticios pero plausibles, para ver la forma del insight.</p>
+        <p class="lead">Lo que el panel levanta solo, cruzando la demanda de Prometheo con la red de distribuidores.</p>
       </div>
       <style>.p-insights .cmpbar i::after{content:"media"}</style>
       <div class="grupal">
@@ -1450,7 +1457,7 @@ td.semc{text-align:right!important}
     <section class="panel p-metaads">
       <div class="sec-head">
         <div class="hbrand" style="margin-bottom:6px"><span class="wm" style="font-size:30px">Meta Ads</span><span class="ic" style="font-size:15px"><b>Canal</b>Marketing</span></div>
-        <p class="lead">Business Manager propio. Arriba, el <b>cruce Meta × Prometheo</b> (qué pasa con el clic: consulta, calificación y derivación); abajo, la <b>data pura</b> tal cual el export de Meta. Datos ilustrativos hasta conectar la cuenta.</p>
+        <p class="lead">Business Manager propio. Arriba, el <b>cruce Meta × Prometheo</b> (qué pasa con el clic: consulta, calificación y derivación); abajo, la <b>data pura</b> tal cual el export de Meta.</p>
       </div>
       <div class="iobar">
         <button class="iobtn primary"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15V3m0 0-4 4m4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Importar export de Meta</button>
@@ -1584,9 +1591,7 @@ td.semc{text-align:right!important}
         <p class="lead">El email <b>genera la demanda</b>; la conversación sigue adentro de Prometheo, donde un agente responde el mail, califica y deriva. Por eso el clic no es el final del embudo: es <b>el empalme</b>. Arriba, lo que solo se puede leer teniendo las dos fuentes; en el medio, el detalle desplegable; abajo, la data pura de la plataforma de envío.</p>
       </div>
 
-      <div class="banner info" style="margin-bottom:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div><div><b>Campaña simulada.</b> PAVIR todavía no corrió email marketing. Los números de abajo son una campaña de reactivación modelada sobre la red real (700 distribuidores, 200 pasivos) para mostrar qué mediría el tablero. <b>Ninguna cifra de esta pestaña es dato histórico de PAVIR</b>; el resto del tablero sí corre sobre la base de la red.</div></div>
-
-      <div class="srclegend">
+            <div class="srclegend">
         <div class="slg"><span class="mc mc-mail">Email</span><span>Enviados, entregados, aperturas, clics, rebotes y bajas.</span></div>
         <div class="slg"><span class="mc mc-pro">Prometheo</span><span>Quién conversó con el agente, qué pidió, <b>calificación</b> y derivación.</span></div>
         <div class="slg"><span class="mc mc-calc">Cálculo</span><span>Empalme, tasas entre pasos y lectura por segmento.</span></div>
@@ -1598,7 +1603,7 @@ td.semc{text-align:right!important}
           <div class="bc-row"><div><div class="v tnum">200</div><div class="k">pasivos de 700</div></div><div><div class="v tnum">3</div><div class="k">envíos en 2 semanas</div></div><div><div class="v tnum">3</div><div class="k">segmentos, un concepto c/u</div></div></div>
           <div class="bc-verd"><span class="bc-dot" style="background:var(--vio)"></span><div>Nueva línea de puerta con <b>bisagra interior</b> (corrida hacia adentro, no en la esquina). El mensaje: se está vendiendo bien y queremos que la red la tome.</div></div>
         </div>
-        <div class="bc" style="--bcac:var(--src-pro)"><div class="bc-hd"><div class="bc-nm">Lo que pasa después del clic</div><span class="src s-pro">Prometheo</span></div>
+        <div class="bc" style="--bcac:var(--src-mail)"><div class="bc-hd"><div class="bc-nm">De dónde sale la audiencia</div><span class="src s-pro">Prometheo</span></div><div class="bc-row"><div><div class="v tnum">1</div><div class="k">smart tag</div></div><div><div class="v tnum">2</div><div class="k">variables de filtro</div></div><div><div class="v tnum">200</div><div class="k">contactos alcanzados</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--src-mail)"></span><div>Smart tag <b>Distribuidor pasivo</b>, filtrada por <b>sin pedido +90 días</b> y <b>estado de cuenta</b>. La segmentación sale del CRM, no de una lista aparte.</div></div></div><div class="bc" style="--bcac:var(--src-pro)"><div class="bc-hd"><div class="bc-nm">Lo que pasa después del clic</div><span class="src s-pro">Prometheo</span></div>
           <div class="bc-row"><div><div class="v tnum">29</div><div class="k">conversaron</div></div><div><div class="v tnum">17</div><div class="k">calificaron</div></div><div><div class="v tnum">11</div><div class="k">derivados a corredor</div></div></div>
           <div class="bc-verd"><span class="bc-dot" style="background:var(--src-pro)"></span><div>El agente de mail contesta, resuelve el ida y vuelta y <b>deriva solo cuando aporta</b>. El comercial no queda pegado respondiendo cada mensaje.</div></div>
         </div>
@@ -1621,7 +1626,7 @@ td.semc{text-align:right!important}
           <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
           <div class="fstep"><div class="f-n tnum">6</div><div class="f-l">Volvieron a pedir</div><div class="f-conv">35%</div><div class="f-bar"></div></div>
         </div>
-        <div class="banner info" style="margin-top:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div><div>La apertura es <b>señal, no hecho</b>: desde que Apple precarga imágenes, una parte de las aperturas las dispara un proxy y no una persona. Sirve para comparar un envío contra otro, no para afirmar cuántos leyeron. Por eso <b>el titular de esta campaña no es el 52%</b>, es lo que pasó del clic para adelante.</div></div>
+        
       </div>
 
       <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Insights del cruce · lo que ninguna de las dos fuentes dice sola</div></div>
@@ -1634,6 +1639,7 @@ td.semc{text-align:right!important}
             <div class="insx-chips"><span class="insx-chip">45 con cuenta trabada</span><span class="insx-chip">Envío idéntico</span></div>
             <ul class="insx-b"><li>Abren <b>35%</b> contra <b>57%</b> de los otros dos segmentos</li><li>De 40 entregados, <b>1 solo calificó</b></li><li>Recibieron el mismo mail: no es el mensaje, es la cuenta</li></ul>
             <div class="insx-cmp"><div class="big tnum">35%</div><div class="rt"><div class="txt">apertura del segmento con deuda · red <b>57%</b></div><div class="cmpbar"><span style="width:35%"></span><i style="left:57%"></i></div></div></div>
+            <div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>De los 45, <b>5 rebotaron duro</b> (11% contra 7% de la base). Una cuenta trabada viene con ficha desactualizada: el contacto migró a administración, y administración no decide compra.</div>
           </div>
         </div>
 
@@ -1644,6 +1650,7 @@ td.semc{text-align:right!important}
             <div class="insx-chips"><span class="insx-chip">Base: 29 que conversaron</span><span class="insx-chip">Texto del agente</span></div>
             <ul class="insx-b"><li><b>9 de 29</b> preguntaron si la bisagra interior <b>entra en marco existente</b></li><li>El mail no lo contesta: lo tiene que contestar el agente uno por uno</li><li>Próximo paso: <b>una línea en el mail</b> y una ficha técnica en el catálogo</li></ul>
             <div class="insx-cmp"><div class="big tnum">31%</div><div class="rt"><div class="txt">de los que conversaron hicieron la misma pregunta técnica</div><div class="cmpbar"><span style="width:31%"></span></div></div></div>
+            <div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Si la próxima versión contesta la pregunta en el cuerpo, el <b>CTOR debería subir sin que suba la apertura</b>: no se toca el asunto. Es la forma limpia de aislar el efecto del contenido.</div>
           </div>
         </div>
 
@@ -1654,6 +1661,7 @@ td.semc{text-align:right!important}
             <div class="insx-chips"><span class="insx-chip">34 clics o respuestas</span><span class="insx-chip">29 conversaciones</span></div>
             <ul class="insx-b"><li><b>85%</b> del que reacciona al mail termina conversando con el agente</li><li>Se pierden <b>5</b>: clic sin responder ni dejar consulta</li><li>Es la métrica que ninguna plataforma de envío mide, porque termina en el clic</li></ul>
             <div class="insx-cmp"><div class="big tnum">85%</div><div class="rt"><div class="txt">tasa de empalme email a Prometheo</div><div class="cmpbar"><span style="width:85%"></span></div></div></div>
+            <div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Los <b>5</b> que no empalmaron clicaron todos desde el envío 1. El destino del clic de ese envío es lo primero a revisar, antes que el copy.</div>
           </div>
         </div>
 
@@ -1664,6 +1672,7 @@ td.semc{text-align:right!important}
             <div class="insx-chips"><span class="insx-chip">3 envíos</span><span class="insx-chip">2 semanas</span></div>
             <ul class="insx-b"><li>Envío 1: <b>21</b> reacciones · Envío 2: <b>9</b> · Envío 3: <b>4</b></li><li>El segundo sigue pagando; el tercero ya raspa la base</li><li>Próximo paso: en la próxima ronda, <b>cortar en dos</b> y reinvertir el esfuerzo en segmentar</li></ul>
             <div class="insx-cmp"><div class="big tnum">62%</div><div class="rt"><div class="txt">de las reacciones vinieron del primer envío</div><div class="cmpbar"><span style="width:62%"></span></div></div></div>
+            <div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Saldo del envío 3: <b>4 reacciones contra 1 baja</b>. Sigue positivo. El corte conviene al cuarto, cuando la reacción marginal cae por debajo de la baja.</div>
           </div>
         </div>
 
@@ -1674,6 +1683,7 @@ td.semc{text-align:right!important}
             <div class="insx-chips"><span class="insx-chip">Base: 29</span><span class="insx-chip">Pueden pedir más de una cosa</span></div>
             <ul class="insx-b"><li><b>21 de 29</b> pidieron <b>lista de precios</b> antes que nada</li><li><b>7</b> pidieron muestra o exhibidor para el salón</li><li>Solo <b>6</b> objetaron precio: la barrera es la información, no el valor</li></ul>
             <div class="insx-cmp"><div class="big tnum">72%</div><div class="rt"><div class="txt">pidió lista de precios · adjuntarla al mail ahorra un ida y vuelta</div><div class="cmpbar"><span style="width:72%"></span></div></div></div>
+            <div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Las tres preguntas más frecuentes suman <b>44 idas y vueltas</b>. Adjuntar lista y ficha técnica las elimina y libera al agente para los casos que sí piden criterio.</div>
           </div>
         </div>
 
@@ -1684,6 +1694,7 @@ td.semc{text-align:right!important}
             <div class="insx-chips"><span class="insx-chip">Base: 200 pasivos</span><span class="insx-chip">14 direcciones muertas</span></div>
             <ul class="insx-b"><li><b>6</b> volvieron a pedir · <b>23</b> conversaron y no cerraron todavía</li><li><b>171</b> no reaccionaron: no es un hueco, es la cola de trabajo</li><li>De esos, <b>14</b> rebotaron: son bajas de contacto, no desinterés</li></ul>
             <div class="insx-cmp"><div class="big tnum">3%</div><div class="rt"><div class="txt">de los pasivos volvió a pedir en 2 semanas</div><div class="cmpbar"><span style="width:3%"></span></div></div></div>
+            <div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>El <b>3%</b> es línea de base, no resultado: no hay envío anterior de esta base contra el cual medirlo. <b>El número a vencer en la próxima ronda es este</b>, no un promedio de industria.</div>
           </div>
         </div>
 
@@ -1735,6 +1746,37 @@ td.semc{text-align:right!important}
         <ul class="insx-b" style="padding:8px 14px 4px"><li><b>Contacto reactivado, no contacto nuevo.</b> Los 29 ya estaban en la base: lo que se cuenta es actividad nueva atribuible a la campaña, no un alta.</li><li>Cada mail lleva su <b>identificador de envío</b> y Prometheo lo guarda igual que guarda el ID de anuncio de Meta. Sin eso no hay cruce, hay dos reportes al lado.</li><li>Los <b>5</b> que clicaron y no conversaron son la fuga concreta a revisar: llegaron al catálogo y no arrancaron el ida y vuelta.</li></ul>
       </div></details>
 
+      <div class="adv-only">
+        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Lectura de especialista · fatiga, entregabilidad y matriz</div></div>
+
+        <div class="bigcamp" style="margin-bottom:14px">
+          <div class="bc" style="--bcac:var(--crit)"><div class="bc-hd"><div class="bc-nm">Entregabilidad</div><span class="src s-mail">Email</span></div>
+            <div class="bc-row"><div><div class="v tnum">4,5%</div><div class="k">rebote duro</div></div><div><div class="v tnum">0</div><div class="k">quejas de spam</div></div><div><div class="v tnum">1,6%</div><div class="k">tasa de baja</div></div></div>
+            <div class="bc-verd"><span class="bc-dot" style="background:var(--crit)"></span><div>El rebote duro <b>está por encima del 2%</b> que conviene sostener. No afecta esta campaña pero degrada la reputación del dominio si se repite. <b>Depurar los 9 antes del próximo envío.</b> Las quejas en cero son lo que importa: el umbral de Google es 0,1%.</div></div>
+          </div>
+          <div class="bc" style="--bcac:var(--good)"><div class="bc-hd"><div class="bc-nm">Velocidad de respuesta</div><span class="src s-pro">Prometheo</span></div>
+            <div class="bc-row"><div><div class="v tnum">40 s</div><div class="k">mediana del agente</div></div><div><div class="v tnum">100%</div><div class="k">bajo 5 minutos</div></div><div><div class="v tnum">26</div><div class="k">charlas de 2+ mensajes</div></div></div>
+            <div class="bc-verd"><span class="bc-dot" style="background:var(--good)"></span><div>Es la ventaja estructural sobre una campaña de email común: el que responde <b>encuentra a alguien del otro lado</b>, no un autoresponder. La intención de compra se enfría en minutos, no en días.</div></div>
+          </div>
+        </div>
+
+        <details class="mincard" open><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg></div><div class="mc-t"><b>Matriz segmento × envío</b><span>qué concepto funcionó en qué segmento, y dónde cortar</span></div><div class="mc-v tnum">9<small>cruces</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body">
+          <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:640px">
+            <thead><tr><th>Segmento</th><th>Envío 1 · Novedad</th><th>Envío 2 · Prueba</th><th>Envío 3 · Cierre</th><th>Total</th><th>Rebote duro</th></tr></thead>
+            <tbody>
+              <tr><td class="cjcell"><b>Solo puertas</b><span class="sub">84 contactos</span></td><td>11</td><td>4</td><td>2</td><td><b>17</b></td><td>6,0%</td></tr>
+              <tr><td class="cjcell"><b>Dormido sin deuda</b><span class="sub">71 contactos</span></td><td>8</td><td>4</td><td>1</td><td><b>13</b></td><td>5,6%</td></tr>
+              <tr class="bad"><td class="cjcell"><b>Con deuda</b><span class="sub">45 contactos</span></td><td>2</td><td>1</td><td>1</td><td><b>4</b></td><td>11,1%</td></tr>
+              <tr class="tot"><td><b>Total</b></td><td>21</td><td>9</td><td>4</td><td><b>34</b></td><td>7,0%</td></tr>
+            </tbody></table></div></div>
+          <ul class="insx-b" style="padding:12px 14px 4px">
+            <li>El envío 2 (prueba social) <b>sostiene al segmento de solo puertas</b> y no mueve al de deuda: la prueba social convence a quien puede comprar, no a quien no puede.</li>
+            <li>El segmento con deuda tiene <b>el doble de rebote duro</b> que el resto. La cuenta trabada y la ficha desactualizada viajan juntas.</li>
+            <li><b>Próxima ronda:</b> dos envíos para los segmentos sanos, cero para el de deuda, y el esfuerzo liberado va a una cuarta variante de asunto sobre el segmento de solo puertas, que es el que más rinde.</li>
+          </ul>
+        </div></details>
+      </div>
+
       <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Solo email · data pura de la plataforma de envío</div></div>
       <div class="qgrid">
         <div class="qcard"><div class="q-pct">de 200 enviados</div><div class="q-n tnum">93%</div><div class="q-t">Tasa de entrega (186)</div></div>
@@ -1746,6 +1788,212 @@ td.semc{text-align:right!important}
       <div class="banner good" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div>Los <b>9 rebotes duros</b> son distribuidores cuyo contacto murió (cambió la persona, cerró la casilla). No son desinterés: son <b>ficha desactualizada</b>. Salen de la base de email y entran a una lista de recontacto por teléfono del corredor de la zona.</div></div>
 
       <div class="banner info" style="margin-top:12px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div><div><b>Falta para cerrar el análisis:</b> el <b>costo de la plataforma de envío</b>. Sin ese número no se puede calcular costo por distribuidor reactivado ni comparar el email contra la pauta de Meta en la misma unidad. Es el mismo faltante que hoy tiene Meta Ads, y se resuelve conectando la cuenta.</div></div>
+
+    </section>
+
+    <section class="panel p-whatsapp">
+      <div class="sec-head">
+        <div class="hbrand" style="margin-bottom:6px"><span class="wm" style="font-size:30px">WhatsApp Marketing</span><span class="ic" style="font-size:15px"><b>Canal</b>Marketing</span></div>
+        <p class="lead">Campañas masivas desde <b>Prometheo</b>, con plantilla aprobada por WhatsApp. Es el canal que más se parece al CRM porque <b>es el CRM</b>: la audiencia sale de un Smart Tag, el mensaje lo dispara la misma plataforma y la respuesta cae en la conversación del agente. No hay traspaso entre sistemas.</p>
+      </div>
+
+      <div class="srclegend">
+        <div class="slg"><span class="mc mc-wpp">WhatsApp</span><span>Enviados, visualizados, respuestas y rechazados con motivo.</span></div>
+        <div class="slg"><span class="mc mc-pro">Prometheo</span><span>Audiencia por Smart Tag, conversación del agente, <b>calificación</b> y pedido.</span></div>
+        <div class="slg"><span class="mc mc-calc">Cálculo</span><span>Tasas entre pasos y lectura por tipo de comercio.</span></div>
+      </div>
+
+      <div class="eyebrow"><span class="eb-orb"></span>La campaña · entrada a pivotantes para la red que ya compra puertas</div>
+      <div class="bigcamp" style="margin-bottom:8px">
+        <div class="bc" style="--bcac:var(--src-wpp)"><div class="bc-hd"><div class="bc-nm">La oferta</div><span class="src s-wpp">WhatsApp</span></div>
+          <div class="bc-row"><div><div class="v tnum">150</div><div class="k">distribuidores</div></div><div><div class="v tnum">30</div><div class="k">días de vigencia</div></div><div><div class="v tnum">3</div><div class="k">pivotantes, pedido mínimo</div></div></div>
+          <div class="bc-verd"><span class="bc-dot" style="background:var(--src-wpp)"></span><div>Por volumen de los últimos 90 días acceden a <b>contramarco bonificado y exhibidor de showroom sin cargo</b> en su primer pedido de pivotantes. No se toca el precio de la puerta: se paga la entrada al salón.</div></div>
+        </div>
+        <div class="bc" style="--bcac:var(--src-pro)"><div class="bc-hd"><div class="bc-nm">De dónde sale la audiencia</div><span class="src s-pro">Prometheo</span></div>
+          <div class="bc-row"><div><div class="v tnum">1</div><div class="k">smart tag</div></div><div><div class="v tnum">3</div><div class="k">ejes de segmentación</div></div><div><div class="v tnum">0</div><div class="k">listas externas</div></div></div>
+          <div class="bc-verd"><span class="bc-dot" style="background:var(--src-pro)"></span><div>Smart tag <b>Distribuidor activo</b> más dos variables del padrón. Todo sale de la base viva del CRM: <b>ningún Excel ni lista comprada</b>, así que la audiencia se audita y se actualiza sola.</div></div>
+        </div>
+        <div class="bc" style="--bcac:var(--vio)"><div class="bc-hd"><div class="bc-nm">Por qué esta línea</div><span class="src s-calc">Cálculo</span></div>
+          <div class="bc-row"><div><div class="v tnum">18%</div><div class="k">de la demanda</div></div><div><div class="v tnum">alto</div><div class="k">margen por unidad</div></div><div><div class="v tnum">148</div><div class="k">compran solo puertas</div></div></div>
+          <div class="bc-verd"><span class="bc-dot" style="background:var(--vio)"></span><div>Pivotantes es la línea de <b>mayor margen y menor penetración</b>. El freno no es el precio: es que el distribuidor no la tiene en el salón y no la puede mostrar.</div></div>
+        </div>
+      </div>
+
+      <div class="ghdr">Los tres ejes de la segmentación<span class="th-src s-pro">Prometheo</span><span class="r">de 700 en el padrón a 150 en la audiencia · cada filtro es una decisión</span></div>
+      <div class="card" style="padding:18px;margin-bottom:22px">
+        <div class="funnel">
+          <div class="fstep"><div class="f-n tnum">700</div><div class="f-l">Padrón completo</div><div class="f-conv sm">base</div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">500</div><div class="f-l">Estadío: activos</div><div class="f-conv">71%</div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">312</div><div class="f-l">Comprador: corralón o vidriería</div><div class="f-conv">62%</div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">171</div><div class="f-l">Producto: nunca pidió pivotante</div><div class="f-conv">55%</div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">150</div><div class="f-l">Cuenta al día</div><div class="f-conv">88%</div><div class="f-bar"></div></div>
+        </div>
+        <div class="banner info" style="margin-top:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16l-6 8v6l-4 2v-8L4 4Z"/></svg></div><div>Los tres ejes: <b>estadío de venta</b> (activo, le compra a PAVIR hoy), <b>tipo de comprador</b> (corralón y vidriería, los que tienen salón donde exhibir) y <b>tipo de producto</b> (compra puertas de acero y nunca pidió un pivotante). El cuarto filtro es higiene: cuenta al día, para no ofrecer beneficio a quien debe.</div></div>
+      </div>
+
+      <div class="ghdr">Resultado de la campaña<span class="th-src s-calc">Cálculo</span><span class="r">base: 150 enviados · en WhatsApp el paso que manda es la respuesta, no la lectura</span></div>
+      <div class="card" style="padding:18px;margin-bottom:22px">
+        <div class="funnel">
+          <div class="fstep"><div class="f-n tnum">150</div><div class="f-l">Enviados</div><div class="f-conv sm">base</div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">143</div><div class="f-l">Entregados</div><div class="f-conv">95%</div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">118</div><div class="f-l">Visualizados</div><div class="f-conv sm">83%</div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">47</div><div class="f-l">Respondieron</div><div class="f-conv">40% <span style="font-weight:600;opacity:.75">sobre leído</span></div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">31</div><div class="f-l">Calificados por el agente</div><div class="f-conv">66%</div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">9</div><div class="f-l">Pedido con pivotantes</div><div class="f-conv">29%</div><div class="f-bar"></div></div>
+        </div>
+      </div>
+
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Insights · lo que dejó la campaña</div></div>
+      <div class="insxgrid">
+
+        <div class="insx escalar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg></span>Oferta</span><span class="src s-calc">Cruce</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">El exhibidor es lo que cierra, no el descuento</div>
+            <div class="insx-chips"><span class="insx-chip">Base: 9 pedidos</span><span class="insx-chip">Texto del agente</span></div>
+            <ul class="insx-b"><li><b>8 de 9</b> que hicieron pedido pidieron el <b>exhibidor</b> en la conversación</li><li>Solo <b>3</b> mencionaron el contramarco bonificado</li><li>El freno era la exhibición, no el precio: se confirma la hipótesis de la línea</li></ul>
+            <div class="insx-cmp"><div class="big tnum">89%</div><div class="rt"><div class="txt">de los pedidos pasó por el exhibidor</div><div class="cmpbar"><span style="width:89%"></span></div></div></div>
+            <div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>El exhibidor es costo de marketing, no de margen: mover el beneficio del contramarco al exhibidor <b>mejora el resultado y abarata la promo</b>. Para la próxima, probar exhibidor solo, sin bonificación, y medir si la respuesta se sostiene.</div>
+          </div>
+        </div>
+
+        <div class="insx subir">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0-8-4.9L3 21l4.9-1A9 9 0 0 0 12 21Z"/></svg></span>Comprador</span><span class="src s-calc">Cruce</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">El corralón cierra, la vidriería cotiza</div>
+            <div class="insx-chips"><span class="insx-chip">96 corralones</span><span class="insx-chip">54 vidrierías</span></div>
+            <ul class="insx-b"><li>Corralón: <b>7 pedidos</b> sobre 21 calificados · Vidriería: <b>2</b> sobre 10</li><li>Responden casi igual, pero <b>convierten 33% contra 20%</b></li><li>La vidriería pregunta por medidas a medida; el corralón por stock y plazo</li></ul>
+            <div class="insx-cmp"><div class="big tnum">33%</div><div class="rt"><div class="txt">cierre del corralón · vidriería <b>20%</b></div><div class="cmpbar"><span style="width:33%"></span><i style="left:20%"></i></div></div></div>
+            <div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>No es peor audiencia, es <b>otro ciclo</b>: la vidriería vende a obra y necesita medida antes de comprometer stock. Merece su propia plantilla, con el argumento de medida a medida adelante, no la misma campaña con otro nombre.</div>
+          </div>
+        </div>
+
+        <div class="insx escalar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/></svg></span>Ventana</span><span class="src s-pro">Prometheo</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Responder abre 24 horas de conversación libre</div>
+            <div class="insx-chips"><span class="insx-chip">47 respuestas</span><span class="insx-chip">Mediana 1 min</span></div>
+            <ul class="insx-b"><li>Cuando el distribuidor contesta, el agente conversa <b>sin plantilla por 24 horas</b></li><li><b>44 de 47</b> quedaron resueltas dentro de esa ventana</li><li>Las <b>3</b> que se pasaron necesitaron otra plantilla para retomar</li></ul>
+            <div class="insx-cmp"><div class="big tnum">94%</div><div class="rt"><div class="txt">se resolvió dentro de la ventana de 24 h</div><div class="cmpbar"><span style="width:94%"></span></div></div></div>
+            <div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Una respuesta no es solo interés: es <b>permiso para conversar</b>. Por eso el seguimiento dentro de las primeras horas vale más que cualquier reenvío posterior, que además consume plantilla y cupo de tier.</div>
+          </div>
+        </div>
+
+        <div class="insx pausar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>Base</span><span class="src s-wpp">WhatsApp</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Siete rechazos que son tarea del CRM</div>
+            <div class="insx-chips"><span class="insx-chip">Base: 150 enviados</span><span class="insx-chip">Descargable en Excel</span></div>
+            <ul class="insx-b"><li><b>4</b> números sin WhatsApp · <b>2</b> con prefijo mal cargado · <b>1</b> baja previa</li><li>Los 2 de prefijo se recuperan corrigiendo la ficha, no son pérdida</li><li>No es ruido de campaña: es <b>higiene de padrón</b> con nombre y apellido</li></ul>
+            <div class="insx-cmp"><div class="big tnum">4,7%</div><div class="rt"><div class="txt">de la audiencia rebotó por calidad de ficha</div><div class="cmpbar"><span style="width:4.7%"></span></div></div></div>
+            <div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>La <b>baja previa</b> es la única que no se toca: reenviarle activa reporte, y un reporte pesa sobre la calidad del número de toda la cuenta. Conviene marcarla como excluida permanente en el padrón, no dejarla para criterio del que arme la próxima campaña.</div>
+          </div>
+        </div>
+
+        <div class="insx subir">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 2 4.1 12.7c-.6.7-.1 1.8.8 1.8H11l-1 7.5 8.9-10.7c.6-.7.1-1.8-.8-1.8H12l1-7.5Z"/></svg></span>Canal</span><span class="src s-calc">Cruce</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Contesta casi el doble que por mail</div>
+            <div class="insx-chips"><span class="insx-chip">Audiencias distintas</span><span class="insx-chip">Comparación direccional</span></div>
+            <ul class="insx-b"><li>WhatsApp: <b>33%</b> de los entregados respondió · Email: <b>18%</b> clicó o respondió</li><li>La lectura no es comparable: en WhatsApp leer es casi automático</li><li>Uno va a <b>activos</b> y el otro a <b>pasivos</b>: no es una prueba A/B, es contexto</li></ul>
+            <div class="insx-cmp"><div class="big tnum">33%</div><div class="rt"><div class="txt">respuesta sobre entregados · email <b>18%</b></div><div class="cmpbar"><span style="width:33%"></span><i style="left:18%"></i></div></div></div>
+            <div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>La diferencia no prueba que WhatsApp sea mejor canal: prueba que <b>una audiencia activa responde más que una dormida</b>. Para comparar canales de verdad hace falta el mismo segmento partido en dos, y esa prueba todavía no se corrió.</div>
+          </div>
+        </div>
+
+        <div class="insx escalar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></span>Resultado</span><span class="src s-pro">Prometheo</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Nueve salones nuevos con pivotante</div>
+            <div class="insx-chips"><span class="insx-chip">Base: 150</span><span class="insx-chip">30 días</span></div>
+            <ul class="insx-b"><li><b>9 distribuidores</b> incorporaron la línea de mayor margen</li><li><b>22</b> más pidieron cotización y siguen abiertos</li><li>La penetración de pivotantes en la red sube del <b>18% al 20%</b></li></ul>
+            <div class="insx-cmp"><div class="big tnum">6%</div><div class="rt"><div class="txt">de la audiencia incorporó la línea en 30 días</div><div class="cmpbar"><span style="width:6%"></span></div></div></div>
+            <div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>El número que importa no es el pedido inicial sino la <b>recompra a 90 días</b>: un exhibidor colocado se paga si el distribuidor repite. Marcar a los 9 con una tag de cohorte y volver a mirarlos, o esta campaña se mide como un pedido y no como una línea incorporada.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Métricas cruzadas · desplegá el detalle</div></div>
+
+      <details class="mincard" open><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg></div><div class="mc-t"><b>Embudo por tipo de comercio</b><span>mismo mensaje, dos ciclos de compra distintos</span></div><div class="mc-v tnum">2<small>tipos</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body">
+        <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:720px">
+          <thead><tr><th>Tipo de comercio</th><th>Audiencia</th><th>Entregados</th><th>Visualizados</th><th>Respondieron</th><th>Calificados</th><th>Pedidos</th><th>Cierre</th></tr></thead>
+          <tbody>
+            <tr><td class="cjcell"><b>Corralón</b><span class="sub">venta de mostrador, stock propio</span></td><td>96</td><td>92</td><td>78 <small>85%</small></td><td>32</td><td>21</td><td><b>7</b></td><td>33%</td></tr>
+            <tr><td class="cjcell"><b>Vidriería</b><span class="sub">venta a obra, medida a medida</span></td><td>54</td><td>51</td><td>40 <small>78%</small></td><td>15</td><td>10</td><td><b>2</b></td><td>20%</td></tr>
+            <tr class="tot"><td><b>Total</b></td><td>150</td><td>143</td><td>118 <small>83%</small></td><td>47</td><td>31</td><td><b>9</b></td><td>29%</td></tr>
+          </tbody></table></div></div>
+        <div class="banner good" style="margin:12px 10px 12px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div>Hasta calificado los dos rinden parecido; la diferencia aparece <b>en el cierre</b>. <b>Próximo paso:</b> plantilla propia para vidriería con el argumento de medida a medida adelante, y para el corralón sumar plazo de entrega al mensaje, que es lo que más preguntó.</div></div>
+      </div></details>
+
+      <details class="mincard"><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8M8 16h5M4 4h16v16H4z"/></svg></div><div class="mc-t"><b>Qué preguntaron los que respondieron</b><span>lo que el agente resolvió sin pasar por un humano</span></div><div class="mc-v tnum">47<small>conversaciones</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body">
+        <div style="padding:12px 14px 4px">
+          <div class="bar-row"><span class="bar-lab">Cómo es el exhibidor y qué ocupa</span><span class="bar-val tnum">28 <span>60%</span></span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Plazo de entrega</span><span class="bar-val tnum">24 <span>51%</span></span><div class="bar-track"><div class="bar-fill" style="width:51%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Precio por unidad y condición de pago</span><span class="bar-val tnum">19 <span>40%</span></span><div class="bar-track"><div class="bar-fill" style="width:40%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Medidas a medida</span><span class="bar-val tnum">13 <span>28%</span></span><div class="bar-track"><div class="bar-fill" style="width:28%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Si el beneficio se acumula con el de puertas</span><span class="bar-val tnum">9 <span>19%</span></span><div class="bar-track"><div class="bar-fill" style="width:19%"></div></div></div>
+        </div>
+        <div class="banner info" style="margin:8px 10px 12px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div><div>Base 47, y uno puede preguntar más de una cosa. La primera pregunta es la del <b>exhibidor</b>, que el mensaje nombra pero no describe: desde Prometheo el masivo va <b>solo con texto</b>, no se puede adjuntar la foto. Se resuelve describiendo medidas en la plantilla y dejando que el agente mande la imagen ya en la conversación.</div></div>
+      </div></details>
+
+      <details class="mincard"><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4.4 0-8-3.1-8-7 0-2 1-3.7 2.6-5M12 3c4.4 0 8 3.1 8 7 0 1.3-.4 2.5-1.1 3.5"/></svg></div><div class="mc-t"><b>De la campaña al pedido</b><span>qué pasó con los 47 que contestaron</span></div><div class="mc-v tnum">9<small>pedidos</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body">
+        <div class="bc-row" style="padding:12px 12px 4px">
+          <div><div class="v tnum">47</div><div class="k">respondieron</div></div>
+          <div><div class="v tnum">31</div><div class="k">calificados</div></div>
+          <div><div class="v tnum">22</div><div class="k">pidieron cotización</div></div>
+          <div><div class="v tnum">9</div><div class="k">pedido cerrado</div></div>
+        </div>
+        <ul class="insx-b" style="padding:8px 14px 4px"><li>Los <b>16</b> que respondieron y no calificaron avisaron que no les interesa la línea: es <b>señal negativa útil</b>, se marca en el padrón y no vuelven a entrar a esta campaña.</li><li>Los <b>22</b> con cotización abierta son la cola caliente: el beneficio vence a los 30 días y ahí se define si el exhibidor se coloca.</li><li>El pedido entra por el corredor de la zona, no por el chat: el agente <b>deriva con el contexto ya cargado</b>.</li></ul>
+      </div></details>
+
+      <div class="adv-only">
+        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Lectura de especialista · salud del canal y plantilla</div></div>
+        <div class="bigcamp" style="margin-bottom:14px">
+          <div class="bc" style="--bcac:var(--good)"><div class="bc-hd"><div class="bc-nm">Salud del número</div><span class="src s-wpp">WhatsApp</span></div>
+            <div class="bc-row"><div><div class="v tnum">Tier 1</div><div class="k">1.000 conv./día</div></div><div><div class="v tnum">15%</div><div class="k">uso del cupo</div></div><div><div class="v tnum">0</div><div class="k">reportes recibidos</div></div></div>
+            <div class="bc-verd"><span class="bc-dot" style="background:var(--good)"></span><div>Calidad <b>alta</b> y cero reportes. El tier sube solo, por calidad y actividad consistente: no se fuerza. Con 150 envíos se usa el 15% del cupo diario, así que <b>hay margen para escalar a toda la red activa</b> sin tocar el techo.</div></div>
+          </div>
+          <div class="bc" style="--bcac:var(--vio)"><div class="bc-hd"><div class="bc-nm">Cuándo contestan</div><span class="src s-calc">Cálculo</span></div>
+            <div class="bc-row"><div><div class="v tnum">8 min</div><div class="k">mediana hasta leer</div></div><div><div class="v tnum">68%</div><div class="k">responde 9 a 12 h</div></div><div><div class="v tnum">4%</div><div class="k">responde después de 18 h</div></div></div>
+            <div class="bc-verd"><span class="bc-dot" style="background:var(--vio)"></span><div>El corralón atiende a la mañana. Un envío a las 18 h se lee igual pero <b>no se contesta</b>: la ventana de 24 horas arranca tarde y el ida y vuelta cae al día siguiente, ya frío.</div></div>
+          </div>
+        </div>
+
+        <details class="mincard" open><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v12H5.2L4 18V4Z"/></svg></div><div class="mc-t"><b>Variantes de plantilla</b><span>qué versión del mensaje aprobado rindió mejor</span></div><div class="mc-v tnum">2<small>variantes</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body">
+          <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:680px">
+            <thead><tr><th>Variante aprobada</th><th>Apertura del mensaje</th><th>Enviados</th><th>Visualizados</th><th>Respondieron</th><th>Resp. sobre leído</th></tr></thead>
+            <tbody>
+              <tr><td class="cjcell"><b>A · Beneficio ganado</b><span class="sub">nombra el comercio y el volumen</span></td><td>"{{comercio}}, por lo que compraste estos 90 días te toca..."</td><td>75</td><td>62</td><td><b>29</b></td><td>47%</td></tr>
+              <tr><td class="cjcell"><b>B · Novedad de línea</b><span class="sub">arranca por el producto</span></td><td>"Sumamos pivotantes de aluminio a la línea..."</td><td>75</td><td>56</td><td><b>18</b></td><td>32%</td></tr>
+            </tbody></table></div></div>
+          <ul class="insx-b" style="padding:12px 14px 4px">
+            <li>La variante que <b>nombra al comercio y lo que ya compró</b> rinde 15 puntos más en respuesta sobre leído. La misma oferta, contada como reconocimiento y no como novedad.</li>
+            <li>La diferencia aparece <b>en la respuesta, no en la lectura</b>: las dos se leen parecido porque el mensaje se ve en la notificación. Es la prueba de por qué la lectura no sirve para decidir.</li>
+            <li><b>Próximo paso:</b> la variante A queda como plantilla base de la cuenta. Para la próxima ronda, probar contra una versión de A que además diga el plazo de entrega.</li>
+          </ul>
+        </div></details>
+      </div>
+
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Solo WhatsApp · lo que reporta la plataforma</div></div>
+      <div class="qgrid">
+        <div class="qcard"><div class="q-pct">de 150 enviados</div><div class="q-n tnum">95%</div><div class="q-t">Tasa de entrega (143)</div></div>
+        <div class="qcard"><div class="q-pct">3 motivos distintos</div><div class="q-n tnum">7</div><div class="q-t">Rechazados · descargables en Excel</div></div>
+        <div class="qcard"><div class="q-pct">sobre entregados</div><div class="q-n tnum">83%</div><div class="q-t">Tasa de lectura (118)</div></div>
+        <div class="qcard"><div class="q-pct">sobre entregados</div><div class="q-n tnum">33%</div><div class="q-t">Tasa de respuesta (47)</div></div>
+      </div>
+
+      <div class="banner good" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div>La campaña salió con <b>plantilla aprobada</b> y sobre contactos con consentimiento, que es lo que mantiene alta la calidad del número. Es la condición para que el tier siga subiendo: escribirle a quien no dio permiso no cuesta una campaña, cuesta <b>el techo de todas las siguientes</b>.</div></div>
 
     </section>
 

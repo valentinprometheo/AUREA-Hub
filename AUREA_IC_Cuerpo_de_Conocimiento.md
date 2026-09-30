@@ -66,6 +66,7 @@ El producto se apoya en cinco cuerpos de saber distintos. Están escritos como s
 | 4. RevOps | Ciclo de vida del lead, etapas, scoring, handoff, higiene | `revops` (vendorizada) | Media |
 | 5. Diseño de tablero | Cómo se ve y cómo se opera | `aurea-dashboard-design` + `interface-design` | Fuerte |
 | 6. Email marketing | Métricas de campaña y traspaso al agente | `aurea-email-prometheo` + `emails` | Nueva, sin dato real todavía |
+| 7. WhatsApp masivo | Campañas desde el propio CRM, segmentación y salud del canal | `aurea-whatsapp-prometheo` + `sms` | Nueva, sin dato real todavía |
 
 ---
 
@@ -334,6 +335,54 @@ diferencia del gasto de Meta.
 
 ---
 
+### Capa 7 · WhatsApp masivo: cuando el canal y el CRM son el mismo lugar
+
+En email hay dos sistemas y un empalme entre ellos. En WhatsApp no: la campaña sale de
+Prometheo, sobre la misma base que después conversa, con el mismo agente. Eso cambia qué
+se mide y qué se puede segmentar.
+
+**Buscamos skill pública y no existe.** Las que hay (`whatsapp-marketing`,
+`whatsapp-campaigns` y similares en GitHub) son colecciones de plantillas de mensaje: no
+tienen métricas, ni calidad de número, ni messaging tier, ni opt-in. La estructura más
+cercana es `sms` (costo por envío, opt-in como activo, fatiga de lista). El resto lo
+escribimos sobre la documentación de Prometheo y las restricciones de la plataforma de
+WhatsApp.
+
+**Lo propio (`aurea-whatsapp-prometheo`):**
+
+- **Acá no existe el clic.** La escalera va de entregado a leído a **respondido**, y el
+  escalón que manda es respondido, porque abre la conversación. En email el titular es el
+  clic; en WhatsApp es la respuesta.
+- **La lectura casi no informa.** El mensaje se ve en la notificación, así que leer es casi
+  automático. El número que discrimina una campaña buena de una mala es **respuesta sobre
+  lectura**. Titular con la tasa de lectura es vender humo.
+- **Las restricciones de la plataforma son métricas de tablero.** El **messaging tier**
+  (250 / 1.000 / 10.000 / 100.000 conversaciones por día) sube solo, por calidad de número
+  y actividad consistente, y no se fuerza. Entonces el tier es un **activo que se
+  construye**: una campaña mal segmentada que genera reportes no cuesta esa campaña, cuesta
+  el techo de todas las siguientes. Toda pestaña muestra tier, calidad de número y tasa de
+  reporte aunque el cliente no los pida.
+- **Los tres ejes de segmentación.** Una campaña dirigida se define por **estadío de venta**
+  (dónde está en el embudo, define la intención), **tipo de comprador** (define el tono y el
+  argumento) y **tipo de producto** (qué compra y qué no, define la oferta). La que no puede
+  nombrar sus tres ejes no está segmentada: es una difusión.
+- **Se muestra el embudo de la segmentación, no solo el resultado.** De la base total a la
+  audiencia final hay filtros y cada filtro es una decisión que el cliente tiene que poder
+  discutir. Un "150 distribuidores" sin el camino que llevó a 150 no se audita.
+- **El origen de la audiencia se declara siempre.** Smart Tag de Prometheo (base viva,
+  auditable, se actualiza sola) o archivo externo (Excel, scraping). Si viene de afuera hay
+  que decirlo: esa lista no tiene historial, ni consentimiento verificable, ni se actualiza.
+- **La ventana de 24 horas.** Cuando el contacto responde se abren 24 horas de conversación
+  libre sin plantilla. Una respuesta no es solo interés: es **permiso para conversar**.
+- **El rechazado es tarea del CRM, no ruido de campaña.** Número sin WhatsApp, prefijo mal
+  cargado, baja previa: cada uno se arregla distinto y vuelve al padrón.
+- **Desde Prometheo el masivo va solo con texto y variables.** No van archivos ni imágenes.
+  Diseñar la campaña asumiendo un PDF adjunto es diseñarla mal.
+
+**Estado:** implementada como pestaña en PAVIR, con modo Básico y Avanzada.
+
+---
+
 ## 4. El caso de referencia: qué encontró el método en EDFAN
 
 Sirve como prueba de que el marco produce hallazgos, no solo prolijidad. Todo esto salió de un export real, sin gasto de medios.
@@ -417,6 +466,7 @@ Para que una reunión no se trabe en definiciones.
 | Curaduría del dato (nuestra) | `.claude/skills/aurea-curaduria-dato/SKILL.md` |
 | Atribución (marco de origen) | `.claude/skills/attribution/SKILL.md` |
 | Email × Prometheo (nuestra) | `.claude/skills/aurea-email-prometheo/SKILL.md` |
+| WhatsApp × Prometheo (nuestra) | `.claude/skills/aurea-whatsapp-prometheo/SKILL.md` |
 | Secuencias de email (marco de origen) | `.claude/skills/emails/SKILL.md` |
 | RevOps (marco de origen) | `.claude/skills/revops/SKILL.md` |
 | Diseño de tablero | skill `aurea-dashboard-design` |

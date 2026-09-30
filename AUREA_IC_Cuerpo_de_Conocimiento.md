@@ -65,6 +65,7 @@ El producto se apoya en cinco cuerpos de saber distintos. Están escritos como s
 | 3. Atribución y medición | Qué causó cada venta; reconciliar fuentes que se contradicen | `attribution` (vendorizada) | **Débil en la práctica** |
 | 4. RevOps | Ciclo de vida del lead, etapas, scoring, handoff, higiene | `revops` (vendorizada) | Media |
 | 5. Diseño de tablero | Cómo se ve y cómo se opera | `aurea-dashboard-design` + `interface-design` | Fuerte |
+| 6. Email marketing | Métricas de campaña y traspaso al agente | `aurea-email-prometheo` + `emails` | Nueva, sin dato real todavía |
 
 ---
 
@@ -289,6 +290,50 @@ El marco viene de B2B SaaS y hay que traducirlo, pero la estructura se reusa ent
 
 ---
 
+### Capa 6 · Email marketing: cuando el canal termina en una conversación
+
+Capa nueva. El email es el primer canal donde AUREA no solo mide: **genera la demanda**.
+El lead entra por un envío y la conversación sigue adentro de Prometheo, donde un agente
+responde el mail, califica y deriva.
+
+**Lo que aporta `emails` (vendorizada, MIT):** un mail, un trabajo; un CTA por mail;
+relevancia sobre volumen; y la plantilla de re-engagement (3 a 4 mails en 2 semanas:
+check-in, recordatorio de valor, incentivo, última chance).
+
+**Lo que no traía y escribimos nosotros (`aurea-email-prometheo`):**
+
+- **El clic deja de ser el final.** Las métricas de email terminan en el clic; acá el clic
+  es **el empalme**. La tasa de empalme (contactos que conversaron / clics) es métrica
+  propia y ninguna plataforma de envío la mide.
+- **Cada tasa sobre su denominador.** La apertura va sobre entregados, no sobre enviados.
+  Y va siempre acompañada del **CTOR** (clics sobre aperturas), que separa dos problemas
+  distintos: apertura baja con CTOR alto es problema de asunto; apertura alta con CTOR
+  bajo es problema de oferta.
+- **La apertura es Señal, no Hecho.** Desde que Apple precarga imágenes, parte de las
+  aperturas las dispara un proxy. Sirve para comparar envíos entre sí, no para afirmar
+  cuántos leyeron. **Nunca titula una card.**
+- **No mezclar benchmarks de frío con lista propia.** Los números de `cold-email`
+  (apertura 27,7%, respuesta 4 a 5,8%) son de prospección fría. Aplicarlos a una base
+  propia hace parecer excelente lo mediocre. Sin benchmark propio, la comparación honesta
+  es contra el envío anterior de la misma base.
+- **La reactivación se mide por reactivación.** La escalera de compromiso va de entregó a
+  volvió a operar, y el KPI titular es "contestó al agente" o más arriba, nunca "abrió".
+- **Contacto reactivado, no contacto nuevo.** En una base propia el contacto ya existe:
+  se cuenta actividad nueva atribuible a la campaña, no un alta.
+- **El identificador de envío es a email lo que el ID de anuncio es a Meta.** Sin él no
+  hay cruce: hay dos reportes puestos al lado.
+
+**Cómo se muestra**, en tres alturas y sin repetir un número entre ellas: cards de insight
+cruzado con ícono de procedencia, métricas desplegables con el detalle, y abajo lo
+puramente de plataforma (entrega, rebotes, bajas, ranking de asuntos).
+
+**Estado:** implementada como pestaña en PAVIR con una **campaña simulada**, porque ningún
+cliente corrió email marketing todavía. Es el canal donde más rápido podríamos cerrar la
+capa de eficiencia, porque el costo de una plataforma de envío es conocido y chico, a
+diferencia del gasto de Meta.
+
+---
+
 ## 4. El caso de referencia: qué encontró el método en EDFAN
 
 Sirve como prueba de que el marco produce hallazgos, no solo prolijidad. Todo esto salió de un export real, sin gasto de medios.
@@ -371,6 +416,8 @@ Para que una reunión no se trabe en definiciones.
 |---|---|
 | Curaduría del dato (nuestra) | `.claude/skills/aurea-curaduria-dato/SKILL.md` |
 | Atribución (marco de origen) | `.claude/skills/attribution/SKILL.md` |
+| Email × Prometheo (nuestra) | `.claude/skills/aurea-email-prometheo/SKILL.md` |
+| Secuencias de email (marco de origen) | `.claude/skills/emails/SKILL.md` |
 | RevOps (marco de origen) | `.claude/skills/revops/SKILL.md` |
 | Diseño de tablero | skill `aurea-dashboard-design` |
 | Metodología de CRM | skill `aurea-metodologia` (router por estadío, rubro, integración y transversales) |

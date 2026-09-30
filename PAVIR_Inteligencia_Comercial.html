@@ -675,6 +675,21 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
 @media(max-width:1080px){.insxgrid,.intg-grid,.stagegrid{grid-template-columns:1fr 1fr}.grupal{grid-template-columns:1fr 1fr}}
 @media(max-width:720px){.insxgrid,.intg-grid,.stagegrid,.grupal,.recorrido{grid-template-columns:1fr}.hbrand .wm{font-size:30px}.hbrand .ic{font-size:16px}}
 </style>
+
+<style>
+/* ===== canal email marketing ===== */
+/* los paneles son items flex: sin min-width:0 no achican por debajo de su contenido
+   y una tabla ancha desborda la pagina entera en pantallas chicas */
+.main,.panel{min-width:0;max-width:100%}
+:root{--src-mail:#B4649B}
+.s-mail{background:var(--src-mail)}.mc-mail{background:var(--src-mail)}
+tbody tr.tot td{background:var(--inset);font-weight:700;color:var(--ink)}
+tbody tr.bad td{background:color-mix(in srgb,var(--crit) 7%,transparent)}
+tbody td small{color:var(--ink3);font-weight:600;margin-left:3px}
+#dn-email:checked~.shell .nav[data-t=email]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
+#dn-email:checked~.shell .nav[data-t=email] svg{stroke:#fff}
+#dn-email:checked~.shell .p-email{display:block}
+</style>
 </head>
 <body>
 <input type="radio" name="nav" id="dn-panorama" class="st" checked>
@@ -688,6 +703,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
 <input type="radio" name="nav" id="dn-evolucion" class="st">
 <input type="radio" name="nav" id="dn-metaads" class="st">
 <input type="radio" name="nav" id="dn-googleads" class="st">
+<input type="radio" name="nav" id="dn-email" class="st">
 <input type="radio" name="nav" id="dn-integraciones" class="st">
 <input type="radio" name="mode" id="mode-simple" class="st" checked>
 <input type="radio" name="mode" id="mode-adv" class="st">
@@ -731,6 +747,7 @@ td.semc{text-align:right!important}
     <div class="navlab2">Canales · Marketing</div>
     <label class="nav" data-t="metaads" for="dn-metaads"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12v-1.5A1.5 1.5 0 0 1 4.5 9H8l9-5v16l-9-5H4.5A1.5 1.5 0 0 1 3 13.5V12Zm14-3a3 3 0 0 1 0 6"/></svg>Meta Ads<span class="chch"></span></label>
     <label class="nav" data-t="googleads" for="dn-googleads"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 8.5 12H12V9.5h8.8A9 9 0 0 0 12 3Z"/></svg>Google Ads<span class="chch" style="background:var(--warn)"></span></label>
+    <label class="nav" data-t="email" for="dn-email"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M3 6h18v12H3z"/></svg>Email Marketing<span class="chch" style="background:var(--vio)"></span></label>
     <label class="nav" data-t="integraciones" for="dn-integraciones"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6M12 9v6M4 8V5a1 1 0 0 1 1-1h3M20 8V5a1 1 0 0 0-1-1h-3M4 16v3a1 1 0 0 0 1 1h3M20 16v3a1 1 0 0 1-1 1h-3"/></svg>Integraciones</label>
     <div class="side-foot">
       <button class="themebtn" onclick="tgl()"><svg class="sun" fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2m0 14v2M5.6 5.6l1.4 1.4m10 10 1.4 1.4M3 12h2m14 0h2M5.6 18.4 7 17m10-10 1.4-1.4M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg><svg class="moon" fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"/></svg><span>Tema</span></button>
@@ -1561,6 +1578,177 @@ td.semc{text-align:right!important}
     </section>
 
     <!-- ===== INTEGRACIONES ===== -->
+    <section class="panel p-email">
+      <div class="sec-head">
+        <div class="hbrand" style="margin-bottom:6px"><span class="wm" style="font-size:30px">Email Marketing</span><span class="ic" style="font-size:15px"><b>Canal</b>Marketing</span></div>
+        <p class="lead">El email <b>genera la demanda</b>; la conversación sigue adentro de Prometheo, donde un agente responde el mail, califica y deriva. Por eso el clic no es el final del embudo: es <b>el empalme</b>. Arriba, lo que solo se puede leer teniendo las dos fuentes; en el medio, el detalle desplegable; abajo, la data pura de la plataforma de envío.</p>
+      </div>
+
+      <div class="banner info" style="margin-bottom:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div><div><b>Campaña simulada.</b> PAVIR todavía no corrió email marketing. Los números de abajo son una campaña de reactivación modelada sobre la red real (700 distribuidores, 200 pasivos) para mostrar qué mediría el tablero. <b>Ninguna cifra de esta pestaña es dato histórico de PAVIR</b>; el resto del tablero sí corre sobre la base de la red.</div></div>
+
+      <div class="srclegend">
+        <div class="slg"><span class="mc mc-mail">Email</span><span>Enviados, entregados, aperturas, clics, rebotes y bajas.</span></div>
+        <div class="slg"><span class="mc mc-pro">Prometheo</span><span>Quién conversó con el agente, qué pidió, <b>calificación</b> y derivación.</span></div>
+        <div class="slg"><span class="mc mc-calc">Cálculo</span><span>Empalme, tasas entre pasos y lectura por segmento.</span></div>
+      </div>
+
+      <div class="eyebrow"><span class="eb-orb"></span>La campaña · reactivar a los 200 pasivos con la línea de bisagra interior</div>
+      <div class="bigcamp" style="margin-bottom:8px">
+        <div class="bc" style="--bcac:var(--vio)"><div class="bc-hd"><div class="bc-nm">Base y concepto</div><span class="src s-mail">Email</span></div>
+          <div class="bc-row"><div><div class="v tnum">200</div><div class="k">pasivos de 700</div></div><div><div class="v tnum">3</div><div class="k">envíos en 2 semanas</div></div><div><div class="v tnum">3</div><div class="k">segmentos, un concepto c/u</div></div></div>
+          <div class="bc-verd"><span class="bc-dot" style="background:var(--vio)"></span><div>Nueva línea de puerta con <b>bisagra interior</b> (corrida hacia adentro, no en la esquina). El mensaje: se está vendiendo bien y queremos que la red la tome.</div></div>
+        </div>
+        <div class="bc" style="--bcac:var(--src-pro)"><div class="bc-hd"><div class="bc-nm">Lo que pasa después del clic</div><span class="src s-pro">Prometheo</span></div>
+          <div class="bc-row"><div><div class="v tnum">29</div><div class="k">conversaron</div></div><div><div class="v tnum">17</div><div class="k">calificaron</div></div><div><div class="v tnum">11</div><div class="k">derivados a corredor</div></div></div>
+          <div class="bc-verd"><span class="bc-dot" style="background:var(--src-pro)"></span><div>El agente de mail contesta, resuelve el ida y vuelta y <b>deriva solo cuando aporta</b>. El comercial no queda pegado respondiendo cada mensaje.</div></div>
+        </div>
+      </div>
+
+      <div class="ghdr">Embudo de la campaña<span class="th-src s-calc">Cálculo</span><span class="r">base: 200 pasivos · la tasa entre pasos es la cifra que manda</span></div>
+      <div class="card" style="padding:18px;margin-bottom:22px">
+        <div class="funnel">
+          <div class="fstep"><div class="f-n tnum">200</div><div class="f-l">Enviados</div><div class="f-conv sm">base</div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">186</div><div class="f-l">Entregados</div><div class="f-conv">93%</div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">97</div><div class="f-l">Abrieron</div><div class="f-conv">52%</div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">34</div><div class="f-l">Clic o respuesta</div><div class="f-conv">35% <span style="font-weight:600;opacity:.75">CTOR</span></div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">29</div><div class="f-l">Conversaron en Prometheo</div><div class="f-conv">85% <span style="font-weight:600;opacity:.75">empalme</span></div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">17</div><div class="f-l">Calificados</div><div class="f-conv">59%</div><div class="f-bar"></div></div>
+          <div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div>
+          <div class="fstep"><div class="f-n tnum">6</div><div class="f-l">Volvieron a pedir</div><div class="f-conv">35%</div><div class="f-bar"></div></div>
+        </div>
+        <div class="banner info" style="margin-top:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div><div>La apertura es <b>señal, no hecho</b>: desde que Apple precarga imágenes, una parte de las aperturas las dispara un proxy y no una persona. Sirve para comparar un envío contra otro, no para afirmar cuántos leyeron. Por eso <b>el titular de esta campaña no es el 52%</b>, es lo que pasó del clic para adelante.</div></div>
+      </div>
+
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Insights del cruce · lo que ninguna de las dos fuentes dice sola</div></div>
+      <div class="insxgrid">
+
+        <div class="insx pausar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>Segmento</span><span class="src s-calc">Cruce</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">La deuda frena más que el precio</div>
+            <div class="insx-chips"><span class="insx-chip">45 con cuenta trabada</span><span class="insx-chip">Envío idéntico</span></div>
+            <ul class="insx-b"><li>Abren <b>35%</b> contra <b>57%</b> de los otros dos segmentos</li><li>De 40 entregados, <b>1 solo calificó</b></li><li>Recibieron el mismo mail: no es el mensaje, es la cuenta</li></ul>
+            <div class="insx-cmp"><div class="big tnum">35%</div><div class="rt"><div class="txt">apertura del segmento con deuda · red <b>57%</b></div><div class="cmpbar"><span style="width:35%"></span><i style="left:57%"></i></div></div></div>
+          </div>
+        </div>
+
+        <div class="insx subir">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.2 9a3.8 3.8 0 1 1 5.2 3.5c-.8.4-1.4 1.2-1.4 2.1v.4M12 18h.01"/></svg></span>Producto</span><span class="src s-pro">Prometheo</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Nueve preguntaron exactamente lo mismo</div>
+            <div class="insx-chips"><span class="insx-chip">Base: 29 que conversaron</span><span class="insx-chip">Texto del agente</span></div>
+            <ul class="insx-b"><li><b>9 de 29</b> preguntaron si la bisagra interior <b>entra en marco existente</b></li><li>El mail no lo contesta: lo tiene que contestar el agente uno por uno</li><li>Próximo paso: <b>una línea en el mail</b> y una ficha técnica en el catálogo</li></ul>
+            <div class="insx-cmp"><div class="big tnum">31%</div><div class="rt"><div class="txt">de los que conversaron hicieron la misma pregunta técnica</div><div class="cmpbar"><span style="width:31%"></span></div></div></div>
+          </div>
+        </div>
+
+        <div class="insx escalar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 2 4.1 12.7c-.6.7-.1 1.8.8 1.8H11l-1 7.5 8.9-10.7c.6-.7.1-1.8-.8-1.8H12l1-7.5Z"/></svg></span>Empalme</span><span class="src s-calc">Cruce</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">El traspaso al agente no pierde gente</div>
+            <div class="insx-chips"><span class="insx-chip">34 clics o respuestas</span><span class="insx-chip">29 conversaciones</span></div>
+            <ul class="insx-b"><li><b>85%</b> del que reacciona al mail termina conversando con el agente</li><li>Se pierden <b>5</b>: clic sin responder ni dejar consulta</li><li>Es la métrica que ninguna plataforma de envío mide, porque termina en el clic</li></ul>
+            <div class="insx-cmp"><div class="big tnum">85%</div><div class="rt"><div class="txt">tasa de empalme email a Prometheo</div><div class="cmpbar"><span style="width:85%"></span></div></div></div>
+          </div>
+        </div>
+
+        <div class="insx subir">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M3 6h18v12H3z"/></svg></span>Envío</span><span class="src s-mail">Email</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">El primer mail hizo el 62% del trabajo</div>
+            <div class="insx-chips"><span class="insx-chip">3 envíos</span><span class="insx-chip">2 semanas</span></div>
+            <ul class="insx-b"><li>Envío 1: <b>21</b> reacciones · Envío 2: <b>9</b> · Envío 3: <b>4</b></li><li>El segundo sigue pagando; el tercero ya raspa la base</li><li>Próximo paso: en la próxima ronda, <b>cortar en dos</b> y reinvertir el esfuerzo en segmentar</li></ul>
+            <div class="insx-cmp"><div class="big tnum">62%</div><div class="rt"><div class="txt">de las reacciones vinieron del primer envío</div><div class="cmpbar"><span style="width:62%"></span></div></div></div>
+          </div>
+        </div>
+
+        <div class="insx escalar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17H7A5 5 0 0 1 7 7h2m6 10h2a5 5 0 0 0 0-10h-2M8 12h8"/></svg></span>Intención</span><span class="src s-pro">Prometheo</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">El reactivado pide lista, no cotización</div>
+            <div class="insx-chips"><span class="insx-chip">Base: 29</span><span class="insx-chip">Pueden pedir más de una cosa</span></div>
+            <ul class="insx-b"><li><b>21 de 29</b> pidieron <b>lista de precios</b> antes que nada</li><li><b>7</b> pidieron muestra o exhibidor para el salón</li><li>Solo <b>6</b> objetaron precio: la barrera es la información, no el valor</li></ul>
+            <div class="insx-cmp"><div class="big tnum">72%</div><div class="rt"><div class="txt">pidió lista de precios · adjuntarla al mail ahorra un ida y vuelta</div><div class="cmpbar"><span style="width:72%"></span></div></div></div>
+          </div>
+        </div>
+
+        <div class="insx pausar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/></svg></span>Reactivación</span><span class="src s-calc">Cruce</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">171 siguen dormidos, y eso es el hallazgo</div>
+            <div class="insx-chips"><span class="insx-chip">Base: 200 pasivos</span><span class="insx-chip">14 direcciones muertas</span></div>
+            <ul class="insx-b"><li><b>6</b> volvieron a pedir · <b>23</b> conversaron y no cerraron todavía</li><li><b>171</b> no reaccionaron: no es un hueco, es la cola de trabajo</li><li>De esos, <b>14</b> rebotaron: son bajas de contacto, no desinterés</li></ul>
+            <div class="insx-cmp"><div class="big tnum">3%</div><div class="rt"><div class="txt">de los pasivos volvió a pedir en 2 semanas</div><div class="cmpbar"><span style="width:3%"></span></div></div></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Métricas cruzadas · desplegá el detalle</div></div>
+
+      <details class="mincard" open><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg></div><div class="mc-t"><b>Embudo por segmento</b><span>un concepto por segmento, el mismo embudo para los tres</span></div><div class="mc-v tnum">3<small>segmentos</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body">
+        <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:760px">
+          <thead><tr><th>Segmento</th><th>Concepto del envío</th><th>Base</th><th>Entreg.</th><th>Abrió</th><th>Clic o resp.</th><th>En Prometheo</th><th>Calificó</th></tr></thead>
+          <tbody>
+            <tr><td class="cjcell"><b>Solo puertas</b><span class="sub">no compran ventanas</span></td><td>Bisagra interior + cruce a ventana PVC</td><td>84</td><td>79</td><td>45 <small>57%</small></td><td>17</td><td>15</td><td><b>10</b></td></tr>
+            <tr><td class="cjcell"><b>Dormido sin deuda</b><span class="sub">+45 días sin pedido</span></td><td>Novedad de catálogo, reactivación limpia</td><td>71</td><td>67</td><td>38 <small>57%</small></td><td>13</td><td>11</td><td><b>6</b></td></tr>
+            <tr class="bad"><td class="cjcell"><b>Con deuda</b><span class="sub">cuenta corriente trabada</span></td><td>Novedad + regularización de cuenta</td><td>45</td><td>40</td><td>14 <small>35%</small></td><td>4</td><td>3</td><td><b>1</b></td></tr>
+            <tr class="tot"><td><b>Total</b></td><td>-</td><td>200</td><td>186</td><td>97 <small>52%</small></td><td>34</td><td>29</td><td><b>17</b></td></tr>
+          </tbody></table></div></div>
+        <div class="banner good" style="margin:12px 10px 12px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div>Los dos segmentos sanos rinden <b>igual</b> (57% de apertura los dos). La diferencia no está en el concepto del mail: está en el estado de la cuenta. <b>Próximo paso:</b> sacar a los 45 con deuda del circuito de email y pasarlos a un contacto de cobranza; el mail no resuelve una cuenta trabada.</div></div>
+      </div></details>
+
+      <details class="mincard"><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M3 6h18v12H3z"/></svg></div><div class="mc-t"><b>Envío por envío</b><span>rendimiento decreciente y hasta dónde conviene insistir</span></div><div class="mc-v tnum">34<small>reacciones</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body">
+        <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:760px">
+          <thead><tr><th>Envío</th><th>Asunto</th><th>Día</th><th>Destinatarios</th><th>Aperturas</th><th>Clic o resp.</th><th>CTOR</th></tr></thead>
+          <tbody>
+            <tr><td><b>1 · Novedad</b></td><td>Nueva línea: la bisagra va por dentro</td><td>0</td><td>186</td><td>78 <small>42%</small></td><td><b>21</b></td><td>27%</td></tr>
+            <tr><td><b>2 · Prueba</b></td><td>Los que ya la venden repiten pedido</td><td>4</td><td>165</td><td>41 <small>25%</small></td><td><b>9</b></td><td>22%</td></tr>
+            <tr><td><b>3 · Cierre</b></td><td>¿Te mando el catálogo y la lista?</td><td>9</td><td>156</td><td>24 <small>15%</small></td><td><b>4</b></td><td>17%</td></tr>
+          </tbody></table></div></div>
+        <ul class="insx-b" style="padding:10px 14px 4px"><li>Cada envío sale solo a quien <b>no reaccionó</b> al anterior: por eso las reacciones no se pisan y suman 34 personas distintas.</li><li>Las aperturas por envío <b>sí se pisan</b>: 78 + 41 + 24 son eventos, no personas. Las personas que abrieron al menos uno son <b>97</b>.</li><li>El asunto del envío 3 es el que menos abre y el que más honesto es: pregunta directa, sirve para limpiar la base.</li></ul>
+      </div></details>
+
+      <details class="mincard"><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8M8 16h5M4 4h16v16H4z"/></svg></div><div class="mc-t"><b>Qué preguntaron los que volvieron</b><span>lo cualitativo que solo se ve en la conversación</span></div><div class="mc-v tnum">29<small>conversaciones</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body">
+        <div style="padding:12px 14px 4px">
+          <div class="bar-row"><span class="bar-lab">Lista de precios actualizada</span><span class="bar-val tnum">21 <span>72%</span></span><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Plazo de entrega</span><span class="bar-val tnum">14 <span>48%</span></span><div class="bar-track"><div class="bar-fill" style="width:48%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">¿Entra en marco existente?</span><span class="bar-val tnum">9 <span>31%</span></span><div class="bar-track"><div class="bar-fill" style="width:31%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Muestra o exhibidor para el salón</span><span class="bar-val tnum">7 <span>24%</span></span><div class="bar-track"><div class="bar-fill" style="width:24%"></div></div></div>
+          <div class="bar-row"><span class="bar-lab">Objeción de precio</span><span class="bar-val tnum">6 <span>21%</span></span><div class="bar-track"><div class="bar-fill" style="width:21%"></div></div></div>
+        </div>
+        <div class="banner info" style="margin:8px 10px 12px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div><div>Base 29, y un distribuidor puede preguntar más de una cosa: por eso los porcentajes no suman 100. Las tres primeras se contestan <b>adjuntando lista y ficha técnica al envío</b>: son 44 idas y vueltas que el agente no tendría que hacer.</div></div>
+      </div></details>
+
+      <details class="mincard"><summary><div class="mc-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 2 4.1 12.7c-.6.7-.1 1.8.8 1.8H11l-1 7.5 8.9-10.7c.6-.7.1-1.8-.8-1.8H12l1-7.5Z"/></svg></div><div class="mc-t"><b>El empalme, paso a paso</b><span>qué pasa entre el clic y la conversación</span></div><div class="mc-v tnum">85%<small>empalme</small></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="mc-body">
+        <div class="bc-row" style="padding:12px 12px 4px">
+          <div><div class="v tnum">34</div><div class="k">clic o respuesta</div></div>
+          <div><div class="v tnum">29</div><div class="k">abrió conversación</div></div>
+          <div><div class="v tnum">26</div><div class="k">más de un mensaje</div></div>
+          <div><div class="v tnum">11</div><div class="k">derivados a corredor</div></div>
+        </div>
+        <ul class="insx-b" style="padding:8px 14px 4px"><li><b>Contacto reactivado, no contacto nuevo.</b> Los 29 ya estaban en la base: lo que se cuenta es actividad nueva atribuible a la campaña, no un alta.</li><li>Cada mail lleva su <b>identificador de envío</b> y Prometheo lo guarda igual que guarda el ID de anuncio de Meta. Sin eso no hay cruce, hay dos reportes al lado.</li><li>Los <b>5</b> que clicaron y no conversaron son la fuga concreta a revisar: llegaron al catálogo y no arrancaron el ida y vuelta.</li></ul>
+      </div></details>
+
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Solo email · data pura de la plataforma de envío</div></div>
+      <div class="qgrid">
+        <div class="qcard"><div class="q-pct">de 200 enviados</div><div class="q-n tnum">93%</div><div class="q-t">Tasa de entrega (186)</div></div>
+        <div class="qcard"><div class="q-pct">9 duros · 5 blandos</div><div class="q-n tnum">14</div><div class="q-t">Rebotes · direcciones a depurar</div></div>
+        <div class="qcard"><div class="q-pct">1,6% de entregados</div><div class="q-n tnum">3</div><div class="q-t">Bajas de la lista</div></div>
+        <div class="qcard"><div class="q-pct">clic sobre entregados</div><div class="q-n tnum">18%</div><div class="q-t">CTR de la campaña</div></div>
+      </div>
+
+      <div class="banner good" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div>Los <b>9 rebotes duros</b> son distribuidores cuyo contacto murió (cambió la persona, cerró la casilla). No son desinterés: son <b>ficha desactualizada</b>. Salen de la base de email y entran a una lista de recontacto por teléfono del corredor de la zona.</div></div>
+
+      <div class="banner info" style="margin-top:12px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div><div><b>Falta para cerrar el análisis:</b> el <b>costo de la plataforma de envío</b>. Sin ese número no se puede calcular costo por distribuidor reactivado ni comparar el email contra la pauta de Meta en la misma unidad. Es el mismo faltante que hoy tiene Meta Ads, y se resuelve conectando la cuenta.</div></div>
+
+    </section>
+
     <section class="panel p-integraciones">
       <div class="sec-head">
         <div class="eyebrow"><span class="eb-orb"></span>Integraciones · el cruce que cierra</div>

@@ -686,6 +686,19 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
 /* los paneles son items flex: sin esto una tabla ancha desborda la pagina entera en pantallas chicas */
 .main,.panel{min-width:0;max-width:100%}
 </style>
+<style>
+/* grillas explicitas: el renglon siempre se completa, y colapsan como el resto */
+.g1{grid-template-columns:1fr!important}
+.g2{grid-template-columns:1fr 1fr!important}
+.g5{grid-template-columns:repeat(6,1fr)!important}
+.g5>*{grid-column:span 2}
+.g5>*:nth-child(4),.g5>*:nth-child(5){grid-column:span 3}
+@media(max-width:1080px){.g5{grid-template-columns:repeat(2,1fr)!important}.g5>*,.g5>*:nth-child(4),.g5>*:nth-child(5){grid-column:span 1}}
+@media(max-width:720px){.g5{grid-template-columns:1fr!important}}
+.g4{grid-template-columns:repeat(4,1fr)!important}
+@media(max-width:1080px){.g4{grid-template-columns:1fr 1fr!important}}
+@media(max-width:720px){.g2,.g4{grid-template-columns:1fr!important}}
+</style>
 </head>
 <body>
 <input type="radio" name="nav" id="dn-panorama" class="st" checked>
@@ -867,7 +880,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
       </div>
 
       <div class="eyebrow"><span class="eb-orb"></span>De qué anuncio vino, y cómo le fue a cada cohorte <span class="src s-meta" style="margin-left:6px">Meta / IG</span><span class="r">todo en % sobre la propia cohorte</span></div>
-      <div class="bigcamp">
+      <div class="bigcamp g5">
         <div class="bc" style="--bcac:var(--vio)"><div class="bc-hd"><div class="bc-nm">VIVÍ VILLA CRESPO</div><span class="obj obj-msg">31%</span></div><div class="bc-o">"Viví Villa Crespo" · 320 consultas</div><div class="bc-big"><div class="n tnum">95%</div><div class="u">respondió</div></div><div class="bc-cap">El mejor embudo de punta a punta. 8,3 msgs promedio. El 71% pide Vervé Crespo.</div><div class="bc-row"><div><div class="v tnum">73%</div><div class="k">se identificó</div></div><div><div class="v tnum">49%</div><div class="k">calificado</div></div><div><div class="v tnum">14%</div><div class="k">en seguimiento</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--vio)"></span><div><b>El más fuerte.</b> Responde 95% y califica la mitad. <b>Próximo paso:</b> de sus 157 calificados solo 44 tienen seguimiento, quedan <b>113 sin activar</b>.</div></div></div>
         <div class="bc" style="--bcac:var(--blu)"><div class="bc-hd"><div class="bc-nm">INVERTÍ PUERTO MADERO</div><span class="obj obj-msg">14%</span></div><div class="bc-o">"Invertí a metros de Puerto Madero" · 142 consultas</div><div class="bc-big"><div class="n tnum">93%</div><div class="u">respondió</div></div><div class="bc-cap">Perfil inversión mayor al de vivienda. El 67% pide Astilleros, y busca San Telmo.</div><div class="bc-row"><div><div class="v tnum">71%</div><div class="k">se identificó</div></div><div><div class="v tnum">44%</div><div class="k">calificado</div></div><div><div class="v tnum">10%</div><div class="k">en seguimiento</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--blu)"></span><div><b>El de inversores.</b> Ticket chico de renta. <b>Próximo paso:</b> 62 calificados y 14 en seguimiento: <b>48 esperando</b> un guion de renta.</div></div></div>
         <div class="bc" style="--bcac:var(--pnk)"><div class="bc-hd"><div class="bc-nm">VIVI EN CHACARITA</div><span class="obj obj-msg">9%</span></div><div class="bc-o">"Viví en Chacarita" · 88 consultas</div><div class="bc-big"><div class="n tnum">90%</div><div class="u">respondió</div></div><div class="bc-cap">Es el que más deriva (10%, el triple que Villa Crespo) y el único con demanda de pozo.</div><div class="bc-row"><div><div class="v tnum">60%</div><div class="k">se identificó</div></div><div><div class="v tnum">49%</div><div class="k">calificado</div></div><div><div class="v tnum">9%</div><div class="k">en seguimiento</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--pnk)"></span><div><b>Califica bien, se sigue mal.</b> De sus 43 calificados solo 8 tienen seguimiento. <b>Próximo paso:</b> lista de espera del pozo de Vervé Chacarita.</div></div></div>
@@ -1014,7 +1027,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
       <div class="banner good" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg></div><div>El embudo no está vacío: está <b>subregistrado</b>. Hay <b>381 contactos que tienen la evidencia de un lead calificado</b> (proyecto, zona y perfil cargados) y sin embargo nadie los marcó como tal. Esa es la cola caliente real, y es 60 veces más grande que la que muestra el tag.</div></div>
 
       <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Por qué salen y qué frena · lo declarado</div></div>
-      <div class="vargrid">
+      <div class="vargrid g2">
         <div class="varcard"><div class="ghdr">Tipo de derivación<span class="lvl lvl-i">Indicio</span><span class="r">base declarada: 87</span></div>
           <div class="bar-row"><span class="bar-lab">Inmobiliaria</span><span class="bar-val tnum">40 <span>46%</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
           <div class="bar-row"><span class="bar-lab">Fuera de catálogo</span><span class="bar-val tnum">23 <span>26%</span></span><div class="bar-track"><div class="bar-fill" style="width:58%;background:var(--warn)"></div></div></div>

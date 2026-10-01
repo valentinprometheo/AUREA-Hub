@@ -686,6 +686,14 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
 /* los paneles son items flex: sin esto una tabla ancha desborda la pagina entera en pantallas chicas */
 .main,.panel{min-width:0;max-width:100%}
 </style>
+<style>
+/* grillas explicitas: el renglon siempre se completa, y colapsan como el resto */
+.g1{grid-template-columns:1fr!important}
+.g2{grid-template-columns:1fr 1fr!important}
+.g4{grid-template-columns:repeat(4,1fr)!important}
+@media(max-width:1080px){.g4{grid-template-columns:1fr 1fr!important}}
+@media(max-width:720px){.g2,.g4{grid-template-columns:1fr!important}}
+</style>
 </head>
 <body>
 <input type="radio" name="nav" id="dn-panorama" class="st" checked>
@@ -949,7 +957,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
       <div class="sec-head">
         <div class="eyebrow"><span class="eb-orb"></span>Insights · cruce marketing × Prometheo</div>
         <h1 class="sec">Qué subir, qué pausar, <em>con criterio.</em></h1>
-        <p class="lead">Solo criterio <b>cuantitativo</b>. Cada tarjeta mide el <b>costo por comprador contra el costo por mensaje</b>: cuánto se encarece el lead al filtrar por calidad. Es un tablero — no ejecuta acciones.</p>
+        <p class="lead">Solo criterio <b>cuantitativo</b>. Cada tarjeta mide el <b>costo por comprador contra el costo por mensaje</b>: cuánto se encarece el lead al filtrar por calidad. Es un tablero: no ejecuta acciones.</p>
       </div>
       <div class="grupal">
         <div class="gv"><div class="l">% Califican promedio</div><div class="n tnum">31%</div><div class="m">de los mensajes de la cuenta</div></div>
@@ -966,7 +974,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
       <div class="instab it-anuncios">
         <div class="insxgrid">
           <div class="insx escalar">
-            <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/></svg></span>Escalar</span><span class="tag t-mkt">MKT</span></div>
+            <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/></svg></span>Subir</span><span class="tag t-mkt">MKT</span></div>
             <div class="insx-body">
               <div class="insx-nm">VID_SprayStreamPolvo_RET</div>
               <div class="insx-chips"><span class="insx-chip"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v5H4zM4 14h16v5H4z"/></svg>Retargeting</span><span class="insx-chip"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12v-1.5A1.5 1.5 0 0 1 4.5 9H8l9-5v16l-9-5H4.5A1.5 1.5 0 0 1 3 13.5Z"/></svg>Demolición sin polvo</span></div>
@@ -984,7 +992,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
             </div>
           </div>
           <div class="insx subir">
-            <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18"/></svg></span>Subir c/techo</span><span class="tag t-ventas">VENTAS</span></div>
+            <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18"/></svg></span>Subir</span><span class="tag t-ventas">VENTAS</span></div>
             <div class="insx-body">
               <div class="insx-nm">EST_HGceroEmisiones_IG</div>
               <div class="insx-chips"><span class="insx-chip"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v5H4zM4 14h16v5H4z"/></svg>Intereses · Obra urbana</span><span class="insx-chip"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12v-1.5A1.5 1.5 0 0 1 4.5 9H8l9-5v16l-9-5H4.5A1.5 1.5 0 0 1 3 13.5Z"/></svg>Cero emisiones</span></div>
@@ -996,7 +1004,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
         <div class="adv-only" style="margin-top:14px">
           <div class="insxgrid">
             <div class="insx reducir">
-              <div class="insx-top"><span class="insx-seal"><span class="ic" style="background:var(--warn)"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14"/></svg></span>Reducir</span><span class="tag t-mkt">MKT</span></div>
+              <div class="insx-top"><span class="insx-seal"><span class="ic" style="background:var(--warn)"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14"/></svg></span>Bajar</span><span class="tag t-mkt">MKT</span></div>
               <div class="insx-body">
                 <div class="insx-nm">EST_DardaCorteSilencioso_WPP</div>
                 <div class="insx-chips"><span class="insx-chip">Intereses · Constructoras</span><span class="insx-chip">Demolición sin polvo</span></div>
@@ -1005,7 +1013,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
               </div>
             </div>
             <div class="insx escalar">
-              <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/></svg></span>Escalar</span><span class="tag t-mkt">MKT</span></div>
+              <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/></svg></span>Subir</span><span class="tag t-mkt">MKT</span></div>
               <div class="insx-body">
                 <div class="insx-nm">VID_SherpaSubsuelo_LAA</div>
                 <div class="insx-chips"><span class="insx-chip">LAA · Interior</span><span class="insx-chip">Compactos interiores</span></div>
@@ -1030,7 +1038,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
       <div class="instab it-conjuntos">
         <div class="insxgrid">
           <div class="insx escalar">
-            <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/></svg></span>Escalar</span><span class="tag t-mkt">MKT</span></div>
+            <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/></svg></span>Subir</span><span class="tag t-mkt">MKT</span></div>
             <div class="insx-body">
               <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Retargeting</div>
               <div class="insx-chips"><span class="insx-chip">1 anuncio</span><span class="insx-chip">Demolición sin polvo</span></div>
@@ -1120,7 +1128,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
       <div class="sec-head">
         <div class="eyebrow"><span class="eb-orb"></span>Evolución · últimos 2 años</div>
         <h1 class="sec">El mismo presupuesto, <em>rindiendo cada vez más.</em></h1>
-        <p class="lead">Bajamos el costo por comprador un <b>73%</b> — de $44.667 a $12.043 — con inversión casi constante, y las cotizaciones ×<b>3,3</b>.</p>
+        <p class="lead">Bajamos el costo por comprador un <b>73%</b> de $44.667 a $12.043, con inversión casi constante, y las cotizaciones ×<b>3,3</b>.</p>
       </div>
 
       <div class="sec-head" style="margin-top:4px"><div class="eyebrow"><span class="eb-orb"></span>Antes vs con Prometheo · el cambio en las variables</div></div>
@@ -1341,12 +1349,12 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
         <p class="lead">Meta Ads y Google Ads ya están integrados. Sumá un canal nuevo: pasá el mouse por encima para ver cómo cargarlo.</p>
       </div>
       <div class="eyebrow"><span class="eb-orb"></span>Conectados</div>
-      <div class="intg-grid" style="margin-bottom:22px">
+      <div class="intg-grid g2" style="margin-bottom:22px">
         <div class="intg connected"><span class="stt on">Activo</span><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="#4F73C4" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7c0 5 3.5 10 8 10s8-5 8-10M4 7c0-2 1.6-3 3-3 3 0 4 4 5 8M20 7c0-2-1.6-3-3-3-3 0-4 4-5 8"/></svg></div><h4>Meta Ads</h4><p>Campañas de Instagram y Facebook</p></div>
         <div class="intg connected"><span class="stt on">Activo</span><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 8.5 12H12V9.5h8.8A9 9 0 0 0 12 3Z"/></svg></div><h4>Google Ads</h4><p>Búsqueda, Performance Max y Display</p></div>
       </div>
       <div class="eyebrow"><span class="eb-orb"></span>Canales disponibles para integrar</div>
-      <div class="intg-grid">
+      <div class="intg-grid g2">
         <div class="intg avail"><span class="stt off">Disponible</span><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="#0A66C2" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v16H4zM8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4"/></svg></div><h4>LinkedIn Marketing</h4><p>Campañas B2B y lead gen</p><div class="intg-cta"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15V3m0 0-4 4m4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Cargar export</div></div>
         <div class="intg avail"><span class="stt off">Disponible</span><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="#C77AA8" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg></div><h4>Email Marketing</h4><p>Aperturas, clics y conversiones</p><div class="intg-cta"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15V3m0 0-4 4m4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Cargar export</div></div>
         <div class="intg avail"><span class="stt off">Disponible</span><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="#2FA88A" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0-8-4.9L3 21l4.9-1A9 9 0 0 0 12 21Z"/></svg></div><h4>WhatsApp Marketing</h4><p>Campañas y difusión masiva</p><div class="intg-cta"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15V3m0 0-4 4m4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Cargar export</div></div>
@@ -1366,7 +1374,7 @@ td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;ma
     <div class="simple-note" style="margin-top:22px;align-items:center;gap:9px;font-size:12px;color:var(--ink3)">
       <span class="eb-orb" style="width:13px;height:13px"></span>Estás en modo <b style="color:var(--ink2);margin:0 3px">Básico</b>. Activá <b style="color:var(--ink2);margin:0 3px">Avanzada</b> para el detalle anuncio por anuncio, más cards y las columnas técnicas.
     </div>
-    <div class="footer"><span class="orb"></span><b style="color:var(--ink2)">AUREA Hub</b> · Inteligencia Comercial · sobre Prometheo — DRAKON · marketing × Prometheo · datos ilustrativos</div>
+    <div class="footer"><span class="orb"></span><b style="color:var(--ink2)">AUREA Hub</b> · Inteligencia Comercial · sobre Prometheo · DRAKON · marketing × Prometheo · datos ilustrativos</div>
   </main>
 </div>
 <script>

@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AUREA · Capa de Inteligencia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;0,6..72,500&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg1:#E9E4F4; --bg2:#F4F2FA;
+  --surface:#ffffff; --surface2:#FAF9FD; --inset:#F3F1FA;
+  --glass:rgba(255,255,255,.60); --glass-brd:rgba(255,255,255,.7);
+  --ink:#1E1A2E; --ink2:#4A4560; --ink3:#7A7392; --ink4:#A49CBC;
+  --line:rgba(30,22,60,.10); --line2:rgba(30,22,60,.055);
+  --vio:#7C5CBF; --blu:#5B8FD9; --pnk:#C77AA8;
+  --vio-soft:#EDE7F9; --blu-soft:#E4EDFB; --pnk-soft:#F7E7F0;
+  --grad:linear-gradient(103deg,#7C5CBF 0%,#5B8FD9 52%,#C77AA8 100%);
+  --grad-soft:linear-gradient(135deg,#F1EBFB 0%,#E7EFFB 52%,#FAEBF3 100%);
+  --good:#2F9469; --good-bg:#E4F3EC; --good-ink:#2A7C57;
+  --warn:#B5751F; --warn-bg:#FaF0DF; --warn-ink:#8E5A17;
+  --crit:#D65A47; --crit-bg:#FBE9E5; --crit-ink:#A8442F;
+  --src-pro:#2F9469; --src-meta:#4F73C4; --src-calc:#7C5CBF; --src-wpp:#2FA88A;
+  --r-xs:9px; --r-s:12px; --r-m:16px; --r-l:20px; --r-xl:24px;
+  --hel:'Arimo',system-ui,-apple-system,Segoe UI,sans-serif;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --shadow:0 1px 2px -1px rgba(40,26,80,.10),0 8px 24px -12px rgba(70,44,130,.20);
+  --shadow-lg:0 1px 2px -1px rgba(40,26,80,.10),0 18px 46px -18px rgba(70,44,130,.34);
+  --ring:0 0 0 1px var(--line);
+}
+:root:not([data-theme=light]) @media (prefers-color-scheme:dark){}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg1:#141225; --bg2:#1B1830;
+  --surface:#221F36; --surface2:#282540; --inset:#1C1930;
+  --glass:rgba(42,38,66,.55); --glass-brd:rgba(255,255,255,.08);
+  --ink:#F2EFFA; --ink2:#C7C1DD; --ink3:#968FB4; --ink4:#6C6590;
+  --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.06);
+  --vio-soft:#2C2550; --blu-soft:#22304F; --pnk-soft:#3A2740;
+  --grad-soft:linear-gradient(135deg,#2A2350 0%,#22304F 52%,#3A2740 100%);
+  --good:#54B98C; --good-bg:#1D3A2E; --good-ink:#7FD3AB;
+  --warn:#D89A47; --warn-bg:#3A2E1A; --warn-ink:#E7B872;
+  --crit:#E67A66; --crit-bg:#3A2320; --crit-ink:#F09E8C;
+  --shadow:0 0 0 1px rgba(255,255,255,.07),0 14px 40px -20px rgba(0,0,0,.6);
+  --shadow-lg:0 0 0 1px rgba(255,255,255,.08),0 22px 60px -22px rgba(0,0,0,.7);
+  --ring:0 0 0 1px var(--line);
+}}
+[data-theme=dark]{
+  --bg1:#141225; --bg2:#1B1830;
+  --surface:#221F36; --surface2:#282540; --inset:#1C1930;
+  --glass:rgba(42,38,66,.55); --glass-brd:rgba(255,255,255,.08);
+  --ink:#F2EFFA; --ink2:#C7C1DD; --ink3:#968FB4; --ink4:#6C6590;
+  --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.06);
+  --vio-soft:#2C2550; --blu-soft:#22304F; --pnk-soft:#3A2740;
+  --grad-soft:linear-gradient(135deg,#2A2350 0%,#22304F 52%,#3A2740 100%);
+  --good:#54B98C; --good-bg:#1D3A2E; --good-ink:#7FD3AB;
+  --warn:#D89A47; --warn-bg:#3A2E1A; --warn-ink:#E7B872;
+  --crit:#E67A66; --crit-bg:#3A2320; --crit-ink:#F09E8C;
+  --shadow:0 0 0 1px rgba(255,255,255,.07),0 14px 40px -20px rgba(0,0,0,.6);
+  --shadow-lg:0 0 0 1px rgba(255,255,255,.08),0 22px 60px -22px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--hel);color:var(--ink);background:
+  radial-gradient(1100px 620px at 82% -8%,rgba(124,92,191,.16),transparent 60%),
+  radial-gradient(900px 560px at 5% 0%,rgba(91,143,217,.13),transparent 55%),
+  linear-gradient(180deg,var(--bg1),var(--bg2) 46%);
+  min-height:100vh}
+em{font-family:var(--serif);font-style:italic;font-weight:400}
+.grad-txt{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.tnum{font-variant-numeric:tabular-nums}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+
+/* hidden state radios */
+.st{position:absolute;width:0;height:0;opacity:0;pointer-events:none}
+
+/* ============ SHELL ============ */
+.shell{display:flex;gap:18px;max-width:1360px;margin:0 auto;padding:18px 20px 40px;align-items:flex-start}
+
+/* ---- Sidebar ---- */
+.side{position:sticky;top:18px;flex:0 0 220px;width:220px;align-self:flex-start;
+  background:var(--glass);border:1px solid var(--glass-brd);border-radius:var(--r-xl);
+  box-shadow:var(--shadow);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);
+  padding:16px 13px;display:flex;flex-direction:column;gap:5px;min-height:calc(100vh - 58px)}
+.brand{display:flex;align-items:center;gap:11px;padding:6px 8px 16px;margin-bottom:6px;border-bottom:1px solid var(--line2)}
+.brand .sph{width:38px;height:38px;flex-shrink:0;filter:drop-shadow(0 4px 10px rgba(124,92,191,.35))}
+.brand-t{line-height:1}
+.brand-t b{font-size:15px;font-weight:700;letter-spacing:-.02em;display:block}
+.brand-t span{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.navlab{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);padding:10px 10px 5px}
+.nav{display:flex;align-items:center;gap:11px;padding:9px 11px;border-radius:var(--r-s);cursor:pointer;
+  font-size:13px;font-weight:600;color:var(--ink2);transition:background .14s,color .14s;position:relative;user-select:none}
+.nav svg{width:18px;height:18px;flex-shrink:0;stroke:var(--ink3);transition:stroke .14s}
+.nav:hover{background:var(--inset)}
+.nav .dot{margin-left:auto;font-size:9px;font-weight:700;background:var(--vio-soft);color:var(--vio);
+  padding:2px 6px;border-radius:20px;line-height:1.3}
+.side-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--line2);display:flex;flex-direction:column;gap:8px}
+.themebtn{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:var(--r-s);border:1px solid var(--line);
+  background:var(--surface);color:var(--ink2);font-size:12px;font-weight:600;cursor:pointer;transition:.14s}
+.themebtn:hover{border-color:var(--vio);color:var(--ink)}
+.themebtn svg{width:16px;height:16px;stroke:currentColor}
+.themebtn .moon{display:none}
+[data-theme=dark] .themebtn .sun{display:none}[data-theme=dark] .themebtn .moon{display:inline}
+
+/* active nav via radios */
+#n-panorama:checked~.shell .nav[data-t=panorama],
+#n-demanda:checked~.shell .nav[data-t=demanda],
+#n-campanas:checked~.shell .nav[data-t=campanas],
+#n-meta:checked~.shell .nav[data-t=meta],
+#n-audiencias:checked~.shell .nav[data-t=audiencias],
+#n-insights:checked~.shell .nav[data-t=insights],
+#n-evolucion:checked~.shell .nav[data-t=evolucion],
+#n-cruce:checked~.shell .nav[data-t=cruce],
+#n-integracion:checked~.shell .nav[data-t=integracion]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
+#n-panorama:checked~.shell .nav[data-t=panorama] svg,
+#n-demanda:checked~.shell .nav[data-t=demanda] svg,
+#n-campanas:checked~.shell .nav[data-t=campanas] svg,
+#n-meta:checked~.shell .nav[data-t=meta] svg,
+#n-audiencias:checked~.shell .nav[data-t=audiencias] svg,
+#n-insights:checked~.shell .nav[data-t=insights] svg,
+#n-evolucion:checked~.shell .nav[data-t=evolucion] svg,
+#n-cruce:checked~.shell .nav[data-t=cruce] svg,
+#n-integracion:checked~.shell .nav[data-t=integracion] svg{stroke:#fff}
+#n-panorama:checked~.shell .nav[data-t=panorama] .dot,
+#n-demanda:checked~.shell .nav[data-t=demanda] .dot,
+#n-campanas:checked~.shell .nav[data-t=campanas] .dot,
+#n-meta:checked~.shell .nav[data-t=meta] .dot,
+#n-audiencias:checked~.shell .nav[data-t=audiencias] .dot,
+#n-insights:checked~.shell .nav[data-t=insights] .dot,
+#n-evolucion:checked~.shell .nav[data-t=evolucion] .dot,
+#n-cruce:checked~.shell .nav[data-t=cruce] .dot,
+#n-integracion:checked~.shell .nav[data-t=integracion] .dot{background:rgba(255,255,255,.25);color:#fff}
+
+/* ---- Main ---- */
+.main{flex:1 1 auto;min-width:0}
+.topbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.tb-l{display:flex;align-items:center;gap:12px;min-width:0}
+.tb-logo{height:26px;width:auto;opacity:.95}
+.tb-txt b{font-size:15px;font-weight:700;letter-spacing:-.01em;display:block;line-height:1.1}
+.tb-txt span{font-size:11px;color:var(--ink3)}
+.tb-r{display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap}
+.upd{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink3);white-space:nowrap}
+.upd b{color:var(--ink2);font-weight:600}
+.dotb{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+/* mode segmented */
+.mode{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-s);padding:3px;gap:2px;box-shadow:var(--ring)}
+.mode label{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--ink3);padding:7px 13px;border-radius:9px;cursor:pointer;transition:.14s;white-space:nowrap}
+.mode label svg{width:14px;height:14px;stroke:currentColor}
+#mode-simple:checked~.shell .mode label[for=mode-simple],
+#mode-adv:checked~.shell .mode label[for=mode-adv]{background:var(--grad);color:#fff}
+
+/* panels + mode visibility */
+.panel{display:none;animation:fade .25s ease-out}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+#n-panorama:checked~.shell .p-panorama,
+#n-demanda:checked~.shell .p-demanda,
+#n-campanas:checked~.shell .p-campanas,
+#n-meta:checked~.shell .p-meta,
+#n-audiencias:checked~.shell .p-audiencias,
+#n-insights:checked~.shell .p-insights,
+#n-evolucion:checked~.shell .p-evolucion,
+#n-cruce:checked~.shell .p-cruce,
+#n-integracion:checked~.shell .p-integracion{display:block}
+.adv-only,.avz{display:none!important}
+#mode-adv:checked~.shell .adv-only,#mode-adv:checked~.shell .avz{display:block!important}
+#mode-adv:checked~.shell .ins.adv-only,#mode-adv:checked~.shell .ins.avz{display:flex!important}
+.bsc{display:block!important}
+#mode-adv:checked~.shell .bsc{display:none!important}
+.simple-note{display:none}
+#mode-simple:checked~.shell .simple-note{display:flex}
+/* ===== fuente mini-cards + jerarquía + objetivos (feedback Sofi) ===== */
+.srclegend{display:flex;flex-wrap:wrap;gap:10px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:12px 15px;box-shadow:var(--shadow);margin-bottom:12px}
+.slg{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink3);line-height:1.3;flex:1;min-width:170px}
+.slg .mc{font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;padding:3px 8px;border-radius:7px;white-space:nowrap;flex-shrink:0}
+.slg b{color:var(--ink2);font-weight:600}
+.mc-meta{background:var(--src-meta)}.mc-pro{background:var(--src-pro)}.mc-calc{background:var(--src-calc)}.mc-costo{background:#B5751F}
+.hierbar{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.hcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:13px 15px 14px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--hc)}
+.hcard .hn{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;margin-bottom:4px}
+.hcard .hstep{width:20px;height:20px;border-radius:6px;background:var(--hc);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+.hcard .hd{font-size:11.5px;color:var(--ink3);line-height:1.4}
+.hcard .hsrc{font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--hc);margin-top:7px}
+.obj{display:inline-flex;font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.obj-msg{background:var(--vio-soft);color:var(--vio)}
+.obj-ret{background:var(--pnk-soft);color:#B14C86}
+.obj-lal{background:var(--blu-soft);color:var(--src-meta)}
+.obj-traf{background:#DCF0EC;color:#1F7A63}
+.obj-alc{background:#FAF0DF;color:#8E5A17}
+[data-theme=dark] .obj-traf{background:#123028;color:#57C7A6}[data-theme=dark] .obj-alc{background:#3A2E1A;color:#E7B872}[data-theme=dark] .obj-ret{color:#E39BC4}
+/* big campaign summary cards (modo básico) */
+.bigcamp{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.bc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);padding:18px 18px 17px;box-shadow:var(--shadow);border-top:3px solid var(--bcac)}
+.bc-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px}
+.bc-nm{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.bc-o{font-size:11.5px;color:var(--ink3);margin-bottom:15px;display:flex;align-items:center;gap:6px}
+.bc-big{display:flex;align-items:flex-end;gap:7px}
+.bc-big .n{font-size:42px;font-weight:700;letter-spacing:-.03em;line-height:.85;font-variant-numeric:tabular-nums}
+.bc-big .u{font-size:12px;color:var(--ink3);font-weight:600;padding-bottom:5px}
+.bc-cap{font-size:11.5px;color:var(--ink3);margin:5px 0 15px}
+.bc-cap b{color:var(--ink2)}
+.bc-row{display:flex;gap:9px}
+.bc-row>div{flex:1;background:var(--surface2);border:1px solid var(--line2);border-radius:var(--r-s);padding:10px 11px;text-align:left}
+.bc-row .v{font-size:19px;font-weight:700;letter-spacing:-.01em;line-height:1;font-variant-numeric:tabular-nums}
+.bc-row .k{font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;font-weight:600;margin-top:4px;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.bc-verd{margin-top:14px;padding-top:13px;border-top:1px solid var(--line2);font-size:12px;color:var(--ink2);line-height:1.45;display:flex;gap:8px;align-items:flex-start}
+.bc-verd b{color:var(--ink)}
+.bc-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.mc-in{font-size:8px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:#fff;padding:1px 5px;border-radius:6px}
+/* pre / post Prometheo */
+.prepost{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pp{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:15px 16px;box-shadow:var(--shadow)}
+.pp-l{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);margin-bottom:11px}
+.pp-flow{display:flex;align-items:center;gap:10px}
+.pp-a .v{font-size:17px;font-weight:600;color:var(--ink3);line-height:1;font-variant-numeric:tabular-nums}
+.pp-a .t{font-size:8.5px;color:var(--ink4);text-transform:uppercase;letter-spacing:.03em;margin-top:3px;font-weight:700}
+.pp-ar svg{width:17px;height:17px;stroke:var(--vio)}
+.pp-b .v{font-size:25px;font-weight:700;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.pp-b .t{font-size:8.5px;color:var(--src-pro);text-transform:uppercase;letter-spacing:.03em;margin-top:3px;font-weight:800}
+.pp-d{margin-top:10px;font-size:11px;font-weight:700}
+/* cross matrix (Demanda × Campaña) */
+.xwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-m);box-shadow:var(--shadow);background:var(--surface)}
+table.xtab{min-width:920px}
+table.xtab thead th{background:var(--surface2)}
+.xcamp td{background:var(--inset)!important;font-weight:700;color:var(--ink)!important;text-transform:uppercase;font-size:10px;letter-spacing:.03em;text-align:left!important}
+.xcamp .obj{margin-left:8px}
+@media(max-width:900px){.bigcamp,.prepost{grid-template-columns:1fr 1fr}.hierbar{grid-template-columns:1fr}}
+@media(max-width:600px){.bigcamp,.prepost{grid-template-columns:1fr}.bc-row{flex-wrap:wrap}}
+@media (prefers-reduced-motion:reduce){.panel{animation:none}}
+
+/* ============ COMMON PIECES ============ */
+.sec-head{margin:26px 0 14px}
+.eyebrow{display:flex;align-items:center;gap:9px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:9px}
+.eb-orb{width:16px;height:16px;border-radius:50%;background:var(--grad);box-shadow:0 2px 6px -1px rgba(124,92,191,.5);flex-shrink:0}
+h1.sec{font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+h1.sec em{font-weight:400}
+.lead{font-size:13px;color:var(--ink3);max-width:760px;line-height:1.55;margin-top:8px;text-wrap:pretty}
+.lead b{color:var(--ink2);font-weight:600}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);box-shadow:var(--shadow)}
+.ghdr{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:14px}
+.ghdr .r{margin-left:auto;font-size:10px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink3)}
+
+/* source pill */
+.src{font-size:8.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:20px;color:#fff;white-space:nowrap}
+.s-pro{background:var(--src-pro)}.s-meta{background:var(--src-meta)}.s-calc{background:var(--src-calc)}.s-wpp{background:var(--src-wpp)}
+.s-pro.gh,.s-meta.gh{color:#fff}
+
+/* owner tags */
+.tag{font-size:8.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.t-mkt{background:var(--blu-soft);color:var(--src-meta)}
+.t-ventas{background:var(--good-bg);color:var(--good-ink)}
+
+/* delta */
+.delta{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700}
+.d-up{color:var(--good)}.d-dn-good{color:var(--good)}.d-dn{color:var(--crit)}.d-flat{color:var(--ink3)}
+.delta svg{width:11px;height:11px;stroke:currentColor;stroke-width:2.4}
+
+/* banner */
+.banner{display:flex;gap:13px;align-items:flex-start;border-radius:var(--r-m);padding:14px 16px;font-size:13px;color:var(--ink2);line-height:1.5;border:1px solid}
+.banner b{color:var(--ink)}
+.bn-ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bn-ic svg{width:18px;height:18px}
+.banner.good{background:var(--good-bg);border-color:color-mix(in srgb,var(--good) 34%,transparent)}
+.banner.good .bn-ic{background:var(--good);color:#fff}
+.banner.info{background:var(--vio-soft);border-color:color-mix(in srgb,var(--vio) 26%,transparent)}
+.banner.info .bn-ic{background:var(--grad);color:#fff}
+
+/* empty state */
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:26px 18px;text-align:center;
+  border:1px dashed var(--line);border-radius:var(--r-s);color:var(--ink3);font-size:12px;background:var(--surface2)}
+.empty svg{width:22px;height:22px;stroke:var(--ink4);margin-bottom:2px}
+.empty b{color:var(--ink2);font-size:12.5px;font-weight:600}
+
+/* ============ PANORAMA (Dosage layout) ============ */
+.hero-grid{display:grid;grid-template-columns:1.62fr 1fr;gap:14px;margin-bottom:14px}
+.hero{position:relative;overflow:hidden;border-radius:var(--r-xl);background:var(--grad);color:#fff;padding:22px 24px;box-shadow:var(--shadow-lg);isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 88% -20%,rgba(255,255,255,.34),transparent 55%);z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero-sph{position:absolute;right:-30px;top:-24px;width:150px;opacity:.62;z-index:0;filter:saturate(1.1) drop-shadow(0 10px 24px rgba(0,0,0,.2));mix-blend-mode:screen}
+.hero-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+.hero-kick{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.hero-per{font-size:10.5px;font-weight:600;color:rgba(255,255,255,.9);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);padding:5px 11px;border-radius:20px}
+.hero-h{font-family:var(--serif);font-style:italic;font-weight:500;font-size:27px;line-height:1.08;letter-spacing:-.01em;margin:2px 0 3px;max-width:80%}
+.hero-sub{font-size:12px;color:rgba(255,255,255,.85);line-height:1.45;max-width:88%;margin-bottom:16px}
+.hero-sub b{color:#fff;font-weight:700}
+.chartbox{position:relative;margin:2px 0 14px}
+.chart-scale{display:flex;justify-content:space-between;font-size:9.5px;color:rgba(255,255,255,.7);margin-bottom:3px;font-weight:600}
+.chart svg{width:100%;height:120px;display:block;overflow:visible}
+.chart-x{display:flex;justify-content:space-between;font-size:9px;color:rgba(255,255,255,.62);margin-top:5px;font-weight:600}
+.endtag{position:absolute;right:-2px;top:26px;background:#fff;color:var(--vio);font-weight:700;font-size:11px;padding:4px 9px;border-radius:9px;box-shadow:0 4px 12px rgba(0,0,0,.2);line-height:1.1;z-index:2}
+.endtag span{display:block;font-size:8px;color:var(--ink3);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.hero-stats{display:grid;grid-template-columns:1fr 1.15fr 1fr;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-m);overflow:hidden}
+.hs{padding:12px 14px;text-align:center}
+.hs+.hs{border-left:1px solid rgba(255,255,255,.18)}
+.hs .l{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:4px}
+.hs .v{font-size:22px;font-weight:700;letter-spacing:-.01em;line-height:1}
+.hs.big .v{font-size:27px}
+.hs .m{font-size:9.5px;color:rgba(255,255,255,.72);margin-top:3px}
+
+/* right pink hero */
+.hero-pink{display:flex;flex-direction:column;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-lg)}
+.hp-top{background:linear-gradient(135deg,#C77AA8,#9E6BC0);color:#fff;padding:18px 20px;position:relative;overflow:hidden;flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:150px}
+.hp-top::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 90% -10%,rgba(255,255,255,.3),transparent 55%)}
+.hp-top>*{position:relative}
+.hp-ic{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center}
+.hp-ic svg{width:21px;height:21px;stroke:#fff}
+.hp-l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:3px}
+.hp-v{font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.hp-d{font-size:11.5px;color:rgba(255,255,255,.9);margin-top:6px;display:flex;align-items:center;gap:6px}
+.hp-d .pin{background:rgba(255,255,255,.22);padding:3px 8px;border-radius:20px;font-weight:700;font-size:10.5px}
+.hp-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.hp-chip{font-size:10px;font-weight:700;color:#fff;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);padding:5px 10px;border-radius:20px;white-space:nowrap}
+.hp-spk{width:100%;height:50px;display:block;margin:2px 0;overflow:visible}
+.hp-foot{background:var(--surface);padding:13px 16px;display:flex;align-items:center;gap:10px}
+.hp-foot .mini{flex:1}
+.hp-foot .mini b{font-size:15px;font-weight:700;display:block;line-height:1}
+.hp-foot .mini span{font-size:9.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.hp-sp{width:1px;align-self:stretch;background:var(--line)}
+
+/* KPI chip cards */
+.kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:15px 15px 13px;box-shadow:var(--shadow);position:relative}
+.k-ic{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:11px;background:var(--vio-soft)}
+.k-ic svg{width:18px;height:18px;stroke:var(--vio)}
+.k-ic.blu{background:var(--blu-soft)}.k-ic.blu svg{stroke:var(--blu)}
+.k-ic.pnk{background:var(--pnk-soft)}.k-ic.pnk svg{stroke:var(--pnk)}
+.k-l{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);line-height:1.25;min-height:24px}
+.k-row{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:6px}
+.k-n{font-size:29px;font-weight:700;letter-spacing:-.02em;line-height:.95}
+.k-s{font-size:10.5px;color:var(--ink3);margin-top:6px}
+.spk{width:100%;height:30px;display:block;margin-top:9px;overflow:visible}
+
+/* funnel steps */
+.funnel{display:flex;gap:0;align-items:stretch;flex-wrap:wrap}
+.fstep{flex:1;min-width:120px;padding:2px 6px;text-align:left;position:relative}
+.f-n{font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.f-l{font-size:11px;font-weight:600;color:var(--ink2);margin-top:3px}
+.f-conv{display:inline-flex;align-items:center;gap:5px;margin-top:9px;font-size:11px;font-weight:700;color:var(--vio);background:var(--vio-soft);padding:3px 9px;border-radius:20px}
+.f-conv.sm{color:var(--ink3);background:var(--inset)}
+.f-arrow{align-self:center;color:var(--ink4);flex:0 0 20px;display:flex;justify-content:center}
+.f-arrow svg{width:16px;height:16px;stroke:var(--ink4)}
+.f-bar{height:5px;border-radius:20px;background:var(--grad);margin-top:11px;opacity:.9}
+
+/* two column layout for panorama bottom */
+.pcols{display:grid;grid-template-columns:1fr 340px;gap:14px;align-items:start;margin-top:14px}
+.side-panel{display:flex;flex-direction:column;gap:14px}
+.dec{display:flex;flex-direction:column;gap:9px}
+.dec-item{display:flex;gap:11px;align-items:flex-start;padding:11px;border-radius:var(--r-s);border:1px solid var(--line);background:var(--surface2)}
+.dec-ic{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dec-ic svg{width:15px;height:15px;stroke:#fff}
+.dec-b{flex:1;min-width:0}
+.dec-h{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:2px}
+.dec-h b{font-size:12.5px;font-weight:700}
+.dec-t{font-size:11.5px;color:var(--ink3);line-height:1.4}
+.dec-t b{color:var(--ink2)}
+.srcpanel{display:flex;flex-direction:column;gap:9px}
+.srcrow{display:flex;align-items:center;gap:10px;font-size:12px}
+.srcrow .nm{font-weight:600;color:var(--ink2)}
+.srcrow .dt{margin-left:auto;font-size:10.5px;color:var(--ink3);font-variant-numeric:tabular-nums}
+
+/* ============ DEMANDA ============ */
+.qgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:6px}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:15px;box-shadow:var(--shadow)}
+.q-pct{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--vio);margin-bottom:6px}
+.q-n{font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.q-t{font-size:12px;color:var(--ink2);margin-top:5px;line-height:1.35}
+.vargrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.varcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:16px 17px;box-shadow:var(--shadow)}
+.bar-row{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:center;margin-bottom:10px}
+.bar-row:last-child{margin-bottom:0}
+.bar-lab{font-size:12px;color:var(--ink2);font-weight:500}
+.bar-val{font-size:11.5px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.bar-val span{color:var(--ink3);font-weight:600;margin-left:4px}
+.bar-track{grid-column:1/-1;height:7px;border-radius:20px;background:var(--inset);overflow:hidden}
+.bar-fill{height:100%;border-radius:20px;background:var(--grad)}
+
+/* ============ CAMPAÑAS ============ */
+.hl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:6px}
+.hl{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:14px 16px;box-shadow:var(--shadow);display:flex;gap:13px;align-items:center}
+.hl-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.hl-b{flex:1;min-width:0}
+.hl-n{font-family:'Courier New',monospace;font-size:12.5px;font-weight:700;color:var(--ink)}
+.hl-c{font-size:11px;color:var(--ink3);margin:2px 0 0}
+.hl-m{display:flex;gap:16px;flex-shrink:0;text-align:right}
+.hl-m>div .v{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.hl-m>div .k{font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;font-weight:600}
+.glossary{display:grid;grid-template-columns:repeat(2,1fr);gap:9px 20px}
+.gl{display:flex;gap:9px;align-items:baseline;font-size:12px;color:var(--ink3);line-height:1.4}
+.gl b{color:var(--ink2);font-weight:700;min-width:70px}
+.camp{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;box-shadow:var(--shadow);margin-bottom:11px}
+summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:none}
+.camp-s{display:flex;align-items:center;gap:13px;padding:15px 17px}
+.camp-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.camp-t{flex:1;min-width:0}
+.camp-n{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.camp-o{font-size:11px;color:var(--ink3);margin-top:2px}
+.camp-m{display:flex;gap:20px;flex-shrink:0}
+.camp-m>div{text-align:right}
+.camp-m .v{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.camp-m .k{font-size:8.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;font-weight:600}
+.chev{color:var(--ink3);transition:transform .2s;flex-shrink:0}
+.chev svg{width:16px;height:16px;stroke:currentColor}
+.camp[open] .chev{transform:rotate(180deg)}
+.tblwrap{overflow-x:auto;border-top:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;min-width:820px;font-variant-numeric:tabular-nums}
+thead th{font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--ink3);text-align:right;padding:11px;background:var(--surface2);white-space:nowrap;position:sticky;top:0}
+thead th:first-child{text-align:left}
+.th-src{font-size:7.5px;font-weight:700;padding:1px 5px;border-radius:10px;margin-left:5px;color:#fff}
+tbody td{padding:11px;font-size:12px;text-align:right;border-top:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+tbody td:first-child{text-align:left}
+tbody tr:hover td{background:var(--surface2)}
+.anm{font-family:'Courier New',monospace;font-size:11px!important;font-weight:700;color:var(--ink)!important}
+.prof{font-size:10.5px;color:var(--ink3);display:block;font-family:var(--hel);font-weight:500}
+.calc{font-weight:700;color:var(--ink)!important}
+.pill{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;display:inline-block}
+.pi-esc{background:var(--good-bg);color:var(--good-ink)}
+.pi-mant{background:var(--blu-soft);color:var(--src-meta)}
+.pi-pausar{background:var(--crit-bg);color:var(--crit-ink)}
+.pi-subir{background:var(--vio-soft);color:var(--vio)}
+
+/* ============ META / integraciones ============ */
+.metagrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mt{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);padding:20px;box-shadow:var(--shadow)}
+.mt-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}
+.mt-ic{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:var(--grad)}
+.mt-ic svg{width:21px;height:21px;stroke:#fff}
+.mt h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.mt p{font-size:12px;color:var(--ink3);margin-bottom:14px;line-height:1.45}
+.acts{display:flex;flex-direction:column;gap:8px}
+.act{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1px solid var(--line);border-radius:var(--r-s);padding:10px 11px}
+.a-ic{width:24px;height:24px;border-radius:8px;background:var(--vio-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.a-ic svg{width:13px;height:13px;stroke:var(--vio)}
+.a-t{flex:1;font-size:11.5px;color:var(--ink2);line-height:1.4}
+.a-t b{color:var(--ink);font-weight:700}
+.a-b{font-size:10.5px;font-weight:700;color:#fff;background:var(--ink);border:none;border-radius:8px;padding:7px 11px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:.14s}
+.a-b:hover{transform:scale(.97)}
+[data-theme=dark] .a-b{background:var(--vio)}
+
+/* ============ AUDIENCIAS ============ */
+.aucard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;box-shadow:var(--shadow);margin-bottom:10px}
+.au-s{display:flex;align-items:center;gap:14px;padding:15px 17px}
+.au-ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--grad)}
+.au-ic svg{width:20px;height:20px;stroke:#fff}
+.au-t{flex:1;min-width:0}
+.au-n{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.au-badge{font-family:'Courier New',monospace;font-size:9.5px;font-weight:700;background:var(--inset);color:var(--ink2);padding:2px 7px;border-radius:6px}
+.au-ss{font-size:11.5px;color:var(--ink3);margin-top:2px}
+.au-c{font-size:25px;font-weight:700;letter-spacing:-.02em;line-height:1;text-align:right;flex-shrink:0}
+.au-c span{display:block;font-size:9px;color:var(--ink3);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.au-d{padding:0 17px 15px 71px}
+.au-d ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.au-d li{font-size:12px;color:var(--ink2);padding-left:15px;position:relative;line-height:1.4}
+.au-d li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--grad)}
+
+/* ============ INSIGHTS ============ */
+.insgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.ins{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px}
+.ins-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ins-cat{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3)}
+.ins-n{font-family:'Courier New',monospace;font-size:12.5px;font-weight:700;color:var(--ink)}
+.ins-meta{font-size:11px;color:var(--ink3);line-height:1.4}
+.ins-fact{font-size:12.5px;color:var(--ink2);line-height:1.45;flex:1}
+.ins-fact b{color:var(--ink);font-weight:700}
+.ins-hi{color:var(--good-ink);font-weight:700}
+.ins-lo{color:var(--crit-ink);font-weight:700}
+.ins-foot{display:flex;gap:8px;margin-top:2px}
+.ins-b{flex:1;font-size:11px;font-weight:700;color:#fff;background:var(--grad);border:none;border-radius:9px;padding:9px;cursor:pointer;transition:.14s}
+.ins-b:hover{transform:scale(.98)}
+.ins-b2{font-size:11px;font-weight:600;color:var(--ink2);background:var(--surface2);border:1px solid var(--line);border-radius:9px;padding:9px 12px;cursor:pointer}
+
+/* ============ EVOLUCIÓN ============ */
+.evo-hero{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin-bottom:14px}
+.evo-tabs{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-s);padding:3px;gap:2px;margin-bottom:12px}
+.evo-tabs label{font-size:12px;font-weight:700;color:var(--ink3);padding:7px 15px;border-radius:9px;cursor:pointer;transition:.14s}
+#ev-ano:checked~.shell .evo-tabs label[for=ev-ano],
+#ev-tri:checked~.shell .evo-tabs label[for=ev-tri],
+#ev-mes:checked~.shell .evo-tabs label[for=ev-mes]{background:var(--grad);color:#fff}
+.evo-table{display:none}
+#ev-ano:checked~.shell .evt-ano,
+#ev-tri:checked~.shell .evt-tri,
+#ev-mes:checked~.shell .evt-mes{display:block}
+.stat-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.statbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:16px;box-shadow:var(--shadow)}
+.statbox .l{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);margin-bottom:7px}
+.statbox .v{font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.statbox .m{font-size:11px;color:var(--ink3);margin-top:5px}
+
+/* ============ INTEGRACIÓN ============ */
+.baserow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+.base{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:17px;box-shadow:var(--shadow)}
+.base-hd{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.base-hd .src{margin-left:auto}
+.base h3{font-size:15px;font-weight:700}
+.base .role{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--vio);margin-bottom:8px}
+.base p{font-size:12px;color:var(--ink3);line-height:1.5}
+.base .count{margin-top:11px;font-size:11.5px;font-weight:700;color:var(--ink2);padding-top:11px;border-top:1px solid var(--line2)}
+.bridge{background:var(--grad-soft);border:1px solid var(--line);border-radius:var(--r-l);padding:20px 22px;text-align:center;margin-bottom:14px}
+.bridge .eq{font-family:'Courier New',monospace;font-size:15px;font-weight:700;color:var(--ink);margin:8px 0}
+.bridge .eq b{color:var(--vio)}
+.bridge p{font-size:12.5px;color:var(--ink3);max-width:600px;margin:0 auto;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.vchip{font-size:12px;font-weight:600;color:var(--ink2);background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:7px 13px;box-shadow:var(--shadow)}
+.order3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ord{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:15px;box-shadow:var(--shadow)}
+.ord .n{font-size:13px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.ord .n .num{width:22px;height:22px;border-radius:7px;background:var(--vio-soft);color:var(--vio);font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ord .d{font-size:11.5px;color:var(--ink3);line-height:1.4}
+.ord .who{font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink4);margin-top:7px}
+
+.footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px;font-size:11px;color:var(--ink3);flex-wrap:wrap}
+.footer .orb{width:14px;height:14px;border-radius:50%;background:var(--grad)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1080px){
+  .hero-grid{grid-template-columns:1fr}
+  .evo-hero{grid-template-columns:1fr}
+  .pcols{grid-template-columns:1fr}
+  .metagrid,.insgrid,.order3,.baserow{grid-template-columns:1fr 1fr}
+  .vargrid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .shell{flex-direction:column}
+  .side{position:static;width:100%;flex:none;min-height:0;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;gap:6px;padding:12px}
+  .side .brand{border-bottom:none;border-right:1px solid var(--line2);padding:2px 12px 2px 2px;margin:0 4px 0 0;flex-shrink:0}
+  .side .navlab{display:none}
+  .nav{flex-shrink:0;white-space:nowrap}.nav .dot{display:none}
+  .side-foot{margin:0 0 0 auto;padding:0;border:none;flex-direction:row;flex-shrink:0}
+  .themebtn span{display:none}
+}
+@media (max-width:720px){
+  .kgrid,.qgrid{grid-template-columns:1fr 1fr}
+  .hero-stats{grid-template-columns:1fr}
+  .hs+.hs{border-left:none;border-top:1px solid rgba(255,255,255,.18)}
+  .metagrid,.insgrid,.vargrid,.order3,.baserow,.hl-grid,.glossary,.stat-2{grid-template-columns:1fr}
+  .camp-m{display:none}
+  .funnel{flex-direction:column}.f-arrow{transform:rotate(90deg);margin:2px 0}
+}
+@media (max-width:440px){
+  .shell{padding:12px 12px 30px}
+  .kgrid,.qgrid{grid-template-columns:1fr}
+  .hero-h{max-width:100%;font-size:23px}.hero-sub{max-width:100%}
+}
+</style>
+<style>
+/* ===== rebuild v3 ===== */
+:root{--src-goog:#D97706;--goog-soft:#FaeEDD}
+[data-theme=dark]{--goog-soft:#3A2A12}
+.s-goog{background:var(--src-goog)}.mc-goog{background:var(--src-goog)}
+/* nav (dn ids) */
+#dn-panorama:checked~.shell .nav[data-t=panorama],#dn-ventacrm:checked~.shell .nav[data-t=ventacrm],#dn-insights:checked~.shell .nav[data-t=insights],#dn-metaprom:checked~.shell .nav[data-t=metaprom],#dn-audiencias:checked~.shell .nav[data-t=audiencias],#dn-evolucion:checked~.shell .nav[data-t=evolucion],#dn-metaads:checked~.shell .nav[data-t=metaads],#dn-googleads:checked~.shell .nav[data-t=googleads],#dn-integraciones:checked~.shell .nav[data-t=integraciones]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
+#dn-panorama:checked~.shell .nav[data-t=panorama] svg,#dn-ventacrm:checked~.shell .nav[data-t=ventacrm] svg,#dn-insights:checked~.shell .nav[data-t=insights] svg,#dn-metaprom:checked~.shell .nav[data-t=metaprom] svg,#dn-audiencias:checked~.shell .nav[data-t=audiencias] svg,#dn-evolucion:checked~.shell .nav[data-t=evolucion] svg,#dn-metaads:checked~.shell .nav[data-t=metaads] svg,#dn-googleads:checked~.shell .nav[data-t=googleads] svg,#dn-integraciones:checked~.shell .nav[data-t=integraciones] svg{stroke:#fff}
+#dn-panorama:checked~.shell .p-panorama,#dn-ventacrm:checked~.shell .p-ventacrm,#dn-insights:checked~.shell .p-insights,#dn-metaprom:checked~.shell .p-metaprom,#dn-audiencias:checked~.shell .p-audiencias,#dn-evolucion:checked~.shell .p-evolucion,#dn-metaads:checked~.shell .p-metaads,#dn-googleads:checked~.shell .p-googleads,#dn-integraciones:checked~.shell .p-integraciones{display:block}
+.navlab2{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);padding:14px 10px 5px;margin-top:6px;border-top:1px solid var(--line2)}
+.nav .chch{margin-left:auto;width:6px;height:6px;border-radius:50%;background:var(--good);flex-shrink:0}
+/* big brand header */
+.hbrand{display:flex;align-items:center;gap:15px}
+.hbrand .wm{font-size:38px;font-weight:800;letter-spacing:.01em;line-height:.85;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hbrand .ic{font-family:var(--serif);font-style:italic;font-weight:500;font-size:20px;color:var(--ink2);border-left:2px solid var(--line);padding-left:15px;line-height:1.05}
+.hbrand .ic b{display:block;font-family:var(--hel);font-style:normal;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--vio)}
+/* io bar (import/export/update) */
+.iobar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:14px 0}
+.iobtn{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;border-radius:11px;padding:9px 14px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink2);box-shadow:var(--shadow);transition:.14s}
+.iobtn:hover{border-color:var(--vio);color:var(--ink)}
+.iobtn svg{width:15px;height:15px;stroke:var(--vio)}
+.iobtn.primary{background:var(--grad);color:#fff;border:none}.iobtn.primary svg{stroke:#fff}
+.iobtn.locked{opacity:.6;cursor:not-allowed;filter:grayscale(.3)}
+.iobtn.locked:hover{border-color:var(--line);color:var(--ink2)}
+.iobtn .lk{font-size:8.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;background:var(--inset);color:var(--ink3);padding:2px 6px;border-radius:5px}
+.iohint{font-size:11px;color:var(--ink3);margin-left:auto}
+/* channel split */
+.chansplit{display:flex;align-items:center;gap:13px;margin:28px 0 16px}
+.chansplit .ln{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.chansplit b{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);display:inline-flex;align-items:center;gap:8px}
+.chansplit .eb-orb{width:14px;height:14px}
+/* conjunto grouped cell */
+td.cjcell{vertical-align:middle;font-weight:700;color:var(--ink)!important;border-left:2px solid var(--vio)!important;background:linear-gradient(90deg,var(--vio-soft),transparent)!important;font-size:11.5px}
+td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;margin-top:2px}
+/* insights redesign */
+.insxgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.insx{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden;border-top:3px solid var(--sealc)}
+.insx.pausar{--sealc:var(--crit)}.insx.escalar{--sealc:var(--good)}.insx.subir{--sealc:var(--vio)}.insx.reducir{--sealc:var(--warn)}
+.insx-top{padding:15px 16px 0;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.insx-seal{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:var(--sealc)}
+.insx-seal .ic{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--sealc)}
+.insx.subir .insx-seal .ic{background:var(--grad)}
+.insx-seal .ic svg{width:17px;height:17px;stroke:#fff}
+.insx-body{padding:11px 16px 16px}
+.insx-nm{font-family:'Courier New',monospace;font-size:13px;font-weight:700;margin-bottom:9px}
+.insx-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+.insx-chip{font-size:10px;font-weight:600;color:var(--ink2);background:var(--surface2);border:1px solid var(--line);border-radius:20px;padding:4px 10px;display:inline-flex;gap:5px;align-items:center}
+.insx-chip svg{width:11px;height:11px;stroke:var(--ink3)}
+.insx-b{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.insx-b li{font-size:12.5px;color:var(--ink2);padding-left:17px;position:relative;line-height:1.4}
+.insx-b li::before{content:"";position:absolute;left:0;top:6px;width:6px;height:6px;border-radius:50%;background:var(--sealc)}
+.insx-b b{color:var(--ink);font-variant-numeric:tabular-nums}
+.insx-cmp{border-top:1px dashed var(--line);padding-top:13px;display:flex;align-items:center;gap:13px}
+.insx-cmp .big{font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums;color:var(--sealc);flex-shrink:0}
+.insx-cmp .rt{flex:1}
+.insx-cmp .txt{font-size:11px;color:var(--ink3);line-height:1.35;margin-bottom:6px}
+.insx-cmp .txt b{color:var(--ink2)}
+.cmpbar{height:9px;border-radius:20px;background:var(--inset);position:relative;overflow:visible}
+.cmpbar span{position:absolute;left:0;top:0;bottom:0;border-radius:20px;background:var(--sealc)}
+.cmpbar i{position:absolute;top:-4px;bottom:-4px;width:2.5px;border-radius:2px;background:var(--ink)}
+.cmpbar{margin-bottom:15px}
+.cmpbar i::after{content:"1 msj";position:absolute;top:auto;bottom:-14px;left:50%;transform:translateX(-50%);font-size:7.5px;font-weight:800;color:var(--ink3);letter-spacing:.03em;white-space:nowrap}
+/* subtabs */
+.subtabs{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-s);padding:3px;gap:2px;margin-bottom:16px;box-shadow:var(--ring)}
+.subtabs label{font-size:12.5px;font-weight:700;color:var(--ink3);padding:8px 16px;border-radius:9px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.subtabs label svg{width:14px;height:14px;stroke:currentColor}
+#ins-anuncios:checked~.shell .subtabs label[for=ins-anuncios],#ins-conjuntos:checked~.shell .subtabs label[for=ins-conjuntos]{background:var(--grad);color:#fff}
+.instab{display:none}#ins-anuncios:checked~.shell .it-anuncios,#ins-conjuntos:checked~.shell .it-conjuntos{display:block}
+/* grupal averages */
+.grupal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px}
+.gv{background:var(--grad-soft);border:1px solid var(--line);border-radius:var(--r-m);padding:15px 16px;box-shadow:var(--shadow)}
+.gv .l{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3)}
+.gv .n{font-size:27px;font-weight:800;letter-spacing:-.02em;margin-top:7px;font-variant-numeric:tabular-nums;line-height:1}
+.gv .m{font-size:11px;color:var(--ink3);margin-top:4px}
+.gv .m b{color:var(--good-ink)}
+/* stage cards (Venta-CRM) */
+.stagegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);padding:17px 18px;box-shadow:var(--shadow);border-top:3px solid var(--stc)}
+.stage h4{font-size:15.5px;font-weight:700;letter-spacing:-.01em}
+.stage .ssub{font-size:11.5px;color:var(--ink3);margin:3px 0 14px;line-height:1.4}
+.stage .qty{font-size:36px;font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stage .qty small{font-size:12px;font-weight:600;color:var(--ink3);letter-spacing:0}
+.stage .rowl{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 0;border-top:1px solid var(--line2);font-size:12px}
+.stage .rowl .k{color:var(--ink3);display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.stage .rowl .k svg{width:14px;height:14px;stroke:var(--ink3)}
+.stage .rowl .v{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.stage .rowl .v small{font-weight:600;color:var(--ink3);font-size:10.5px}
+.stage .act{margin-top:13px;padding-top:12px;border-top:1px solid var(--line2);font-size:12px;color:var(--ink2);line-height:1.45;display:flex;gap:8px}
+.stage .act b{color:var(--ink)}
+.stage .act .d{width:8px;height:8px;border-radius:50%;background:var(--stc);flex-shrink:0;margin-top:5px}
+/* minimized expandable cards (avanzada) */
+.mincard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);box-shadow:var(--shadow);overflow:hidden;margin-bottom:10px}
+.mincard>summary{display:flex;align-items:center;gap:13px;padding:14px 16px;cursor:pointer}
+.mincard .mc-ic{width:30px;height:30px;border-radius:9px;background:var(--vio-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mincard .mc-ic svg{width:15px;height:15px;stroke:var(--vio)}
+.mincard .mc-t{flex:1;min-width:0}.mincard .mc-t b{font-size:13.5px;font-weight:700}
+.mincard .mc-t span{font-size:11px;color:var(--ink3);display:block;margin-top:1px}
+.mincard .mc-v{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;flex-shrink:0}
+.mincard .mc-v small{display:block;font-size:8.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;font-weight:600;text-align:right}
+.mincard .chev{color:var(--ink3);flex-shrink:0;transition:transform .2s}.mincard .chev svg{width:16px;height:16px;stroke:currentColor}
+.mincard[open] .chev{transform:rotate(180deg)}
+.mincard .mc-body{padding:2px 6px 6px;border-top:1px solid var(--line)}
+/* del clic a la venta: aligned 2x3 grid */
+.recorrido{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.rec{background:var(--surface2);border:1px solid var(--line2);border-radius:var(--r-m);padding:14px 15px;position:relative}
+.rec .st{font-size:9px;font-weight:800;color:var(--ink4);letter-spacing:.05em}
+.rec .n{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1;margin:5px 0 2px;font-variant-numeric:tabular-nums}
+.rec .n.grad-txt{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.rec .l{font-size:12px;font-weight:600;color:var(--ink2)}
+.rec .c{display:inline-block;margin-top:9px;font-size:10.5px;font-weight:700;color:var(--vio);background:var(--vio-soft);padding:3px 9px;border-radius:20px}
+.rec .c.sm{color:var(--ink3);background:var(--inset)}
+/* integraciones */
+.intg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.intg{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);padding:22px 20px;box-shadow:var(--shadow);text-align:center;transition:.16s}
+.intg .ci{width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;margin:0 auto 13px;background:var(--surface2);border:1px solid var(--line)}
+.intg .ci svg{width:28px;height:28px}
+.intg h4{font-size:15px;font-weight:700}
+.intg p{font-size:11.5px;color:var(--ink3);margin-top:4px;line-height:1.4}
+.intg.avail{border-style:dashed}
+.intg.avail .ci{filter:grayscale(1);opacity:.6;transition:.16s}
+.intg.avail:hover{border-style:solid;border-color:var(--vio);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.intg.avail:hover .ci{filter:none;opacity:1}
+.intg-cta{margin-top:13px;font-size:11.5px;font-weight:700;color:#fff;background:var(--grad);border-radius:10px;padding:9px;opacity:0;max-height:0;overflow:hidden;transition:.18s;display:flex;align-items:center;justify-content:center;gap:7px}
+.intg-cta svg{width:14px;height:14px;stroke:#fff}
+.intg.avail:hover .intg-cta{opacity:1;max-height:42px}
+.intg .stt{position:absolute;top:13px;right:13px;font-size:8.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
+.intg .stt.on{background:var(--good-bg);color:var(--good-ink)}
+.intg .stt.off{background:var(--inset);color:var(--ink3)}
+@media(max-width:1080px){.insxgrid,.intg-grid,.stagegrid{grid-template-columns:1fr 1fr}.grupal{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.insxgrid,.intg-grid,.stagegrid,.grupal,.recorrido{grid-template-columns:1fr}.hbrand .wm{font-size:30px}.hbrand .ic{font-size:16px}}
+</style>
+
+<style>
+/* ===== canal email marketing ===== */
+/* los paneles son items flex: sin min-width:0 no achican por debajo de su contenido
+   y una tabla ancha desborda la pagina entera en pantallas chicas */
+.main,.panel{min-width:0;max-width:100%}
+:root{--src-mail:#B4649B}
+.s-mail{background:var(--src-mail)}.mc-mail{background:var(--src-mail)}
+tbody tr.tot td{background:var(--inset);font-weight:700;color:var(--ink)}
+tbody tr.bad td{background:color-mix(in srgb,var(--crit) 7%,transparent)}
+tbody td small{color:var(--ink3);font-weight:600;margin-left:3px}
+#dn-email:checked~.shell .nav[data-t=email]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
+#dn-email:checked~.shell .nav[data-t=email] svg{stroke:#fff}
+#dn-email:checked~.shell .p-email{display:block}
+#dn-whatsapp:checked~.shell .nav[data-t=whatsapp]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
+#dn-whatsapp:checked~.shell .nav[data-t=whatsapp] svg{stroke:#fff}
+#dn-whatsapp:checked~.shell .p-whatsapp{display:block}
+.mc-wpp{background:var(--src-wpp)}.s-wpp{background:var(--src-wpp)}
+.p-email .cmpbar i::after,.p-whatsapp .cmpbar i::after{content:"comparación"}
+</style>
+</head>
+
+<style>
+/* informe: una sola columna, sin nav ni modos */
+.shell{max-width:none}
+.main{min-width:0;max-width:100%}
+tbody tr.tot td{background:var(--inset);font-weight:700;color:var(--ink)}
+tbody tr.bad td{background:color-mix(in srgb,var(--crit) 7%,transparent)}
+tbody td small{color:var(--ink3);font-weight:600;margin-left:3px}
+td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;margin-top:2px}
+.insx-cmp .cmpbar i::after{content:""}
+.footer{display:flex;align-items:center;gap:9px;font-size:11px;color:var(--ink3);padding-top:18px;border-top:1px solid var(--line)}
+@media(max-width:860px){.bigcamp{grid-template-columns:1fr!important}}
+</style>
+
+<body>
+<div class="shell" style="display:block;padding:0">
+  <main class="main" style="max-width:1180px;margin:0 auto;padding:34px 30px 70px">
+
+    <div class="hbrand" style="margin-bottom:4px;align-items:center;gap:14px">
+      <img class="sph" src="data:image/webp;base64,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" alt="" style="width:40px;height:40px">
+      <span class="wm" style="font-size:33px">Capa de Inteligencia</span>
+      <span class="ic" style="font-size:15px"><b>AUREA</b>Informe interno</span>
+      <img src="data:image/webp;base64,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" alt="" style="height:24px;width:auto;opacity:.9;margin-left:auto">
+    </div>
+    <h1 class="sec" style="font-size:38px;margin:14px 0 10px;letter-spacing:-.025em;line-height:1.08">Siete metodologías, <em>un filtro: qué se vuelve dato.</em></h1>
+    <p class="lead" style="max-width:830px;font-size:14px">Evaluamos seis metodologías de venta y una de marketing contra una sola pregunta: <b>si la aplicamos, ¿qué queda registrado en Prometheo que hoy no queda?</b> Una metodología que no produce dato no entra al tablero: entra al prompt del agente, a nuestro discovery, o a ningún lado. Este informe dice cuál va a cada lugar, con puntaje y con el criterio a la vista.</p>
+
+    <div class="banner info" style="margin:22px 0 26px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div><div><b>La tesis en una línea.</b> Inteligencia Comercial no es un tablero: es la lógica comercial que le prestamos al cliente que no la tiene. Hasta hoy esa lógica fue nuestra e implícita. Estas metodologías la vuelven <b>explícita, elegible por rubro y auditable</b>, que es lo que permite sistematizarla y cobrarla.</div></div>
+
+    <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>El filtro · seis criterios, treinta puntos</div></div>
+    <p class="lead" style="margin-top:0;margin-bottom:14px">No puntuamos cuán buena es cada metodología en abstracto. Puntuamos <b>cuánto le sirve a nuestro producto</b>. El primer criterio pesa más que los otros cinco juntos: una metodología que no se convierte en variable que el agente pueda extraer de una conversación de WhatsApp no tiene lugar en el tablero, por brillante que sea.</p>
+    <div class="qgrid" style="margin-bottom:12px">
+      <div class="qcard"><div class="q-pct">criterio 1 · el que manda</div><div class="q-n tnum">/5</div><div class="q-t"><b>Dato estructurable.</b> ¿Se vuelve variable o tag que el agente extrae solo de la charla?</div></div>
+      <div class="qcard"><div class="q-pct">criterio 2</div><div class="q-n tnum">/5</div><div class="q-t"><b>Legibilidad.</b> ¿El dueño de la PyME entiende el insight sin que se lo traduzcamos?</div></div>
+      <div class="qcard"><div class="q-pct">criterio 3</div><div class="q-n tnum">/5</div><div class="q-t"><b>Cobertura de cartera.</b> ¿A cuántos de nuestros rubros y modelos de venta aplica?</div></div>
+    </div>
+    <div class="qgrid" style="margin-bottom:24px">
+      <div class="qcard"><div class="q-pct">criterio 4</div><div class="q-n tnum">/5</div><div class="q-t"><b>Aporte a marketing.</b> ¿Sirve para decidir pauta, audiencia y mensaje, no solo venta?</div></div>
+      <div class="qcard"><div class="q-pct">criterio 5</div><div class="q-n tnum">/5</div><div class="q-t"><b>Costo de implementación.</b> Prompt, configuración y horas de consultoría. Más puntaje es más barato.</div></div>
+      <div class="qcard"><div class="q-pct">criterio 6</div><div class="q-n tnum">/5</div><div class="q-t"><b>Diferenciación.</b> ¿Nos separa de una agencia de medios o de un CRM genérico?</div></div>
+    </div>
+
+    <div class="ghdr">Scoring · las siete, ordenadas<span class="r">30 puntos posibles · el criterio 1 es excluyente</span></div>
+    <div class="card" style="overflow:hidden;margin-bottom:10px"><div class="tblwrap"><table style="min-width:900px">
+      <thead><tr><th>Metodología</th><th>Dato</th><th>Legible</th><th>Cobertura</th><th>Marketing</th><th>Costo</th><th>Difer.</th><th>Total</th><th>Dónde va</th></tr></thead>
+      <tbody>
+        <tr><td class="cjcell"><b>Gap Selling</b><span class="sub">Keenan, 2018</span></td><td>5</td><td>5</td><td>5</td><td>4</td><td>3</td><td>5</td><td><b>27</b></td><td>Núcleo del tablero</td></tr>
+        <tr><td class="cjcell"><b>Jobs to be Done</b><span class="sub">Moesta, 4 fuerzas, 2020</span></td><td>5</td><td>4</td><td>5</td><td>5</td><td>3</td><td>5</td><td><b>27</b></td><td>Núcleo del tablero</td></tr>
+        <tr><td class="cjcell"><b>Hormozi</b><span class="sub">$100M Offers / Leads</span></td><td>4</td><td>5</td><td>4</td><td>5</td><td>4</td><td>3</td><td><b>25</b></td><td>Capa de marketing</td></tr>
+        <tr><td class="cjcell"><b>SPIN Selling</b><span class="sub">Rackham, 1988</span></td><td>5</td><td>4</td><td>3</td><td>2</td><td>4</td><td>4</td><td><b>22</b></td><td>Un campo, al núcleo</td></tr>
+        <tr><td class="cjcell"><b>Value Pyramid</b><span class="sub">familia MEDDICC</span></td><td>3</td><td>5</td><td>2</td><td>3</td><td>3</td><td>3</td><td><b>19</b></td><td>Nuestro discovery</td></tr>
+        <tr><td class="cjcell"><b>Solution Selling</b><span class="sub">Bosworth 1994 / Eades 2003</span></td><td>4</td><td>3</td><td>2</td><td>2</td><td>2</td><td>3</td><td><b>16</b></td><td>Solo si hay comité</td></tr>
+        <tr class="bad"><td class="cjcell"><b>The Unsold Mindset</b><span class="sub">Coggins y Brown, 2023</span></td><td>1</td><td>3</td><td>4</td><td>1</td><td>5</td><td>2</td><td><b>16</b></td><td>Prompt del agente</td></tr>
+      </tbody></table></div></div>
+    <div class="banner good" style="margin-bottom:28px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div>El total no decide solo. <b>The Unsold Mindset saca 16 y igual entra</b>, porque compite en otra categoría: no produce dato de cliente, produce criterio de tono para el agente. Y <b>Value Pyramid saca 19 y es la más valiosa de todas para nosotros</b>, porque no va al tablero del cliente: va a nuestra reunión de discovery. Leer la columna "dónde va" antes que la del total.</div></div>
+
+    <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Las dos que entran al núcleo</div></div>
+    <div class="bigcamp" style="grid-template-columns:1fr 1fr;margin-bottom:12px">
+      <div class="bc" style="--bcac:var(--vio)"><div class="bc-hd"><div class="bc-nm">Gap Selling</div><span class="src s-calc">27 / 30</span></div>
+        <div class="bc-cap">Keenan, 2018. Venta centrada en el problema, no en el producto.</div>
+        <div class="bc-row"><div><div class="v tnum">5</div><div class="k">campos del estado actual</div></div><div><div class="v tnum">1</div><div class="k">campo del estado futuro</div></div><div><div class="v tnum">=</div><div class="k">el gap es la venta</div></div></div>
+        <ul class="insx-b" style="margin-top:14px">
+          <li><b>Estado actual</b> en cinco piezas: entorno, problema, <b>impacto cuantificado</b>, causa raíz y emoción.</li>
+          <li>El <b>gap</b> entre estado actual y estado futuro es lo que se vende. El producto es el puente, no el protagonista.</li>
+          <li><b>Por qué encaja con nosotros:</b> es lo que el agente ya hace a medias. Hoy extrae el problema; esto le agrega impacto y causa raíz, que es lo que convierte un problema en un argumento.</li>
+        </ul>
+        <div class="bc-verd"><span class="bc-dot" style="background:var(--good)"></span><div><b>Lo que desbloquea en el tablero:</b> el impacto cuantificado permite ordenar la demanda por tamaño de problema, no por fecha de entrada. Es la diferencia entre una lista de consultas y una cola priorizada.</div></div>
+      </div>
+      <div class="bc" style="--bcac:var(--pnk)"><div class="bc-hd"><div class="bc-nm">Jobs to be Done</div><span class="src s-calc">27 / 30</span></div>
+        <div class="bc-cap">Las 4 Fuerzas del Progreso, rama Moesta, 2020. Teoría de demanda, no de venta.</div>
+        <div class="bc-row"><div><div class="v tnum">2</div><div class="k">fuerzas a favor</div></div><div><div class="v tnum">2</div><div class="k">fuerzas en contra</div></div><div><div class="v tnum">1</div><div class="k">evento disparador</div></div></div>
+        <ul class="insx-b" style="margin-top:14px">
+          <li>Se cambia solo si <b>empuje + atracción supera a ansiedad + hábito</b>. Dos de las cuatro fuerzas no tienen nada que ver con tu producto.</li>
+          <li>La gente no compra productos: <b>los contrata para hacer un progreso</b>. Contra lo que competís de verdad suele ser <b>no hacer nada</b>.</li>
+          <li><b>Por qué encaja con nosotros:</b> el <b>evento disparador</b> es el único campo que explica <i>por qué ahora</i>, y es además el mejor criterio de audiencia para la pauta.</li>
+        </ul>
+        <div class="bc-verd"><span class="bc-dot" style="background:var(--good)"></span><div><b>Lo que desbloquea en el tablero:</b> deja de haber una sola categoría de objeción. La ansiedad se trabaja con prueba; el hábito, con migración. Hoy los metemos en la misma bolsa y respondemos igual a los dos.</div></div>
+      </div>
+    </div>
+    <div class="banner info" style="margin-bottom:28px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M13 2 4.1 12.7c-.6.7-.1 1.8.8 1.8H11l-1 7.5 8.9-10.7c.6-.7.1-1.8-.8-1.8H12l1-7.5Z"/></svg></div><div><b>Empatan en 27 pero no compiten: se complementan.</b> Gap Selling responde <b>qué le pasa</b> al cliente. JTBD responde <b>por qué se mueve ahora y qué lo frena</b>. Juntas dan las dos mitades de un insight accionable. Separadas, Gap sin JTBD te deja con problemas sin urgencia, y JTBD sin Gap te deja con urgencia sin argumento.</div></div>
+
+    <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Las otras cinco · qué aporta cada una y dónde</div></div>
+    <div class="insxgrid" style="margin-bottom:12px">
+
+      <div class="insx escalar">
+        <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17l6-6 4 4 7-7"/></svg></span>Adoptar</span><span class="tag t-mkt">Marketing</span></div>
+        <div class="insx-body">
+          <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Hormozi · la capa de marketing</div>
+          <div class="insx-chips"><span class="insx-chip">25 / 30</span><span class="insx-chip">$100M Offers y Leads</span></div>
+          <ul class="insx-b">
+            <li><b>Core Four:</b> dos ejes, conocido o no conocido, y uno a uno o uno a muchos. Es la taxonomía de canales que ya nos faltaba.</li>
+            <li><b>Lead vs engaged lead</b> como dos estados distintos del contacto, no una inferencia. Es el aporte más limpio a nuestro modelo de datos.</li>
+            <li><b>Ecuación de valor:</b> resultado soñado y credibilidad arriba, tiempo y esfuerzo abajo. Cuatro campos de objeción, no uno.</li>
+          </ul>
+          <div class="insx-cmp"><div class="big tnum">4</div><div class="rt"><div class="txt">campos nuevos, todos extraíbles de una conversación</div><div class="cmpbar"><span style="width:80%"></span></div></div></div>
+          <div style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--crit);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">La advertencia</b>La ecuación de valor <b>no es una ecuación</b>: no se puede multiplicar un resultado soñado. Es un heurístico de cuatro palancas. Ponerla en un tablero como puntaje sería fabricar precisión. Y el ratio ganancia bruta sobre costo de adquisición que él propone <b>exige conocer el costo de entrega por cliente</b>, que ninguno de nuestros clientes tiene cargado.</div>
+        </div>
+      </div>
+
+      <div class="insx subir">
+        <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></span>Tomar</span><span class="tag t-ventas">Un solo campo</span></div>
+        <div class="insx-body">
+          <div class="insx-nm" style="font-family:var(--hel);font-size:15px">SPIN · el campo que vale toda la metodología</div>
+          <div class="insx-chips"><span class="insx-chip">22 / 30</span><span class="insx-chip">Rackham, 1988</span></div>
+          <ul class="insx-b">
+            <li>Base empírica real: <b>35.000 llamadas de venta</b> observadas en 12 años. Ninguna otra de las siete tiene algo parecido.</li>
+            <li>El hallazgo central: las preguntas de <b>implicación</b> son las que más predicen el cierre y las que menos se usan.</li>
+            <li><b>Lo que nos llevamos:</b> el resultado de una reunión no es sí o no. Es <b>Orden, Avance, Continuación o No venta</b>. Avance exige una acción acordada; si no la hay, es Continuación.</li>
+          </ul>
+          <div class="insx-cmp"><div class="big tnum">1</div><div class="rt"><div class="txt">campo que cambia cómo se lee todo el embudo</div><div class="cmpbar"><span style="width:95%"></span></div></div></div>
+          <div style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--good);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Por qué nos importa tanto</b>Es exactamente nuestro cruce de <b>etapa declarada contra etapa por evidencia</b>, pero del lado de la reunión. Distingue la charla linda del avance real. En EDFAN habríamos visto antes que 290 calificados no tenían una sola acción acordada.</div>
+        </div>
+      </div>
+
+      <div class="insx subir">
+        <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h16M7 20V9m5 11V4m5 16v-7"/></svg></span>Usar</span><span class="tag t-ventas">Nuestro discovery</span></div>
+        <div class="insx-body">
+          <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Value Pyramid · no para el cliente, para nosotros</div>
+          <div class="insx-chips"><span class="insx-chip">19 / 30</span><span class="insx-chip">Familia MEDDICC</span></div>
+          <ul class="insx-b">
+            <li>Cinco niveles, de arriba hacia abajo: <b>impulsores, estrategias, iniciativas, desafíos y capacidades críticas</b>.</li>
+            <li>Baja del objetivo del negocio a la capacidad concreta que falta. <b>Nosotros somos siempre el nivel cinco.</b></li>
+            <li><b>Dónde va de verdad:</b> es el guion de nuestra reunión de discovery. Responde la pregunta que este informe trata de contestar: <b>qué metodología le corresponde a este cliente.</b></li>
+          </ul>
+          <div class="insx-cmp"><div class="big tnum">5</div><div class="rt"><div class="txt">preguntas que ordenan la etapa 1 de la consultoría</div><div class="cmpbar"><span style="width:62%"></span></div></div></div>
+          <div style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--warn);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Nota de origen</b>Buscamos la atribución y <b>no está publicada</b>. La versión pública más cercana es la pirámide de seis niveles de MEDDICC. Nuestra versión de cinco fusiona sus dos primeros. No la presentemos citando un origen que no podemos sostener.</div>
+        </div>
+      </div>
+
+      <div class="insx pausar">
+        <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6v12M15 6v12"/></svg></span>Reservar</span><span class="tag t-ventas">Solo con comité</span></div>
+        <div class="insx-body">
+          <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Solution Selling · buena, y para otro cliente</div>
+          <div class="insx-chips"><span class="insx-chip">16 / 30</span><span class="insx-chip">Bosworth 1994</span></div>
+          <ul class="insx-b">
+            <li>Su mejor idea es la <b>cadena de dolor</b>: en B2B el dolor de uno causa el dolor de otro, y seguir esa cadena te lleva al que firma.</li>
+            <li>El <b>dolor latente</b>: el problema existe, cuesta plata y nadie lo nombró. Es la mayoría de los compradores.</li>
+            <li><b>Por qué no entra ahora:</b> está diseñada para comité de compra y ciclo de meses. Nuestra cartera son PyMEs donde decide una o dos personas.</li>
+          </ul>
+          <div class="insx-cmp"><div class="big tnum">2/5</div><div class="rt"><div class="txt">cobertura de cartera · es su punto débil para nosotros</div><div class="cmpbar"><span style="width:40%"></span></div></div></div>
+          <div style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--ink3);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Cuándo revisarla</b>El día que entre un cliente con compras formalizadas y más de dos decisores. Hasta entonces, la cadena de dolor es un costo de consultoría que no se paga solo.</div>
+        </div>
+      </div>
+
+      <div class="insx escalar">
+        <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0-8-4.9L3 21l4.9-1A9 9 0 0 0 12 21Z"/></svg></span>Cargar</span><span class="tag t-mkt">Prompt del agente</span></div>
+        <div class="insx-body">
+          <div class="insx-nm" style="font-family:var(--hel);font-size:15px">The Unsold Mindset · no es dato, es tono</div>
+          <div class="insx-chips"><span class="insx-chip">16 / 30</span><span class="insx-chip">Coggins y Brown, 2023</span></div>
+          <ul class="insx-b">
+            <li>Su tesis: los mejores vendedores no son los más seguros de sí, son los <b>más conscientes de sí y del otro</b>.</li>
+            <li>No tiene siglas, ni etapas, ni preguntas. <b>No produce un solo campo de CRM.</b> Por eso saca 1 en el criterio que más pesa.</li>
+            <li><b>Y sin embargo entra:</b> es el único material que describe el tono que queremos en un agente de IA que vende sin presionar.</li>
+          </ul>
+          <div class="insx-cmp"><div class="big tnum">0</div><div class="rt"><div class="txt">campos de CRM · y aun así tiene lugar</div><div class="cmpbar"><span style="width:5%"></span></div></div></div>
+          <div style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--crit);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">El límite, dicho de frente</b>Es investigación cualitativa por entrevistas a gente exitosa: <b>sesgo de supervivencia por construcción</b>, sin grupo de control. No es falsable ni auditable. Úsese como criterio de redacción del prompt, nunca como evidencia.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>La matriz · qué metodología le toca a cada cliente</div></div>
+    <p class="lead" style="margin-top:0;margin-bottom:14px">Esta es la respuesta a la hipótesis: <b>no hay una metodología transversal, hay un núcleo transversal y una capa variable</b>. El núcleo va en todos los clientes porque produce los campos que el tablero necesita para existir. La capa se elige en el discovery, con la Pirámide de Valor como guion.</p>
+    <div class="card" style="overflow:hidden;margin-bottom:12px"><div class="tblwrap"><table style="min-width:900px">
+      <thead><tr><th>Perfil de cliente</th><th>Cómo vende</th><th>Capa variable</th><th>Por qué esa</th><th>Caso nuestro</th></tr></thead>
+      <tbody>
+        <tr><td class="cjcell"><b>B2C ticket alto</b><span class="sub">ciclo largo, decisión emocional</span></td><td>Consulta por WhatsApp, meses de maduración</td><td><b>JTBD completo</b><br><span style="font-size:10.5px;color:var(--ink3)">las 4 fuerzas</span></td><td>El competidor real es no hacer nada. El evento disparador explica el "por qué ahora" y segmenta la pauta.</td><td>EDFAN, G&amp;D, TKVA</td></tr>
+        <tr><td class="cjcell"><b>B2B de canal</b><span class="sub">red de distribuidores, recompra</span></td><td>Pedido recurrente, relación con corredor</td><td><b>Gap + SPIN</b><br><span style="font-size:10.5px;color:var(--ink3)">resultado de reunión</span></td><td>Problema operativo cuantificable y reuniones repetidas: Avance contra Continuación mide al corredor.</td><td>PAVIR, EDFAN Productos</td></tr>
+        <tr><td class="cjcell"><b>B2C de consideración media</b><span class="sub">mobiliario, personalización</span></td><td>Showroom más consulta digital</td><td><b>Gap + Hormozi</b><br><span style="font-size:10.5px;color:var(--ink3)">oferta y canal</span></td><td>El gap está en el espacio del cliente y la decisión es de oferta: el stack y el plazo mandan.</td><td>BETROX</td></tr>
+        <tr><td class="cjcell"><b>Transaccional de volumen</b><span class="sub">ticket bajo, decisión rápida</span></td><td>Catálogo, precio, disponibilidad</td><td><b>Solo Hormozi</b><br><span style="font-size:10.5px;color:var(--ink3)">Core Four y lead magnet</span></td><td>El discovery no se paga: a ese ticket, el costo de extraer cinco campos supera el margen de la venta.</td><td>Sin caso todavía</td></tr>
+        <tr><td class="cjcell"><b>B2B con comité</b><span class="sub">más de dos decisores</span></td><td>Compras formalizada, pliego</td><td><b>Solution Selling</b><br><span style="font-size:10.5px;color:var(--ink3)">cadena de dolor</span></td><td>Es el único caso donde mapear quién sufre por culpa de quién se paga solo.</td><td>Sin caso todavía</td></tr>
+        <tr class="tot"><td><b>Todos</b></td><td>Núcleo fijo, sin excepción</td><td><b>Gap reducido + disparador + resultado</b></td><td>Son los campos mínimos para que el tablero diga algo más que volumen.</td><td>Toda la cartera</td></tr>
+      </tbody></table></div></div>
+
+    <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>El núcleo fijo · cinco campos, y qué desbloquea cada uno</div></div>
+    <div class="card" style="overflow:hidden;margin-bottom:26px"><div class="tblwrap"><table style="min-width:860px">
+      <thead><tr><th>Campo nuevo en Prometheo</th><th>Viene de</th><th>Lo extrae</th><th>Insight que desbloquea en el tablero</th></tr></thead>
+      <tbody>
+        <tr><td class="cjcell"><b>Problema declarado</b><span class="sub">en palabras del cliente</span></td><td>Gap Selling</td><td>Agente</td><td>Ya existe a medias. Se formaliza como cita textual, no como categoría.</td></tr>
+        <tr><td class="cjcell"><b>Impacto</b><span class="sub">qué le cuesta no resolverlo</span></td><td>Gap Selling</td><td>Agente</td><td><b>Ordena la cola por tamaño de problema</b>, no por fecha de entrada. Es el cambio más grande de los cinco.</td></tr>
+        <tr><td class="cjcell"><b>Causa raíz</b><span class="sub">qué lo produce</span></td><td>Gap Selling</td><td>Agente</td><td>Separa el síntoma del problema. Dos leads con el mismo síntoma y distinta causa no se trabajan igual.</td></tr>
+        <tr><td class="cjcell"><b>Evento disparador</b><span class="sub">qué pasó para que consulte hoy</span></td><td>JTBD</td><td>Agente</td><td>Explica el <b>por qué ahora</b> y se vuelve criterio de audiencia para la pauta. Es el puente entre venta y marketing.</td></tr>
+        <tr><td class="cjcell"><b>Resultado de contacto</b><span class="sub">orden, avance, continuación, no venta</span></td><td>SPIN</td><td>Equipo</td><td>Distingue la charla del avance. <b>Avance exige acción acordada con fecha</b>; sin eso es continuación.</td></tr>
+      </tbody></table></div></div>
+
+    <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Cómo se vende esto · ya está en el presupuesto</div></div>
+    <div class="bigcamp" style="grid-template-columns:1fr 1fr;margin-bottom:14px">
+      <div class="bc" style="--bcac:var(--blu)"><div class="bc-hd"><div class="bc-nm">01 · Digitalización y transferencia</div><span class="src s-pro">Hoy</span></div>
+        <div class="bc-cap">Tomamos el proceso que el cliente ya usa y lo trasladamos al CRM y al agente, tal como opera hoy.</div>
+        <div class="bc-verd"><span class="bc-dot" style="background:var(--blu)"></span><div>Acá el cliente <b>ya tiene</b> lógica comercial. Nosotros la mudamos. El núcleo fijo de cinco campos entra igual, porque es la condición para que el tablero diga algo.</div></div>
+      </div>
+      <div class="bc" style="--bcac:var(--vio)"><div class="bc-hd"><div class="bc-nm">02 · Capacitación comercial aplicada</div><span class="src s-calc">Lo que este informe habilita</span></div>
+        <div class="bc-cap">Le transferimos al agente criterio comercial: cómo calificar, manejar objeciones y empujar el cierre.</div>
+        <div class="bc-verd"><span class="bc-dot" style="background:var(--vio)"></span><div>Acá el cliente <b>no tiene</b> lógica comercial y nos la pide. Hasta hoy poníamos la nuestra, implícita y distinta en cada cuenta. <b>Esta matriz es el contenido de ese servicio</b>: deja de ser criterio del consultor y pasa a ser método elegible, con nombre y con fuente.</div></div>
+      </div>
+    </div>
+
+    <div class="banner good" style="margin-bottom:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div><b>El orden de implementación.</b> Primero el <b>núcleo fijo</b> en un cliente que ya conocemos, que es donde se prueba si el agente puede extraer impacto y causa raíz de una conversación real. Después la <b>capa variable</b> según rubro. La Pirámide de Valor entra antes que todo, en la reunión de discovery, porque es la que decide qué capa va.</div></div>
+
+    <div class="banner info" style="margin-bottom:26px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div><div><b>El riesgo real, dicho ahora.</b> Los cinco campos del núcleo se los pedimos al agente, no al cliente. <b>Impacto y causa raíz son señales blandas</b>, y en EDFAN las señales blandas se cargaron al 5 y al 10 por ciento mientras las duras llegaban al 50. Si no se refuerzan en el prompt con prioridad explícita, este núcleo va a nacer con la cobertura de un indicio y no va a poder titular nada. Hay que medir cobertura a los 30 días del primer cliente y, si no supera el 40 por ciento, el problema es de prompt y no de metodología.</div></div>
+
+    <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Honestidad de fuentes</div></div>
+    <div class="qgrid" style="margin-bottom:10px">
+      <div class="qcard"><div class="q-pct">verificado con fuente</div><div class="q-n tnum">4</div><div class="q-t">SPIN, Gap Selling, JTBD y Solution Selling tienen libro y fuente primaria o cuasi primaria.</div></div>
+      <div class="qcard"><div class="q-pct">solo fuentes secundarias</div><div class="q-n tnum">1</div><div class="q-t">Hormozi: ningún texto primario accesible. Todo sale de reseñas y notas de lectura.</div></div>
+      <div class="qcard"><div class="q-pct">sin estructura verificable</div><div class="q-n tnum">1</div><div class="q-t">The Unsold Mindset: confirmamos la tesis, no las definiciones de cada concepto.</div></div>
+      <div class="qcard"><div class="q-pct">origen no acreditado</div><div class="q-n tnum">1</div><div class="q-t">Value Pyramid: la atribución no está publicada. No la citemos con un origen que no podemos sostener.</div></div>
+    </div>
+    <div class="banner info"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div><div>Dos cifras que conviene no repetir sin chequear: el ratio de ganancia bruta sobre costo de adquisición de Hormozi está confirmado en <b>3 a 1 como mínimo</b>, pero los valores más altos que circulan atribuidos a él <b>no se pudieron verificar</b>. Y la fórmula de adquisición financiada por el cliente parece venir de su tercer libro, no de los dos que estudiamos.</div></div>
+
+    <div class="footer" style="margin-top:34px"><span class="eb-orb"></span>AUREA Hub · Capa de Inteligencia · informe interno · siete metodologías evaluadas contra los objetivos de Inteligencia Comercial</div>
+
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Paquete de exportacion: es derivado (se arma desde .claude/skills, los documentos
+# de conocimiento y las skills sincronizadas de la cuenta). No se versiona para no
+# dejar un binario de ~1 MB que queda viejo apenas cambia cualquiera de sus fuentes.
+AUREA_IC_Conocimiento.zip

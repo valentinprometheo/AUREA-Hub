@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BETROX · Inteligencia Comercial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;0,6..72,500&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg1:#E9E4F4; --bg2:#F4F2FA;
+  --surface:#ffffff; --surface2:#FAF9FD; --inset:#F3F1FA;
+  --glass:rgba(255,255,255,.60); --glass-brd:rgba(255,255,255,.7);
+  --ink:#1E1A2E; --ink2:#4A4560; --ink3:#7A7392; --ink4:#A49CBC;
+  --line:rgba(30,22,60,.10); --line2:rgba(30,22,60,.055);
+  --vio:#7C5CBF; --blu:#5B8FD9; --pnk:#C77AA8;
+  --vio-soft:#EDE7F9; --blu-soft:#E4EDFB; --pnk-soft:#F7E7F0;
+  --grad:linear-gradient(103deg,#7C5CBF 0%,#5B8FD9 52%,#C77AA8 100%);
+  --grad-soft:linear-gradient(135deg,#F1EBFB 0%,#E7EFFB 52%,#FAEBF3 100%);
+  --good:#2F9469; --good-bg:#E4F3EC; --good-ink:#2A7C57;
+  --warn:#B5751F; --warn-bg:#FaF0DF; --warn-ink:#8E5A17;
+  --crit:#D65A47; --crit-bg:#FBE9E5; --crit-ink:#A8442F;
+  --src-pro:#2F9469; --src-meta:#4F73C4; --src-calc:#7C5CBF; --src-wpp:#2FA88A;
+  --r-xs:9px; --r-s:12px; --r-m:16px; --r-l:20px; --r-xl:24px;
+  --hel:'Arimo',system-ui,-apple-system,Segoe UI,sans-serif;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --shadow:0 1px 2px -1px rgba(40,26,80,.10),0 8px 24px -12px rgba(70,44,130,.20);
+  --shadow-lg:0 1px 2px -1px rgba(40,26,80,.10),0 18px 46px -18px rgba(70,44,130,.34);
+  --ring:0 0 0 1px var(--line);
+}
+:root:not([data-theme=light]) @media (prefers-color-scheme:dark){}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg1:#141225; --bg2:#1B1830;
+  --surface:#221F36; --surface2:#282540; --inset:#1C1930;
+  --glass:rgba(42,38,66,.55); --glass-brd:rgba(255,255,255,.08);
+  --ink:#F2EFFA; --ink2:#C7C1DD; --ink3:#968FB4; --ink4:#6C6590;
+  --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.06);
+  --vio-soft:#2C2550; --blu-soft:#22304F; --pnk-soft:#3A2740;
+  --grad-soft:linear-gradient(135deg,#2A2350 0%,#22304F 52%,#3A2740 100%);
+  --good:#54B98C; --good-bg:#1D3A2E; --good-ink:#7FD3AB;
+  --warn:#D89A47; --warn-bg:#3A2E1A; --warn-ink:#E7B872;
+  --crit:#E67A66; --crit-bg:#3A2320; --crit-ink:#F09E8C;
+  --shadow:0 0 0 1px rgba(255,255,255,.07),0 14px 40px -20px rgba(0,0,0,.6);
+  --shadow-lg:0 0 0 1px rgba(255,255,255,.08),0 22px 60px -22px rgba(0,0,0,.7);
+  --ring:0 0 0 1px var(--line);
+}}
+[data-theme=dark]{
+  --bg1:#141225; --bg2:#1B1830;
+  --surface:#221F36; --surface2:#282540; --inset:#1C1930;
+  --glass:rgba(42,38,66,.55); --glass-brd:rgba(255,255,255,.08);
+  --ink:#F2EFFA; --ink2:#C7C1DD; --ink3:#968FB4; --ink4:#6C6590;
+  --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.06);
+  --vio-soft:#2C2550; --blu-soft:#22304F; --pnk-soft:#3A2740;
+  --grad-soft:linear-gradient(135deg,#2A2350 0%,#22304F 52%,#3A2740 100%);
+  --good:#54B98C; --good-bg:#1D3A2E; --good-ink:#7FD3AB;
+  --warn:#D89A47; --warn-bg:#3A2E1A; --warn-ink:#E7B872;
+  --crit:#E67A66; --crit-bg:#3A2320; --crit-ink:#F09E8C;
+  --shadow:0 0 0 1px rgba(255,255,255,.07),0 14px 40px -20px rgba(0,0,0,.6);
+  --shadow-lg:0 0 0 1px rgba(255,255,255,.08),0 22px 60px -22px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--hel);color:var(--ink);background:
+  radial-gradient(1100px 620px at 82% -8%,rgba(124,92,191,.16),transparent 60%),
+  radial-gradient(900px 560px at 5% 0%,rgba(91,143,217,.13),transparent 55%),
+  linear-gradient(180deg,var(--bg1),var(--bg2) 46%);
+  min-height:100vh}
+em{font-family:var(--serif);font-style:italic;font-weight:400}
+.grad-txt{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.tnum{font-variant-numeric:tabular-nums}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+
+/* hidden state radios */
+.st{position:absolute;width:0;height:0;opacity:0;pointer-events:none}
+
+/* ============ SHELL ============ */
+.shell{display:flex;gap:18px;max-width:1360px;margin:0 auto;padding:18px 20px 40px;align-items:flex-start}
+
+/* ---- Sidebar ---- */
+.side{position:sticky;top:18px;flex:0 0 220px;width:220px;align-self:flex-start;
+  background:var(--glass);border:1px solid var(--glass-brd);border-radius:var(--r-xl);
+  box-shadow:var(--shadow);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);
+  padding:16px 13px;display:flex;flex-direction:column;gap:5px;
+  /* acotado al viewport: sin esto el sticky se escapa al scrollear porque el panel es mas alto que la pantalla */
+  height:calc(100vh - 36px);max-height:calc(100vh - 36px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.side::-webkit-scrollbar{width:6px}
+.side::-webkit-scrollbar-thumb{background:var(--line2);border-radius:20px}
+.side::-webkit-scrollbar-track{background:transparent}
+.brand{display:flex;align-items:center;gap:11px;padding:6px 8px 16px;margin-bottom:6px;border-bottom:1px solid var(--line2)}
+.brand .sph{width:38px;height:38px;flex-shrink:0;filter:drop-shadow(0 4px 10px rgba(124,92,191,.35))}
+.brand-t{line-height:1}
+.brand-t b{font-size:15px;font-weight:700;letter-spacing:-.02em;display:block}
+.brand-t span{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.navlab{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);padding:10px 10px 5px}
+.nav{display:flex;align-items:center;gap:11px;padding:9px 11px;border-radius:var(--r-s);cursor:pointer;
+  font-size:13px;font-weight:600;color:var(--ink2);transition:background .14s,color .14s;position:relative;user-select:none}
+.nav svg{width:18px;height:18px;flex-shrink:0;stroke:var(--ink3);transition:stroke .14s}
+.nav:hover{background:var(--inset)}
+.nav .dot{margin-left:auto;font-size:9px;font-weight:700;background:var(--vio-soft);color:var(--vio);
+  padding:2px 6px;border-radius:20px;line-height:1.3}
+.side-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--line2);display:flex;flex-direction:column;gap:8px}
+.themebtn{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:var(--r-s);border:1px solid var(--line);
+  background:var(--surface);color:var(--ink2);font-size:12px;font-weight:600;cursor:pointer;transition:.14s}
+.themebtn:hover{border-color:var(--vio);color:var(--ink)}
+.themebtn svg{width:16px;height:16px;stroke:currentColor}
+.themebtn .moon{display:none}
+[data-theme=dark] .themebtn .sun{display:none}[data-theme=dark] .themebtn .moon{display:inline}
+
+/* active nav via radios */
+#n-panorama:checked~.shell .nav[data-t=panorama],
+#n-demanda:checked~.shell .nav[data-t=demanda],
+#n-campanas:checked~.shell .nav[data-t=campanas],
+#n-meta:checked~.shell .nav[data-t=meta],
+#n-audiencias:checked~.shell .nav[data-t=audiencias],
+#n-insights:checked~.shell .nav[data-t=insights],
+#n-evolucion:checked~.shell .nav[data-t=evolucion],
+#n-cruce:checked~.shell .nav[data-t=cruce],
+#n-integracion:checked~.shell .nav[data-t=integracion]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
+#n-panorama:checked~.shell .nav[data-t=panorama] svg,
+#n-demanda:checked~.shell .nav[data-t=demanda] svg,
+#n-campanas:checked~.shell .nav[data-t=campanas] svg,
+#n-meta:checked~.shell .nav[data-t=meta] svg,
+#n-audiencias:checked~.shell .nav[data-t=audiencias] svg,
+#n-insights:checked~.shell .nav[data-t=insights] svg,
+#n-evolucion:checked~.shell .nav[data-t=evolucion] svg,
+#n-cruce:checked~.shell .nav[data-t=cruce] svg,
+#n-integracion:checked~.shell .nav[data-t=integracion] svg{stroke:#fff}
+#n-panorama:checked~.shell .nav[data-t=panorama] .dot,
+#n-demanda:checked~.shell .nav[data-t=demanda] .dot,
+#n-campanas:checked~.shell .nav[data-t=campanas] .dot,
+#n-meta:checked~.shell .nav[data-t=meta] .dot,
+#n-audiencias:checked~.shell .nav[data-t=audiencias] .dot,
+#n-insights:checked~.shell .nav[data-t=insights] .dot,
+#n-evolucion:checked~.shell .nav[data-t=evolucion] .dot,
+#n-cruce:checked~.shell .nav[data-t=cruce] .dot,
+#n-integracion:checked~.shell .nav[data-t=integracion] .dot{background:rgba(255,255,255,.25);color:#fff}
+
+/* ---- Main ---- */
+.main{flex:1 1 auto;min-width:0}
+.topbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.tb-l{display:flex;align-items:center;gap:12px;min-width:0}
+.tb-logo{height:26px;width:auto;opacity:.95}
+.tb-txt b{font-size:15px;font-weight:700;letter-spacing:-.01em;display:block;line-height:1.1}
+.tb-txt span{font-size:11px;color:var(--ink3)}
+.tb-r{display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap}
+.upd{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink3);white-space:nowrap}
+.upd b{color:var(--ink2);font-weight:600}
+.dotb{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+/* mode segmented */
+.mode{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-s);padding:3px;gap:2px;box-shadow:var(--ring)}
+.mode label{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--ink3);padding:7px 13px;border-radius:9px;cursor:pointer;transition:.14s;white-space:nowrap}
+.mode label svg{width:14px;height:14px;stroke:currentColor}
+#mode-simple:checked~.shell .mode label[for=mode-simple],
+#mode-adv:checked~.shell .mode label[for=mode-adv]{background:var(--grad);color:#fff}
+
+/* panels + mode visibility */
+.panel{display:none;animation:fade .25s ease-out}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+#n-panorama:checked~.shell .p-panorama,
+#n-demanda:checked~.shell .p-demanda,
+#n-campanas:checked~.shell .p-campanas,
+#n-meta:checked~.shell .p-meta,
+#n-audiencias:checked~.shell .p-audiencias,
+#n-insights:checked~.shell .p-insights,
+#n-evolucion:checked~.shell .p-evolucion,
+#n-cruce:checked~.shell .p-cruce,
+#n-integracion:checked~.shell .p-integracion{display:block}
+.adv-only,.avz{display:none!important}
+#mode-adv:checked~.shell .adv-only,#mode-adv:checked~.shell .avz{display:block!important}
+#mode-adv:checked~.shell .ins.adv-only,#mode-adv:checked~.shell .ins.avz{display:flex!important}
+.bsc{display:block!important}
+#mode-adv:checked~.shell .bsc{display:none!important}
+.simple-note{display:none}
+#mode-simple:checked~.shell .simple-note{display:flex}
+/* ===== fuente mini-cards + jerarquía + objetivos (feedback Sofi) ===== */
+.srclegend{display:flex;flex-wrap:wrap;gap:10px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:12px 15px;box-shadow:var(--shadow);margin-bottom:12px}
+.slg{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink3);line-height:1.3;flex:1;min-width:170px}
+.slg .mc{font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;padding:3px 8px;border-radius:7px;white-space:nowrap;flex-shrink:0}
+.slg b{color:var(--ink2);font-weight:600}
+.mc-meta{background:var(--src-meta)}.mc-pro{background:var(--src-pro)}.mc-calc{background:var(--src-calc)}.mc-costo{background:#B5751F}
+.hierbar{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.hcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:13px 15px 14px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--hc)}
+.hcard .hn{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;margin-bottom:4px}
+.hcard .hstep{width:20px;height:20px;border-radius:6px;background:var(--hc);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+.hcard .hd{font-size:11.5px;color:var(--ink3);line-height:1.4}
+.hcard .hsrc{font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--hc);margin-top:7px}
+.obj{display:inline-flex;font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.obj-msg{background:var(--vio-soft);color:var(--vio)}
+.obj-ret{background:var(--pnk-soft);color:#B14C86}
+.obj-lal{background:var(--blu-soft);color:var(--src-meta)}
+.obj-traf{background:#DCF0EC;color:#1F7A63}
+.obj-alc{background:#FAF0DF;color:#8E5A17}
+[data-theme=dark] .obj-traf{background:#123028;color:#57C7A6}[data-theme=dark] .obj-alc{background:#3A2E1A;color:#E7B872}[data-theme=dark] .obj-ret{color:#E39BC4}
+/* big campaign summary cards (modo básico) */
+.bigcamp{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.bc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);padding:18px 18px 17px;box-shadow:var(--shadow);border-top:3px solid var(--bcac)}
+.bc-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px}
+.bc-nm{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.bc-o{font-size:11.5px;color:var(--ink3);margin-bottom:15px;display:flex;align-items:center;gap:6px}
+.bc-big{display:flex;align-items:flex-end;gap:7px}
+.bc-big .n{font-size:42px;font-weight:700;letter-spacing:-.03em;line-height:.85;font-variant-numeric:tabular-nums}
+.bc-big .u{font-size:12px;color:var(--ink3);font-weight:600;padding-bottom:5px}
+.bc-cap{font-size:11.5px;color:var(--ink3);margin:5px 0 15px}
+.bc-cap b{color:var(--ink2)}
+.bc-row{display:flex;gap:9px}
+.bc-row>div{flex:1;background:var(--surface2);border:1px solid var(--line2);border-radius:var(--r-s);padding:10px 11px;text-align:left}
+.bc-row .v{font-size:19px;font-weight:700;letter-spacing:-.01em;line-height:1;font-variant-numeric:tabular-nums}
+.bc-row .k{font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;font-weight:600;margin-top:4px;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.bc-verd{margin-top:14px;padding-top:13px;border-top:1px solid var(--line2);font-size:12px;color:var(--ink2);line-height:1.45;display:flex;gap:8px;align-items:flex-start}
+.bc-verd b{color:var(--ink)}
+.bc-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.mc-in{font-size:8px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:#fff;padding:1px 5px;border-radius:6px}
+/* pre / post Prometheo */
+.prepost{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pp{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:15px 16px;box-shadow:var(--shadow)}
+.pp-l{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);margin-bottom:11px}
+.pp-flow{display:flex;align-items:center;gap:10px}
+.pp-a .v{font-size:17px;font-weight:600;color:var(--ink3);line-height:1;font-variant-numeric:tabular-nums}
+.pp-a .t{font-size:8.5px;color:var(--ink4);text-transform:uppercase;letter-spacing:.03em;margin-top:3px;font-weight:700}
+.pp-ar svg{width:17px;height:17px;stroke:var(--vio)}
+.pp-b .v{font-size:25px;font-weight:700;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.pp-b .t{font-size:8.5px;color:var(--src-pro);text-transform:uppercase;letter-spacing:.03em;margin-top:3px;font-weight:800}
+.pp-d{margin-top:10px;font-size:11px;font-weight:700}
+/* cross matrix (Demanda × Campaña) */
+.xwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-m);box-shadow:var(--shadow);background:var(--surface)}
+table.xtab{min-width:920px}
+table.xtab thead th{background:var(--surface2)}
+.xcamp td{background:var(--inset)!important;font-weight:700;color:var(--ink)!important;text-transform:uppercase;font-size:10px;letter-spacing:.03em;text-align:left!important}
+.xcamp .obj{margin-left:8px}
+@media(max-width:900px){.bigcamp,.prepost{grid-template-columns:1fr 1fr}.hierbar{grid-template-columns:1fr}}
+@media(max-width:600px){.bigcamp,.prepost{grid-template-columns:1fr}.bc-row{flex-wrap:wrap}}
+@media (prefers-reduced-motion:reduce){.panel{animation:none}}
+
+/* ============ COMMON PIECES ============ */
+.sec-head{margin:26px 0 14px}
+.eyebrow{display:flex;align-items:center;gap:9px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:9px}
+.eb-orb{width:16px;height:16px;border-radius:50%;background:var(--grad);box-shadow:0 2px 6px -1px rgba(124,92,191,.5);flex-shrink:0}
+h1.sec{font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+h1.sec em{font-weight:400}
+.lead{font-size:13px;color:var(--ink3);max-width:760px;line-height:1.55;margin-top:8px;text-wrap:pretty}
+.lead b{color:var(--ink2);font-weight:600}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);box-shadow:var(--shadow)}
+.ghdr{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:14px}
+.ghdr .r{margin-left:auto;font-size:10px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink3)}
+
+/* source pill */
+.src{font-size:8.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:20px;color:#fff;white-space:nowrap}
+.s-pro{background:var(--src-pro)}.s-meta{background:var(--src-meta)}.s-calc{background:var(--src-calc)}.s-wpp{background:var(--src-wpp)}
+.s-pro.gh,.s-meta.gh{color:#fff}
+
+/* owner tags */
+.tag{font-size:8.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.t-mkt{background:var(--blu-soft);color:var(--src-meta)}
+.t-ventas{background:var(--good-bg);color:var(--good-ink)}
+
+/* delta */
+.delta{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700}
+.d-up{color:var(--good)}.d-dn-good{color:var(--good)}.d-dn{color:var(--crit)}.d-flat{color:var(--ink3)}
+.delta svg{width:11px;height:11px;stroke:currentColor;stroke-width:2.4}
+
+/* banner */
+.banner{display:flex;gap:13px;align-items:flex-start;border-radius:var(--r-m);padding:14px 16px;font-size:13px;color:var(--ink2);line-height:1.5;border:1px solid}
+.banner b{color:var(--ink)}
+.bn-ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bn-ic svg{width:18px;height:18px}
+.banner.good{background:var(--good-bg);border-color:color-mix(in srgb,var(--good) 34%,transparent)}
+.banner.good .bn-ic{background:var(--good);color:#fff}
+.banner.info{background:var(--vio-soft);border-color:color-mix(in srgb,var(--vio) 26%,transparent)}
+.banner.info .bn-ic{background:var(--grad);color:#fff}
+
+/* empty state */
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:26px 18px;text-align:center;
+  border:1px dashed var(--line);border-radius:var(--r-s);color:var(--ink3);font-size:12px;background:var(--surface2)}
+.empty svg{width:22px;height:22px;stroke:var(--ink4);margin-bottom:2px}
+.empty b{color:var(--ink2);font-size:12.5px;font-weight:600}
+
+/* ============ PANORAMA (Dosage layout) ============ */
+.hero-grid{display:grid;grid-template-columns:1.62fr 1fr;gap:14px;margin-bottom:14px}
+.hero{position:relative;overflow:hidden;border-radius:var(--r-xl);background:var(--grad);color:#fff;padding:22px 24px;box-shadow:var(--shadow-lg);isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 88% -20%,rgba(255,255,255,.34),transparent 55%);z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero-sph{position:absolute;right:-30px;top:-24px;width:150px;opacity:.62;z-index:0;filter:saturate(1.1) drop-shadow(0 10px 24px rgba(0,0,0,.2));mix-blend-mode:screen}
+.hero-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+.hero-kick{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.hero-per{font-size:10.5px;font-weight:600;color:rgba(255,255,255,.9);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);padding:5px 11px;border-radius:20px}
+.hero-h{font-family:var(--serif);font-style:italic;font-weight:500;font-size:27px;line-height:1.08;letter-spacing:-.01em;margin:2px 0 3px;max-width:80%}
+.hero-sub{font-size:12px;color:rgba(255,255,255,.85);line-height:1.45;max-width:88%;margin-bottom:16px}
+.hero-sub b{color:#fff;font-weight:700}
+.chartbox{position:relative;margin:2px 0 14px}
+.chart-scale{display:flex;justify-content:space-between;font-size:9.5px;color:rgba(255,255,255,.7);margin-bottom:3px;font-weight:600}
+.chart svg{width:100%;height:120px;display:block;overflow:visible}
+.chart-x{display:flex;justify-content:space-between;font-size:9px;color:rgba(255,255,255,.62);margin-top:5px;font-weight:600}
+.endtag{position:absolute;right:-2px;top:26px;background:#fff;color:var(--vio);font-weight:700;font-size:11px;padding:4px 9px;border-radius:9px;box-shadow:0 4px 12px rgba(0,0,0,.2);line-height:1.1;z-index:2}
+.endtag span{display:block;font-size:8px;color:var(--ink3);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.hero-stats{display:grid;grid-template-columns:1fr 1.15fr 1fr;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-m);overflow:hidden}
+.hs{padding:12px 14px;text-align:center}
+.hs+.hs{border-left:1px solid rgba(255,255,255,.18)}
+.hs .l{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:4px}
+.hs .v{font-size:22px;font-weight:700;letter-spacing:-.01em;line-height:1}
+.hs.big .v{font-size:27px}
+.hs .m{font-size:9.5px;color:rgba(255,255,255,.72);margin-top:3px}
+
+/* right pink hero */
+.hero-pink{display:flex;flex-direction:column;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-lg)}
+.hp-top{background:linear-gradient(135deg,#C77AA8,#9E6BC0);color:#fff;padding:18px 20px;position:relative;overflow:hidden;flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:150px}
+.hp-top::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 90% -10%,rgba(255,255,255,.3),transparent 55%)}
+.hp-top>*{position:relative}
+.hp-ic{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center}
+.hp-ic svg{width:21px;height:21px;stroke:#fff}
+.hp-l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:3px}
+.hp-v{font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.hp-d{font-size:11.5px;color:rgba(255,255,255,.9);margin-top:6px;display:flex;align-items:center;gap:6px}
+.hp-d .pin{background:rgba(255,255,255,.22);padding:3px 8px;border-radius:20px;font-weight:700;font-size:10.5px}
+.hp-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.hp-chip{font-size:10px;font-weight:700;color:#fff;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);padding:5px 10px;border-radius:20px;white-space:nowrap}
+.hp-spk{width:100%;height:50px;display:block;margin:2px 0;overflow:visible}
+.hp-foot{background:var(--surface);padding:13px 16px;display:flex;align-items:center;gap:10px}
+.hp-foot .mini{flex:1}
+.hp-foot .mini b{font-size:15px;font-weight:700;display:block;line-height:1}
+.hp-foot .mini span{font-size:9.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.hp-sp{width:1px;align-self:stretch;background:var(--line)}
+
+/* KPI chip cards */
+.kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:15px 15px 13px;box-shadow:var(--shadow);position:relative}
+.k-ic{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:11px;background:var(--vio-soft)}
+.k-ic svg{width:18px;height:18px;stroke:var(--vio)}
+.k-ic.blu{background:var(--blu-soft)}.k-ic.blu svg{stroke:var(--blu)}
+.k-ic.pnk{background:var(--pnk-soft)}.k-ic.pnk svg{stroke:var(--pnk)}
+.k-l{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);line-height:1.25;min-height:24px}
+.k-row{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:6px}
+.k-n{font-size:29px;font-weight:700;letter-spacing:-.02em;line-height:.95}
+.k-s{font-size:10.5px;color:var(--ink3);margin-top:6px}
+.spk{width:100%;height:30px;display:block;margin-top:9px;overflow:visible}
+
+/* funnel steps */
+.funnel{display:flex;gap:0;align-items:stretch;flex-wrap:wrap}
+.fstep{flex:1;min-width:120px;padding:2px 6px;text-align:left;position:relative}
+.f-n{font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.f-l{font-size:11px;font-weight:600;color:var(--ink2);margin-top:3px}
+.f-conv{display:inline-flex;align-items:center;gap:5px;margin-top:9px;font-size:11px;font-weight:700;color:var(--vio);background:var(--vio-soft);padding:3px 9px;border-radius:20px}
+.f-conv.sm{color:var(--ink3);background:var(--inset)}
+.f-arrow{align-self:center;color:var(--ink4);flex:0 0 20px;display:flex;justify-content:center}
+.f-arrow svg{width:16px;height:16px;stroke:var(--ink4)}
+.f-bar{height:5px;border-radius:20px;background:var(--grad);margin-top:11px;opacity:.9}
+
+/* two column layout for panorama bottom */
+.pcols{display:grid;grid-template-columns:1fr 340px;gap:14px;align-items:stretch;margin-top:14px}
+.pcols>*{min-width:0;display:flex;flex-direction:column}
+.pcols>*>.card{flex:1}
+.side-panel{display:flex;flex-direction:column;gap:14px}
+.dec{display:flex;flex-direction:column;gap:9px}
+.dec-item{display:flex;gap:11px;align-items:flex-start;padding:11px;border-radius:var(--r-s);border:1px solid var(--line);background:var(--surface2)}
+.dec-ic{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dec-ic svg{width:15px;height:15px;stroke:#fff}
+.dec-b{flex:1;min-width:0}
+.dec-h{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:2px}
+.dec-h b{font-size:12.5px;font-weight:700}
+.dec-t{font-size:11.5px;color:var(--ink3);line-height:1.4}
+.dec-t b{color:var(--ink2)}
+.srcpanel{display:flex;flex-direction:column;gap:9px}
+.srcrow{display:flex;align-items:center;gap:10px;font-size:12px}
+.srcrow .nm{font-weight:600;color:var(--ink2)}
+.srcrow .dt{margin-left:auto;font-size:10.5px;color:var(--ink3);font-variant-numeric:tabular-nums}
+
+/* ============ DEMANDA ============ */
+.qgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:6px}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:15px;box-shadow:var(--shadow)}
+.q-pct{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--vio);margin-bottom:6px}
+.q-n{font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.q-t{font-size:12px;color:var(--ink2);margin-top:5px;line-height:1.35}
+.vargrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.varcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:16px 17px;box-shadow:var(--shadow)}
+.bar-row{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:center;margin-bottom:10px}
+.bar-row:last-child{margin-bottom:0}
+.bar-lab{font-size:12px;color:var(--ink2);font-weight:500}
+.bar-val{font-size:11.5px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.bar-val span{color:var(--ink3);font-weight:600;margin-left:4px}
+.bar-track{grid-column:1/-1;height:7px;border-radius:20px;background:var(--inset);overflow:hidden}
+.bar-fill{height:100%;border-radius:20px;background:var(--grad)}
+
+/* ============ CAMPAÑAS ============ */
+.hl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:6px}
+.hl{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:14px 16px;box-shadow:var(--shadow);display:flex;gap:13px;align-items:center}
+.hl-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.hl-b{flex:1;min-width:0}
+.hl-n{font-family:'Courier New',monospace;font-size:12.5px;font-weight:700;color:var(--ink)}
+.hl-c{font-size:11px;color:var(--ink3);margin:2px 0 0}
+.hl-m{display:flex;gap:16px;flex-shrink:0;text-align:right}
+.hl-m>div .v{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.hl-m>div .k{font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;font-weight:600}
+.glossary{display:grid;grid-template-columns:repeat(2,1fr);gap:9px 20px}
+.gl{display:flex;gap:9px;align-items:baseline;font-size:12px;color:var(--ink3);line-height:1.4}
+.gl b{color:var(--ink2);font-weight:700;min-width:70px}
+.camp{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;box-shadow:var(--shadow);margin-bottom:11px}
+summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:none}
+.camp-s{display:flex;align-items:center;gap:13px;padding:15px 17px}
+.camp-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.camp-t{flex:1;min-width:0}
+.camp-n{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.camp-o{font-size:11px;color:var(--ink3);margin-top:2px}
+.camp-m{display:flex;gap:20px;flex-shrink:0}
+.camp-m>div{text-align:right}
+.camp-m .v{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.camp-m .k{font-size:8.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;font-weight:600}
+.chev{color:var(--ink3);transition:transform .2s;flex-shrink:0}
+.chev svg{width:16px;height:16px;stroke:currentColor}
+.camp[open] .chev{transform:rotate(180deg)}
+.tblwrap{overflow-x:auto;border-top:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;min-width:820px;font-variant-numeric:tabular-nums}
+thead th{font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--ink3);text-align:right;padding:11px;background:var(--surface2);white-space:nowrap;position:sticky;top:0}
+thead th:first-child{text-align:left}
+.th-src{font-size:7.5px;font-weight:700;padding:1px 5px;border-radius:10px;margin-left:5px;color:#fff}
+tbody td{padding:11px;font-size:12px;text-align:right;border-top:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+tbody td:first-child{text-align:left}
+tbody tr:hover td{background:var(--surface2)}
+.anm{font-family:'Courier New',monospace;font-size:11px!important;font-weight:700;color:var(--ink)!important}
+.prof{font-size:10.5px;color:var(--ink3);display:block;font-family:var(--hel);font-weight:500}
+.calc{font-weight:700;color:var(--ink)!important}
+.pill{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;display:inline-block}
+.pi-esc{background:var(--good-bg);color:var(--good-ink)}
+.pi-mant{background:var(--blu-soft);color:var(--src-meta)}
+.pi-pausar{background:var(--crit-bg);color:var(--crit-ink)}
+.pi-subir{background:var(--vio-soft);color:var(--vio)}
+
+/* ============ META / integraciones ============ */
+.metagrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mt{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);padding:20px;box-shadow:var(--shadow)}
+.mt-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}
+.mt-ic{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:var(--grad)}
+.mt-ic svg{width:21px;height:21px;stroke:#fff}
+.mt h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.mt p{font-size:12px;color:var(--ink3);margin-bottom:14px;line-height:1.45}
+.acts{display:flex;flex-direction:column;gap:8px}
+.act{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1px solid var(--line);border-radius:var(--r-s);padding:10px 11px}
+.a-ic{width:24px;height:24px;border-radius:8px;background:var(--vio-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.a-ic svg{width:13px;height:13px;stroke:var(--vio)}
+.a-t{flex:1;font-size:11.5px;color:var(--ink2);line-height:1.4}
+.a-t b{color:var(--ink);font-weight:700}
+.a-b{font-size:10.5px;font-weight:700;color:#fff;background:var(--ink);border:none;border-radius:8px;padding:7px 11px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:.14s}
+.a-b:hover{transform:scale(.97)}
+[data-theme=dark] .a-b{background:var(--vio)}
+
+/* ============ AUDIENCIAS ============ */
+.aucard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;box-shadow:var(--shadow);margin-bottom:10px}
+.au-s{display:flex;align-items:center;gap:14px;padding:15px 17px}
+.au-ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--grad)}
+.au-ic svg{width:20px;height:20px;stroke:#fff}
+.au-t{flex:1;min-width:0}
+.au-n{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.au-badge{font-family:'Courier New',monospace;font-size:9.5px;font-weight:700;background:var(--inset);color:var(--ink2);padding:2px 7px;border-radius:6px}
+.au-ss{font-size:11.5px;color:var(--ink3);margin-top:2px}
+.au-c{font-size:25px;font-weight:700;letter-spacing:-.02em;line-height:1;text-align:right;flex-shrink:0}
+.au-c span{display:block;font-size:9px;color:var(--ink3);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.au-d{padding:0 17px 15px 71px}
+.au-d ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.au-d li{font-size:12px;color:var(--ink2);padding-left:15px;position:relative;line-height:1.4}
+.au-d li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--grad)}
+
+/* ============ INSIGHTS ============ */
+.insgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.ins{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px}
+.ins-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ins-cat{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3)}
+.ins-n{font-family:'Courier New',monospace;font-size:12.5px;font-weight:700;color:var(--ink)}
+.ins-meta{font-size:11px;color:var(--ink3);line-height:1.4}
+.ins-fact{font-size:12.5px;color:var(--ink2);line-height:1.45;flex:1}
+.ins-fact b{color:var(--ink);font-weight:700}
+.ins-hi{color:var(--good-ink);font-weight:700}
+.ins-lo{color:var(--crit-ink);font-weight:700}
+.ins-foot{display:flex;gap:8px;margin-top:2px}
+.ins-b{flex:1;font-size:11px;font-weight:700;color:#fff;background:var(--grad);border:none;border-radius:9px;padding:9px;cursor:pointer;transition:.14s}
+.ins-b:hover{transform:scale(.98)}
+.ins-b2{font-size:11px;font-weight:600;color:var(--ink2);background:var(--surface2);border:1px solid var(--line);border-radius:9px;padding:9px 12px;cursor:pointer}
+
+/* ============ EVOLUCIÓN ============ */
+.evo-hero{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin-bottom:14px}
+.evo-tabs{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-s);padding:3px;gap:2px;margin-bottom:12px}
+.evo-tabs label{font-size:12px;font-weight:700;color:var(--ink3);padding:7px 15px;border-radius:9px;cursor:pointer;transition:.14s}
+#ev-ano:checked~.shell .evo-tabs label[for=ev-ano],
+#ev-tri:checked~.shell .evo-tabs label[for=ev-tri],
+#ev-mes:checked~.shell .evo-tabs label[for=ev-mes]{background:var(--grad);color:#fff}
+.evo-table{display:none}
+#ev-ano:checked~.shell .evt-ano,
+#ev-tri:checked~.shell .evt-tri,
+#ev-mes:checked~.shell .evt-mes{display:block}
+.stat-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.statbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:16px;box-shadow:var(--shadow)}
+.statbox .l{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);margin-bottom:7px}
+.statbox .v{font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.statbox .m{font-size:11px;color:var(--ink3);margin-top:5px}
+
+/* ============ INTEGRACIÓN ============ */
+.baserow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+.base{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:17px;box-shadow:var(--shadow)}
+.base-hd{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.base-hd .src{margin-left:auto}
+.base h3{font-size:15px;font-weight:700}
+.base .role{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--vio);margin-bottom:8px}
+.base p{font-size:12px;color:var(--ink3);line-height:1.5}
+.base .count{margin-top:11px;font-size:11.5px;font-weight:700;color:var(--ink2);padding-top:11px;border-top:1px solid var(--line2)}
+.bridge{background:var(--grad-soft);border:1px solid var(--line);border-radius:var(--r-l);padding:20px 22px;text-align:center;margin-bottom:14px}
+.bridge .eq{font-family:'Courier New',monospace;font-size:15px;font-weight:700;color:var(--ink);margin:8px 0}
+.bridge .eq b{color:var(--vio)}
+.bridge p{font-size:12.5px;color:var(--ink3);max-width:600px;margin:0 auto;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.vchip{font-size:12px;font-weight:600;color:var(--ink2);background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:7px 13px;box-shadow:var(--shadow)}
+.order3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ord{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:15px;box-shadow:var(--shadow)}
+.ord .n{font-size:13px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.ord .n .num{width:22px;height:22px;border-radius:7px;background:var(--vio-soft);color:var(--vio);font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ord .d{font-size:11.5px;color:var(--ink3);line-height:1.4}
+.ord .who{font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink4);margin-top:7px}
+
+.footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px;font-size:11px;color:var(--ink3);flex-wrap:wrap}
+.footer .orb{width:14px;height:14px;border-radius:50%;background:var(--grad)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1080px){
+  .hero-grid{grid-template-columns:1fr}
+  .evo-hero{grid-template-columns:1fr}
+  .pcols{grid-template-columns:1fr}
+  .metagrid,.insgrid,.order3,.baserow{grid-template-columns:1fr 1fr}
+  .vargrid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .shell{flex-direction:column}
+  /* en mobile la nav es una barra horizontal: queda fija arriba para no perder las pestañas al scrollear */
+  .side{position:sticky;top:0;z-index:30;width:100%;flex:none;min-height:0;height:auto;max-height:none;overflow-y:visible;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;gap:6px;padding:10px 12px;border-radius:0 0 var(--r-l) var(--r-l)}
+  /* la marca ya esta en el encabezado del panel: en la barra solo estorba a las pestañas */
+  .side .brand{display:none}
+  .side .navlab{display:none}
+  .nav{flex-shrink:0;white-space:nowrap}.nav .dot{display:none}
+  .side-foot{margin:0 0 0 auto;padding:0;border:none;flex-direction:row;flex-shrink:0}
+  .themebtn span{display:none}
+}
+@media (max-width:720px){
+  .kgrid,.qgrid{grid-template-columns:1fr 1fr}
+  .hero-stats{grid-template-columns:1fr}
+  .hs+.hs{border-left:none;border-top:1px solid rgba(255,255,255,.18)}
+  .metagrid,.insgrid,.vargrid,.order3,.baserow,.hl-grid,.glossary,.stat-2{grid-template-columns:1fr}
+  .camp-m{display:none}
+  .funnel{flex-direction:column}.f-arrow{transform:rotate(90deg);margin:2px 0}
+}
+@media (max-width:440px){
+  .shell{padding:12px 12px 30px}
+  .kgrid,.qgrid{grid-template-columns:1fr}
+  .hero-h{max-width:100%;font-size:23px}.hero-sub{max-width:100%}
+}
+</style>
+<style>
+/* ===== rebuild v3 ===== */
+:root{--src-goog:#D97706;--goog-soft:#FaeEDD}
+[data-theme=dark]{--goog-soft:#3A2A12}
+.s-goog{background:var(--src-goog)}.mc-goog{background:var(--src-goog)}
+/* nav (dn ids) */
+#dn-panorama:checked~.shell .nav[data-t=panorama],#dn-ventacrm:checked~.shell .nav[data-t=ventacrm],#dn-insights:checked~.shell .nav[data-t=insights],#dn-metaprom:checked~.shell .nav[data-t=metaprom],#dn-audiencias:checked~.shell .nav[data-t=audiencias],#dn-evolucion:checked~.shell .nav[data-t=evolucion],#dn-metaads:checked~.shell .nav[data-t=metaads],#dn-googleads:checked~.shell .nav[data-t=googleads],#dn-integraciones:checked~.shell .nav[data-t=integraciones]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
+#dn-panorama:checked~.shell .nav[data-t=panorama] svg,#dn-ventacrm:checked~.shell .nav[data-t=ventacrm] svg,#dn-insights:checked~.shell .nav[data-t=insights] svg,#dn-metaprom:checked~.shell .nav[data-t=metaprom] svg,#dn-audiencias:checked~.shell .nav[data-t=audiencias] svg,#dn-evolucion:checked~.shell .nav[data-t=evolucion] svg,#dn-metaads:checked~.shell .nav[data-t=metaads] svg,#dn-googleads:checked~.shell .nav[data-t=googleads] svg,#dn-integraciones:checked~.shell .nav[data-t=integraciones] svg{stroke:#fff}
+#dn-panorama:checked~.shell .p-panorama,#dn-ventacrm:checked~.shell .p-ventacrm,#dn-insights:checked~.shell .p-insights,#dn-metaprom:checked~.shell .p-metaprom,#dn-audiencias:checked~.shell .p-audiencias,#dn-evolucion:checked~.shell .p-evolucion,#dn-metaads:checked~.shell .p-metaads,#dn-googleads:checked~.shell .p-googleads,#dn-integraciones:checked~.shell .p-integraciones{display:block}
+.navlab2{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);padding:14px 10px 5px;margin-top:6px;border-top:1px solid var(--line2)}
+.nav .chch{margin-left:auto;width:6px;height:6px;border-radius:50%;background:var(--good);flex-shrink:0}
+/* big brand header */
+.hbrand{display:flex;align-items:center;gap:15px}
+.hbrand .wm{font-size:38px;font-weight:800;letter-spacing:.01em;line-height:.85;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hbrand .ic{font-family:var(--serif);font-style:italic;font-weight:500;font-size:20px;color:var(--ink2);border-left:2px solid var(--line);padding-left:15px;line-height:1.05}
+.hbrand .ic b{display:block;font-family:var(--hel);font-style:normal;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--vio)}
+/* io bar (import/export/update) */
+.iobar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:14px 0}
+.iobtn{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;border-radius:11px;padding:9px 14px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink2);box-shadow:var(--shadow);transition:.14s}
+.iobtn:hover{border-color:var(--vio);color:var(--ink)}
+.iobtn svg{width:15px;height:15px;stroke:var(--vio)}
+.iobtn.primary{background:var(--grad);color:#fff;border:none}.iobtn.primary svg{stroke:#fff}
+.iobtn.locked{opacity:.6;cursor:not-allowed;filter:grayscale(.3)}
+.iobtn.locked:hover{border-color:var(--line);color:var(--ink2)}
+.iobtn .lk{font-size:8.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;background:var(--inset);color:var(--ink3);padding:2px 6px;border-radius:5px}
+.iohint{font-size:11px;color:var(--ink3);margin-left:auto}
+/* channel split */
+.chansplit{display:flex;align-items:center;gap:13px;margin:28px 0 16px}
+.chansplit .ln{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.chansplit b{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);display:inline-flex;align-items:center;gap:8px}
+.chansplit .eb-orb{width:14px;height:14px}
+/* conjunto grouped cell */
+td.cjcell{vertical-align:middle;font-weight:700;color:var(--ink)!important;border-left:2px solid var(--vio)!important;background:linear-gradient(90deg,var(--vio-soft),transparent)!important;font-size:11.5px}
+td.cjcell .sub{display:block;font-weight:500;color:var(--ink3);font-size:10px;margin-top:2px}
+/* insights redesign */
+.insxgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.insx{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden;border-top:3px solid var(--sealc)}
+.insx.pausar{--sealc:var(--crit)}.insx.escalar{--sealc:var(--good)}.insx.subir{--sealc:var(--vio)}.insx.reducir{--sealc:var(--warn)}
+.insx-top{padding:15px 16px 0;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.insx-seal{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:var(--sealc)}
+.insx-seal .ic{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--sealc)}
+.insx.subir .insx-seal .ic{background:var(--grad)}
+.insx-seal .ic svg{width:17px;height:17px;stroke:#fff}
+.insx-body{padding:11px 16px 16px}
+.insx-nm{font-family:'Courier New',monospace;font-size:13px;font-weight:700;margin-bottom:9px}
+.insx-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+.insx-chip{font-size:10px;font-weight:600;color:var(--ink2);background:var(--surface2);border:1px solid var(--line);border-radius:20px;padding:4px 10px;display:inline-flex;gap:5px;align-items:center}
+.insx-chip svg{width:11px;height:11px;stroke:var(--ink3)}
+.insx-b{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.insx-b li{font-size:12.5px;color:var(--ink2);padding-left:17px;position:relative;line-height:1.4}
+.insx-b li::before{content:"";position:absolute;left:0;top:6px;width:6px;height:6px;border-radius:50%;background:var(--sealc)}
+.insx-b b{color:var(--ink);font-variant-numeric:tabular-nums}
+.insx-cmp{border-top:1px dashed var(--line);padding-top:13px;display:flex;align-items:center;gap:13px}
+.insx-cmp .big{font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums;color:var(--sealc);flex-shrink:0}
+.insx-cmp .rt{flex:1}
+.insx-cmp .txt{font-size:11px;color:var(--ink3);line-height:1.35;margin-bottom:6px}
+.insx-cmp .txt b{color:var(--ink2)}
+.cmpbar{height:9px;border-radius:20px;background:var(--inset);position:relative;overflow:visible}
+.cmpbar span{position:absolute;left:0;top:0;bottom:0;border-radius:20px;background:var(--sealc)}
+.cmpbar i{position:absolute;top:-4px;bottom:-4px;width:2.5px;border-radius:2px;background:var(--ink)}
+.cmpbar{margin-bottom:15px}
+.cmpbar i::after{content:"1 msj";position:absolute;top:auto;bottom:-14px;left:50%;transform:translateX(-50%);font-size:7.5px;font-weight:800;color:var(--ink3);letter-spacing:.03em;white-space:nowrap}
+/* subtabs */
+.subtabs{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-s);padding:3px;gap:2px;margin-bottom:16px;box-shadow:var(--ring)}
+.subtabs label{font-size:12.5px;font-weight:700;color:var(--ink3);padding:8px 16px;border-radius:9px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.subtabs label svg{width:14px;height:14px;stroke:currentColor}
+#ins-anuncios:checked~.shell .subtabs label[for=ins-anuncios],#ins-conjuntos:checked~.shell .subtabs label[for=ins-conjuntos]{background:var(--grad);color:#fff}
+.instab{display:none}#ins-anuncios:checked~.shell .it-anuncios,#ins-conjuntos:checked~.shell .it-conjuntos{display:block}
+/* grupal averages */
+.grupal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px}
+.gv{background:var(--grad-soft);border:1px solid var(--line);border-radius:var(--r-m);padding:15px 16px;box-shadow:var(--shadow)}
+.gv .l{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3)}
+.gv .n{font-size:27px;font-weight:800;letter-spacing:-.02em;margin-top:7px;font-variant-numeric:tabular-nums;line-height:1}
+.gv .m{font-size:11px;color:var(--ink3);margin-top:4px}
+.gv .m b{color:var(--good-ink)}
+/* stage cards (Venta-CRM) */
+.stagegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);padding:17px 18px;box-shadow:var(--shadow);border-top:3px solid var(--stc)}
+.stage h4{font-size:15.5px;font-weight:700;letter-spacing:-.01em}
+.stage .ssub{font-size:11.5px;color:var(--ink3);margin:3px 0 14px;line-height:1.4}
+.stage .qty{font-size:36px;font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stage .qty small{font-size:12px;font-weight:600;color:var(--ink3);letter-spacing:0}
+.stage .rowl{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 0;border-top:1px solid var(--line2);font-size:12px}
+.stage .rowl .k{color:var(--ink3);display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.stage .rowl .k svg{width:14px;height:14px;stroke:var(--ink3)}
+.stage .rowl .v{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.stage .rowl .v small{font-weight:600;color:var(--ink3);font-size:10.5px}
+.stage .act{margin-top:13px;padding-top:12px;border-top:1px solid var(--line2);font-size:12px;color:var(--ink2);line-height:1.45;display:flex;gap:8px}
+.stage .act b{color:var(--ink)}
+.stage .act .d{width:8px;height:8px;border-radius:50%;background:var(--stc);flex-shrink:0;margin-top:5px}
+/* minimized expandable cards (avanzada) */
+.mincard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);box-shadow:var(--shadow);overflow:hidden;margin-bottom:10px}
+.mincard>summary{display:flex;align-items:center;gap:13px;padding:14px 16px;cursor:pointer}
+.mincard .mc-ic{width:30px;height:30px;border-radius:9px;background:var(--vio-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mincard .mc-ic svg{width:15px;height:15px;stroke:var(--vio)}
+.mincard .mc-t{flex:1;min-width:0}.mincard .mc-t b{font-size:13.5px;font-weight:700}
+.mincard .mc-t span{font-size:11px;color:var(--ink3);display:block;margin-top:1px}
+.mincard .mc-v{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;flex-shrink:0}
+.mincard .mc-v small{display:block;font-size:8.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;font-weight:600;text-align:right}
+.mincard .chev{color:var(--ink3);flex-shrink:0;transition:transform .2s}.mincard .chev svg{width:16px;height:16px;stroke:currentColor}
+.mincard[open] .chev{transform:rotate(180deg)}
+.mincard .mc-body{padding:2px 6px 6px;border-top:1px solid var(--line)}
+/* del clic a la venta: aligned 2x3 grid */
+.recorrido{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.rec{background:var(--surface2);border:1px solid var(--line2);border-radius:var(--r-m);padding:14px 15px;position:relative}
+.rec .st{font-size:9px;font-weight:800;color:var(--ink4);letter-spacing:.05em}
+.rec .n{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1;margin:5px 0 2px;font-variant-numeric:tabular-nums}
+.rec .n.grad-txt{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.rec .l{font-size:12px;font-weight:600;color:var(--ink2)}
+.rec .c{display:inline-block;margin-top:9px;font-size:10.5px;font-weight:700;color:var(--vio);background:var(--vio-soft);padding:3px 9px;border-radius:20px}
+.rec .c.sm{color:var(--ink3);background:var(--inset)}
+/* integraciones */
+.intg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.intg{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);padding:22px 20px;box-shadow:var(--shadow);text-align:center;transition:.16s}
+.intg .ci{width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;margin:0 auto 13px;background:var(--surface2);border:1px solid var(--line)}
+.intg .ci svg{width:28px;height:28px}
+.intg h4{font-size:15px;font-weight:700}
+.intg p{font-size:11.5px;color:var(--ink3);margin-top:4px;line-height:1.4}
+.intg.avail{border-style:dashed}
+.intg.avail .ci{filter:grayscale(1);opacity:.6;transition:.16s}
+.intg.avail:hover{border-style:solid;border-color:var(--vio);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.intg.avail:hover .ci{filter:none;opacity:1}
+.intg-cta{margin-top:13px;font-size:11.5px;font-weight:700;color:#fff;background:var(--grad);border-radius:10px;padding:9px;opacity:0;max-height:0;overflow:hidden;transition:.18s;display:flex;align-items:center;justify-content:center;gap:7px}
+.intg-cta svg{width:14px;height:14px;stroke:#fff}
+.intg.avail:hover .intg-cta{opacity:1;max-height:42px}
+.intg .stt{position:absolute;top:13px;right:13px;font-size:8.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
+.intg .stt.on{background:var(--good-bg);color:var(--good-ink)}
+.intg .stt.off{background:var(--inset);color:var(--ink3)}
+@media(max-width:1080px){.insxgrid,.intg-grid,.stagegrid{grid-template-columns:1fr 1fr}.grupal{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.insxgrid,.intg-grid,.stagegrid,.grupal,.recorrido{grid-template-columns:1fr}.hbrand .wm{font-size:30px}.hbrand .ic{font-size:16px}}
+</style>
+
+<style>
+/* ===== canal email marketing ===== */
+/* los paneles son items flex: sin min-width:0 no achican por debajo de su contenido
+   y una tabla ancha desborda la pagina entera en pantallas chicas */
+.main,.panel{min-width:0;max-width:100%}
+:root{--src-mail:#B4649B}
+.s-mail{background:var(--src-mail)}.mc-mail{background:var(--src-mail)}
+tbody tr.tot td{background:var(--inset);font-weight:700;color:var(--ink)}
+tbody tr.bad td{background:color-mix(in srgb,var(--crit) 7%,transparent)}
+tbody td small{color:var(--ink3);font-weight:600;margin-left:3px}
+#dn-email:checked~.shell .nav[data-t=email]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
+#dn-email:checked~.shell .nav[data-t=email] svg{stroke:#fff}
+#dn-email:checked~.shell .p-email{display:block}
+#dn-whatsapp:checked~.shell .nav[data-t=whatsapp]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
+#dn-whatsapp:checked~.shell .nav[data-t=whatsapp] svg{stroke:#fff}
+#dn-whatsapp:checked~.shell .p-whatsapp{display:block}
+#dn-criterio:checked~.shell .nav[data-t=criterio],#dn-calidad:checked~.shell .nav[data-t=calidad]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
+#dn-criterio:checked~.shell .nav[data-t=criterio] svg,#dn-calidad:checked~.shell .nav[data-t=calidad] svg{stroke:#fff}
+#dn-criterio:checked~.shell .p-criterio,#dn-calidad:checked~.shell .p-calidad{display:block}
+.p-criterio .cmpbar i::after,.p-calidad .cmpbar i::after{content:"media"}
+.mc-wpp{background:var(--src-wpp)}
+/* grillas explicitas: el renglon siempre se completa, y colapsan como el resto */
+.g1{grid-template-columns:1fr!important}
+.g2{grid-template-columns:1fr 1fr!important}
+.g4{grid-template-columns:repeat(4,1fr)!important}
+@media(max-width:1080px){.g4{grid-template-columns:1fr 1fr!important}}
+@media(max-width:720px){.g2,.g4{grid-template-columns:1fr!important}}
+.intg-on{background:color-mix(in srgb,var(--good) 9%,transparent);border:1px solid color-mix(in srgb,var(--good) 26%,transparent);border-radius:var(--r-l);padding:13px;margin-bottom:4px}
+.intg.live{border-color:color-mix(in srgb,var(--good) 40%,transparent)}
+.stt.on{background:var(--good-bg);color:var(--good-ink)}
+.s-wpp{background:var(--src-wpp)}
+.p-email .cmpbar i::after,.p-whatsapp .cmpbar i::after{content:"comparación"}
+</style>
+</head>
+
+<body>
+<input type="radio" name="nav" id="dn-panorama" class="st" checked>
+<input type="radio" name="nav" id="dn-ventacrm" class="st">
+<input type="radio" name="nav" id="dn-insights" class="st">
+<input type="radio" name="nav" id="dn-criterio" class="st">
+<input type="radio" name="nav" id="dn-calidad" class="st">
+<input type="radio" name="nav" id="dn-metaprom" class="st">
+<input type="radio" name="nav" id="dn-audiencias" class="st">
+<input type="radio" name="nav" id="dn-evolucion" class="st">
+<input type="radio" name="mode" id="mode-simple" class="st" checked>
+<input type="radio" name="mode" id="mode-adv" class="st">
+<style>
+/* ===== PAVIR extra nav + pieces ===== */
+#dn-distrib:checked~.shell .nav[data-t=distrib],#dn-demanda:checked~.shell .nav[data-t=demanda],#dn-catalogo:checked~.shell .nav[data-t=catalogo],#dn-corredores:checked~.shell .nav[data-t=corredores]{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}
+#dn-distrib:checked~.shell .nav[data-t=distrib] svg,#dn-demanda:checked~.shell .nav[data-t=demanda] svg,#dn-catalogo:checked~.shell .nav[data-t=catalogo] svg,#dn-corredores:checked~.shell .nav[data-t=corredores] svg{stroke:#fff}
+#dn-distrib:checked~.shell .p-distrib,#dn-demanda:checked~.shell .p-demanda,#dn-catalogo:checked~.shell .p-catalogo,#dn-corredores:checked~.shell .p-corredores{display:block}
+.spanall{grid-column:1/-1}
+.mkgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 24px;margin-top:2px}
+.mkgrp .subl{display:flex;align-items:center;gap:7px;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);margin:0 0 11px}
+.mkgrp .subl .dot2{width:8px;height:8px;border-radius:50%}
+.st-chip{font-size:8px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:1px}
+.sc-on{background:var(--good-bg);color:var(--good-ink)}.sc-off{background:var(--warn-bg);color:var(--warn-ink)}
+.sem{width:11px;height:11px;border-radius:50%;display:inline-block;margin-left:auto}
+.sem-g{background:var(--good)}.sem-y{background:var(--warn)}.sem-r{background:var(--crit)}
+td.semc{text-align:right!important}
+.tprev{position:relative}
+@media(max-width:1080px){.mkgrid{grid-template-columns:1fr}}
+</style><style>
+/* ===== BETROX ===== */
+.main,.panel{min-width:0;max-width:100%}
+.p-insights .cmpbar i::after,.p-criterio .cmpbar i::after,.p-metaprom .cmpbar i::after{content:"comparación"}
+.lvl{font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.wk{display:grid;grid-template-columns:repeat(11,1fr);gap:8px;align-items:end;height:190px;margin-top:6px}
+.wk .c{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:5px;min-width:0}
+.wk .b{width:100%;border-radius:7px 7px 2px 2px;background:var(--grad)}
+.wk .b.cut{background:var(--crit)}
+.wk .v{font-size:10.5px;font-weight:700;color:var(--ink2)}
+.wk .x{font-size:9.5px;color:var(--ink3);white-space:nowrap}
+.p-criterio .k-n{font-size:28px}
+@media(max-width:720px){.wk{gap:3px;height:160px}.wk .v{font-size:8.5px}.wk .x{font-size:7.5px}}
+</style>
+<div class="shell">
+  <aside class="side">
+    <div class="brand">
+      <img class="sph" src="data:image/webp;base64,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" alt="">
+      <div class="brand-t"><b>BETROX</b><span>Inteligencia Comercial</span></div>
+    </div>
+    <div class="navlab">Tablero</div>
+    <label class="nav" data-t="panorama" for="dn-panorama"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13h8V3H3v10Zm10 8h8V3h-8v18ZM3 21h8v-6H3v6Z"/></svg>Panorama</label>
+    <label class="nav" data-t="ventacrm" for="dn-ventacrm"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10.5h8M8 14h5M21 12a9 9 0 1 1-3.6-7.2L21 4v5h-5"/></svg>Venta · CRM</label>
+    <label class="nav" data-t="insights" for="dn-insights"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2H14.5c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3Z"/></svg>Insights</label>
+    <label class="nav" data-t="criterio" for="dn-criterio"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 9 9M12 7v5l3 2M21 5l-4 4-2-2"/></svg>Criterio comercial</label>
+    <label class="nav" data-t="calidad" for="dn-calidad"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 11l2 2 4-4M4 4h16v16H4z"/></svg>Calidad de datos</label>
+    <label class="nav" data-t="metaprom" for="dn-metaprom"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7c0 5 3.5 10 8 10s8-5 8-10M4 7c0-2 1.6-3 3-3 3 0 4 4 5 8M20 7c0-2-1.6-3-3-3-3 0-4 4-5 8"/></svg>Meta en Prometheo</label>
+    <label class="nav" data-t="audiencias" for="dn-audiencias"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M16 19v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 17.5V19M10 10.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM20 19v-1.5a3.5 3.5 0 0 0-2.6-3.4M15.5 4.6a3 3 0 0 1 0 5.8"/></svg>Audiencias</label>
+    <label class="nav" data-t="evolucion" for="dn-evolucion"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M7 15l4-5 3 3 5-7"/></svg>Evolución</label>
+    <div class="side-foot">
+      <button class="themebtn" onclick="tgl()"><svg class="sun" fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2m0 14v2M5.6 5.6l1.4 1.4m10 10 1.4 1.4M3 12h2m14 0h2M5.6 18.4 7 17m10-10 1.4-1.4M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg><svg class="moon" fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"/></svg><span>Tema</span></button>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <div class="tb-l">
+        <img class="tb-logo" src="data:image/webp;base64,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" alt="AUREA Hub">
+        <div class="hbrand"><span class="wm">BETROX</span><span class="ic"><b>Inteligencia</b>Comercial</span></div>
+      </div>
+      <div class="tb-r">
+        <span class="upd"><span class="dotb" style="background:var(--src-pro)"></span>Prometheo <b>conectado</b></span>
+        <span class="upd"><span class="dotb" style="background:var(--src-calc)"></span>PrestaShop <b>conectado</b></span>
+        <span class="upd"><span class="dotb" style="background:var(--src-meta)"></span>Meta Ads <b>a conectar</b></span>
+        <div class="mode">
+          <label for="mode-simple"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h10M4 18h7"/></svg>Básico</label>
+          <label for="mode-adv"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4v16M6 8h4M14 4v16M14 14h4"/></svg>Avanzada</label>
+        </div>
+      </div>
+    </div>
+
+    
+    <section class="panel p-panorama">
+      <div class="iobar">
+        <button class="iobtn primary"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Exportar reporte</button>
+        <span class="iohint">Base de Prometheo · 942 contactos · 3 de julio a 2 de octubre 2026 · datos reales</span>
+      </div>
+      <div class="hero-grid">
+        <div class="hero">
+          <img class="hero-sph" src="data:image/webp;base64,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" alt="">
+          <div class="hero-top"><span class="hero-kick">Panorama · jul a oct 2026</span><span class="hero-per">3 meses</span></div>
+          <div class="hero-h">942 consultas, y de qué anuncio llegó cada una.</div>
+          <div class="hero-sub">Todo lo que capturó Prometheo por WhatsApp e Instagram. <b>67% trae el anuncio de origen</b>: se puede leer qué mesa o línea alimenta cada conversación.</div>
+          <div class="chartbox">
+            <div class="chart-scale"><span>pico ago · 367 consultas</span><span>más es mejor ↑</span></div>
+            <div class="chart">
+              <svg viewBox="0 0 600 150" preserveAspectRatio="none" role="img" aria-label="Consultas por mes">
+                <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+                <path d="M 6 64.6 L 300 28 L 594 45.1 L 594 150 L 6 150 Z" fill="url(#hg)"/>
+                <path d="M 6 64.6 L 300 28 L 594 45.1" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+                <circle cx="6" cy="64.6" r="4" fill="#fff"/><circle cx="300" cy="28" r="4.5" fill="#fff"/><circle cx="594" cy="45.1" r="4" fill="#fff"/>
+              </svg>
+              <div class="endtag">311<span>sep</span></div>
+            </div>
+            <div class="chart-x"><span>julio · 247</span><span>agosto · 367</span><span>sep · 311 (+17 en oct)</span></div>
+          </div>
+          <div class="hero-stats">
+            <div class="hs"><div class="l">Contactos</div><div class="v tnum">942</div><div class="m">jul a oct 2026</div></div>
+            <div class="hs big"><div class="l">Por WhatsApp</div><div class="v tnum">98%</div><div class="m">919 · resto Instagram</div></div>
+            <div class="hs"><div class="l">Con anuncio</div><div class="v tnum">67%</div><div class="m">635 atribuidos</div></div>
+          </div>
+        </div>
+        <div class="hero-pink">
+          <div class="hp-top">
+            <div class="hp-row"><div class="hp-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7c0 5 3.5 10 8 10s8-5 8-10M4 7c0-2 1.6-3 3-3 3 0 4 4 5 8M20 7c0-2-1.6-3-3-3-3 0-4 4-5 8"/></svg></div><span class="hp-chip">anuncio top</span></div>
+            <div>
+              <div class="hp-l">El anuncio que más trae</div>
+              <div class="hp-v tnum">162</div>
+              <div class="hp-d"><span class="pin">26%</span> MESA POSITANO</div>
+            </div>
+          </div>
+          <div class="hp-foot">
+            <div class="mini"><b class="tnum">35%</b><span>califica</span></div><div class="hp-sp"></div>
+            <div class="mini"><b class="tnum">x2</b><span>más que Spring y SIT</span></div><div class="hp-sp"></div>
+            <div class="mini"><b class="tnum">8</b><span>anuncios en el período</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kgrid">
+        <div class="kpi"><div class="k-ic "><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M16 19v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 17.5V19M10 10.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM20 19v-1.5a3.5 3.5 0 0 0-2.6-3.4"/></svg></div><div class="k-l">Contactos</div><div class="k-row"><div class="k-n tnum">942</div></div><div class="k-s">3/07 a 2/10 · 17 de octubre</div></div>
+        <div class="kpi"><div class="k-ic blu"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7c0 5 3.5 10 8 10s8-5 8-10M4 7c0-2 1.6-3 3-3 3 0 4 4 5 8M20 7c0-2-1.6-3-3-3-3 0-4 4-5 8"/></svg></div><div class="k-l">Con anuncio identificado</div><div class="k-row"><div class="k-n tnum">635</div><span class="delta d-flat">67%</span></div><div class="k-s">307 sin anuncio</div></div>
+        <div class="kpi"><div class="k-ic "><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v9Z"/></svg></div><div class="k-l">Conversaron</div><div class="k-row"><div class="k-n tnum">829</div><span class="delta d-up">88%</span></div><div class="k-s">113 nunca escribieron</div></div>
+        <div class="kpi"><div class="k-ic pnk"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg></div><div class="k-l">Calificados por tag</div><div class="k-row"><div class="k-n tnum">171</div><span class="delta d-flat">18%</span></div><div class="k-s">Calificado o Hot Lead</div></div>
+      </div>
+
+      <div class="adv-only">
+        <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Estado de la base · modo avanzado</div></div>
+        <div class="kgrid">
+          <div class="kpi"><div class="k-ic blu"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4h18l-7 8v6l-4 2v-8L3 4Z"/></svg></div><div class="k-l">Base válida</div><div class="k-row"><div class="k-n tnum">695</div><span class="delta d-flat">74%</span></div><div class="k-s">conversaron y la extracción funcionaba</div></div>
+          <div class="kpi"><div class="k-ic pnk"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M18 6 6 18M6 6l12 12"/></svg></div><div class="k-l">Sin ningún tag</div><div class="k-row"><div class="k-n tnum">175</div><span class="delta d-dn">19%</span></div><div class="k-s">19% del total, sin estado</div></div>
+          <div class="kpi"><div class="k-ic "><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M13 2 4.1 12.7c-.6.7-.1 1.8.8 1.8H11l-1 7.5 8.9-10.7c.6-.7.1-1.8-.8-1.8H12l1-7.5Z"/></svg></div><div class="k-l">Derivados por evidencia</div><div class="k-row"><div class="k-n tnum">177</div></div><div class="k-s">el tag Derivado marca 38</div></div>
+          <div class="kpi"><div class="k-ic "><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M3 11a2 2 0 0 1 2 2v2h14v-2a2 2 0 1 1 4 0v4H1v-4a2 2 0 0 1 2-2ZM5 17v2M19 17v2"/></svg></div><div class="k-l">Tramo humano</div><div class="k-row"><div class="k-n tnum">10</div></div><div class="k-s">negociación, showroom o videollamada</div></div>
+        </div>
+      </div>
+
+      <div class="pcols">
+        <div class="side-panel">
+          <div class="card" style="padding:18px 20px">
+            <div class="ghdr"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7" style="width:16px;height:16px;stroke:var(--vio)"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4h18l-7 8v6l-4 2v-8L3 4Z"/></svg>Estado de los contactos · por tags de Prometheo<span class="r">un contacto puede tener varios tags</span></div>
+            <div class="recorrido">
+              <div class="rec"><div class="st">Base</div><div class="n tnum grad-txt">942</div><div class="l">Contactos</div><span class="c sm">jul a oct</span></div>
+              <div class="rec"><div class="st">Activo</div><div class="n tnum">248</div><div class="l">En conversación</div><span class="c">26%</span></div>
+              <div class="rec"><div class="st">Avanza</div><div class="n tnum">171</div><div class="l">Calificado</div><span class="c">18% · incluye Hot Lead</span></div>
+              <div class="rec"><div class="st">Cotiza</div><div class="n tnum">72</div><div class="l">Cotización enviada</div><span class="c sm">8%</span></div>
+              <div class="rec"><div class="st">Deriva</div><div class="n tnum">38</div><div class="l">Derivado</div><span class="c sm">pero 177 por evidencia</span></div>
+              <div class="rec"><div class="st">Frío</div><div class="n tnum">85</div><div class="l">No contestó</div><span class="c sm">9%</span></div>
+            </div>
+            <div class="banner info" style="margin-top:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div><div>Los estados del tramo humano están <b>casi vacíos</b>: Showroom agendado 4, En negociación 4, Videollamada 1, No concretado 1. No existe un tag de venta cerrada, así que hoy no se puede medir la conversión de consulta a compra. Ver <b>Venta · CRM</b>.</div></div>
+          </div>
+        </div>
+        <div class="side-panel">
+          <div class="card" style="padding:18px 20px">
+            <div class="ghdr"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7" style="width:16px;height:16px;stroke:var(--vio)"><path stroke-linecap="round" stroke-linejoin="round" d="M13 2 4.1 12.7c-.6.7-.1 1.8.8 1.8H11l-1 7.5 8.9-10.7c.6-.7.1-1.8-.8-1.8H12l1-7.5Z"/></svg>Qué hago ahora<span class="r">sobre datos reales</span></div>
+            <div class="dec">
+              <div class="dec-item"><div class="dec-ic" style="background:var(--crit)"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg></div><div class="dec-b"><div class="dec-h"><b>Corregir</b><span class="tag t-ventas">CRM</span></div><div class="dec-t"><b>134 conversaciones</b> del 17 al 27/09 quedaron sin variables por un corte de extracción. Reprocesarlas recupera 11 días de datos.</div></div></div>
+              <div class="dec-item"><div class="dec-ic" style="background:var(--vio)"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0-6 6m6-6 6 6"/></svg></div><div class="dec-b"><div class="dec-h"><b>Subir</b><span class="tag t-ventas">Ventas</span></div><div class="dec-t"><b>72 cotizaciones enviadas</b> sin respuesta registrada. Es la cola más cercana a la venta y no tiene seguimiento.</div></div></div>
+              <div class="dec-item"><div class="dec-ic" style="background:var(--blu)"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg></div><div class="dec-b"><div class="dec-h"><b>Corregir</b><span class="tag t-ventas">CRM</span></div><div class="dec-t"><b>79 conversaciones</b> hablan del showroom y solo 4 tienen el tag. Califican 49%, contra 18% del total.</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel p-ventacrm">
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Venta · CRM · el embudo real</div><h1 class="sec">El agente califica bien. <em>El embudo se corta donde entra el humano.</em></h1><p class="lead">Embudo armado sobre la <b>base válida</b>: los contactos que conversaron, fuera de los 11 días en que la extracción de variables se cortó. Cada etapa se cuenta por evidencia en la conversación, no solo por tag.</p></div>
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>De dónde sale la base válida</div></div>
+      <div class="qgrid">
+        <div class="qcard"><div class="q-pct">export</div><div class="q-n tnum">942</div><div class="q-t">contactos en el export de Prometheo</div></div>
+        <div class="qcard"><div class="q-pct">se restan</div><div class="q-n tnum">113</div><div class="q-t">sin conversación: 108 son la base cargada en julio, sin mensajes</div></div>
+        <div class="qcard"><div class="q-pct">se restan</div><div class="q-n tnum">134</div><div class="q-t">conversaron del 17 al 27/09, sin variables cargadas por el corte</div></div>
+        <div class="qcard"><div class="q-pct">base válida</div><div class="q-n tnum">695</div><div class="q-t">74% del export · sobre esta base corre el embudo</div></div>
+      </div>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Embudo por evidencia · base válida 695</div></div>
+      <div class="card" style="padding:18px 20px">
+        <div class="ghdr">De la consulta a la venta<span class="r">cada paso sobre el anterior</span></div>
+        <div class="funnel"><div class="fstep"><div class="f-n tnum">695</div><div class="f-l">conversaron</div><div class="f-conv sm">base válida</div><div class="f-bar"></div></div><div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div><div class="fstep"><div class="f-n tnum">525</div><div class="f-l">dijeron qué producto buscan</div><div class="f-conv">76%</div><div class="f-bar"></div></div><div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div><div class="fstep"><div class="f-n tnum">229</div><div class="f-l">cotización o derivación</div><div class="f-conv">44%</div><div class="f-bar"></div></div><div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div><div class="fstep"><div class="f-n tnum">10</div><div class="f-l">tramo humano</div><div class="f-conv">4%</div><div class="f-bar"></div></div><div class="f-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></svg></div><div class="fstep"><div class="f-n tnum">0</div><div class="f-l">venta registrada</div><div class="f-conv sm">sin tag de venta</div><div class="f-bar"></div></div></div>
+        <div class="banner good" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div>El tramo del agente funciona: <b>3 de cada 4</b> dicen qué producto buscan y <b>44%</b> de esos llega a cotización o derivación. La caída fuerte es después: de <b>229 a 10</b>. No es que no compren, es que el paso al vendedor no se registra.</div></div>
+      </div>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Dos embudos en uno</div></div>
+      <div class="bigcamp">
+        <div class="bc" style="--bcac:var(--vio)"><div class="bc-hd"><div class="bc-nm">Lo que hace el agente</div><span class="src s-pro">Prometheo</span></div><div class="bc-cap">695 conversaron en la base válida</div><div class="bc-row"><div><div class="v tnum">525</div><div class="k">identificó</div></div><div><div class="v tnum">229</div><div class="k">cotiz. o deriv.</div></div><div><div class="v tnum">44%</div><div class="k">avanza</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--good)"></span><div>Medible y sano. El agente pregunta línea, producto y escala en casi todas las conversaciones.</div></div></div>
+        <div class="bc" style="--bcac:var(--pnk)"><div class="bc-hd"><div class="bc-nm">Lo que hace el vendedor</div><span class="src s-pro">Prometheo</span></div><div class="bc-cap">10 contactos con algún tag del tramo humano</div><div class="bc-row"><div><div class="v tnum">4</div><div class="k">showroom</div></div><div><div class="v tnum">4</div><div class="k">negociación</div></div><div><div class="v tnum">1</div><div class="k">videollamada</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--warn)"></span><div>Casi vacío. El vendedor trabaja fuera del CRM y no vuelve a marcar el estado.</div></div></div>
+        <div class="bc" style="--bcac:var(--blu)"><div class="bc-hd"><div class="bc-nm">El cierre</div><span class="src s-pro">Prometheo</span></div><div class="bc-cap">PrestaShop no devuelve la compra al CRM</div><div class="bc-row"><div><div class="v tnum">0</div><div class="k">venta</div></div><div><div class="v tnum">1</div><div class="k">no concretado</div></div><div><div class="v tnum">s/d</div><div class="k">ticket</div></div></div><div class="bc-verd"><span class="bc-dot" style="background:var(--crit)"></span><div>No existe un tag de venta. Sin él no se puede atribuir ninguna venta a un anuncio.</div></div></div>
+      </div>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Etapa declarada vs etapa por evidencia</div></div>
+      <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:820px"><thead><tr><th>Etapa</th><th>Tag en el CRM</th><th>Cumple la evidencia</th><th>Brecha</th><th>Qué significa</th></tr></thead><tbody><tr><td class="cjcell"><b>Calificado</b><span class="sub">base válida 695</span></td><td>159</td><td>517</td><td><b>358 sin marcar</b></td><td>Dijeron 3 de 4: línea, producto, tipo de compra y escala. Nadie les puso el tag.</td></tr><tr><td class="cjcell"><b>Derivado</b><span class="sub">base total 942</span></td><td>38</td><td>177</td><td><b>150 sin marcar</b></td><td>El agente completa Tipo de derivación pero no aplica el tag. Solo 27 tienen ambos.</td></tr><tr><td class="cjcell"><b>Showroom</b><span class="sub">base total 942</span></td><td>4</td><td>79</td><td><b>75 sin marcar</b></td><td>Conversaciones que piden o mencionan ver el producto en el showroom. Califican 49%.</td></tr><tr><td class="cjcell"><b>Venta</b><span class="sub">base total 942</span></td><td>no existe</td><td>s/d</td><td>estructural</td><td>No hay forma de registrar que alguien compró.</td></tr></tbody></table></div></div>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Qué buscan · sobre los que lo dijeron</div></div>
+      <div class="vargrid">
+        <div class="varcard"><div class="ghdr">Línea de producto<span class="r">base declarada: 516 · 74%</span></div><div class="bar-row"><span class="bar-lab">Interior</span><span class="bar-val tnum">343 <span>66%</span></span><div class="bar-track"><div class="bar-fill" style="width:66%"></div></div></div><div class="bar-row"><span class="bar-lab">Urbano</span><span class="bar-val tnum">127 <span>25%</span></span><div class="bar-track"><div class="bar-fill" style="width:25%"></div></div></div><div class="bar-row"><span class="bar-lab">Exterior</span><span class="bar-val tnum">46 <span>9%</span></span><div class="bar-track"><div class="bar-fill" style="width:9%"></div></div></div></div>
+        <div class="varcard"><div class="ghdr">Producto de interés<span class="r">base declarada: 517 · 74%</span></div><div class="bar-row"><span class="bar-lab">Mesas de comedor</span><span class="bar-val tnum">204 <span>39%</span></span><div class="bar-track"><div class="bar-fill" style="width:39%"></div></div></div><div class="bar-row"><span class="bar-lab">Mesas bajas</span><span class="bar-val tnum">162 <span>31%</span></span><div class="bar-track"><div class="bar-fill" style="width:31%"></div></div></div><div class="bar-row"><span class="bar-lab">Mobiliario urbano</span><span class="bar-val tnum">121 <span>23%</span></span><div class="bar-track"><div class="bar-fill" style="width:23%"></div></div></div><div class="bar-row"><span class="bar-lab">Bancos</span><span class="bar-val tnum">50 <span>10%</span></span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div></div><div class="bar-row"><span class="bar-lab">Exterior</span><span class="bar-val tnum">34 <span>7%</span></span><div class="bar-track"><div class="bar-fill" style="width:7%"></div></div></div><div style="font-size:11px;color:var(--ink3);margin-top:12px;line-height:1.45">Un contacto puede pedir más de un producto: no suma 100%.</div></div>
+        <div class="varcard"><div class="ghdr">Tipo de compra<span class="r">base declarada: 495 · 71%</span></div><div class="bar-row"><span class="bar-lab">Estándar de catálogo</span><span class="bar-val tnum">426 <span>86%</span></span><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div></div><div class="bar-row"><span class="bar-lab">Personalizada</span><span class="bar-val tnum">51 <span>10%</span></span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div></div><div class="bar-row"><span class="bar-lab">A medida</span><span class="bar-val tnum">12 <span>2%</span></span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div></div><div class="bar-row"><span class="bar-lab">Proyecto</span><span class="bar-val tnum">6 <span>1%</span></span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div></div></div>
+        <div class="varcard"><div class="ghdr">Escala del pedido<span class="r">base declarada: 531 · 76%</span></div><div class="bar-row"><span class="bar-lab">Pieza suelta</span><span class="bar-val tnum">482 <span>91%</span></span><div class="bar-track"><div class="bar-fill" style="width:91%"></div></div></div><div class="bar-row"><span class="bar-lab">Varias piezas</span><span class="bar-val tnum">42 <span>8%</span></span><div class="bar-track"><div class="bar-fill" style="width:8%"></div></div></div><div class="bar-row"><span class="bar-lab">Proyecto</span><span class="bar-val tnum">7 <span>1%</span></span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div></div></div>
+        <div class="varcard"><div class="ghdr">Tipo de derivación<span class="r">base declarada: 176 · 25% · Indicio</span></div><div class="bar-row"><span class="bar-lab">Comercial</span><span class="bar-val tnum">143 <span>81%</span></span><div class="bar-track"><div class="bar-fill" style="width:81%"></div></div></div><div class="bar-row"><span class="bar-lab">Personalización</span><span class="bar-val tnum">25 <span>14%</span></span><div class="bar-track"><div class="bar-fill" style="width:14%"></div></div></div><div class="bar-row"><span class="bar-lab">Proyecto urbano</span><span class="bar-val tnum">7 <span>4%</span></span><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div></div></div>
+        <div class="varcard"><div class="ghdr">Tipo de cliente<span class="r">base declarada: 220 · 32% · Indicio</span></div><div class="bar-row"><span class="bar-lab">Consumidor final</span><span class="bar-val tnum">199 <span>90%</span></span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div><div class="bar-row"><span class="bar-lab">Profesional</span><span class="bar-val tnum">21 <span>10%</span></span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div></div><div style="font-size:11px;color:var(--ink3);margin-top:12px;line-height:1.45">Entre los profesionales: constructoras 12, municipios 4, paisajistas 4, arquitectos 4, decoradores 3.</div></div>
+      </div>
+
+      <div class="adv-only">
+        <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Cohortes por anuncio · base válida</div></div>
+        <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:820px"><thead><tr><th>Anuncio</th><th>Conversaron</th><th>Identifica</th><th>Califica</th><th>Cotización</th><th>Deriva</th><th>Msgs medianos</th></tr></thead><tbody><tr><td class="cjcell"><b>Mesa Positano</b><span class="sub">desde 29/07</span></td><td>151</td><td>75%</td><td><b>35%</b></td><td>11%</td><td>23%</td><td>6</td></tr><tr><td class="cjcell"><b>Sin anuncio</b><span class="sub">orgánico y base previa</span></td><td>167</td><td>84%</td><td>22%</td><td>8%</td><td>20%</td><td>11</td></tr><tr><td class="cjcell"><b>Línea RAW</b><span class="sub">desde 23/07</span></td><td>96</td><td>58%</td><td>21%</td><td>7%</td><td>26%</td><td>4,5</td></tr><tr><td class="cjcell"><b>Terrace y Paros</b><span class="sub">29/07 a 14/09</span></td><td>57</td><td>86%</td><td>21%</td><td>18%</td><td>46%</td><td>8</td></tr><tr><td class="cjcell"><b>Mesa baja Spring</b><span class="sub">23/07 a 22/09</span></td><td>113</td><td>65%</td><td>15%</td><td>12%</td><td>20%</td><td>4</td></tr><tr><td class="cjcell"><b>Línea SIT</b><span class="sub">29/07 a 24/09</span></td><td>91</td><td>79%</td><td>14%</td><td>7%</td><td>40%</td><td>7</td></tr><tr><td class="cjcell"><b>Creativos nuevos</b><span class="sub">Josefina, Mob. urbano, Positano 2do</span></td><td>10</td><td>s/d</td><td>s/d</td><td>s/d</td><td>s/d</td><td>s/d</td></tr></tbody></table></div></div>
+        <p style="font-size:11px;color:var(--ink3);margin-top:8px;line-height:1.45">Los tres creativos nuevos nacieron el 17/09, el mismo día que se cortó la extracción: 10 conversaciones evaluables no alcanzan para comparar. "Más de un anuncio" (10) queda fuera de la tabla.</p>
+      </div>
+    </section>
+
+    <section class="panel p-insights">
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Insights · qué hacer con lo que dice la base</div><h1 class="sec">Nueve decisiones, <em>cada una con su número.</em></h1><p class="lead">Cada tarjeta dice <b>qué mover</b> (el sello) y <b>sobre qué</b> (el título). Las comparaciones corren sobre la base válida o sobre la base declarada de cada variable, y lo dicen.</p></div>
+      <div class="chansplit"><b><span class="eb-orb"></span>Comercial · lo que puede hacer el equipo de ventas</b><span class="ln"></span></div>
+      <div class="insxgrid">
+        <div class="insx subir">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3h6M10 3v6L4.5 18.5A2 2 0 0 0 6.3 21h11.4a2 2 0 0 0 1.8-2.5L14 9V3"/></svg></span>Probar</span><span class="tag t-ventas">Ventas</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Sillas, el producto que no está</div>
+            <div class="insx-chips"><span class="insx-chip">30 pedidos fuera de catálogo</span><span class="insx-chip">Indicio</span></div>
+            <ul class="insx-b"><li>23 de los 30 pedidos fuera de catálogo son sillas</li><li>Llegan pidiendo mesa de comedor y preguntan con qué sillas acompañar</li><li>Hoy el agente responde que no hay y la conversación se corta</li></ul>
+            <div class="insx-cmp"><div class="big tnum">77%</div><div class="rt"><div class="txt">de lo que piden y no existe son sillas</div><div class="cmpbar"><span style="width:77%"></span></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Base: 30 contactos con Pedido fuera de catálogo cargado (4% de la base válida). Indicio por cobertura, pero la concentración es alta: el resto son losetas o caminos (4), un asiento curvo para fogón, un rack y una parrilla.</div>
+          </div>
+        </div>
+        <div class="insx pausar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg></span>Corregir</span><span class="tag t-ventas">CRM</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Showroom, la señal que no se marca</div>
+            <div class="insx-chips"><span class="insx-chip">79 lo mencionan</span><span class="insx-chip">4 con tag</span></div>
+            <ul class="insx-b"><li>79 conversaciones piden o mencionan ver el producto en el showroom</li><li>Solo 4 tienen el tag Showroom agendado</li><li>Califican 49%, contra 18% del total</li></ul>
+            <div class="insx-cmp"><div class="big tnum">49%</div><div class="rt"><div class="txt">califican los que hablan del showroom · media 18%</div><div class="cmpbar"><span style="width:49%"></span><i style="left:18%"></i></div></div></div>
+          </div>
+        </div>
+        <div class="insx subir">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0-6 6m6-6 6 6"/></svg></span>Subir</span><span class="tag t-ventas">Ventas</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Cotizaciones enviadas sin respuesta</div>
+            <div class="insx-chips"><span class="insx-chip">72 cotizaciones</span><span class="insx-chip">0 cierres registrados</span></div>
+            <ul class="insx-b"><li>72 contactos tienen Cotización enviada</li><li>Ninguno pasó a negociación ni a no concretado en el CRM</li><li>Es la cola más cercana a la venta</li></ul>
+            <div class="insx-cmp"><div class="big tnum">72</div><div class="rt"><div class="txt">cotizaciones esperando un segundo toque</div><div class="cmpbar"><span style="width:72%"></span></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Sobre 942. En la base válida son 55 de la pauta y 14 sin anuncio. La regla: a las 48 horas sin respuesta, seguimiento con la misma mesa y la pregunta de envío resuelta.</div>
+          </div>
+        </div>
+        <div class="insx escalar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16l-6 8v6l-4 2v-8L4 4Z"/></svg></span>Mover</span><span class="tag t-ventas">Ventas</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Mobiliario urbano, a circuito de proyecto</div>
+            <div class="insx-chips"><span class="insx-chip">127 consultas urbanas</span><span class="insx-chip">Señal</span></div>
+            <ul class="insx-b"><li>Urbano deriva 42%, interior 31%</li><li>Pesan constructoras, municipios y paisajistas</li><li>Es venta por proyecto, no por pieza</li></ul>
+            <div class="insx-cmp"><div class="big tnum">42%</div><div class="rt"><div class="txt">deriva urbano · interior 31%</div><div class="cmpbar"><span style="width:42%"></span><i style="left:31%"></i></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Base: 516 con línea declarada (interior 343, urbano 127, exterior 46). No es el doble: es 11 puntos más. Exterior deriva 39%.</div>
+          </div>
+        </div>
+        <div class="insx subir">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0-6 6m6-6 6 6"/></svg></span>Subir</span><span class="tag t-ventas">Ventas</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">RAW, la línea de la personalización</div>
+            <div class="insx-chips"><span class="insx-chip">54 con tipo de compra</span><span class="insx-chip">Indicio</span></div>
+            <ul class="insx-b"><li>24% de las consultas RAW piden personalizar</li><li>El promedio de todas las líneas es 14%</li><li>Es la línea donde el cliente quiere intervenir medida o terminación</li></ul>
+            <div class="insx-cmp"><div class="big tnum">24%</div><div class="rt"><div class="txt">piden personalizar en RAW · media 14%</div><div class="cmpbar"><span style="width:24%"></span><i style="left:14%"></i></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Base: 54 consultas RAW con tipo de compra declarado (13 personalizadas). Sobre el total, 69 de 495.</div>
+          </div>
+        </div>
+        <div class="insx pausar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg></span>Corregir</span><span class="tag t-ventas">Ventas</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">El envío, la primera pregunta</div>
+            <div class="insx-chips"><span class="insx-chip">84 con disparador</span><span class="insx-chip">Indicio</span></div>
+            <ul class="insx-b"><li>30 de 84 disparadores son precio con envío</li><li>Es la pregunta que más frena la cotización</li><li>Llega antes que la duda por medida o terminación</li></ul>
+            <div class="insx-cmp"><div class="big tnum">36%</div><div class="rt"><div class="txt">de los disparadores son precio con envío</div><div class="cmpbar"><span style="width:36%"></span></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Base: 84 con Disparador cargado (12%). Le siguen: ver en showroom 24, confirmar medida 18, terminación o color 13, consultar con otra persona 6. Tener una tabla de envío por zona en el prompt acorta este paso.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chansplit"><b><span class="eb-orb"></span>Marketing · lo que puede hacer el equipo de pauta</b><span class="ln"></span></div>
+      <div class="insxgrid">
+        <div class="insx subir">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0-6 6m6-6 6 6"/></svg></span>Subir</span><span class="tag t-mkt">Marketing</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Mesa Positano, el anuncio que califica</div>
+            <div class="insx-chips"><span class="insx-chip">151 conversaron</span><span class="insx-chip">Hecho</span></div>
+            <ul class="insx-b"><li>Califica 35%, más del doble que Spring (15%) y SIT (14%)</li><li>Trae el 26% de toda la pauta</li><li>Su segundo creativo nació en el corte: todavía no se puede leer</li></ul>
+            <div class="insx-cmp"><div class="big tnum">35%</div><div class="rt"><div class="txt">califica Positano · pauta 23%</div><div class="cmpbar"><span style="width:35%"></span><i style="left:23%"></i></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Base válida, por ID de anuncio. Calificados: Positano 53, RAW 20, Spring 17, SIT 13, Terrace y Paros 12.</div>
+          </div>
+        </div>
+        <div class="insx escalar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14"/></svg></span>Mantener</span><span class="tag t-mkt">Marketing</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Orgánico, califica igual que la pauta</div>
+            <div class="insx-chips"><span class="insx-chip">167 sin anuncio</span><span class="insx-chip">528 con anuncio</span></div>
+            <ul class="insx-b"><li>Sin anuncio califica 22%, con anuncio 23%</li><li>El orgánico identifica más producto: 84% contra 73%</li><li>Conversa el doble: 11 mensajes medianos contra 6</li></ul>
+            <div class="insx-cmp"><div class="big tnum">22%</div><div class="rt"><div class="txt">califica el orgánico · pauta 23%</div><div class="cmpbar"><span style="width:22%"></span><i style="left:23%"></i></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>La pauta no trae peor gente: trae más volumen con la misma tasa. El orgánico llega con la decisión más madura.</div>
+          </div>
+        </div>
+        <div class="insx escalar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14"/></svg></span>Mantener</span><span class="tag t-mkt">Marketing</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Creativos nuevos, todavía sin lectura</div>
+            <div class="insx-chips"><span class="insx-chip">Josefina, Mob. urbano, Positano 2do</span><span class="insx-chip">10 evaluables</span></div>
+            <ul class="insx-b"><li>Los tres nacieron entre el 17 y el 23/09</li><li>Coincidieron con el corte de extracción</li><li>No hay base para pausarlos ni para subirlos</li></ul>
+            <div class="insx-cmp"><div class="big tnum">10</div><div class="rt"><div class="txt">conversaciones evaluables entre los tres</div><div class="cmpbar"><span style="width:10%"></span></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Josefina 20 contactos, Mobiliario urbano 14, Positano 2do 13. En el corte cayó la carga de variables también en anuncios viejos y en el orgánico: no es un efecto del creativo.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel p-criterio">
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Criterio comercial · el porqué de la compra <span class="tag t-mkt" style="margin-left:6px">Indicio</span></div><h1 class="sec">BETROX ya diseñó el criterio. <em>El agente lo carga uno de cada diez.</em></h1><p class="lead">El CRM tiene los campos para entender por qué compra la gente: dolor, disparador, objeción con la frase literal. El problema no es el diseño, es la carga. Acá va lo que dicen los que sí lo tienen, con su base.</p></div>
+      <div class="kgrid">
+        <div class="kpi"><div class="k-ic "><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></svg></div><div class="k-l">Dolor principal</div><div class="k-row"><div class="k-n tnum">11%</div><span class="delta d-dn">Indicio</span></div><div class="k-s">79 de 695 en la base válida</div></div>
+        <div class="kpi"><div class="k-ic blu"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M13 2 4.1 12.7c-.6.7-.1 1.8.8 1.8H11l-1 7.5 8.9-10.7c.6-.7.1-1.8-.8-1.8H12l1-7.5Z"/></svg></div><div class="k-l">Disparador de compra</div><div class="k-row"><div class="k-n tnum">12%</div><span class="delta d-dn">Indicio</span></div><div class="k-s">84 de 695</div></div>
+        <div class="kpi"><div class="k-ic pnk"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M18 6 6 18M6 6l12 12"/></svg></div><div class="k-l">Objeción principal</div><div class="k-row"><div class="k-n tnum">8%</div><span class="delta d-dn">Indicio</span></div><div class="k-s">58 de 695, con frase literal</div></div>
+        <div class="kpi"><div class="k-ic "><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8M8 16h5M4 4h16v16H4z"/></svg></div><div class="k-l">Resultado de contacto</div><div class="k-row"><div class="k-n tnum">no existe</div></div><div class="k-s">sin campo para registrarlo</div></div>
+      </div>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Los cinco campos del núcleo · qué tiene BETROX hoy</div></div>
+      <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:820px"><thead><tr><th>Campo del núcleo</th><th>Método</th><th>En el CRM de BETROX</th><th>Cobertura</th><th>Estado</th></tr></thead><tbody><tr><td class="cjcell"><b>Problema declarado</b><span class="sub">qué le pasa</span></td><td>SPIN · situación</td><td>Dolor Principal</td><td>11%</td><td><span class="lvl" style="background:var(--warn-bg);color:var(--warn-ink)">Indicio</span></td></tr><tr><td class="cjcell"><b>Impacto</b><span class="sub">qué le cuesta no resolverlo</span></td><td>Gap Selling</td><td>no existe</td><td>0%</td><td><span class="lvl" style="background:var(--crit-bg);color:var(--crit-ink)">No reportable</span></td></tr><tr><td class="cjcell"><b>Causa raíz</b><span class="sub">por qué le pasa</span></td><td>Gap Selling</td><td>no existe</td><td>0%</td><td><span class="lvl" style="background:var(--crit-bg);color:var(--crit-ink)">No reportable</span></td></tr><tr><td class="cjcell"><b>Evento disparador</b><span class="sub">por qué ahora</span></td><td>Jobs to be done</td><td>Disparador Compra</td><td>12%</td><td><span class="lvl" style="background:var(--warn-bg);color:var(--warn-ink)">Indicio</span></td></tr><tr><td class="cjcell"><b>Resultado de contacto</b><span class="sub">qué pasó en la llamada</span></td><td>SPIN · cierre</td><td>no existe</td><td>0%</td><td><span class="lvl" style="background:var(--crit-bg);color:var(--crit-ink)">No reportable</span></td></tr></tbody></table></div></div>
+
+      <div class="banner info" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div><div><b>Perfil de BETROX:</b> dos negocios en uno. Interior es <b>consumidor final de consideración media</b> (pieza suelta 91%, decide con la pareja o la diseñadora). Urbano es <b>B2B por proyecto</b> (constructoras, municipios, paisajistas). Los métodos que más rinden en este perfil son <b>Gap Selling</b> para urbano y <b>la ecuación de valor de Hormozi</b> para interior: bajar el esfuerzo percibido (envío, medida) más que el precio.</div></div>
+
+      <div class="chansplit"><b><span class="eb-orb"></span>Lo que dicen los que sí cargaron el criterio</b><span class="ln"></span></div>
+      <div class="insxgrid">
+        <div class="insx subir">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0-6 6m6-6 6 6"/></svg></span>Subir</span><span class="tag t-ventas">Ventas</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Ver antes de comprar</div>
+            <div class="insx-chips"><span class="insx-chip">Disparador · 84</span><span class="insx-chip">Indicio</span></div>
+            <ul class="insx-b"><li>24 de 84 disparadores son ver la pieza en el showroom</li><li>Es el segundo motivo, después del envío</li><li>La madera se quiere tocar antes de pagar</li></ul>
+            <div class="insx-cmp"><div class="big tnum">24</div><div class="rt"><div class="txt">de 84 quieren ver la pieza</div><div class="cmpbar"><span style="width:29%"></span></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Base: 84 con disparador. Citado 24 veces. Sumado a las 79 conversaciones que mencionan el showroom, es la palanca de cierre más clara del rubro.</div>
+          </div>
+        </div>
+        <div class="insx pausar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg></span>Corregir</span><span class="tag t-ventas">Ventas</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">La medida, antes que el precio</div>
+            <div class="insx-chips"><span class="insx-chip">Disparador 18 · Dolor 10</span><span class="insx-chip">Indicio</span></div>
+            <ul class="insx-b"><li>18 disparadores son confirmar la medida</li><li>10 dolores son espacio chico</li><li>La duda no es si les gusta, es si entra</li></ul>
+            <div class="insx-cmp"><div class="big tnum">28</div><div class="rt"><div class="txt">consultas frenadas por medida o espacio</div><div class="cmpbar"><span style="width:33%"></span></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>18 de 84 disparadores y 10 de 79 dolores. Medida solicitada está cargada en 30% de la base válida: el agente puede pedirla antes de cotizar.</div>
+          </div>
+        </div>
+        <div class="insx escalar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16l-6 8v6l-4 2v-8L4 4Z"/></svg></span>Mover</span><span class="tag t-mkt">Marketing</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">El fogón, un dolor con nombre propio</div>
+            <div class="insx-chips"><span class="insx-chip">Dolor · 79</span><span class="insx-chip">Indicio</span></div>
+            <ul class="insx-b"><li>12 de 79 dolores son armar el espacio del fogón</li><li>Piden asiento curvo, bancos o mesas bajas para exterior</li><li>Es un uso concreto, no una categoría</li></ul>
+            <div class="insx-cmp"><div class="big tnum">12</div><div class="rt"><div class="txt">de 79 dolores son el fogón</div><div class="cmpbar"><span style="width:15%"></span></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Es material para un creativo propio de exterior: hoy ningún anuncio habla del fogón.</div>
+          </div>
+        </div>
+        <div class="insx escalar">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16l-6 8v6l-4 2v-8L4 4Z"/></svg></span>Mover</span><span class="tag t-ventas">Ventas</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Proyectos institucionales</div>
+            <div class="insx-chips"><span class="insx-chip">Dolor · 79</span><span class="insx-chip">Indicio</span></div>
+            <ul class="insx-b"><li>13 de 79 dolores son proyectos institucionales o comerciales</li><li>Es el primer dolor del ranking</li><li>Cruza con mobiliario urbano, que deriva 42%</li></ul>
+            <div class="insx-cmp"><div class="big tnum">13</div><div class="rt"><div class="txt">de 79 dolores son proyectos</div><div class="cmpbar"><span style="width:16%"></span></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Base: 79 con dolor cargado. Para urbano conviene el método Gap: impacto (cuánto le cuesta no tener el mobiliario a tiempo) y causa raíz (licitación, obra, apertura).</div>
+          </div>
+        </div>
+        <div class="insx subir">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3h6M10 3v6L4.5 18.5A2 2 0 0 0 6.3 21h11.4a2 2 0 0 0 1.8-2.5L14 9V3"/></svg></span>Probar</span><span class="tag t-ventas">Ventas</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Decide con otra persona</div>
+            <div class="insx-chips"><span class="insx-chip">Objeción 16 · Disparador 6</span><span class="insx-chip">Indicio</span></div>
+            <ul class="insx-b"><li>16 de 58 objeciones son falta de decisión</li><li>6 disparadores son consultar con otra persona</li><li>Aparecen la pareja y la diseñadora</li></ul>
+            <div class="insx-cmp"><div class="big tnum">22</div><div class="rt"><div class="txt">consultas frenadas por una segunda opinión</div><div class="cmpbar"><span style="width:27%"></span></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>16 de 58 objeciones y 6 de 84 disparadores. Probar: mandar la ficha con fotos y medidas lista para reenviar, en vez de esperar la respuesta.</div>
+          </div>
+        </div>
+        <div class="insx subir">
+          <div class="insx-top"><span class="insx-seal"><span class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0-6 6m6-6 6 6"/></svg></span>Subir</span><span class="tag t-ventas">CRM</span></div>
+          <div class="insx-body">
+            <div class="insx-nm" style="font-family:var(--hel);font-size:15px">Cargar el criterio predice la calificación</div>
+            <div class="insx-chips"><span class="insx-chip">Disparador cargado</span><span class="insx-chip">Indicio · correlación</span></div>
+            <ul class="insx-b"><li>Con disparador cargado califica 44%</li><li>Sin disparador, 20%</li><li>Con dolor cargado, 45%</li></ul>
+            <div class="insx-cmp"><div class="big tnum">44%</div><div class="rt"><div class="txt">califican con disparador · sin él 20%</div><div class="cmpbar"><span style="width:44%"></span><i style="left:20%"></i></div></div></div><div class="adv-only" style="margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink3);line-height:1.45"><b style="color:var(--sealc);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px">Lectura avanzada</b>Es correlación, no causa: el campo se carga cuando la conversación ya es profunda. Sirve como marcador de intención para priorizar el seguimiento.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="adv-only">
+        <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Las frases literales · Objeción Frase Literal</div></div>
+        <div class="vargrid">
+          <div class="varcard"><div class="ghdr">Falta de decisión<span class="r">16 de 58</span></div><div style="border-left:3px solid var(--vio);padding:6px 0 6px 12px;margin:0 0 10px;font-size:12.5px;color:var(--ink2);line-height:1.45">"Tengo que consultarlo con mi marido"<span style="display:block;font-size:10px;color:var(--ink3);margin-top:3px;text-transform:uppercase;letter-spacing:.04em">Objeción literal</span></div><div style="border-left:3px solid var(--vio);padding:6px 0 6px 12px;margin:0 0 10px;font-size:12.5px;color:var(--ink2);line-height:1.45">"Igualmente se la tengo que mostrar a la diseñadora"<span style="display:block;font-size:10px;color:var(--ink3);margin-top:3px;text-transform:uppercase;letter-spacing:.04em">Objeción literal</span></div></div>
+          <div class="varcard"><div class="ghdr">Precio<span class="r">13 de 58</span></div><div style="border-left:3px solid var(--vio);padding:6px 0 6px 12px;margin:0 0 10px;font-size:12.5px;color:var(--ink2);line-height:1.45">"No gracias, no está a mi alcance por ahora"<span style="display:block;font-size:10px;color:var(--ink3);margin-top:3px;text-transform:uppercase;letter-spacing:.04em">Objeción literal</span></div><p style="font-size:11px;color:var(--ink3);line-height:1.45">El precio es la tercera objeción, no la primera.</p></div>
+          <div class="varcard"><div class="ghdr">Envío y mantenimiento<span class="r">6 y 3 de 58</span></div><div style="border-left:3px solid var(--vio);padding:6px 0 6px 12px;margin:0 0 10px;font-size:12.5px;color:var(--ink2);line-height:1.45">"Cuánto sale el flete?"<span style="display:block;font-size:10px;color:var(--ink3);margin-top:3px;text-transform:uppercase;letter-spacing:.04em">Objeción literal</span></div><div style="border-left:3px solid var(--vio);padding:6px 0 6px 12px;margin:0 0 10px;font-size:12.5px;color:var(--ink2);line-height:1.45">"Tapa se mancha ?"<span style="display:block;font-size:10px;color:var(--ink3);margin-top:3px;text-transform:uppercase;letter-spacing:.04em">Objeción literal</span></div></div>
+        </div>
+        <p style="font-size:11px;color:var(--ink3);margin-top:8px;line-height:1.45">Cada cita es de una persona: explica un número que ya está arriba, no es un patrón por sí sola. Resto de objeciones: otro 13, confianza 3, plazo 2.</p>
+      </div>
+    </section>
+
+    <section class="panel p-calidad">
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Calidad de datos · lo que el tablero puede afirmar</div><h1 class="sec">El agente carga bien, <em>y se cortó once días.</em></h1><p class="lead">Cada número de este tablero corre sobre una base declarada. Esta pestaña muestra qué variables alcanzan para afirmar, cuáles solo dan indicios y qué falta para medir la venta.</p></div>
+      <div class="qgrid">
+        <div class="qcard"><div class="q-pct">corte de extracción</div><div class="q-n tnum">134</div><div class="q-t">conversaciones del 17 al 27/09 sin variables cargadas</div></div>
+        <div class="qcard"><div class="q-pct">sin estado</div><div class="q-n tnum">175</div><div class="q-t">contactos sin ningún tag: 19% del total</div></div>
+        <div class="qcard"><div class="q-pct">campos sin uso</div><div class="q-n tnum">5</div><div class="q-t">Reuniones, Comentarios, Moderador, Saldo pendiente, Outlet</div></div>
+        <div class="qcard"><div class="q-pct">tramo humano</div><div class="q-n tnum">10</div><div class="q-t">contactos con algún estado posterior a la cotización</div></div>
+      </div>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>El corte · cobertura semanal de variables del agente</div></div>
+      <div class="card" style="padding:18px 20px">
+        <div class="ghdr">% de conversaciones con producto, línea o modelo cargado · por semana<span class="r">base: contactos que conversaron</span></div>
+        <div class="wk"><div class="c"><span class="v tnum">95%</span><div class="b" style="height:95%"></div><span class="x">20/07</span></div><div class="c"><span class="v tnum">69%</span><div class="b" style="height:69%"></div><span class="x">27/07</span></div><div class="c"><span class="v tnum">68%</span><div class="b" style="height:68%"></div><span class="x">03/08</span></div><div class="c"><span class="v tnum">69%</span><div class="b" style="height:69%"></div><span class="x">10/08</span></div><div class="c"><span class="v tnum">53%</span><div class="b" style="height:53%"></div><span class="x">17/08</span></div><div class="c"><span class="v tnum">81%</span><div class="b" style="height:81%"></div><span class="x">24/08</span></div><div class="c"><span class="v tnum">86%</span><div class="b" style="height:86%"></div><span class="x">31/08</span></div><div class="c"><span class="v tnum">92%</span><div class="b" style="height:92%"></div><span class="x">07/09</span></div><div class="c"><span class="v tnum">23%</span><div class="b cut" style="height:23%"></div><span class="x">14/09</span></div><div class="c"><span class="v tnum">2%</span><div class="b cut" style="height:3%"></div><span class="x">21/09</span></div><div class="c"><span class="v tnum">86%</span><div class="b" style="height:86%"></div><span class="x">28/09</span></div></div>
+        <div class="banner info" style="margin-top:16px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div><div>Entre el <b>14 y el 27 de septiembre</b> la carga de variables cayó a casi cero y volvió el 29/09. No es un efecto de los anuncios: cayó igual en los anuncios viejos (SIT identificaba 79% y pasó a 6%, RAW de 55% a 18%) y en el orgánico (de 64% a 21%). Las 134 conversaciones de esos días tienen el texto: <b>se pueden reprocesar</b>.</div></div>
+      </div>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Variables · sobre la base válida 695</div></div>
+      <div class="vargrid">
+        <div class="varcard"><div class="ghdr">Útiles · Hecho o Señal alta<span class="r">cobertura ≥ 70%</span></div><div class="bar-row"><span class="bar-lab">Resumen por IA</span><span class="bar-val tnum">78%</span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div><div class="bar-row"><span class="bar-lab">Canal origen</span><span class="bar-val tnum">78%</span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div><div class="bar-row"><span class="bar-lab">Escala del pedido</span><span class="bar-val tnum">76%</span><div class="bar-track"><div class="bar-fill" style="width:76%"></div></div></div><div class="bar-row"><span class="bar-lab">Producto de interés</span><span class="bar-val tnum">74%</span><div class="bar-track"><div class="bar-fill" style="width:74%"></div></div></div><div class="bar-row"><span class="bar-lab">Línea de producto</span><span class="bar-val tnum">74%</span><div class="bar-track"><div class="bar-fill" style="width:74%"></div></div></div><div class="bar-row"><span class="bar-lab">Modelos mencionados</span><span class="bar-val tnum">71%</span><div class="bar-track"><div class="bar-fill" style="width:71%"></div></div></div><div class="bar-row"><span class="bar-lab">Tipo de compra</span><span class="bar-val tnum">71%</span><div class="bar-track"><div class="bar-fill" style="width:71%"></div></div></div></div>
+        <div class="varcard"><div class="ghdr">Mejorables · Indicio<span class="r">cobertura 10 a 39%</span></div><div class="bar-row"><span class="bar-lab">Tipo de cliente</span><span class="bar-val tnum">32%</span><div class="bar-track"><div class="bar-fill" style="width:32%;background:var(--warn)"></div></div></div><div class="bar-row"><span class="bar-lab">Medida solicitada</span><span class="bar-val tnum">30%</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--warn)"></div></div></div><div class="bar-row"><span class="bar-lab">Tipo de derivación</span><span class="bar-val tnum">25%</span><div class="bar-track"><div class="bar-fill" style="width:25%;background:var(--warn)"></div></div></div><div class="bar-row"><span class="bar-lab">Disparador de compra</span><span class="bar-val tnum">12%</span><div class="bar-track"><div class="bar-fill" style="width:12%;background:var(--warn)"></div></div></div><div class="bar-row"><span class="bar-lab">Dolor principal</span><span class="bar-val tnum">11%</span><div class="bar-track"><div class="bar-fill" style="width:11%;background:var(--warn)"></div></div></div><div class="bar-row"><span class="bar-lab">Dirección de entrega</span><span class="bar-val tnum">11%</span><div class="bar-track"><div class="bar-fill" style="width:11%;background:var(--warn)"></div></div></div></div>
+        <div class="varcard"><div class="ghdr">Bloqueadas · No reportable<span class="r">menos de 10%</span></div><div class="bar-row"><span class="bar-lab">Objeción principal</span><span class="bar-val tnum">8%</span><div class="bar-track"><div class="bar-fill" style="width:8%;background:var(--crit)"></div></div></div><div class="bar-row"><span class="bar-lab">Pedido fuera de catálogo</span><span class="bar-val tnum">4%</span><div class="bar-track"><div class="bar-fill" style="width:4%;background:var(--crit)"></div></div></div><div class="bar-row"><span class="bar-lab">Email</span><span class="bar-val tnum">1%</span><div class="bar-track"><div class="bar-fill" style="width:1%;background:var(--crit)"></div></div></div><div class="bar-row"><span class="bar-lab">Saldo pendiente</span><span class="bar-val tnum">0,1%</span><div class="bar-track"><div class="bar-fill" style="width:1%;background:var(--crit)"></div></div></div><div class="bar-row"><span class="bar-lab">Reuniones · Comentarios · Moderador</span><span class="bar-val tnum">0%</span><div class="bar-track"><div class="bar-fill" style="width:1%;background:var(--crit)"></div></div></div><div style="font-size:11px;color:var(--ink3);margin-top:12px;line-height:1.45">Outlet interés tiene 535 respuestas, todas &quot;No&quot;: un campo constante no informa.</div></div>
+      </div>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Tags · cuáles sirven</div></div>
+      <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:820px"><thead><tr><th>Grupo</th><th>Tags</th><th>Contactos</th><th>Lectura</th></tr></thead><tbody><tr><td class="cjcell"><b>Vivos</b><span class="sub">se usan y ordenan</span></td><td>En conversación, Calificado, Consumidor final, No contestó, Cotización enviada</td><td>248 · 158 · 165 · 85 · 72</td><td>Sostienen el embudo del agente.</td></tr><tr><td class="cjcell"><b>A medias</b><span class="sub">subregistrados</span></td><td>Derivado, Hot Lead, En seguimiento, Profesional</td><td>38 · 24 · 48 · 34</td><td>Derivado marca 38 cuando la evidencia dice 177.</td></tr><tr><td class="cjcell"><b>Casi muertos</b><span class="sub">tramo humano</span></td><td>Showroom agendado, En negociación, Videollamada, No concretado, Municipio</td><td>4 · 4 · 1 · 1 · 5</td><td>El vendedor no vuelve al CRM.</td></tr><tr><td class="cjcell"><b>Mezclados</b><span class="sub">tipo, no etapa</span></td><td>Consumidor final, Profesional, Municipio, Nuevo Lead</td><td>165 · 34 · 5 · 38</td><td>Describen quién es, no dónde está. Conviene pasarlos a variable.</td></tr></tbody></table></div></div>
+
+      <div class="adv-only">
+        <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Defectos de carga · modo avanzado</div></div>
+        <div class="vargrid">
+          <div class="varcard"><div class="ghdr">Canal origen no distingue pauta<span class="r">392 con anuncio</span></div><p style="font-size:12px;color:var(--ink2);line-height:1.5">De 392 contactos que llegaron por un anuncio y tienen Canal origen, solo <b>30</b> dicen Meta Ads. El resto figura como Instagram 217, WhatsApp 140, Facebook 5. El campo registra la app, no el origen pago.</p></div>
+          <div class="varcard"><div class="ghdr">La base importada de julio<span class="r">108 contactos</span></div><p style="font-size:12px;color:var(--ink2);line-height:1.5">108 contactos de julio no tienen ningún mensaje: es una base cargada (Consumidor final 80, Nuevo Lead 38, Profesional 21). No son leads que no respondieron. Quedan fuera de la base válida.</p></div>
+          <div class="varcard"><div class="ghdr">Modo de trabajo y PrestaShop<span class="r">constantes</span></div><p style="font-size:12px;color:var(--ink2);line-height:1.5">Modo trabajo dice "Catálogo" en 98,7%. Categorías de PrestaShop está en 49,6% del total y duplica lo que ya dice Producto de interés.</p></div>
+        </div>
+      </div>
+
+      <div class="chansplit"><b><span class="eb-orb"></span>Tres cambios para que el tablero mida la venta</b><span class="ln"></span></div>
+      <div class="order3">
+        <div class="ord"><div class="n"><span class="num">1</span>Alerta de cobertura y reproceso</div><div class="d">Si la carga de variables cae por debajo de 50% en un día, avisar. Y reprocesar las <b>134 conversaciones</b> del corte: el texto está, faltan las variables.</div><div class="who">Impacto · inmediato · dueño: Prometheo</div></div>
+        <div class="ord"><div class="n"><span class="num">2</span>Campos requeridos por etapa</div><div class="d">No pasar a Calificado sin línea, producto y escala. No pasar a Derivado sin tipo de derivación. Así el tag y la evidencia convergen: hoy <b>358 calificados</b> no tienen el tag.</div><div class="who">Impacto · medio · dueño: prompt del agente</div></div>
+        <div class="ord"><div class="n"><span class="num">3</span>Tag de venta y resultado de contacto</div><div class="d">Crear <b>Venta cerrada</b> con monto y un campo de resultado del contacto humano. Es lo único que permite atribuir una venta a un anuncio.</div><div class="who">Impacto · estructural · dueño: equipo comercial</div></div>
+      </div>
+    </section>
+
+    <section class="panel p-metaprom">
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Meta en Prometheo · lo que la pauta trae a la conversación</div><h1 class="sec">La pauta trae volumen. <em>Positano trae calidad.</em></h1><p class="lead">Lectura de los anuncios desde el lado del CRM: qué gente trae cada anuncio y qué hace después. El gasto vive en Meta Ads, que todavía no está conectado: acá no hay costo por consulta.</p></div>
+      <div class="qgrid">
+        <div class="qcard"><div class="q-pct">con anuncio</div><div class="q-n tnum">635</div><div class="q-t">67% de los contactos llegó por un anuncio identificado</div></div>
+        <div class="qcard"><div class="q-pct">anuncios</div><div class="q-n tnum">8</div><div class="q-t">en el período, por ID de anuncio</div></div>
+        <div class="qcard"><div class="q-pct">calificados por pauta</div><div class="q-n tnum">122</div><div class="q-t">en la base válida, 23% de los que conversaron</div></div>
+        <div class="qcard"><div class="q-pct">para excluir</div><div class="q-n tnum">19</div><div class="q-t">No Fit: no pagar para volver a traerlos</div></div>
+      </div>
+      <div class="metagrid g2" style="margin-top:14px">
+        <div class="mt"><div class="mt-hd"><div class="mt-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg></div><span class="tag t-mkt">Marketing</span></div><h3>Qué anuncio trae a quién decide</h3><p>Positano es el único que separa del promedio.</p><div class="acts"><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div class="a-t"><b>Positano califica 35%</b>, la pauta en conjunto 23%.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div class="a-t">Spring trae volumen (113) pero califica <b>15%</b> y conversa poco: 4 mensajes medianos.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div class="a-t"><b>Subir</b> el peso de Positano antes de abrir creativos nuevos.</div></div></div></div>
+        <div class="mt"><div class="mt-hd"><div class="mt-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v9Z"/></svg></div><span class="tag t-mkt">Marketing</span></div><h3>Qué anuncio termina en el vendedor</h3><p>Terrace y Paros y SIT derivan casi la mitad.</p><div class="acts"><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div class="a-t"><b>Terrace y Paros deriva 46%</b> y cotiza 18%, el más alto.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div class="a-t"><b>SIT deriva 40%</b>: llega gente con pedido armado.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div class="a-t">Terrace y Paros dejó de recibir consultas el 14/09.</div></div></div></div>
+        <div class="mt"><div class="mt-hd"><div class="mt-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 19v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 17.5V19M10 10.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM20 19v-1.5a3.5 3.5 0 0 0-2.6-3.4"/></svg></div><span class="tag t-mkt">Marketing</span></div><h3>El orgánico no es peor</h3><p>Sin anuncio califica igual que con anuncio.</p><div class="acts"><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div class="a-t">Orgánico 22%, pauta 23%.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div class="a-t">El orgánico identifica más (84%) y conversa el doble.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div class="a-t">La pauta suma volumen sin bajar la calidad.</div></div></div></div>
+        <div class="mt"><div class="mt-hd"><div class="mt-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M18 6 6 18M6 6l12 12"/></svg></div><span class="tag t-mkt">Marketing</span></div><h3>Lo que hay que sacar de la pauta</h3><p>Quién no compra y quién pide lo que no hay.</p><div class="acts"><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div class="a-t"><b>19 No Fit</b> para excluir de las campañas.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div class="a-t"><b>23 pidieron sillas</b>: no pagar por traerlos hasta tener sillas.</div></div><div class="act"><div class="a-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 9 18l-5-5"/></svg></div><div class="a-t">Canal origen no separa pauta de orgánico: usar el ID de anuncio.</div></div></div></div>
+      </div>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>De la impresión a la venta · qué devuelve Prometheo a Meta</div></div>
+      <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:760px"><thead><tr><th>Evento para Meta (CAPI)</th><th>Tag o campo en Prometheo</th><th>Contactos hoy</th><th>Estado</th></tr></thead><tbody><tr><td class="cjcell"><b>Lead</b><span class="sub">inició conversación</span></td><td>Mensaje recibido</td><td>829</td><td><span class="lvl" style="background:var(--good-bg);color:var(--good-ink)">Hecho</span></td></tr><tr><td class="cjcell"><b>Lead calificado</b><span class="sub">intención real</span></td><td>Calificado o Hot Lead</td><td>171</td><td><span class="lvl" style="background:var(--blu-soft);color:var(--src-meta)">Señal</span></td></tr><tr><td class="cjcell"><b>Cotización</b><span class="sub">pidió precio</span></td><td>Cotización enviada</td><td>72</td><td><span class="lvl" style="background:var(--blu-soft);color:var(--src-meta)">Señal</span></td></tr><tr><td class="cjcell"><b>Visita</b><span class="sub">showroom</span></td><td>Showroom agendado</td><td>4</td><td><span class="lvl" style="background:var(--crit-bg);color:var(--crit-ink)">No reportable</span></td></tr><tr><td class="cjcell"><b>Compra</b><span class="sub">venta</span></td><td>no existe</td><td>0</td><td><span class="lvl" style="background:var(--crit-bg);color:var(--crit-ink)">No reportable</span></td></tr></tbody></table></div></div>
+      <div class="banner info" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div><div>Con los eventos de arriba, Meta puede optimizar hacia <b>Lead calificado</b> en vez de hacia mensajes: 171 eventos en tres meses alcanzan para empezar. Para optimizar hacia compra hace falta el tag de venta.</div></div>
+    </section>
+
+    <section class="panel p-audiencias">
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Audiencias · lo que la base ya permite armar en Meta</div><h1 class="sec">Ocho audiencias y una exclusión, <em>todas sin usar.</em></h1><p class="lead">Todas salen de tags y variables reales del CRM. Meta habilita una Lookalike con <b>100 personas</b> de un mismo país; el rango recomendado es de 1.000 a 5.000. Las Custom sirven en cualquier tamaño.</p></div>
+      <div class="qgrid">
+        <div class="qcard"><div class="q-pct">con teléfono</div><div class="q-n tnum">920</div><div class="q-t">98% de la base: el match en Meta va por teléfono</div></div>
+        <div class="qcard"><div class="q-pct">con email</div><div class="q-n tnum">107</div><div class="q-t">11%: no alcanza como llave de match</div></div>
+        <div class="qcard"><div class="q-pct">semillas posibles</div><div class="q-n tnum">4</div><div class="q-t">superan las 100 personas que pide Meta</div></div>
+        <div class="qcard"><div class="q-pct">exclusión</div><div class="q-n tnum">19</div><div class="q-t">No Fit, fuera de toda campaña</div></div>
+      </div>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Audiencias personalizadas · Custom · cualquier tamaño</div></div>
+      <details class="aucard" open><summary class="au-s"><div class="au-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8M8 16h5M4 4h16v16H4z"/></svg></div><div class="au-t"><div class="au-n">Cotización enviada sin cierre <span class="au-badge" style="background:var(--vio-soft);color:var(--vio)">Custom</span> <span class="tag t-mkt">Marketing</span> <span class="tag t-ventas">Ventas</span></div><div class="au-ss">Retargeting con la misma mesa que cotizó</div></div><div class="au-c tnum">72<span>contactos</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Tag: <code>Cotización Enviada</code> sin estado posterior</li><li>MKT: anuncio con la mesa cotizada y el envío resuelto · VENTAS: segundo toque a las 48 horas</li></ul></div></details>
+      <details class="aucard"><summary class="au-s"><div class="au-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></svg></div><div class="au-t"><div class="au-n">Hablaron del showroom <span class="au-badge" style="background:var(--vio-soft);color:var(--vio)">Custom</span> <span class="tag t-mkt">Marketing</span> <span class="tag t-ventas">Ventas</span></div><div class="au-ss">Invitación a la visita</div></div><div class="au-c tnum">79<span>contactos</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Conversaciones que piden o mencionan el showroom</li><li>Califican 49%: la audiencia más caliente de la base</li><li>Solo 4 tienen el tag: armarla desde el resumen de la conversación</li></ul></div></details>
+      <details class="aucard"><summary class="au-s"><div class="au-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M3 11a2 2 0 0 1 2 2v2h14v-2a2 2 0 1 1 4 0v4H1v-4a2 2 0 0 1 2-2ZM5 17v2M19 17v2"/></svg></div><div class="au-t"><div class="au-n">Pidieron sillas <span class="au-badge" style="background:var(--vio-soft);color:var(--vio)">Custom</span> <span class="tag t-mkt">Marketing</span></div><div class="au-ss">Para el lanzamiento de sillas</div></div><div class="au-c tnum">23<span>contactos</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Pedido fuera de catálogo con detalle sillas</li><li>Es una lista de espera: avisarles cuando haya producto</li></ul></div></details>
+      <details class="aucard"><summary class="au-s"><div class="au-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M16 19v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 17.5V19M10 10.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM20 19v-1.5a3.5 3.5 0 0 0-2.6-3.4"/></svg></div><div class="au-t"><div class="au-n">Profesionales y municipios <span class="au-badge" style="background:var(--vio-soft);color:var(--vio)">Custom</span> <span class="tag t-ventas">Ventas</span></div><div class="au-ss">Circuito de proyecto</div></div><div class="au-c tnum">47<span>contactos</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Tags Profesional (34), Municipio (5) y Tipo profesional cargado</li><li>Constructoras, paisajistas, arquitectos, decoradores</li></ul></div></details>
+      <details class="aucard"><summary class="au-s"><div class="au-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M18 6 6 18M6 6l12 12"/></svg></div><div class="au-t"><div class="au-n">No Fit · exclusión <span class="au-badge" style="background:var(--crit-bg);color:var(--crit-ink)">Excluir</span> <span class="tag t-mkt">Marketing</span></div><div class="au-ss">Sacar de todas las campañas</div></div><div class="au-c tnum">19<span>contactos</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Tag: <code>No Fit</code></li><li>No pagar por volver a traerlos</li></ul></div></details>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Semillas para Lookalike · mínimo 100 personas</div></div>
+      <details class="aucard" open><summary class="au-s"><div class="au-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg></div><div class="au-t"><div class="au-n">Interés en mesas de comedor <span class="au-badge" style="background:var(--vio-soft);color:var(--vio)">Lookalike</span> <span class="tag t-mkt">Marketing</span></div><div class="au-ss">Habilita · bajo lo recomendado</div></div><div class="au-c tnum">205<span>semilla</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Producto de interés: mesas de comedor</li><li>La categoría más pedida: 39% de los que declaran producto</li></ul></div></details>
+      <details class="aucard"><summary class="au-s"><div class="au-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg></div><div class="au-t"><div class="au-n">Calificados <span class="au-badge" style="background:var(--vio-soft);color:var(--vio)">Lookalike</span> <span class="tag t-mkt">Marketing</span></div><div class="au-ss">Habilita · bajo lo recomendado</div></div><div class="au-c tnum">171<span>semilla</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Tags Calificado o Hot Lead</li><li>La semilla de mejor calidad: gente que ya dio línea, producto y escala</li></ul></div></details>
+      <details class="aucard"><summary class="au-s"><div class="au-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg></div><div class="au-t"><div class="au-n">Interés en mesas bajas <span class="au-badge" style="background:var(--vio-soft);color:var(--vio)">Lookalike</span> <span class="tag t-mkt">Marketing</span></div><div class="au-ss">Habilita · bajo lo recomendado</div></div><div class="au-c tnum">162<span>semilla</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Producto de interés: mesas bajas</li><li>Spring y Josefina viven acá</li></ul></div></details>
+      <details class="aucard"><summary class="au-s"><div class="au-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg></div><div class="au-t"><div class="au-n">Mobiliario urbano o bancos <span class="au-badge" style="background:var(--vio-soft);color:var(--vio)">Lookalike</span> <span class="tag t-mkt">Marketing</span></div><div class="au-ss">Habilita · bajo lo recomendado</div></div><div class="au-c tnum">149<span>semilla</span></div><span class="chev"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span></summary><div class="au-d"><ul><li>Producto de interés: mobiliario urbano o bancos</li><li>Para encontrar más compradores por proyecto</li></ul></div></details>
+      <div class="banner info" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4m0-4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div><div>Las cuatro semillas superan las <b>100 personas</b> que pide Meta, pero quedan por debajo del rango recomendado (1.000 a 5.000). Funcionan, con menos precisión. Para llegar al rango hace falta sumar la base de clientes de PrestaShop.</div></div>
+    </section>
+
+    <section class="panel p-evolucion">
+      <div class="sec-head"><div class="eyebrow"><span class="eb-orb"></span>Evolución · tres meses de consultas</div><h1 class="sec">Agosto fue el pico. <em>Septiembre se lee con cuidado.</em></h1><p class="lead">Mes a mes, con la composición de cada uno. Julio arranca con una base importada y septiembre tiene once días sin variables: los porcentajes de esos meses se leen sobre la base válida.</p></div>
+      <div class="evo-hero">
+        <div class="hero" style="box-shadow:var(--shadow)">
+          <div class="hero-top"><span class="hero-kick">Contactos por mes</span><span class="hero-per">jul a sep</span></div>
+          <div style="margin-top:14px"><div class="chartbox">
+            <div class="chart-scale"><span>pico ago · 367 consultas</span><span>más es mejor ↑</span></div>
+            <div class="chart">
+              <svg viewBox="0 0 600 150" preserveAspectRatio="none" role="img" aria-label="Consultas por mes">
+                <defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+                <path d="M 6 64.6 L 300 28 L 594 45.1 L 594 150 L 6 150 Z" fill="url(#hg2)"/>
+                <path d="M 6 64.6 L 300 28 L 594 45.1" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+                <circle cx="6" cy="64.6" r="4" fill="#fff"/><circle cx="300" cy="28" r="4.5" fill="#fff"/><circle cx="594" cy="45.1" r="4" fill="#fff"/>
+              </svg>
+              <div class="endtag">311<span>sep</span></div>
+            </div>
+            <div class="chart-x"><span>julio · 247</span><span>agosto · 367</span><span>sep · 311 (+17 en oct)</span></div>
+          </div></div>
+        </div>
+        <div class="stat-2">
+          <div class="statbox"><div class="l">Pico</div><div class="v tnum">367</div><div class="m">agosto, primer mes con pauta plena</div></div>
+          <div class="statbox"><div class="l">Con anuncio en agosto</div><div class="v tnum">91%</div><div class="m">julio 15%, septiembre 80%</div></div>
+          <div class="statbox"><div class="l">Califica en septiembre</div><div class="v tnum">29%</div><div class="m">base válida 173 · agosto 18%</div></div>
+          <div class="statbox"><div class="l">Octubre</div><div class="v tnum">17</div><div class="m">dos días, parcial</div></div>
+        </div>
+      </div>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Mes a mes · base válida</div></div>
+      <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:820px"><thead><tr><th>Mes</th><th>Contactos</th><th>Con anuncio</th><th>Conversaron (base válida)</th><th>Identifica</th><th>Califica</th><th>Lectura</th></tr></thead><tbody><tr><td class="cjcell"><b>Julio</b><span class="sub">desde el 3/07</span></td><td>247</td><td>15%</td><td>139</td><td>93%</td><td>24%</td><td>108 son base importada sin mensajes. La pauta arranca el 23/07.</td></tr><tr><td class="cjcell"><b>Agosto</b><span class="sub">mes completo</span></td><td>367</td><td>91%</td><td>366</td><td>66%</td><td>18%</td><td>Pauta plena: más volumen, menos identificación.</td></tr><tr><td class="cjcell"><b>Septiembre</b><span class="sub">con corte 17 a 27</span></td><td>311</td><td>80%</td><td>173</td><td>80%</td><td>29%</td><td>134 quedaron fuera por el corte de extracción.</td></tr><tr><td class="cjcell"><b>Octubre</b><span class="sub">1 y 2/10</span></td><td>17</td><td>82%</td><td>17</td><td>s/d</td><td>s/d</td><td>Muy chico para leer.</td></tr></tbody></table></div></div>
+
+      <div class="sec-head" style="margin-top:18px"><div class="eyebrow"><span class="eb-orb"></span>Vida de cada anuncio · contactos por mes</div></div>
+      <div class="card" style="overflow:hidden"><div class="tblwrap"><table style="min-width:760px"><thead><tr><th>Anuncio</th><th>Primer contacto</th><th>Último contacto</th><th>Jul</th><th>Ago</th><th>Sep</th><th>Oct</th></tr></thead><tbody><tr><td class="cjcell"><b>Mesa Positano</b></td><td>29/07</td><td>02/10</td><td>10</td><td>92</td><td>53</td><td>7</td></tr><tr><td class="cjcell"><b>Línea RAW</b></td><td>23/07</td><td>02/10</td><td>3</td><td>61</td><td>61</td><td>3</td></tr><tr><td class="cjcell"><b>Mesa baja Spring</b></td><td>23/07</td><td>22/09</td><td>11</td><td>77</td><td>33</td><td>0</td></tr><tr><td class="cjcell"><b>Línea SIT</b></td><td>29/07</td><td>24/09</td><td>8</td><td>56</td><td>43</td><td>0</td></tr><tr><td class="cjcell"><b>Terrace y Paros</b></td><td>29/07</td><td>14/09</td><td>5</td><td>40</td><td>13</td><td>0</td></tr><tr><td class="cjcell"><b>Mesa baja Josefina</b><span class="sub">nuevo</span></td><td>17/09</td><td>02/10</td><td>0</td><td>0</td><td>19</td><td>1</td></tr><tr><td class="cjcell"><b>Mobiliario urbano</b><span class="sub">nuevo</span></td><td>23/09</td><td>02/10</td><td>0</td><td>0</td><td>11</td><td>3</td></tr><tr><td class="cjcell"><b>Positano · 2do creativo</b><span class="sub">nuevo</span></td><td>17/09</td><td>29/09</td><td>0</td><td>0</td><td>13</td><td>0</td></tr><tr><td class="cjcell"><b>Sin anuncio</b><span class="sub">orgánico y base</span></td><td>03/07</td><td>02/10</td><td>209</td><td>33</td><td>62</td><td>3</td></tr></tbody></table></div></div>
+      <div class="banner info" style="margin-top:14px"><div class="bn-ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9" style="stroke:#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div><div>La rotación de creativos del <b>17/09</b> coincidió con el corte de extracción. Antes y después no se pueden comparar: la caída de identificación fue igual en anuncios viejos, nuevos y en el orgánico. La primera lectura limpia de los creativos nuevos va a ser en octubre.</div></div>
+    </section>
+
+    <div class="footer"><span class="orb"></span><b style="color:var(--ink2)">AUREA Hub</b> · Inteligencia Comercial · sobre Prometheo · BETROX · Ventas · CRM · datos reales</div>
+  </main>
+</div>
+<script>
+(function(){try{var s=localStorage.getItem('betrox-theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}})();
+function tgl(){var r=document.documentElement,c=r.getAttribute('data-theme');var sd=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;var n=c?(c==='dark'?'light':'dark'):(sd?'light':'dark');r.setAttribute('data-theme',n);try{localStorage.setItem('betrox-theme',n);}catch(e){}}
+/* respaldo de navegacion: garantiza el cambio de panel aunque el visor no soporte el selector CSS ~ */
+(function(){
+  function syncNav(){
+    var chk=document.querySelector('input[name="nav"]:checked');
+    var id=chk?chk.id.replace('dn-',''):'panorama';
+    var panels=document.querySelectorAll('.panel');
+    for(var i=0;i<panels.length;i++){panels[i].style.display=panels[i].classList.contains('p-'+id)?'block':'none';}
+  }
+  function syncEvo(){
+    var chk=document.querySelector('input[name="evo"]:checked');
+    var id=chk?chk.id.replace('ev-',''):'mes';
+    var t=document.querySelectorAll('.evo-table');
+    for(var i=0;i<t.length;i++){t[i].style.display=t[i].classList.contains('evt-'+id)?'block':'none';}
+  }
+  function bind(name,fn){var r=document.querySelectorAll('input[name="'+name+'"]');for(var i=0;i<r.length;i++){r[i].addEventListener('change',fn);}}
+  bind('nav',syncNav); bind('evo',syncEvo);
+  if(document.readyState!=='loading'){syncNav();syncEvo();}else{document.addEventListener('DOMContentLoaded',function(){syncNav();syncEvo();});}
+})();
+</script>
+</body>
+</html>

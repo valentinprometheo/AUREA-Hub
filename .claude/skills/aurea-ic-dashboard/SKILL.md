@@ -33,7 +33,8 @@ alcanza con recordar su contenido. Orden y nombres:
 | 2 | `aurea-ic-curaduria-del-dato` |
 | 3 | `aurea-ic-criterio-comercial` |
 | 4 | `aurea-ic-email-marketing`, `aurea-ic-whatsapp-marketing` (según canales) |
-| 5 | `aurea-dashboard-design` |
+| 5 | `aurea-ic-performance-report` |
+| 6 | `aurea-dashboard-design` |
 
 Si un nombre exacto no existe en el entorno, buscá la skill cuya descripción coincida
 (las de esta familia se llaman "Aurea IC - ..."). Si no existe ninguna, seguí con
@@ -91,19 +92,27 @@ mostrarse según su nivel de evidencia.
   (titula la respuesta, no la lectura; tier y calidad del número).
 - Si el cliente no tuvo esos canales, omití la sección y dejá un estado vacío diseñado.
 
-## Paso 5 · Diseño y armado → `aurea-dashboard-design`
+## Paso 5 · Lectura y recomendaciones → `aurea-ic-performance-report`
+
+Con los números ya curados, escribí la lectura del período: resumen ejecutivo, qué
+funcionó, qué hay que mejorar, hallazgos, recomendaciones priorizadas por impacto y
+esfuerzo, y foco del próximo período. Esta lectura **no puede usar nada que la curaduría
+haya dejado en Indicio o No reportable** y no cita benchmarks genéricos.
+
+## Paso 6 · Diseño y armado → `aurea-dashboard-design`
 
 Doctrina Básico / Avanzada (un número, un nombre), KPI con delta obligatorio, embudo
 como pasos y no a escala, color semántico separado del de marca, modo oscuro, estados
 vacíos, fecha de actualización por fuente, chips de cobertura y tags de nivel de la
 curaduría. HTML autocontenido, assets en WebP, objetivo de peso menor a 250 KB.
 
-## Paso 6 · Control antes de entregar
+## Paso 7 · Control antes de entregar
 
 - [ ] Checklist de `aurea-ic-curaduria-del-dato` completo.
 - [ ] Checklist de `aurea-ic-criterio-comercial` completo.
 - [ ] Cotejar cifra por cifra contra la fuente (evita dos criterios de cohorte en la misma pantalla).
 - [ ] Ninguna cifra suma Meta + Prometheo.
+- [ ] Cada recomendación enlaza a un hallazgo con base, y no usa datos por debajo de Señal.
 - [ ] Las cinco preguntas tienen respuesta, o un estado vacío diseñado que dice por qué no.
 - [ ] Faltantes de integración (Meta, cierre) declarados en "¿De dónde sale esto?".
 - [ ] El switch Básico / Avanzada cambia algo en todas las vistas.

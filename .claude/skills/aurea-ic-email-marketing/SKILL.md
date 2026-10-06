@@ -1,5 +1,5 @@
 ---
-name: aurea-email-prometheo
+name: aurea-ic-email-marketing
 description: Métricas de campañas de email que terminan en una conversación de Prometheo, para los tableros de Inteligencia Comercial de AUREA. Define qué se mide, sobre qué base y qué puede titular una card. Usala SIEMPRE que haya que reportar o diseñar métricas de una campaña de email, newsletter, secuencia o reactivación de base propia, calcular CTR, CTOR, tasa de empalme, aperturas, bajas o rebotes, o decidir qué mostrar de un export de la plataforma de email. Activar ante "email", "campaña de mail", "CTOR", "CTR", "tasa de empalme", "apertura", "newsletter", "reactivación de base", "secuencia de emails".
 ---
 
@@ -10,7 +10,7 @@ description: Métricas de campañas de email que terminan en una conversación d
 > benchmarks propios: no cites referencias de mercado como si fueran de AUREA.
 
 En AUREA el email no termina en el clic: **el clic es el empalme**, el paso que lleva
-a una conversación en Prometheo. Esta skill hereda de `aurea-curaduria-dato` las reglas
+a una conversación en Prometheo. Esta skill hereda de `aurea-ic-curaduria-del-dato` las reglas
 de base, cobertura, origen y fuentes. Acá se agrega lo específico del canal.
 
 ## 1. Quién manda en cada número

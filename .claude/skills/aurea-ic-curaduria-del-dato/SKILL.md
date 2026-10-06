@@ -1,5 +1,5 @@
 ---
-name: aurea-curaduria-dato
+name: aurea-ic-curaduria-del-dato
 description: Curaduría, trazabilidad y auditoría del dato comercial para los tableros de Inteligencia Comercial de AUREA (Prometheo + Tokko + canales). Usala SIEMPRE que haya que decidir qué número se muestra y cómo, curar un export de Prometheo, definir denominadores, auditar cobertura de variables, cruzar datos cualitativos con cuantitativos, separar demanda real de no-demanda, definir etapas del embudo por evidencia, o marcar faltantes en una pestaña de Demanda, Venta CRM o Calidad de datos. Activar ante "curar", "auditar el dato", "qué tan confiable es", "sobre qué base", "denominador", "cobertura", "faltantes", "sin dato", "atribución de anuncio", "etapa vs evidencia", "esto se puede mostrar al cliente".
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: aurea-whatsapp-prometheo
+name: aurea-ic-whatsapp-marketing
 description: Métricas de campañas masivas de WhatsApp enviadas desde el CRM de Prometheo, para los tableros de Inteligencia Comercial de AUREA. Define qué titula, cómo se leen la lectura y la respuesta, y cómo se tratan el tier de envío y la calidad del número como métricas de tablero. Usala SIEMPRE que haya que reportar o diseñar métricas de WhatsApp masivo, difusiones, plantillas, reactivación por WhatsApp, o auditar la salud del número. Activar ante "WhatsApp masivo", "difusión", "plantilla", "tasa de respuesta", "lectura", "tier", "calidad del número", "bloqueos", "campaña de WhatsApp".
 ---
 
@@ -10,7 +10,7 @@ description: Métricas de campañas masivas de WhatsApp enviadas desde el CRM de
 > benchmarks propios: no cites referencias de mercado como si fueran de AUREA.
 
 En WhatsApp **no existe el clic**: el equivalente es la respuesta. Por eso **titula la
-respuesta, no la lectura**. Esta skill hereda de `aurea-curaduria-dato` las reglas de
+respuesta, no la lectura**. Esta skill hereda de `aurea-ic-curaduria-del-dato` las reglas de
 base, cobertura, origen y fuentes.
 
 ## 1. Quién manda en cada número

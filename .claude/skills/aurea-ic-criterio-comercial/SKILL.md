@@ -1,5 +1,5 @@
 ---
-name: aurea-criterio-comercial
+name: aurea-ic-criterio-comercial
 description: Criterio comercial de AUREA para los tableros de Inteligencia Comercial sobre Prometheo. Define qué dato se agrega dentro de cada consulta (núcleo fijo de cinco campos de Gap Selling, Jobs to be Done y SPIN, más una capa variable por rubro con JTBD, Hormozi o Solution Selling), cómo lo extrae el agente, cómo se audita su cobertura y cómo se muestra en el tablero. Usala SIEMPRE que haya que elegir la metodología de venta de un cliente, diseñar o auditar los campos de problema, impacto, causa raíz, evento disparador o resultado de contacto, reforzar el prompt del agente para cargarlos, armar la pestaña de criterio comercial, cruzar impacto con disparador, o preparar la Consultoría 02 (capacitación comercial aplicada al agente). Activar ante "criterio comercial", "Gap Selling", "Jobs to be Done", "JTBD", "SPIN", "Hormozi", "evento disparador", "impacto", "causa raíz", "resultado de contacto", "capa variable", "qué metodología le corresponde".
 ---
 
@@ -9,7 +9,7 @@ El tablero base cuenta cuántas consultas entran y de qué anuncio vienen. El cr
 comercial lee lo que pasa **dentro** de cada consulta: qué problema trae el cliente y
 por qué consulta hoy. Es la lógica de venta que le prestamos al cliente que no la tiene.
 
-Esta skill decide **qué dato se agrega**. `aurea-curaduria-dato` decide **si se puede
+Esta skill decide **qué dato se agrega**. `aurea-ic-curaduria-del-dato` decide **si se puede
 mostrar**. `aurea-dashboard-design` decide **cómo se ve**. `aurea-metodologia` decide
 **cómo se carga en el CRM**.
 
@@ -94,7 +94,7 @@ Reglas:
 - Resultado de contacto lo carga el equipo: es un campo requerido al cerrar cada
   contacto humano (regla de `revops`: no avanza de etapa sin sus campos).
 
-## 4. Cómo se audita (liga con `aurea-curaduria-dato`)
+## 4. Cómo se audita (liga con `aurea-ic-curaduria-del-dato`)
 
 Cada campo pasa por la escalera de evidencia antes de aparecer:
 
@@ -130,7 +130,7 @@ Cada campo pasa por la escalera de evidencia antes de aparecer:
 2. Completá las definiciones `[A DEFINIR]` para el rubro.
 3. Verificá con `aurea-metodologia` que las variables existan en Prometheo y que el
    prompt del agente tenga el refuerzo.
-4. Con el export, medí cobertura y origen de cada campo (`aurea-curaduria-dato`).
+4. Con el export, medí cobertura y origen de cada campo (`aurea-ic-curaduria-del-dato`).
 5. Armá la sección según el nivel de evidencia de cada campo.
 6. Corré el checklist.
 

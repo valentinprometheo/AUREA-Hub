@@ -90,14 +90,38 @@ contar + Texto largo para la frase literal):
 | Problema declarado | Dolor Principal (Texto largo) | Mismo concepto: el problema de fondo, en palabras del lead |
 | Impacto | — (nueva, Opciones: alto / medio / bajo) | Solo si el cliente tiene la capa de Gap Selling |
 | Causa raíz | — (nueva, Opciones por rubro) | Solo si el cliente tiene la capa de Gap Selling |
-| Evento disparador | Disparador Compra (Texto largo) | **Definición en conflicto**, ver abajo |
+| Evento disparador | — (nueva: **Evento Disparador**, Opciones por rubro, más **Antigüedad Disparador**, Opciones por tramo) | No es *Disparador Compra*: ver abajo |
 | Resultado de contacto | — (tag manual del equipo, sin prompt) | Las etapas humanas no llevan prompt de IA |
 | (insumo de Insights) | Objeción Principal + Frase Literal · Pedido Fuera de Catálogo + Detalle | Taxonomía de objeciones idéntica entre clientes del mismo rubro |
+| (llave de cierre, fuera del núcleo) | Disparador Compra (Texto largo) | Qué destrabaría la decisión. Se lee junto a la objeción |
 
-> Conflicto abierto `[A DEFINIR]`: para la metodología, *Disparador Compra*
-> es "qué destrabaría la decisión"; para esta skill, el evento disparador es "qué pasó
-> para que consulte hoy". Hasta resolverlo, no se crea una variable nueva: se lee
-> *Disparador Compra* y se declara cuál de las dos definiciones usa su prompt.
+### Evento disparador y Disparador Compra: dos datos, dos funciones
+
+Parecen lo mismo por el nombre, pero miran a momentos distintos y sirven a personas distintas:
+
+| | Evento Disparador | Disparador Compra |
+|---|---|---|
+| Pregunta | ¿Qué pasó para que consulte **hoy**? | ¿Qué **destrabaría** la decisión? |
+| Tiempo | Pasado (ya ocurrió) | Futuro (todavía falta) |
+| Ejemplo real estate | Vendió su departamento la semana pasada | Que le acepten el auto como parte de pago |
+| Para qué sirve | Ordenar por urgencia (con su antigüedad) y escribir el creativo de la pauta | Que el vendedor sepa qué ofrecer para cerrar |
+| Lo usa | Marketing y la cola de prioridad | El equipo de ventas |
+| Pareja natural | Impacto (urgencia × tamaño) | Objeción Principal (lo que bloquea ↔ lo que destraba) |
+| Tipo de variable | Opciones por rubro (se cuenta y se rankea) | Texto largo (demasiado variable para categorizar) |
+
+**Regla:** no se fusionan. Una sola variable no puede guardar un evento pasado y una
+condición futura sin perder una de las dos lecturas. *Disparador Compra* queda como lo
+define la metodología, sin tocar los CRM que ya lo tienen.
+
+**Optimización de tokens:**
+- Evento Disparador va como **Opciones** (lista cerrada por rubro + "otro"): es más barato
+  de extraer que un texto largo y se puede contar sin procesar después.
+- Antigüedad Disparador solo se crea si el cliente va a usar el cruce de urgencia
+  (impacto × disparador de menos de 30 días). Si no, alcanza con el evento.
+- Disparador Compra se activa solo en ventas consultivas donde hay negociación
+  (ticket alto, a medida, B2B). En ventas transaccionales no se crea.
+- En el refuerzo del prompt del agente, Evento Disparador entra en la línea de señales
+  blandas que se priorizan; Disparador Compra ya está ahí por la metodología.
 
 Cada variable nueva tiene costo: se evalúa en cada conversación (en EDFAN la extracción
 fue el 16% del gasto de IA). Antes de sumar impacto o causa raíz, confirmar que el cliente
@@ -148,7 +172,10 @@ calificado del cliente ni la de hot lead. Se lee **dentro** de esa clasificació
 - **Cruce impacto alto × disparador < 30 días**: el corte que identifica a quién llamar
   primero. Ninguno de los dos campos lo produce por separado. Mostralo solo si ambos
   campos llegan a Señal; si no, va a Calidad de datos con el insight que desbloquearía.
-- Disparadores más frecuentes como insumo para creativos (modo Avanzada).
+- Eventos disparadores más frecuentes como insumo para creativos (modo Avanzada).
+- En **Insights**, la pareja Objeción Principal ↔ Disparador Compra: qué bloquea y qué
+  destrabaría, por proyecto o línea. En "¿Qué hago ahora?", la llave de cierre de cada
+  hot lead pasa al vendedor.
 - Resultado de contacto: avance vs continuación, que es el cruce de etapa declarada vs
   etapa por evidencia aplicado a la reunión.
 - Citas de problema declarado en tarjetas de texto, sin barra ni porcentaje.

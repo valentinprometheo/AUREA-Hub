@@ -81,8 +81,22 @@ Entender cómo está diseñado el CRM del cliente antes de leer el export: embud
 etapa es una Smart Tag), una tag por dimensión, variables padre e hija condicional,
 corte embudo del agente vs embudo humano. Lo que el CRM no registró no se puede reportar.
 
-Cargá solo la rebanada que el tablero usa: el rubro, `inteligencia-comercial-producto.md`
-y, si hay dudas de captura, `embudos-y-tags.md`. No cargues la metodología entera.
+La metodología es el contexto de todo el ecosistema comercial con IA: cómo se diseñó el
+CRM, cómo vende el agente y qué captura. Cargá solo la rebanada que el tablero usa:
+
+| Archivo de la metodología | Para qué lo usa el tablero |
+|---|---|
+| `06-rubros/<rubro>.md` | Embudos, variables y KPIs del rubro del cliente |
+| `02-ETAPA2-Diseno/inteligencia-comercial-producto.md` | Qué es el producto, sobre qué corre y qué requiere |
+| `02-ETAPA2-Diseno/embudos-y-tags.md` | Dónde y cómo se captura cada dato (si hay dudas de captura) |
+| `02-ETAPA2-Diseno/ahorro-de-tokens.md` | Decisiones de diseño que explican el consumo de IA |
+| `01-ETAPA1-Discovery/02-PASO2-Discovery/metricas-core-prometheo.md` | Las 5 métricas core y la línea base B10 |
+
+No cargues la metodología entera.
+
+**Fuente de la calificación:** la skill propia `aurea-hub-criterio-calificacion-leads`
+manda. La metodología trae una copia del módulo (`references/calificacion/`): si difieren,
+gana la skill propia. La metodología se usa para todo lo demás de la implementación.
 
 ## Paso 2 · Curaduría del dato → `aurea-ic-curaduria-del-dato`
 

@@ -45,7 +45,17 @@ base, cobertura, origen y fuentes.
   tasa de respuesta.
 - Aplicá la escalera de evidencia. Con n chico, mostrá conteos y no porcentajes.
 - Si la campaña está modelada y no corrida, decilo en el mismo bloque.
-- Costo por mensaje y por categoría de plantilla: `[A DEFINIR]` según el proveedor.
+- Costo de Meta por mensaje (Argentina, desde el 1/10/2026, fuente: skill de
+  calificación, `references/ahorro-de-tokens.md`): Marketing USD 0,0618 · Utilidad
+  USD 0,0260 · Servicio USD 0,026 pasados los 1.000 gratis del mes · conversaciones que
+  nacen de un anuncio Click to WhatsApp y respuestas desde la app: gratis. Una difusión
+  masiva es casi siempre categoría Marketing: costo de la campaña = enviados × tarifa.
+  Se suma el costo de IA de las respuestas que genera. Revisar la tarifa vigente antes
+  de publicar.
+- **Respuestas calificadas y hot leads** generados por la difusión, con la definición del
+  cliente (`aurea-hub-criterio-calificacion-leads`): es lo que titula después de la respuesta.
+- Antes de una difusión que cambia tags, chequear qué seguimientos disparan esos tags
+  (un tag con seguimiento puede mandar plantillas con costo).
 
 ## 4. Checklist
 

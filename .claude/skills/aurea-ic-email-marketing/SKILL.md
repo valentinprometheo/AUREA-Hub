@@ -30,7 +30,8 @@ Nunca sumes ni mezcles: el conteo de consultas lo define Prometheo.
 | CTR | clics únicos / entregados | entregados |
 | **CTOR** | clics únicos / aperturas únicas | aperturas únicas |
 | **Tasa de empalme** | contactos que escriben a Prometheo dentro de la ventana tras el clic / clics únicos. Ventana: `[A DEFINIR]` | clics únicos |
-| Calificación de lo generado | consultas calificadas (misma definición del tablero) / consultas del email | consultas del email |
+| Calificación de lo generado | consultas calificadas con la definición del cliente (`aurea-hub-criterio-calificacion-leads`) / consultas del email | consultas del email |
+| Hot leads generados | consultas con tag Hot Lead / consultas del email | consultas del email |
 | Bajas y reportes de spam | bajas / entregados | entregados |
 
 ## 3. Reglas

@@ -23,7 +23,19 @@ Esta skill es de origen genérico. En AUREA se usa sobre números **ya curados**
    Prometheo.
 6. **Cada recomendación enlaza a un hallazgo con su base**, y los datos modelados se
    marcan como modelados.
-7. Idioma de salida: español rioplatense.
+7. **Calificados con la definición del cliente** (`aurea-hub-criterio-calificacion-leads`),
+   como rango si hay partes aproximadas. Nunca "variables completas" ni un % de
+   calificados objetivo sin fuente: la meta sale de la línea base del cliente (B10).
+   Las metas de las tablas de KPIs del rubro (visitas, cierre) no se usan como objetivo
+   salvo que el cliente las haya validado.
+8. **Recomendaciones típicas que salen de la calificación**, cada una con su base:
+   - Hot leads sin seguimiento ni derivación: llamarlos primero (con su número).
+   - Recalificar la base con Mi Prometheo: prueba chica, conteo esperado y forma de revertir.
+   - Separar la no-demanda (en real estate, línea de WhatsApp aparte) y apagar el asistente con proveedores.
+   - Primera respuesta corta (hasta 60 palabras, una pregunta) y material después.
+   - Registrar el ruteo y las visitas en tags, no solo en variables de texto.
+   - Recarga automática de saldo con piso, si hubo cortes.
+9. Idioma de salida: español rioplatense.
 
 # Performance Report
 

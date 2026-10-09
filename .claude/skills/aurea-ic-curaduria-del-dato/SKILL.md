@@ -131,14 +131,25 @@ Aporte directo de revops, y la curaduría que más valor genera en Venta · CRM.
 Definí cada etapa con **evidencia requerida**, y después contá **dos veces**: cuántos
 tienen el tag y cuántos cumplen la evidencia. La brecha es el hallazgo.
 
-Ejemplo real EDFAN (evidencia = proyecto, zona, perfil, tipo de unidad):
+**La evidencia de "Calificado" es la definición del cliente**, nunca un criterio propio
+de AUREA ni "cantidad de variables completas". Se toma de `aurea-hub-criterio-calificacion-leads`:
+todos los obligatorios + al menos k de n sumas, con descalificación (No Fit) con motivo.
+Si el cliente no la definió, el molde del rubro va rotulado "propuesta a validar" y no titula.
 
-| | Tag declarado | Cumple evidencia (3 de 4 campos) |
+Ejemplo real EDFAN (export al 08/10/2026, 874 consultas de compra, regla del cliente:
+proyecto o zona con proyecto + tipología existente + al menos 2 sumas):
+
+| | Tag declarado | Cumple la definición del cliente |
 |---|---|---|
-| Calificado | 6 | 386 |
+| Calificado | 6 | 252 (176 en la lectura estricta) |
 
-No es que haya 6 calificados: hay **381 leads calificados de hecho que nadie marcó**.
-El embudo no está vacío, está subregistrado. Ese es el número que hay que mostrar.
+El embudo no está vacío, está subregistrado. Se muestra el **rango** (estricto y amplio)
+y qué falta para que sea exacto.
+
+> Error histórico, no repetir: una versión anterior de esta skill usaba "3 de 4 campos"
+> (proyecto, zona, perfil, tipo de unidad) y mostraba 386. Con la regla del cliente eran
+> 252: el criterio propio sobreestimaba. Si un tablero ya publicado usó el criterio
+> viejo, el nuevo lo dice con el número anterior y el nuevo.
 
 **Regla operativa:** el agente no debería poder marcar una etapa avanzada sin la
 evidencia mínima; y el tablero no debería reportar conversión de etapa mientras la
@@ -149,7 +160,13 @@ evidencia y el tag no converjan. Mientras tanto, se muestran las dos columnas.
 Antes de cualquier porcentaje, definí **sobre quién estás hablando**. El export trae
 todo junto. Un proveedor que ofrece premarcos no es demanda de compra.
 
-Secuencia estándar (EDFAN como ejemplo):
+La base curada sale de la variable **"Tipo de contacto"** con valores excluyentes
+(comprador / canal B2B / proveedor / otros del rubro), definida en
+`aurea-hub-criterio-calificacion-leads`. Solo el comprador entra a la calificación. Si
+la cuenta mezcla tipo de contacto con finalidad en una misma variable (EDFAN: proveedores
+cargados como "Inmobiliaria"), es un hallazgo de Calidad de datos.
+
+Secuencia estándar (EDFAN como ejemplo, export anterior al del paso 6):
 
 ```
 1.017  contactos en el export
@@ -188,7 +205,9 @@ Cada fuente tiene **un rol** y no opina fuera de él:
 3. **Definí la base curada** (paso 7) y anotá sobre qué base corre cada sección.
 4. **Calculá los denominadores declarados** por variable y guardalos: son los que van
    en el encabezado de cada card.
-5. **Cruzá etapa declarada vs evidencia** (paso 6).
+5. **Cruzá etapa declarada vs evidencia** (paso 6) con la definición de calificado del cliente.
+   Pasá la cuenta por el catálogo de malas prácticas de `aurea-hub-criterio-calificacion-leads`
+   (`references/malas-practicas.md`) y llevá cada hallazgo a Calidad de datos.
 6. **Levantá las citas** que auditan las categorías (paso 5).
 7. **Listá los faltantes** clasificados por tipo (paso 4) con el insight que desbloquean.
 8. **Recién ahí** armá las cards.
@@ -211,6 +230,7 @@ Cada fuente tiene **un rol** y no opina fuera de él:
 - [ ] Ninguna cita se presentó como porcentaje.
 - [ ] Ninguna cifra suma dos fuentes.
 - [ ] Las etapas muestran declarado y evidencia cuando difieren.
+- [ ] "Calificado" usa la definición del cliente (o dice "propuesta a validar"), con rango si hay aproximaciones.
 - [ ] Todo lo no reportable está en Calidad de datos con su insight desbloqueable.
 - [ ] Si es data real, dice que es real; si es proyección, lo dice en el mismo bloque.
 
@@ -222,6 +242,11 @@ Cada fuente tiene **un rol** y no opina fuera de él:
 - **La cita disfrazada de dato.** Tres frases convertidas en categoría con barra.
 - **El faltante borrado.** Sacar del gráfico lo que no tiene dato y dejar que el resto sume 100%.
 - **La suma de plataformas.** Meta + Prometheo como si fueran consultas distintas.
+- **El calificado de AUREA.** Medir calificados con un criterio propio o por cantidad de
+  variables completas. El cliente define qué es un buen lead.
+- **La oferta contada como pedido.** Una variable que se llena con lo que ofreció el
+  agente (EDFAN: 131 registros de Tipo Unidad con varias tipologías) no mide demanda.
+- **El ruteo invisible.** Si a quién se avisó no queda en el export, no existe para el tablero.
 
 ---
 
@@ -239,4 +264,6 @@ en el tablero IC de AUREA sobre Prometheo, Tokko y canales.
 - `aurea-dashboard-design` — cómo se ve el tablero. Esta skill decide **qué entra**.
 - `aurea-metodologia` — diseño del CRM, tags y variables en Prometheo. Es aguas arriba:
   lo que esta skill audita, esa skill lo define.
+- `aurea-hub-criterio-calificacion-leads` — qué es un lead calificado y un hot lead para
+  cada cliente. Esta skill decide cómo se muestra; esa, qué cuenta como calificado.
 - `attribution` / `revops` — las fuentes de origen, para consultar el detalle completo.

@@ -8,7 +8,8 @@ Tres componentes: suscripción de Prometheo (fija), **saldo de IA** (variable, s
 perfil) y **costo de Meta** (mensajes de WhatsApp). Consume IA: cada respuesta del agente, los
 seguimientos, los Smart Tags y variables (por conversación) y las integraciones (por consulta).
 **Si el saldo llega a cero, el agente deja de responder.** La recarga automática viene activada
-de fábrica (Perfil › Pagos › Saldo de tu cuenta) y se avisa en el onboarding. No se recomienda
+de fábrica (Perfil › Pagos › Saldo de tu cuenta, con piso y tope mensual configurables) y se
+avisa en el onboarding. No se recomienda
 como primer paso: el cliente mide primero cuánto gasta por mes y después decide.
 
 ## Meta desde el 1/10/2026 (Argentina, rate card oficial en pesos, por mensaje)

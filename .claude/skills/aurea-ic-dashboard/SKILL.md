@@ -74,7 +74,7 @@ skill faltó**; nunca la reemplaces en silencio.
 | Panel de consumo de IA de Prometheo (USD por mes, reparto, recargas, cortes de saldo) | Real estate: sí | Sin pestaña de consumo; se declara |
 | Mensajes salientes de WhatsApp por categoría desde el 1/10/2026 (panel o factura de Meta) y si la cuenta es API o coexistencia | Recomendado | Costo de Meta como escenario rotulado [CÁLCULO] |
 | Export de Meta (gasto, alcance, por anuncio y día) | No | Faltante de integración: sin CPL ni ROAS, se declara |
-| Tokko (catálogo) | Solo real estate | "Zona con proyecto" y "tipología existente" se aproximan desde el export y se declara |
+| Tokko (catálogo) | Solo real estate | Demanda sin cruce de producto; "zona con proyecto" y "tipología existente" se aproximan desde el export y se declara |
 | Campañas de email / WhatsApp masivo | Si las hubo | Estado vacío en esa pestaña |
 | Registro de cierre del equipo | No | Faltante de proceso: no hay ciclo cerrado, se declara |
 
@@ -217,4 +217,4 @@ curaduría. HTML autocontenido, assets en WebP, objetivo de peso menor a 250 KB.
 - `references/cuerpo-de-conocimiento.md`: el producto, el caso EDFAN, el estado de la
   atribución, lo que se puede y no se puede medir, y el vocabulario común. Sus cifras
   de calificados de EDFAN (386 / 381) son anteriores a la definición del cliente: valen
-  las del paso 3.
+  las del paso 3. Leelo cuando haya dudas de definición o se trabaje con alguien nuevo.

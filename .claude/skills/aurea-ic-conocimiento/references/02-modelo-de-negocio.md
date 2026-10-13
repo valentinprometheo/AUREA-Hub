@@ -32,6 +32,8 @@ Diferencial del 360 frente a la competencia: **servicios integrales, con un solo
   marketing ARS 89,56, con 1.000 respuestas gratis por mes). Va aparte, como gasto de marketing. [VIGENTE]
 - Escenarios mensuales (IA a USD 0,40 con 20% de margen + Enterprise, Meta aparte): 216 leads ≈
   USD 273; 433 ≈ USD 398; 866 ≈ USD 648. [REFERENCIA]
+- Escenarios de bajo volumen, recalculados con el mismo criterio: 50 conversaciones por mes ≈
+  USD 173; 100 conversaciones ≈ USD 197 (licencia + IA; Meta aparte). [CÁLCULO]
 - Rentabilidad vs atención a mano (USD 1.200 un puesto, USD 2.400 en el escenario alto):
   **ahorro de 67% a 77%**. Rangos, no promesas. [REFERENCIA]
 - [DEROGADO 13/10/2026] "Licencia USD 150" (presupuesto DRAKON), "desde USD 149" como piso,

@@ -212,6 +212,19 @@ Cada fuente tiene **un rol** y no opina fuera de él:
 7. **Listá los faltantes** clasificados por tipo (paso 4) con el insight que desbloquean.
 8. **Recién ahí** armá las cards.
 
+## 9 bis. Del dato a la acción (liga con `aurea-data-action-driven`)
+
+La escalera de evidencia decide si un **número** puede titular. El score de
+`aurea-data-action-driven` decide cuánto pesa una **acción** que se apoya en ese número. Lo que
+esta skill entrega a la card:
+
+- **Base y denominador** (componente 1), **fuente y origen** (componente 2) y **cobertura**
+  (componente 3): salen de la tabla que produce el procedimiento de auditoría.
+- **Techo por nivel:** una card cuyo dato central es Hecho llega a 100, Señal a 79, Indicio
+  a 54 y No reportable a 29. Un dato modelado no pasa de 54. Sin este techo, una card con
+  cobertura 0 podría llegar a 85% "basada en datos". Detalle en
+  `aurea-ic-dashboard/references/integracion-action-driven.md`.
+
 ## 10. Cómo se renderiza (liga con `aurea-dashboard-design`)
 
 - **Chip de cobertura** en el `.r` del `ghdr`: `base declarada: 518` o `51% sin dato`.
@@ -264,6 +277,8 @@ en el tablero IC de AUREA sobre Prometheo, Tokko y canales.
 - `aurea-dashboard-design` — cómo se ve el tablero. Esta skill decide **qué entra**.
 - `aurea-metodologia` — diseño del CRM, tags y variables en Prometheo. Es aguas arriba:
   lo que esta skill audita, esa skill lo define.
+- `aurea-data-action-driven` — de la cifra a la acción: cards con sello, score y guardiana.
+  Esta skill entrega base, cobertura y origen; esa, el formato de la acción.
 - `aurea-hub-criterio-calificacion-leads` — qué es un lead calificado y un hot lead para
   cada cliente. Esta skill decide cómo se muestra; esa, qué cuenta como calificado.
 - `attribution` / `revops` — las fuentes de origen, para consultar el detalle completo.

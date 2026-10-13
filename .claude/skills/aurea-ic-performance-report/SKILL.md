@@ -22,7 +22,9 @@ Esta skill es de origen genérico. En AUREA se usa sobre números **ya curados**
 5. **Atribución direccional.** No sumar fuentes; el conteo de consultas lo define
    Prometheo.
 6. **Cada recomendación enlaza a un hallazgo con su base**, y los datos modelados se
-   marcan como modelados.
+   marcan como modelados. Un dato por debajo de Señal no se descarta: la recomendación
+   pasa a ser una prueba acotada, *Medir* o *Decidir*, con su techo de score
+   (`aurea-data-action-driven`, reglas R1 y R2 de `aurea-ic-dashboard`).
 7. **Calificados con la definición del cliente** (`aurea-hub-criterio-calificacion-leads`),
    como rango si hay partes aproximadas. Nunca "variables completas" ni un % de
    calificados objetivo sin fuente: la meta sale de la línea base del cliente (B10).
@@ -35,7 +37,15 @@ Esta skill es de origen genérico. En AUREA se usa sobre números **ya curados**
    - Primera respuesta corta (hasta 60 palabras, una pregunta) y material después.
    - Registrar el ruteo y las visitas en tags, no solo en variables de texto.
    - Recarga automática de saldo con piso, si hubo cortes.
-9. Idioma de salida: español rioplatense.
+9. **Cada recomendación sale como card de acción** (`aurea-data-action-driven`): sello con
+   uno de seis verbos (Corregir, Proteger, Separar, Medir, Decidir, Activar) y un dueño
+   (AUREA, Ventas, Marketing, Dirección); título "Tema · dato principal"; score de 0 a 100%
+   con su "por qué" por componente; qué hacer, dónde se cambia, efecto esperado en número,
+   cómo se mide y guardiana si premia una métrica. La matriz impacto × esfuerzo de más
+   abajo ordena las cards; el score desempata y fija la etiqueta de banda.
+10. **Cada sección de datos cierra con "y entonces qué"**, aunque sea "no requiere acción
+    este período".
+11. Idioma de salida: español rioplatense.
 
 # Performance Report
 

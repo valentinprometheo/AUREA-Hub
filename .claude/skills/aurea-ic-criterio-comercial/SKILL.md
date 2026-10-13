@@ -179,6 +179,10 @@ calificado del cliente ni la de hot lead. Se lee **dentro** de esa clasificació
 - Resultado de contacto: avance vs continuación, que es el cruce de etapa declarada vs
   etapa por evidencia aplicado a la reunión.
 - Citas de problema declarado en tarjetas de texto, sin barra ni porcentaje.
+- **Como card de acción** (`aurea-data-action-driven`): el cruce impacto × disparador es una
+  card *Activar* (dueño Ventas); objeción ↔ Disparador Compra, una card *Decidir* o
+  *Activar* según el caso. Si los campos están en Indicio, la card existe como *Medir*
+  (reforzar el prompt) con techo de score 54; con datos modelados, la card lo declara.
 - Si los datos son modelados (como PAVIR), decirlo en el mismo bloque.
 
 ## 6. Procedimiento

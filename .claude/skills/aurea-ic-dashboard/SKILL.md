@@ -1,6 +1,6 @@
 ---
 name: aurea-ic-dashboard
-description: Conductor de punta a punta para crear, actualizar o auditar un tablero de Inteligencia Comercial de AUREA (HTML autocontenido sobre Prometheo, Meta, Tokko y canales) para cualquier cliente (EDFAN, DRAKON, PAVIR, TKVA, EAF o nuevos). Ordena el trabajo en pasos y carga en cada uno la skill que corresponde (aurea-metodologia, aurea-ic-curaduria-del-dato, aurea-hub-criterio-calificacion-leads, aurea-ic-criterio-comercial, skills de canal, aurea-ic-performance-report, aurea-dashboard-design), y pide los insumos que falten antes de armar nada, incluida la definición de lead calificado del cliente. Usala SIEMPRE que se pida "armá el tablero", "tablero de IC", "dashboard de inteligencia comercial", "actualizá el tablero de [cliente]", "nueva quincena / nuevo mes del tablero", "auditá el tablero", o se comparta un export de Prometheo para reportar.
+description: Conductor de punta a punta para crear, actualizar o auditar un tablero de Inteligencia Comercial de AUREA (HTML autocontenido sobre Prometheo, Meta, Tokko y canales) para cualquier cliente (EDFAN, DRAKON, PAVIR, TKVA, EAF o nuevos). Ordena el trabajo en pasos y carga en cada uno la skill que corresponde (aurea-metodologia, aurea-ic-curaduria-del-dato, aurea-hub-criterio-calificacion-leads, aurea-ic-criterio-comercial, skills de canal, aurea-ic-performance-report, aurea-data-action-driven, aurea-dashboard-design), y pide los insumos que falten antes de armar nada, incluida la definición de lead calificado del cliente. Usala SIEMPRE que se pida "armá el tablero", "tablero de IC", "dashboard de inteligencia comercial", "actualizá el tablero de [cliente]", "nueva quincena / nuevo mes del tablero", "auditá el tablero", o se comparta un export de Prometheo para reportar.
 ---
 
 # Tablero de Inteligencia Comercial · conductor
@@ -45,7 +45,7 @@ alcanza con recordar su contenido. Orden y nombres:
 | 3 | `aurea-hub-criterio-calificacion-leads` (solo el archivo del rubro del cliente) |
 | 4 | `aurea-ic-criterio-comercial` |
 | 5 | `aurea-ic-email-marketing`, `aurea-ic-whatsapp-marketing` (según canales) |
-| 6 | `aurea-ic-performance-report` |
+| 6 | `aurea-ic-performance-report` y `aurea-data-action-driven` |
 | 7 | `aurea-dashboard-design` |
 
 Si un nombre exacto no existe en el entorno, buscá la skill cuya descripción coincida
@@ -159,11 +159,22 @@ cruce impacto × disparador ordena a quién llamar primero dentro de los que ya 
   mensajes a leads que escribieron una sola vez, y en real estate la línea aparte para
   no-demanda. Los cortes de saldo son también un faltante de datos: se declaran.
 
-## Paso 6 · Lectura y recomendaciones → `aurea-ic-performance-report`
+## Paso 6 · Lectura y acciones → `aurea-ic-performance-report` + `aurea-data-action-driven`
 
-Con los números ya curados, escribí la lectura del período. No puede usar nada que la
-curaduría haya dejado en Indicio o No reportable, no cita benchmarks genéricos y no usa
-como meta las cifras sin fuente de las tablas de KPIs del rubro.
+Con los números ya curados, escribí la lectura del período. No cita benchmarks genéricos y
+no usa como meta las cifras sin fuente de las tablas de KPIs del rubro.
+
+1. **Cada pestaña lleva su lectura "y entonces qué"**, aunque sea "no requiere acción este
+   período". Los números no llevan score.
+2. **Cada recomendación es una card de acción** (sello con uno de seis verbos y un dueño,
+   título "Tema · dato", score con su "por qué", qué hacer, dónde se cambia, efecto esperado,
+   cómo se mide y guardiana). Orden por impacto; el score desempata.
+3. **El score tiene techo según el nivel del dato central** (Hecho 100, Señal 79, Indicio 54,
+   No reportable 29) y un dato modelado nunca pasa de 54. Un dato por debajo de Señal ya no
+   se descarta: la card existe, pero como prueba acotada, *Medir* o *Decidir*.
+4. **Una card que premia una métrica nombra su guardiana.**
+5. Reglas completas, trazabilidad y pendientes de la cuenta en
+   `references/integracion-action-driven.md`.
 
 ## Paso 7 · Diseño y armado → `aurea-dashboard-design`
 
@@ -180,7 +191,11 @@ curaduría. HTML autocontenido, assets en WebP, objetivo de peso menor a 250 KB.
 - [ ] Cotejar cifra por cifra contra la fuente (evita dos criterios de cohorte en la misma pantalla).
 - [ ] Ninguna cifra suma Meta + Prometheo.
 - [ ] Cada lista de Audiencias declara su tag de origen y su tamaño real.
-- [ ] Cada recomendación enlaza a un hallazgo con base, y no usa datos por debajo de Señal.
+- [ ] Cada recomendación es una card con verbo, dueño, score y "por qué este score"; el score respeta el techo del dato central y, si es modelado, no pasa de 54.
+- [ ] Cada pestaña tiene su lectura "y entonces qué".
+- [ ] Toda card que premia una métrica nombra su guardiana.
+- [ ] En Básico, tres cards; las de menos de 55 con la banda visible.
+- [ ] El tablero declara "rúbrica de score versión 1, sin calibrar" y registra score y resultado de cada card al cierre del período.
 - [ ] Cada pestaña tiene datos o un estado vacío diseñado que dice por qué no.
 - [ ] Faltantes de integración (Meta, cierre, cortes de saldo) declarados en Integraciones.
 - [ ] El switch Básico / Avanzada cambia algo en todas las vistas.
@@ -188,6 +203,9 @@ curaduría. HTML autocontenido, assets en WebP, objetivo de peso menor a 250 KB.
 
 ## Referencias
 
+- `references/integracion-action-driven.md`: cómo se integra la skill de data-driven y
+  action-driven: qué se integra y qué no, reglas propias de IC (techo por evidencia,
+  datos modelados, guardianas) y trazabilidad por skill.
 - `references/cuerpo-de-conocimiento.md`: el producto, el caso EDFAN, el estado de la
   atribución, lo que se puede y no se puede medir, y el vocabulario común. Sus cifras
   de calificados de EDFAN (386 / 381) son anteriores a la definición del cliente: valen

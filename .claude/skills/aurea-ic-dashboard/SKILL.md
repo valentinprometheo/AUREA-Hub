@@ -1,12 +1,16 @@
 ---
 name: aurea-ic-dashboard
-description: Conductor de punta a punta para crear, actualizar o auditar un tablero de Inteligencia Comercial de AUREA (HTML autocontenido sobre Prometheo, Meta, Tokko y canales) para cualquier cliente (EDFAN, DRAKON, PAVIR, TKVA, EAF o nuevos). Ordena el trabajo en pasos y carga en cada uno la skill que corresponde (aurea-metodologia, aurea-ic-curaduria-del-dato, aurea-hub-criterio-calificacion-leads, aurea-ic-criterio-comercial, skills de canal, aurea-ic-performance-report, aurea-data-action-driven, aurea-dashboard-design), y pide los insumos que falten antes de armar nada, incluida la definición de lead calificado del cliente. Usala SIEMPRE que se pida "armá el tablero", "tablero de IC", "dashboard de inteligencia comercial", "actualizá el tablero de [cliente]", "nueva quincena / nuevo mes del tablero", "auditá el tablero", o se comparta un export de Prometheo para reportar.
+description: Skill transversal y conductor de punta a punta de los tableros de Inteligencia Comercial de AUREA (HTML autocontenido sobre Prometheo, Meta, Tokko y canales) para cualquier cliente (EDFAN, DRAKON, PAVIR, TKVA, EAF o nuevos). Tiene el mapa completo del ecosistema, con qué skills intervienen, en qué orden se encadenan, qué recibe y entrega cada una, quién manda en cada tema y sus reglas que no se negocian (metodología, curaduría, calificación de leads, criterio comercial, canales, costos y rentabilidad, data-action-driven, performance report, diseño). Pide los insumos que falten antes de armar nada, incluida la definición de lead calificado del cliente. Usala SIEMPRE que se pida "armá el tablero", "tablero de IC", "dashboard de inteligencia comercial", "actualizá el tablero de [cliente]", "nueva quincena / nuevo mes del tablero", "auditá el tablero", "qué skills usa el tablero", o se comparta un export de Prometheo para reportar.
 ---
 
 # Tablero de Inteligencia Comercial · conductor
 
-Esta skill no reemplaza a las demás: **las ordena**. Cada paso carga una skill
-especializada y no se pasa al siguiente sin cerrar el anterior.
+Esta skill no reemplaza a las demás: **las ordena**. Es la skill transversal de IC: cada
+paso carga una skill especializada y no se pasa al siguiente sin cerrar el anterior.
+
+**Antes de un tablero nuevo, leé `references/mapa-ecosistema.md`:** la cadena completa, qué
+recibe y entrega cada skill, quién manda en cada tema (fuente única) y el resumen de las
+reglas que no se negocian de cada una.
 
 Propuesta de valor que el tablero tiene que explicar adentro:
 **Meta ve hasta el clic. Prometheo ve del clic a la venta. El cruce por ID de anuncio es el producto.**
@@ -25,8 +29,9 @@ aparte de la lógica: cada pestaña responde una de cinco preguntas del cliente.
 | ¿De dónde sale esto? | Integraciones (fuentes, estado y última actualización) |
 
 Pestañas que se suman cuando aplican:
-- **Consumo de Tokens - CRM**: obligatoria en real estate (regla [FIJA] de la
-  metodología) y recomendada en todas las cuentas con datos del panel de consumo.
+- **Consumo y costos** (IA y Meta, criterio de `aurea-hub-costos-rentabilidad`):
+  obligatoria en real estate (regla [FIJA] de la metodología) y recomendada en todas las
+  cuentas con datos del panel de consumo.
 - **Calidad de datos**: donde viven los faltantes y lo No reportable.
 
 Un canal sin datos en el período no se borra: muestra un estado vacío diseñado.
@@ -44,7 +49,7 @@ alcanza con recordar su contenido. Orden y nombres:
 | 2 | `aurea-ic-curaduria-del-dato` |
 | 3 | `aurea-hub-criterio-calificacion-leads` (solo el archivo del rubro del cliente) |
 | 4 | `aurea-ic-criterio-comercial` |
-| 5 | `aurea-ic-email-marketing`, `aurea-ic-whatsapp-marketing` (según canales) |
+| 5 | `aurea-ic-email-marketing`, `aurea-ic-whatsapp-marketing` (según canales) y `aurea-hub-costos-rentabilidad` |
 | 6 | `aurea-ic-performance-report` y `aurea-data-action-driven` |
 | 7 | `aurea-dashboard-design` |
 
@@ -66,7 +71,8 @@ skill faltó**; nunca la reemplaces en silencio.
 | Línea base del discovery (bloque B10: velocidad, calificados, capacidad, satisfacción, ventas) | Recomendado | "¿Cómo venimos?" compara solo contra el período anterior |
 | Tablero anterior del cliente, si existe | Si es actualización | Se arma desde cero |
 | Perfil de venta del cliente y capa variable elegida | Sí | Resolver en el paso 4 |
-| Panel de consumo de IA de Prometheo (USD por mes, reparto, cortes de saldo) | Real estate: sí | Sin pestaña de tokens; se declara |
+| Panel de consumo de IA de Prometheo (USD por mes, reparto, recargas, cortes de saldo) | Real estate: sí | Sin pestaña de consumo; se declara |
+| Mensajes salientes de WhatsApp por categoría desde el 1/10/2026 (panel o factura de Meta) y si la cuenta es API o coexistencia | Recomendado | Costo de Meta como escenario rotulado [CÁLCULO] |
 | Export de Meta (gasto, alcance, por anuncio y día) | No | Faltante de integración: sin CPL ni ROAS, se declara |
 | Tokko (catálogo) | Solo real estate | "Zona con proyecto" y "tipología existente" se aproximan desde el export y se declara |
 | Campañas de email / WhatsApp masivo | Si las hubo | Estado vacío en esa pestaña |
@@ -153,11 +159,11 @@ cruce impacto × disparador ordena a quién llamar primero dentro de los que ya 
   son la semilla de público similar (Lookalike desde 1.000 coincidencias reales); los
   clientes actuales y la no-demanda son exclusión. La señal a Meta (Conversions API,
   evento QualifiedLead) solo vale si el tag de calificado está bien cargado.
-- **Consumo de Tokens - CRM** (con el archivo `references/ahorro-de-tokens.md` de la
-  skill de calificación): costo por conversación, reparto del gasto (conversación,
-  extracción, Smart Tags, soporte), cortes de saldo y conversaciones perdidas,
-  mensajes a leads que escribieron una sola vez, y en real estate la línea aparte para
-  no-demanda. Los cortes de saldo son también un faltante de datos: se declaran.
+- **Consumo y costos** → invocá `aurea-hub-costos-rentabilidad`: costo por conversación
+  procesada, reparto del gasto (conversación, extracción, Smart Tags, soporte), recargas y
+  cortes de saldo, mensajes de Meta por categoría con el cupo de 1.000 gratis, peso de
+  Click to WhatsApp y, en real estate, la línea aparte para no-demanda. Los cortes de saldo
+  son también un faltante de datos: se declaran. Nunca un costo derogado.
 
 ## Paso 6 · Lectura y acciones → `aurea-ic-performance-report` + `aurea-data-action-driven`
 
@@ -203,6 +209,8 @@ curaduría. HTML autocontenido, assets en WebP, objetivo de peso menor a 250 KB.
 
 ## Referencias
 
+- `references/mapa-ecosistema.md`: la referencia transversal. Cadena completa, fuente única
+  por tema y reglas que no se negocian de cada skill. Se lee antes de cada tablero nuevo.
 - `references/integracion-action-driven.md`: cómo se integra la skill de data-driven y
   action-driven: qué se integra y qué no, reglas propias de IC (techo por evidencia,
   datos modelados, guardianas) y trazabilidad por skill.

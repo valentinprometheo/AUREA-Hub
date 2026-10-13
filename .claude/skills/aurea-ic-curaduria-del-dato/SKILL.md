@@ -260,6 +260,13 @@ esta skill entrega a la card:
 - **La oferta contada como pedido.** Una variable que se llena con lo que ofreció el
   agente (EDFAN: 131 registros de Tipo Unidad con varias tipologías) no mide demanda.
 - **El ruteo invisible.** Si a quién se avisó no queda en el export, no existe para el tablero.
+- **El costo sobre charlas que no se procesaron.** Con cortes de saldo, dividir el consumo de
+  IA por todas las conversaciones subestima el costo (EDFAN: USD 0,35 del panel contra ≈ USD
+  0,48 por charla procesada) e inventa tendencias ("bajó el costo por charla"). El
+  denominador honesto es la charla procesada, y los días sin saldo se declaran. Criterio en
+  `aurea-hub-costos-rentabilidad`.
+- **Recarga leída como consumo.** Cargar saldo no es consumir: consumo = saldo inicial −
+  saldo final + recargas, o el detalle del panel.
 
 ---
 

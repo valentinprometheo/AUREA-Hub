@@ -1,7 +1,6 @@
 ---
 name: aurea-ic-performance-report
 description: Lectura de performance y recomendaciones para los tableros de Inteligencia Comercial de AUREA. Arma el resumen ejecutivo, qué funcionó, qué hay que mejorar, hallazgos y recomendaciones priorizadas por impacto y esfuerzo, con foco del próximo período, a partir de los números ya curados. Usala cuando haya que escribir la lectura de un período, reportar resultados de campañas o canales, preparar el resumen para el cliente o decidir prioridades. Activar ante "performance", "reporte de resultados", "qué funcionó", "recomendaciones", "resumen ejecutivo", "foco del próximo período", "cierre de campaña", "reporte mensual o quincenal". Basada en la skill performance-report del plugin Marketing de Anthropic (Apache 2.0), adaptada por AUREA.
-argument-hint: "<período o campaña>"
 ---
 
 ## Reglas de AUREA (prevalecen sobre el resto de esta skill)
@@ -36,7 +35,13 @@ Esta skill es de origen genérico. En AUREA se usa sobre números **ya curados**
    - Separar la no-demanda (en real estate, línea de WhatsApp aparte) y apagar el asistente con proveedores.
    - Primera respuesta corta (hasta 60 palabras, una pregunta) y material después.
    - Registrar el ruteo y las visitas en tags, no solo en variables de texto.
-   - Recarga automática de saldo con piso, si hubo cortes.
+   - Cero cortes de saldo: carga semanal con monto medido (la recarga automática, recién
+     cuando el cliente ya sabe cuánto gasta).
+   - Catálogo de acciones de costo (Click to WhatsApp como puerta de entrada, apagar
+     "humanizar mensajes", pasar a manual lo que la IA casi nunca completa, línea aparte para
+     no-demanda): `aurea-hub-costos-rentabilidad`, sección 6 del documento madre.
+   - Rentabilidad y costos siempre como rangos, con la fuente de esa skill; nunca "~80% de
+     ahorro" ni "desde USD 149".
 9. **Cada recomendación sale como card de acción** (`aurea-data-action-driven`): sello con
    uno de seis verbos (Corregir, Proteger, Separar, Medir, Decidir, Activar) y un dueño
    (AUREA, Ventas, Marketing, Dirección); título "Tema · dato principal"; score de 0 a 100%

@@ -45,13 +45,21 @@ base, cobertura, origen y fuentes.
   tasa de respuesta.
 - Aplicá la escalera de evidencia. Con n chico, mostrá conteos y no porcentajes.
 - Si la campaña está modelada y no corrida, decilo en el mismo bloque.
-- Costo de Meta por mensaje (Argentina, desde el 1/10/2026, fuente: skill de
-  calificación, `references/ahorro-de-tokens.md`): Marketing USD 0,0618 · Utilidad
-  USD 0,0260 · Servicio USD 0,026 pasados los 1.000 gratis del mes · conversaciones que
-  nacen de un anuncio Click to WhatsApp y respuestas desde la app: gratis. Una difusión
-  masiva es casi siempre categoría Marketing: costo de la campaña = enviados × tarifa.
-  Se suma el costo de IA de las respuestas que genera. Revisar la tarifa vigente antes
-  de publicar.
+- **Costo de Meta por mensaje** (fuente única: `aurea-hub-costos-rentabilidad`; rate card
+  oficial en pesos, Argentina, desde el 1/10/2026, precios de lista sin impuestos):
+  plantilla de marketing **ARS 89,56** · plantilla de utilidad **ARS 37,68** · respuesta de
+  la agente o del equipo por API (servicio) **ARS 37,68**, con 1.000 gratis por mes por número.
+  La tarifa depende del país del número que recibe (Uruguay: ARS 107,24 marketing, 16,38
+  servicio y utilidad).
+- **Costo de una difusión** = enviados × tarifa de su categoría (casi siempre marketing) +
+  las respuestas que genera por API (servicio, si se pasa el cupo) + el costo de IA de esas
+  respuestas. Una plantilla de utilidad cuesta menos que una de marketing: si el mensaje es
+  realmente de utilidad (recordatorio, confirmación), se aprueba como utilidad.
+- La ventana gratuita de 72 h de Click to WhatsApp **no aplica a difusiones**: es para
+  quien escribe desde un anuncio, corre desde la respuesta, exige responder dentro de las
+  24 h y que el contacto escriba desde el celular.
+- En coexistencia, lo que el equipo responde desde la app no se cobra; las plantillas solo
+  salen por API.
 - **Respuestas calificadas y hot leads** generados por la difusión, con la definición del
   cliente (`aurea-hub-criterio-calificacion-leads`): es lo que titula después de la respuesta.
 - Antes de una difusión que cambia tags, chequear qué seguimientos disparan esos tags

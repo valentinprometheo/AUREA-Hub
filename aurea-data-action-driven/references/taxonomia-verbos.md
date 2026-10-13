@@ -25,5 +25,5 @@ de marca, que en el tablero son identidad y no estado (`aurea-dashboard-design`)
 ## Reglas
 
 - *Decidir* siempre tiene dueño Dirección y muestra las dos opciones con su costo.
-- *Medir* nunca es la acción por defecto: se usa solo si el chequeo de base falla.
+- *Medir* nunca es la acción por defecto: es la salida natural de una card con score menor a 30.
 - Una card, un verbo, un dueño. Si hacen falta dos dueños, son dos cards.

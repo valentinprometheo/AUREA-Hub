@@ -28,13 +28,14 @@ y la cita se tomó de una reproducción. Las citas en inglés se dejan en el ori
 
 ## Términos sin definición formal
 
-- **Action-driven.** No encontramos una definición académica ni de autoridad reconocida.
-  Se usa como adjetivo de marketing. Por eso AUREA define el término propio:
-  [DEFINICIÓN AUREA] *Action-driven es la decisión que sale de un dato data-driven y que
-  tiene verbo, dueño, lugar donde se cambia, efecto esperado medible y verificación en el
-  período siguiente.*
-- **Insight accionable.** Dykes lo describe con atributos, no con una definición cerrada.
-  [DEFINICIÓN AUREA] *Un insight es accionable cuando alguien con nombre puede ejecutarlo
-  sin otra decisión previa y su efecto se puede medir con la misma métrica que lo originó.*
+- **Action-driven.** No encontramos una definición académica ni de una autoridad reconocida;
+  se usa como adjetivo de marketing. [DEFINICIÓN AUREA] *La decisión que sale de un dato,
+  con verbo, dueño, lugar donde se cambia, efecto esperado y forma de verificarlo.*
+- **Score data-driven.** No hay estándar externo. [DEFINICIÓN AUREA] *Porcentaje de 0 a 100
+  de cuánto se apoya una acción en datos verificables* (`score-data-driven.md`).
+- **Insight accionable.** Dykes lo describe con atributos. [DEFINICIÓN AUREA] *Alguien con
+  nombre puede ejecutarlo sin otra decisión previa y su efecto se puede medir.*
 - **Lectura "y entonces qué".** [DEFINICIÓN AUREA] *La frase que traduce un dato en su
-  consecuencia comercial; puede concluir que no hace falta actuar, pero tiene que estar.*
+  consecuencia comercial; puede concluir que no hace falta actuar.*
+
+Donde las fuentes tiran para lados distintos: `tensiones-y-impacto.md`.

@@ -1,0 +1,1233 @@
+{
+ "total": 1470,
+ "nodem": 317,
+ "compra": 1153,
+ "nodem_det": {
+  "Inmobiliarias": 86,
+  "No Fit": 159,
+  "Proveedores": 33,
+  "Ya clientes (postventa)": 28,
+  "Equipo interno": 11
+ },
+ "convo": 951,
+ "proc": 667,
+ "convo_proc": 628,
+ "sinproc": 323,
+ "sinproc_all": 486,
+ "calif": [
+  55,
+  118
+ ],
+ "tagcal": 45,
+ "tagcal_ok": 18,
+ "hot": 147,
+ "hot_sin": 63,
+ "hot_nocal": 98,
+ "hot_sig": {
+  "unidad": 133,
+  "ya": 8,
+  "contado": 19
+ },
+ "visita": 148,
+ "visita_tag": 34,
+ "seg": 346,
+ "calif_seg": 103,
+ "calif_sin": 15,
+ "humana": 64,
+ "tags": {
+  "Visita Agendada": [
+   28,
+   19
+  ],
+  "Visita Realizada": [
+   25,
+   15
+  ],
+  "En Negociación": [
+   20,
+   11
+  ],
+  "Convertido": [
+   11,
+   2
+  ],
+  "No Concretado": [
+   19,
+   17
+  ],
+  "En Seguimiento": [
+   98,
+   97
+  ],
+  "Derivado": [
+   115,
+   66
+  ],
+  "Calificado": [
+   57,
+   45
+  ],
+  "En Conversación": [
+   367,
+   349
+  ],
+  "Nuevo Lead": [
+   78,
+   75
+  ],
+  "Fantasma": [
+   46,
+   46
+  ],
+  "Re-contactar más adelante": [
+   16,
+   13
+  ],
+  "Ya conoce a Vanesa": [
+   58,
+   25
+  ]
+ },
+ "conv_tipo": {
+  "Ya cliente (postventa)": 5,
+  "Inmobiliaria": 4,
+  "Comprador": 2
+ },
+ "B": 628,
+ "obl1": 485,
+ "obl2": 373,
+ "s_fin": 231,
+ "s_cap": 171,
+ "s_cap_str": 147,
+ "s_int": 181,
+ "tip_any": 454,
+ "proy": 468,
+ "zona": 310,
+ "cal_B": 118,
+ "cal_B_str": 55,
+ "drop": [
+  143,
+  112,
+  255
+ ],
+ "P": 667,
+ "cov": {
+  "Proyecto": [
+   494,
+   74.1
+  ],
+  "Tipología": [
+   477,
+   71.5
+  ],
+  "Destino": [
+   220,
+   33.0
+  ],
+  "Objetivo búsqueda": [
+   221,
+   33.1
+  ],
+  "Presupuesto (sin ceros)": [
+   52,
+   7.8
+  ],
+  "Forma de pago": [
+   157,
+   23.5
+  ],
+  "Canal origen": [
+   642,
+   96.3
+  ],
+  "Tipo derivación": [
+   256,
+   38.4
+  ],
+  "Barrios (Tokko)": [
+   322,
+   48.3
+  ],
+  "Propiedades (Tokko)": [
+   114,
+   17.1
+  ],
+  "Links (Tokko)": [
+   255,
+   38.2
+  ],
+  "ID Anuncio": [
+   202,
+   30.3
+  ],
+  "Email": [
+   12,
+   1.8
+  ],
+  "Fecha visita": [
+   1,
+   0.1
+  ],
+  "Asesor asignado": [
+   0,
+   0.0
+  ],
+  "Historial": [
+   0,
+   0.0
+  ],
+  "Finalidad (destino, objetivo o tag)": [
+   233,
+   34.9
+  ]
+ },
+ "pres_cero": 100,
+ "pres": [
+  52,
+  125500,
+  97556,
+  151250
+ ],
+ "pres_bins": {
+  "hasta 80 mil": 12,
+  "80 a 120 mil": 11,
+  "120 a 160 mil": 20,
+  "160 a 200 mil": 4,
+  "más de 200 mil": 5
+ },
+ "d_proy": {
+  "Maker Núñez": 152,
+  "Liberti": 116,
+  "Maker Crespo": 102,
+  "Green Line": 60,
+  "Maker Belgrano": 41,
+  "Drago Select": 39
+ },
+ "d_tip": {
+  "2 amb": 260,
+  "1 amb": 118,
+  "3 amb": 106,
+  "4 amb": 38
+ },
+ "d_tip_multi": 45,
+ "d_zona": {
+  "Núñez": 127,
+  "Villa Crespo": 66,
+  "Almagro": 61,
+  "Belgrano": 41,
+  "Barracas": 22,
+  "Liberti": 14,
+  "Manzanares": 12,
+  "Vuelta de Obligado": 8,
+  "Regimiento de los Patricios": 8,
+  "Drago": 8
+ },
+ "zona_n": 322,
+ "d_fin": {
+  "Inversión": 146,
+  "Vivienda": 85,
+  "Mixto": 2
+ },
+ "d_pago": {
+  "financiado": 89,
+  "otro": 31,
+  "apto_credito": 30,
+  "contado": 7
+ },
+ "d_canal": {
+  "WhatsApp": 322,
+  "Instagram": 249,
+  "LT": 43,
+  "cartel": 14,
+  "web": 7,
+  "Social Prop": 5,
+  "referido": 1,
+  "GHL": 1
+ },
+ "canal_q": {
+  "WhatsApp": [
+   313,
+   78,
+   38,
+   71
+  ],
+  "Instagram": [
+   226,
+   33,
+   13,
+   43
+  ],
+  "LT": [
+   43,
+   5,
+   3,
+   23
+  ],
+  "Sin dato": [
+   20,
+   0,
+   0,
+   0
+  ],
+  "cartel": [
+   14,
+   0,
+   0,
+   5
+  ],
+  "web": [
+   7,
+   0,
+   0,
+   1
+  ],
+  "Social Prop": [
+   3,
+   0,
+   0,
+   1
+  ],
+  "GHL": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "referido": [
+   1,
+   1,
+   0,
+   0
+  ]
+ },
+ "canal_nofit": {
+  "Instagram": 53,
+  "WhatsApp": 52,
+  "LT": 35,
+  "cartel": 8,
+  "Sin dato": 5,
+  "Social Prop": 4,
+  "web": 2
+ },
+ "proj": [
+  {
+   "p": "Maker Núñez",
+   "n": 152,
+   "cal": 41,
+   "cal_s": 13,
+   "conv": 152,
+   "inv": 24,
+   "viv": 25,
+   "fin_req": 23,
+   "tip": "2 amb, 1 amb",
+   "hot": 54,
+   "nofit": 47,
+   "calsin": 3
+  },
+  {
+   "p": "Liberti",
+   "n": 116,
+   "cal": 13,
+   "cal_s": 7,
+   "conv": 91,
+   "inv": 3,
+   "viv": 15,
+   "fin_req": 26,
+   "tip": "2 amb, 3 amb",
+   "hot": 17,
+   "nofit": 37,
+   "calsin": 2
+  },
+  {
+   "p": "Maker Crespo",
+   "n": 102,
+   "cal": 27,
+   "cal_s": 16,
+   "conv": 102,
+   "inv": 12,
+   "viv": 18,
+   "fin_req": 33,
+   "tip": "2 amb, 3 amb",
+   "hot": 32,
+   "nofit": 22,
+   "calsin": 5
+  },
+  {
+   "p": "Green Line",
+   "n": 60,
+   "cal": 20,
+   "cal_s": 16,
+   "conv": 60,
+   "inv": 16,
+   "viv": 12,
+   "fin_req": 17,
+   "tip": "1 amb, 2 amb",
+   "hot": 28,
+   "nofit": 26,
+   "calsin": 6
+  },
+  {
+   "p": "Maker Belgrano",
+   "n": 41,
+   "cal": 13,
+   "cal_s": 7,
+   "conv": 41,
+   "inv": 7,
+   "viv": 8,
+   "fin_req": 7,
+   "tip": "3 amb, 2 amb",
+   "hot": 19,
+   "nofit": 7,
+   "calsin": 2
+  },
+  {
+   "p": "Drago Select",
+   "n": 39,
+   "cal": 1,
+   "cal_s": 0,
+   "conv": 38,
+   "inv": 0,
+   "viv": 2,
+   "fin_req": 2,
+   "tip": "4 amb, 3 amb",
+   "hot": 2,
+   "nofit": 12,
+   "calsin": 0
+  }
+ ],
+ "proy_n": 494,
+ "ads": [
+  {
+   "id": "120247657051160615",
+   "name": "EN VENTA | Liberti y Regimiento de los Patricios A estrenar! Apto crédito y uso profesiona",
+   "n": 91,
+   "compra": 61,
+   "nodem": 30,
+   "nofit": 28,
+   "sinproc": 0,
+   "convo": 36,
+   "cal": 4,
+   "cal_s": 2,
+   "hot": 1,
+   "unavez": 25,
+   "inv": 0,
+   "viv": 4,
+   "pj": "Liberti",
+   "pj_n": 61,
+   "pj_tot": 61,
+   "fin": 14,
+   "desde": "22/07",
+   "hasta": "13/08",
+   "multi": 1,
+   "b": 36
+  },
+  {
+   "id": "120250768745120562",
+   "name": "TKVA 2",
+   "n": 75,
+   "compra": 74,
+   "nodem": 1,
+   "nofit": 1,
+   "sinproc": 0,
+   "convo": 72,
+   "cal": 13,
+   "cal_s": 4,
+   "hot": 0,
+   "unavez": 2,
+   "inv": 72,
+   "viv": 1,
+   "pj": "Green Line",
+   "pj_n": 5,
+   "pj_tot": 5,
+   "fin": 15,
+   "desde": "22/07",
+   "hasta": "29/07",
+   "multi": 0,
+   "b": 72
+  },
+  {
+   "id": "120250284174290615",
+   "name": "Los espacios cobran vida cuando empezás a imaginar todas sus posibilidades. ✨ 🌳En Green Li",
+   "n": 74,
+   "compra": 73,
+   "nodem": 1,
+   "nofit": 1,
+   "sinproc": 73,
+   "convo": 69,
+   "cal": 1,
+   "cal_s": 1,
+   "hot": 0,
+   "unavez": 4,
+   "inv": 2,
+   "viv": 1,
+   "pj": "Green Line",
+   "pj_n": 3,
+   "pj_tot": 4,
+   "fin": 1,
+   "desde": "24/08",
+   "hasta": "17/09",
+   "multi": 0,
+   "b": 1
+  },
+  {
+   "id": "120250550832800615",
+   "name": "🌿Green Line sigue avanzando! 😊Cada vez falta menos. 📍En Sarmiento y Gascón, a pasos de Av.",
+   "n": 40,
+   "compra": 26,
+   "nodem": 14,
+   "nofit": 9,
+   "sinproc": 3,
+   "convo": 26,
+   "cal": 4,
+   "cal_s": 3,
+   "hot": 17,
+   "unavez": 0,
+   "inv": 4,
+   "viv": 4,
+   "pj": "Green Line",
+   "pj_n": 22,
+   "pj_tot": 24,
+   "fin": 6,
+   "desde": "07/08",
+   "hasta": "14/10",
+   "multi": 1,
+   "b": 24
+  },
+  {
+   "id": "120250791067620615",
+   "name": "La obra avanza y cada vez falta menos para la entrega. Este es un gran momento para asegur",
+   "n": 16,
+   "compra": 15,
+   "nodem": 1,
+   "nofit": 0,
+   "sinproc": 0,
+   "convo": 15,
+   "cal": 4,
+   "cal_s": 1,
+   "hot": 12,
+   "unavez": 0,
+   "inv": 4,
+   "viv": 2,
+   "pj": "Maker Núñez",
+   "pj_n": 14,
+   "pj_tot": 15,
+   "fin": 3,
+   "desde": "02/10",
+   "hasta": "13/10",
+   "multi": 0,
+   "b": 15
+  },
+  {
+   "id": "120246082384260615",
+   "name": "DRAGO SELECT ya llegó a planta baja! No te pierdas tu 4 ambientes en Villa Crespo Armá tu ",
+   "n": 8,
+   "compra": 6,
+   "nodem": 2,
+   "nofit": 2,
+   "sinproc": 2,
+   "convo": 6,
+   "cal": 0,
+   "cal_s": 0,
+   "hot": 0,
+   "unavez": 0,
+   "inv": 0,
+   "viv": 0,
+   "pj": "Drago Select",
+   "pj_n": 4,
+   "pj_tot": 4,
+   "fin": 0,
+   "desde": "25/07",
+   "hasta": "07/09",
+   "multi": 0,
+   "b": 4
+  },
+  {
+   "id": "120245144247500615",
+   "name": "TKVA Group",
+   "n": 7,
+   "compra": 5,
+   "nodem": 2,
+   "nofit": 2,
+   "sinproc": 3,
+   "convo": 5,
+   "cal": 1,
+   "cal_s": 1,
+   "hot": 1,
+   "unavez": 0,
+   "inv": 0,
+   "viv": 1,
+   "pj": "Drago Select",
+   "pj_n": 2,
+   "pj_tot": 3,
+   "fin": 1,
+   "desde": "29/07",
+   "hasta": "15/09",
+   "multi": 0,
+   "b": 3
+  },
+  {
+   "id": "120250791046550615",
+   "name": "¿Buscás algo diferente en Villa Crespo? Maker Crespo llega para cambiar el estándarde la z",
+   "n": 7,
+   "compra": 7,
+   "nodem": 0,
+   "nofit": 0,
+   "sinproc": 0,
+   "convo": 7,
+   "cal": 0,
+   "cal_s": 0,
+   "hot": 2,
+   "unavez": 0,
+   "inv": 1,
+   "viv": 1,
+   "pj": "Maker Crespo",
+   "pj_n": 7,
+   "pj_tot": 7,
+   "fin": 0,
+   "desde": "03/10",
+   "hasta": "13/10",
+   "multi": 0,
+   "b": 7
+  },
+  {
+   "id": "120250791029140615",
+   "name": "Comprar en pozo es ingresar a un proyecto desde su primera etapa, al mejor precio. En Make",
+   "n": 5,
+   "compra": 5,
+   "nodem": 0,
+   "nofit": 0,
+   "sinproc": 0,
+   "convo": 5,
+   "cal": 2,
+   "cal_s": 1,
+   "hot": 3,
+   "unavez": 0,
+   "inv": 1,
+   "viv": 2,
+   "pj": "Maker Crespo",
+   "pj_n": 5,
+   "pj_tot": 5,
+   "fin": 2,
+   "desde": "06/10",
+   "hasta": "07/10",
+   "multi": 0,
+   "b": 5
+  },
+  {
+   "id": "120230974804130482",
+   "name": "Conocé Drago Select. 📌Drago 261 - Villa Crespo. 🏢 23 Exclusivas residencias de 4 ambientes",
+   "n": 3,
+   "compra": 3,
+   "nodem": 0,
+   "nofit": 0,
+   "sinproc": 0,
+   "convo": 3,
+   "cal": 0,
+   "cal_s": 0,
+   "hot": 2,
+   "unavez": 0,
+   "inv": 0,
+   "viv": 0,
+   "pj": "Maker Belgrano",
+   "pj_n": 1,
+   "pj_tot": 3,
+   "fin": 0,
+   "desde": "24/07",
+   "hasta": "28/09",
+   "multi": 1,
+   "b": 3
+  },
+  {
+   "id": "120250790943420615",
+   "name": "Liberti tiene todo lo que buscás: amenities completos, ubicación estratégica y unidades nu",
+   "n": 3,
+   "compra": 2,
+   "nodem": 1,
+   "nofit": 1,
+   "sinproc": 0,
+   "convo": 2,
+   "cal": 0,
+   "cal_s": 0,
+   "hot": 1,
+   "unavez": 0,
+   "inv": 0,
+   "viv": 1,
+   "pj": "Liberti",
+   "pj_n": 2,
+   "pj_tot": 2,
+   "fin": 0,
+   "desde": "03/10",
+   "hasta": "06/10",
+   "multi": 0,
+   "b": 2
+  },
+  {
+   "id": "120250790993420615",
+   "name": "Tu propio 2 ambientes en Barracas ya está entregado y es apto crédito, así que podés arran",
+   "n": 2,
+   "compra": 0,
+   "nodem": 2,
+   "nofit": 2,
+   "sinproc": 0,
+   "convo": 0,
+   "cal": 0,
+   "cal_s": 0,
+   "hot": 0,
+   "unavez": 0,
+   "inv": 0,
+   "viv": 0,
+   "pj": "-",
+   "pj_n": 0,
+   "pj_tot": 0,
+   "fin": 0,
+   "desde": "08/10",
+   "hasta": "09/10",
+   "multi": 0,
+   "b": 0
+  },
+  {
+   "id": "120239221599200482",
+   "name": "MAKER NUEÑEZ | Manzanares y Av. Cabildo OBRA AVANZADA | PRONTA ENTREGA 1 y 2 ambientes tod",
+   "n": 1,
+   "compra": 1,
+   "nodem": 0,
+   "nofit": 0,
+   "sinproc": 0,
+   "convo": 1,
+   "cal": 0,
+   "cal_s": 0,
+   "hot": 0,
+   "unavez": 0,
+   "inv": 0,
+   "viv": 0,
+   "pj": "Maker Belgrano",
+   "pj_n": 1,
+   "pj_tot": 1,
+   "fin": 1,
+   "desde": "24/08",
+   "hasta": "24/08",
+   "multi": 0,
+   "b": 1
+  },
+  {
+   "id": "120239221796610482",
+   "name": "Lo mejor de Villa crespo | Obra Iniciada",
+   "n": 1,
+   "compra": 1,
+   "nodem": 0,
+   "nofit": 0,
+   "sinproc": 0,
+   "convo": 1,
+   "cal": 1,
+   "cal_s": 1,
+   "hot": 0,
+   "unavez": 0,
+   "inv": 1,
+   "viv": 0,
+   "pj": "Green Line",
+   "pj_n": 1,
+   "pj_tot": 1,
+   "fin": 0,
+   "desde": "27/07",
+   "hasta": "27/07",
+   "multi": 0,
+   "b": 1
+  },
+  {
+   "id": "120246867517440615",
+   "name": "SUPER OPORTUNIDAD! Liberti 1181 - Esq Regimiento Patricios. Distrito de las Artes. 🔥Última",
+   "n": 1,
+   "compra": 1,
+   "nodem": 0,
+   "nofit": 0,
+   "sinproc": 0,
+   "convo": 1,
+   "cal": 0,
+   "cal_s": 0,
+   "hot": 0,
+   "unavez": 0,
+   "inv": 0,
+   "viv": 0,
+   "pj": "Liberti",
+   "pj_n": 1,
+   "pj_tot": 1,
+   "fin": 0,
+   "desde": "03/08",
+   "hasta": "03/08",
+   "multi": 0,
+   "b": 1
+  }
+ ],
+ "con_ad": 334,
+ "multi_ad": 3,
+ "noad": {
+  "n": 1136,
+  "compra": 873,
+  "nodem": 263,
+  "convo": 702,
+  "cal": 88,
+  "b": 453,
+  "hot": 108,
+  "unavez": 171
+ },
+ "ad_b": {
+  "120247657051160615": 0,
+  "120250768745120562": 0,
+  "120250284174290615": 0,
+  "120250550832800615": 0,
+  "120250791067620615": 0,
+  "120246082384260615": 0,
+  "120245144247500615": 0,
+  "120250791046550615": 0,
+  "120250791029140615": 0,
+  "120230974804130482": 0,
+  "120250790943420615": 0,
+  "120250790993420615": 0,
+  "120239221599200482": 0,
+  "120239221796610482": 0,
+  "120246867517440615": 0
+ },
+ "weeks": [
+  {
+   "wk": "20/07",
+   "n": 290,
+   "compra": 215,
+   "convo": 133,
+   "proc": 130,
+   "sinproc": 3,
+   "cal": 18,
+   "cal_s": 10,
+   "ad": 78,
+   "noresp": 79,
+   "nodem": 75
+  },
+  {
+   "wk": "27/07",
+   "n": 206,
+   "compra": 167,
+   "convo": 120,
+   "proc": 120,
+   "sinproc": 0,
+   "cal": 19,
+   "cal_s": 7,
+   "ad": 54,
+   "noresp": 50,
+   "nodem": 39
+  },
+  {
+   "wk": "03/08",
+   "n": 115,
+   "compra": 83,
+   "convo": 69,
+   "proc": 69,
+   "sinproc": 0,
+   "cal": 13,
+   "cal_s": 3,
+   "ad": 30,
+   "noresp": 16,
+   "nodem": 32
+  },
+  {
+   "wk": "10/08",
+   "n": 69,
+   "compra": 47,
+   "convo": 40,
+   "proc": 40,
+   "sinproc": 0,
+   "cal": 9,
+   "cal_s": 6,
+   "ad": 16,
+   "noresp": 7,
+   "nodem": 22
+  },
+  {
+   "wk": "17/08",
+   "n": 65,
+   "compra": 41,
+   "convo": 40,
+   "proc": 38,
+   "sinproc": 2,
+   "cal": 9,
+   "cal_s": 4,
+   "ad": 1,
+   "noresp": 7,
+   "nodem": 24
+  },
+  {
+   "wk": "24/08",
+   "n": 131,
+   "compra": 115,
+   "convo": 114,
+   "proc": 62,
+   "sinproc": 52,
+   "cal": 16,
+   "cal_s": 7,
+   "ad": 4,
+   "noresp": 38,
+   "nodem": 16
+  },
+  {
+   "wk": "31/08",
+   "n": 70,
+   "compra": 66,
+   "convo": 59,
+   "proc": 3,
+   "sinproc": 56,
+   "cal": 2,
+   "cal_s": 1,
+   "ad": 9,
+   "noresp": 15,
+   "nodem": 4
+  },
+  {
+   "wk": "07/09",
+   "n": 136,
+   "compra": 131,
+   "convo": 119,
+   "proc": 2,
+   "sinproc": 117,
+   "cal": 1,
+   "cal_s": 0,
+   "ad": 43,
+   "noresp": 14,
+   "nodem": 5
+  },
+  {
+   "wk": "14/09",
+   "n": 121,
+   "compra": 93,
+   "convo": 85,
+   "proc": 25,
+   "sinproc": 60,
+   "cal": 3,
+   "cal_s": 2,
+   "ad": 29,
+   "noresp": 21,
+   "nodem": 28
+  },
+  {
+   "wk": "21/09",
+   "n": 71,
+   "compra": 39,
+   "convo": 38,
+   "proc": 25,
+   "sinproc": 13,
+   "cal": 3,
+   "cal_s": 1,
+   "ad": 12,
+   "noresp": 15,
+   "nodem": 32
+  },
+  {
+   "wk": "28/09",
+   "n": 81,
+   "compra": 67,
+   "convo": 62,
+   "proc": 51,
+   "sinproc": 11,
+   "cal": 12,
+   "cal_s": 7,
+   "ad": 23,
+   "noresp": 12,
+   "nodem": 14
+  },
+  {
+   "wk": "05/10",
+   "n": 74,
+   "compra": 54,
+   "convo": 47,
+   "proc": 38,
+   "sinproc": 9,
+   "cal": 11,
+   "cal_s": 5,
+   "ad": 25,
+   "noresp": 12,
+   "nodem": 20
+  },
+  {
+   "wk": "12/10",
+   "n": 41,
+   "compra": 35,
+   "convo": 25,
+   "proc": 25,
+   "sinproc": 0,
+   "cal": 2,
+   "cal_s": 2,
+   "ad": 10,
+   "noresp": 11,
+   "nodem": 6
+  }
+ ],
+ "gap": {
+  "n": 259,
+  "compra": 245,
+  "convo": 223,
+  "sinproc": 216,
+  "noproc_all": 246,
+  "noresp": 39,
+  "ad": 67
+ },
+ "noresp": 272,
+ "noresp_out": 234,
+ "months": [
+  {
+   "m": "2026-07",
+   "n": 486,
+   "compra": 375,
+   "convo": 246,
+   "b": 243,
+   "cal": 37,
+   "cal_s": 17,
+   "ad": 124,
+   "nodem": 111,
+   "nodem_b2b": 56,
+   "sinproc": 3,
+   "noresp": 129,
+   "hot": 15,
+   "env": 4231
+  },
+  {
+   "m": "2026-08",
+   "n": 406,
+   "compra": 309,
+   "convo": 285,
+   "b": 216,
+   "cal": 47,
+   "cal_s": 20,
+   "ad": 59,
+   "nodem": 97,
+   "nodem_b2b": 25,
+   "sinproc": 69,
+   "noresp": 72,
+   "hot": 33,
+   "env": 2617
+  },
+  {
+   "m": "2026-09",
+   "n": 420,
+   "compra": 343,
+   "convo": 315,
+   "b": 75,
+   "cal": 13,
+   "cal_s": 7,
+   "ad": 100,
+   "nodem": 77,
+   "nodem_b2b": 20,
+   "sinproc": 240,
+   "noresp": 71,
+   "hot": 39,
+   "env": 2060
+  },
+  {
+   "m": "2026-10",
+   "n": 158,
+   "compra": 126,
+   "convo": 105,
+   "b": 94,
+   "cal": 21,
+   "cal_s": 11,
+   "ad": 51,
+   "nodem": 32,
+   "nodem_b2b": 18,
+   "sinproc": 11,
+   "noresp": 25,
+   "hot": 60,
+   "env": 781
+  }
+ ],
+ "tagsm": {
+  "Nuevo Lead": {
+   "2026-07": 33,
+   "2026-08": 39,
+   "2026-09": 0,
+   "2026-10": 6
+  },
+  "En Conversación": {
+   "2026-07": 140,
+   "2026-08": 152,
+   "2026-09": 43,
+   "2026-10": 32
+  },
+  "En Seguimiento": {
+   "2026-07": 44,
+   "2026-08": 10,
+   "2026-09": 9,
+   "2026-10": 35
+  },
+  "Calificado": {
+   "2026-07": 42,
+   "2026-08": 10,
+   "2026-09": 4,
+   "2026-10": 1
+  },
+  "Derivado": {
+   "2026-07": 25,
+   "2026-08": 40,
+   "2026-09": 15,
+   "2026-10": 35
+  },
+  "No Fit": {
+   "2026-07": 44,
+   "2026-08": 58,
+   "2026-09": 46,
+   "2026-10": 11
+  },
+  "Visita Agendada": {
+   "2026-07": 16,
+   "2026-08": 7,
+   "2026-09": 3,
+   "2026-10": 2
+  },
+  "Visita Realizada": {
+   "2026-07": 12,
+   "2026-08": 4,
+   "2026-09": 9,
+   "2026-10": 0
+  },
+  "En Negociación": {
+   "2026-07": 5,
+   "2026-08": 8,
+   "2026-09": 4,
+   "2026-10": 3
+  },
+  "Convertido": {
+   "2026-07": 4,
+   "2026-08": 5,
+   "2026-09": 0,
+   "2026-10": 2
+  },
+  "No Concretado": {
+   "2026-07": 7,
+   "2026-08": 9,
+   "2026-09": 3,
+   "2026-10": 0
+  },
+  "Sin tags": {
+   "2026-07": 112,
+   "2026-08": 80,
+   "2026-09": 250,
+   "2026-10": 17
+  }
+ },
+ "env": {
+  "total": 9689,
+  "conv": 4892,
+  "unavez": 249,
+  "n_unavez": 202,
+  "inmo": 1712,
+  "prov": 636,
+  "nofit": 844,
+  "post": 436,
+  "eq": 920
+ },
+ "oct_env": 781,
+ "oct_n": 158,
+ "oct_ad": 51,
+ "deriv": {
+  "visita": 118,
+  "inmobiliaria": 69,
+  "negociacion": 60,
+  "juridico_fiscal": 6,
+  "postventa": 3
+ },
+ "deriv_inmo_comp": 69,
+ "inmo": {
+  "n": 86,
+  "activa": 52,
+  "contactar": 15,
+  "inmo_tag": 84,
+  "conv": 71,
+  "env": 1712,
+  "jul22": 41,
+  "proy": {
+   "Maker Núñez": 16,
+   "Green Line": 11,
+   "Maker Belgrano": 9,
+   "Maker Crespo": 9,
+   "Liberti": 7,
+   "Drago Select": 1
+  }
+ },
+ "prov": {
+  "n": 33,
+  "conv": 19,
+  "env": 636
+ },
+ "nodem_m": {
+  "2026-07": [
+   56,
+   486
+  ],
+  "2026-08": [
+   25,
+   406
+  ],
+  "2026-09": [
+   20,
+   420
+  ],
+  "2026-10": [
+   18,
+   158
+  ]
+ },
+ "nofit_m": {
+  "Sin motivo claro": 80,
+  "Precio fuera de presupuesto": 33,
+  "Quiere terminado / entrega antes": 12,
+  "Necesita apto crédito": 8,
+  "Sin cochera": 7,
+  "Sigue evaluando (mal cerrado)": 7,
+  "Pausó o no avanza": 6,
+  "Zona sin proyecto": 3,
+  "Error / no inmobiliario": 3
+ },
+ "nofit_canal_LT": 35,
+ "LT": {
+  "n": 115,
+  "compra": 80,
+  "b": 43,
+  "cal": 5,
+  "cal_s": 3,
+  "nofit": 35,
+  "unavez": 9,
+  "oct": 36
+ },
+ "WA": {
+  "b": 313,
+  "cal": 78
+ },
+ "IG": {
+  "b": 226,
+  "cal": 33
+ },
+ "canal_inst": 163,
+ "aud": {
+  "hot": 147,
+  "calif": 118,
+  "inv": 146,
+  "viv": 85,
+  "calsin": 15,
+  "hotsin": 63,
+  "excl": 317,
+  "tel": 1312,
+  "mail": 27
+ },
+ "email_n": 27,
+ "zona2": {
+  "Núñez": 139,
+  "Villa Crespo": 75,
+  "Almagro": 64,
+  "Belgrano": 41,
+  "Barracas": 37,
+  "Palermo": 7,
+  "Caballito": 3,
+  "Saavedra": 3,
+  "Colegiales": 1,
+  "Otros barrios": 3
+ },
+ "recep_tag": [
+  623,
+  667
+ ]
+}

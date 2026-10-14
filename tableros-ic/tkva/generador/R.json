@@ -1,0 +1,563 @@
+{
+ "weeks": [
+  {
+   "lab": "17/09 al 23/09",
+   "n": 93,
+   "compra": 52,
+   "fun": [
+    [
+     "Nuevo Lead",
+     0
+    ],
+    [
+     "En Conversación",
+     8
+    ],
+    [
+     "En Seguimiento",
+     4
+    ],
+    [
+     "Calificado",
+     1
+    ],
+    [
+     "No Fit",
+     29
+    ],
+    [
+     "Derivado",
+     3
+    ]
+   ],
+   "est": [
+    [
+     "Esperando respuesta",
+     19
+    ],
+    [
+     "Cerrado",
+     30
+    ],
+    [
+     "Recontactar",
+     3
+    ],
+    [
+     "Visitas",
+     3
+    ]
+   ],
+   "ori": {
+    "Sin dato": 33,
+    "LT (formulario)": 20,
+    "Instagram": 20,
+    "WhatsApp": 17,
+    "Cartel": 3
+   },
+   "vis": [
+    [
+     "—",
+     "Lili",
+     "WhatsApp",
+     "—",
+     "Solicitó avisar en la obra sobre su visita."
+    ]
+   ],
+   "rec": [],
+   "calif": 3,
+   "hot": 4
+  },
+  {
+   "lab": "24/09 al 30/09",
+   "n": 67,
+   "compra": 47,
+   "fun": [
+    [
+     "Nuevo Lead",
+     0
+    ],
+    [
+     "En Conversación",
+     27
+    ],
+    [
+     "En Seguimiento",
+     2
+    ],
+    [
+     "Calificado",
+     2
+    ],
+    [
+     "No Fit",
+     11
+    ],
+    [
+     "Derivado",
+     11
+    ]
+   ],
+   "est": [
+    [
+     "Esperando respuesta",
+     11
+    ],
+    [
+     "Cerrado",
+     11
+    ],
+    [
+     "Recontactar",
+     1
+    ],
+    [
+     "Visitas",
+     4
+    ]
+   ],
+   "ori": {
+    "WhatsApp": 27,
+    "LT (formulario)": 22,
+    "Instagram": 13,
+    "Cartel": 4,
+    "Sin dato": 1
+   },
+   "vis": [
+    [
+     "—",
+     "Catalina",
+     "—",
+     "—",
+     "Indicó que escribirá desde otro celular para que la agenden; no compartió el nuevo número."
+    ],
+    [
+     "—",
+     "Glen",
+     "WhatsApp",
+     "vivienda",
+     "Comentó en tono de humor que ya tenía mucha ansiedad aunque el edificio todavía no está constru"
+    ]
+   ],
+   "rec": [],
+   "calif": 6,
+   "hot": 32
+  },
+  {
+   "lab": "01/10 al 07/10",
+   "n": 90,
+   "compra": 72,
+   "fun": [
+    [
+     "Nuevo Lead",
+     0
+    ],
+    [
+     "En Conversación",
+     20
+    ],
+    [
+     "En Seguimiento",
+     21
+    ],
+    [
+     "Calificado",
+     1
+    ],
+    [
+     "No Fit",
+     5
+    ],
+    [
+     "Derivado",
+     24
+    ]
+   ],
+   "est": [
+    [
+     "Esperando respuesta",
+     33
+    ],
+    [
+     "Cerrado",
+     5
+    ],
+    [
+     "Recontactar",
+     3
+    ],
+    [
+     "Visitas",
+     2
+    ]
+   ],
+   "ori": {
+    "Instagram": 30,
+    "WhatsApp": 26,
+    "LT (formulario)": 25,
+    "Sin dato": 5,
+    "Cartel": 3,
+    "Web": 1
+   },
+   "vis": [
+    [
+     "Maker Belgrano",
+     "Marcelo",
+     "WhatsApp",
+     "1 amb · inversión",
+     "Indicó que revisará las opciones el mes próximo."
+    ],
+    [
+     "—",
+     "Patricia",
+     "LT (formulario)",
+     "—",
+     "Luego de verlo con su hijo, decidió seguir buscando otras opciones."
+    ],
+    [
+     "Drago Select",
+     "Dory",
+     "WhatsApp",
+     "—",
+     "Se le indicó que podía estacionar en una cochera de cortesía; recibió aclaraciones sobre cómo d"
+    ],
+    [
+     "Liberti",
+     "Facundo",
+     "WhatsApp",
+     "—",
+     "Se le informó que las cocinas son de MDF."
+    ]
+   ],
+   "rec": [
+    [
+     "Maker Belgrano",
+     "Marcelo",
+     "WhatsApp",
+     "1 amb · inversión",
+     "Indicó que revisará las opciones el mes próximo."
+    ],
+    [
+     "Maker Núñez",
+     "Leo",
+     "Instagram",
+     "1 amb, 2 amb · inversión",
+     "Quedó abierta la posibilidad de coordinar una visita."
+    ],
+    [
+     "Green Line",
+     "Romina",
+     "Instagram",
+     "4 amb",
+     "Sigue interesada, aunque por ahora postergará la visita y volverá a contactarse más adelante pa"
+    ],
+    [
+     "Liberti",
+     "Teresa",
+     "LT (formulario)",
+     "2 amb · inversión",
+     "Solicitó que la contacten cuando las unidades estén terminadas para coordinar una visita."
+    ],
+    [
+     "Liberti",
+     "Stella",
+     "Instagram",
+     "3 amb · vivienda",
+     "Por ahora espera vender antes de retomar la búsqueda."
+    ],
+    [
+     "Maker Crespo",
+     "Pao",
+     "LT (formulario)",
+     "—",
+     "Guardó el contacto y retomará la conversación más adelante."
+    ],
+    [
+     "Maker Núñez",
+     "Rodrigo",
+     "WhatsApp",
+     "2 amb · inversión",
+     "Más tarde informó que está de viaje y que esperará antes de tomar una decisión."
+    ]
+   ],
+   "calif": 14,
+   "hot": 40
+  },
+  {
+   "lab": "08/10 al 14/10",
+   "n": 68,
+   "compra": 54,
+   "fun": [
+    [
+     "Nuevo Lead",
+     6
+    ],
+    [
+     "En Conversación",
+     12
+    ],
+    [
+     "En Seguimiento",
+     14
+    ],
+    [
+     "Calificado",
+     0
+    ],
+    [
+     "No Fit",
+     6
+    ],
+    [
+     "Derivado",
+     11
+    ]
+   ],
+   "est": [
+    [
+     "Esperando respuesta",
+     16
+    ],
+    [
+     "Cerrado",
+     6
+    ],
+    [
+     "Recontactar",
+     1
+    ],
+    [
+     "Visitas",
+     0
+    ]
+   ],
+   "ori": {
+    "WhatsApp": 26,
+    "Instagram": 20,
+    "LT (formulario)": 11,
+    "Sin dato": 7,
+    "Cartel": 4
+   },
+   "vis": [
+    [
+     "Maker Núñez",
+     "Jorge",
+     "WhatsApp",
+     "2 amb · vivienda",
+     "Se acordó volver a contactarlo más adelante; no hay novedades sobre su análisis."
+    ],
+    [
+     "Green Line",
+     "Yanina",
+     "Instagram",
+     "3 amb",
+     "Yanina confirmó que llegó."
+    ],
+    [
+     "Green Line",
+     "Andrea",
+     "Instagram",
+     "3 amb",
+     "Está evaluando la compra porque primero necesita vender su propiedad."
+    ],
+    [
+     "Maker Belgrano",
+     "Patricia",
+     "WhatsApp",
+     "3 amb",
+     "Tras la visita, indicó que todavía no había podido analizar las opciones."
+    ],
+    [
+     "Maker Núñez",
+     "Horacio",
+     "WhatsApp",
+     "1 amb · inversión",
+     "El usuario está etiquetado como inversor y la conversación llegó por WhatsApp."
+    ],
+    [
+     "Maker Núñez",
+     "Julian",
+     "WhatsApp",
+     "—",
+     "Acordó reunirse el viernes 16/10 a las 12 h en Humboldt 1629, 3.er piso."
+    ],
+    [
+     "Maker Núñez",
+     "Andrea",
+     "WhatsApp",
+     "1 amb, 2 amb · mixto",
+     "Luego se le consultó si pudo analizar las opciones vistas."
+    ],
+    [
+     "Maker Belgrano",
+     "Marcelo",
+     "WhatsApp",
+     "3 amb · vivienda",
+     "Continúa evaluando las opciones por ahora."
+    ],
+    [
+     "—",
+     "Federico",
+     "WhatsApp",
+     "2 amb",
+     "Indicó que asistirá con su esposa."
+    ],
+    [
+     "Maker Núñez",
+     "Rosario",
+     "WhatsApp",
+     "1 amb · vivienda",
+     "La clienta confirmó que asistirá."
+    ],
+    [
+     "Maker Crespo",
+     "Nadia",
+     "WhatsApp",
+     "2 amb · vivienda",
+     "Ya tiene los papeles y los revisará esta noche para confirmar."
+    ],
+    [
+     "Maker Crespo",
+     "Mariel",
+     "WhatsApp",
+     "3 amb",
+     "Luego se le consultó qué le parecieron las opciones vistas y si pudo analizarlas; no consta res"
+    ]
+   ],
+   "rec": [
+    [
+     "Green Line",
+     "Juanma",
+     "WhatsApp",
+     "2 amb · vivienda",
+     "Indicó que avisará cuando se libere; el equipo retomó el contacto para consultar si ya puede co"
+    ],
+    [
+     "Maker Núñez",
+     "Carlos",
+     "WhatsApp",
+     "1 amb · inversión",
+     "Quedó en comentarle las opciones a su amigo y coordinar una visita al edificio."
+    ],
+    [
+     "Green Line",
+     "Andrea",
+     "Instagram",
+     "3 amb",
+     "Está evaluando la compra porque primero necesita vender su propiedad."
+    ],
+    [
+     "Maker Crespo",
+     "Diego",
+     "WhatsApp",
+     "2 amb",
+     "Se ofreció coordinar una reunión, pero decidió postergarla y escribir si retoma el interés."
+    ],
+    [
+     "Maker Núñez",
+     "Autoelevadores",
+     "WhatsApp",
+     "2 amb",
+     "Se mencionó como alternativa un proyecto en pozo en Villa Crespo."
+    ],
+    [
+     "Maker Núñez",
+     "Jorge",
+     "LT (formulario)",
+     "1 amb · vivienda",
+     "Pidió que lo llamen la semana que viene, después del día 23."
+    ],
+    [
+     "Maker Crespo",
+     "Ezequiel",
+     "WhatsApp",
+     "3 amb",
+     "Informó que ya compró dos departamentos en CABA y que por ahora no puede avanzar; contactará nu"
+    ]
+   ],
+   "calif": 7,
+   "hot": 20
+  }
+ ],
+ "months": [
+  {
+   "m": "2026-07",
+   "n": 486,
+   "compra": 375,
+   "ori": {
+    "Instagram": 165,
+    "WhatsApp": 164,
+    "Sin dato": 137,
+    "LT (formulario)": 8,
+    "Web": 5,
+    "Social Prop": 5,
+    "Cartel": 2
+   },
+   "ig_dm": 163,
+   "ad": 124,
+   "entrev": 5,
+   "visag": 15,
+   "ventas": 0,
+   "calif": 37
+  },
+  {
+   "m": "2026-08",
+   "n": 406,
+   "compra": 309,
+   "ori": {
+    "WhatsApp": 213,
+    "Sin dato": 92,
+    "Instagram": 64,
+    "LT (formulario)": 20,
+    "Cartel": 7,
+    "Web": 4,
+    "Social Prop": 4,
+    "Referido": 2
+   },
+   "ig_dm": 0,
+   "ad": 59,
+   "entrev": 2,
+   "visag": 7,
+   "ventas": 1,
+   "calif": 47
+  },
+  {
+   "m": "2026-09",
+   "n": 420,
+   "compra": 343,
+   "ori": {
+    "Sin dato": 265,
+    "WhatsApp": 60,
+    "LT (formulario)": 52,
+    "Instagram": 35,
+    "Cartel": 7,
+    "Referido": 1
+   },
+   "ig_dm": 0,
+   "ad": 100,
+   "entrev": 8,
+   "visag": 10,
+   "ventas": 0,
+   "calif": 13
+  },
+  {
+   "m": "2026-10",
+   "n": 158,
+   "compra": 126,
+   "ori": {
+    "WhatsApp": 52,
+    "Instagram": 50,
+    "LT (formulario)": 36,
+    "Sin dato": 12,
+    "Cartel": 7,
+    "Web": 1
+   },
+   "ig_dm": 0,
+   "ad": 51,
+   "entrev": 0,
+   "visag": 2,
+   "ventas": 1,
+   "calif": 21
+  }
+ ]
+}

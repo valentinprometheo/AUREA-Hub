@@ -125,23 +125,23 @@ PANELS.append(dem)
 crt = ('<section class="panel p-criterio">' + head('Criterio comercial · por qué consultan hoy', 'El agente sabe qué buscan.', 'Todavía no registra por qué ahora.',
                                                   'Qué problema trae cada lead y qué lo hizo consultar hoy: es el dato que ordena a quién llamar primero. Capa elegida para TKVA: Jobs to be Done (B2C de ticket alto y ciclo largo).',
                                                   'Núcleo fijo de cinco campos: problema, impacto, causa raíz, evento disparador y resultado de contacto. Base: conversaciones de compra procesadas.')
-       + table(['Campo del núcleo', 'Variable en Prometheo', 'Lo carga', 'Cobertura', 'Nivel', 'Estado'], [
-           ['Problema declarado', '—', 'Agente · cita', '—', lvl('noexiste'), 'Solo aparece parafraseado en el Resumen por IA'],
-           ['Impacto', '—', 'Agente', '—', lvl('noexiste'), 'No existe la variable'],
-           ['Causa raíz', '—', 'Agente', '—', lvl('noexiste'), 'No existe la variable'],
-           ['Evento disparador', '—', 'Agente', '—', lvl('noexiste'), 'Se propone "Evento Disparador" (Opciones), Posible mejora 6'],
-           ['Resultado de contacto', '<code>tags del embudo Venta y Cierre</code>', 'Vanesa', f'{pct(D["humana"], D["compra"])}', lvl('noreport'), f'{D["humana"]} compradores con visita, negociación o cierre']], 760, txt=True)
+       + nucleo([
+           ('Problema declarado', 'Lo que el lead dice que le pasa, en sus palabras', None, 'Agente', 'bot', None, 'noexiste', 'Solo aparece parafraseado en el Resumen por IA'),
+           ('Impacto', 'Qué le cuesta no resolverlo', None, 'Agente', 'bot', None, 'noexiste', 'No existe la variable'),
+           ('Causa raíz', 'Qué produce el problema de fondo', None, 'Agente', 'bot', None, 'noexiste', 'No existe la variable'),
+           ('Evento disparador', 'Qué pasó para que consulte hoy', None, 'Agente', 'bot', None, 'noexiste', 'Se propone "Evento Disparador" (Opciones) · Posible mejora 6'),
+           ('Resultado de contacto', 'Visita, reserva o cierre sin venta', 'Etapas Venta y Cierre', 'Vanesa', 'hand', 100 * D['humana'] / D['compra'], 'noreport', f'{D["humana"]} compradores con visita, negociación o cierre')])
        + qbd('Ningún campo del núcleo existe como variable: el hallazgo es la ausencia, no la distribución. Por eso esta pestaña no titula porcentajes y muestra lo que dice el resumen de la IA.',
              'El cruce impacto alto × disparador de menos de 30 días (a quién llamar primero) queda bloqueado hasta que existan las variables. Mientras tanto, la cola se ordena por hot lead.')
        + sec('A voz de quien consulta · lo que resume la IA, sin convertir en porcentaje')
        + qbd('Cada frase es de una persona: no es un patrón. El contador dice en cuántas conversaciones procesadas aparece el tema en el resumen; la acción dice qué cambiar.')
-       + '<div class="g3">'
-       + quote('Financiación y cuotas · 228 resúmenes lo mencionan', ['«Consultó si podía pagar el 50% y financiar el saldo con crédito hipotecario.» · Maker Núñez · vivienda', f'{mc("start")} Primera respuesta con anticipo y cuotas del proyecto.'])
-       + quote('Apto crédito · 45 resúmenes', ['«Se le indicó que Maker Núñez no es apto crédito y ofrece financiación propia.» · Maker Núñez', 'Ventas · ofrecer Liberti (apto crédito) cuando el lead lo necesita.'])
-       + quote('Cochera · 42 resúmenes', ['«Las opciones de Maker Belgrano no le interesaron porque no tenían cochera.» · Maker Belgrano', 'Marketing · decir en el anuncio qué proyectos tienen cochera.'])
-       + quote('Entrega · 24 resúmenes', ['«Consultó por entrega inmediata; Maker Núñez tiene entrega estimada en diciembre de 2026.» · Maker Núñez · vivienda', f'{mc("start")} Fecha de entrega en la primera respuesta.'])
-       + quote('Inversión y renta · 135 resúmenes', ['«Busca una propiedad para alquilar por Airbnb, similar a sus unidades en Saavedra.» · Maker Núñez · inversión', 'Ventas · llamar con rentabilidad estimada y plan de pagos.'])
-       + quote('Familia · 28 resúmenes', ['«Busca monoambientes para futura vivienda de uno de sus hijos.» · Maker Núñez y Green Line · vivienda', 'Es un evento disparador: hoy no se registra.'])
+       + '<div class="g3 vqg">'
+       + vq('Financiación y cuotas', 228, 'resúmenes', 'Consultó si podía pagar el 50% y financiar el saldo con crédito hipotecario.', 'Maker Núñez · vivienda', '', 'Primera respuesta con anticipo y cuotas del proyecto.', 'start')
+       + vq('Apto crédito', 45, 'resúmenes', 'Se le indicó que Maker Núñez no es apto crédito y ofrece financiación propia.', 'Maker Núñez', 'Ventas', 'Ofrecer Liberti, que es apto crédito, cuando el lead lo necesita.')
+       + vq('Cochera', 42, 'resúmenes', 'Las opciones de Maker Belgrano no le interesaron porque no tenían cochera.', 'Maker Belgrano', 'Marketing', 'Decir en el anuncio qué proyectos tienen cochera.')
+       + vq('Entrega', 24, 'resúmenes', 'Consultó por entrega inmediata; Maker Núñez tiene entrega estimada en diciembre de 2026.', 'Maker Núñez · vivienda', '', 'Fecha de entrega en la primera respuesta.', 'start')
+       + vq('Inversión y renta', 135, 'resúmenes', 'Busca una propiedad para alquilar por Airbnb, similar a sus unidades en Saavedra.', 'Maker Núñez · inversión', 'Ventas', 'Llamar con rentabilidad estimada y plan de pagos.')
+       + vq('Familia', 28, 'resúmenes', 'Busca monoambientes para futura vivienda de uno de sus hijos.', 'Maker Núñez y Green Line · vivienda', 'AUREA', 'Es un evento disparador: hoy no se registra. Posible mejora 6.')
        + '</div>' + sec('Qué cambiar para que el criterio se pueda medir') + '<div class="fxg c3">'
        + fx('var(--vio)', 'var(--vio-soft)', 'compass', 'Variable nueva', 'Crear "Evento Disparador"', 'Hoy no existe: el cruce impacto × disparador está bloqueado.', 'Opciones del rubro: vende otra propiedad, necesita mudarse, vivienda para un familiar, inversión o renta, termina un alquiler.', 'Venta · CRM › Posible mejora 6')
        + fx('var(--vio)', 'var(--vio-soft)', 'x', 'Variable nueva', 'Crear "Objeción Principal"', 'El precio aparece como primer motivo de No Fit, pero solo se puede leer en el texto.', 'Opciones: precio, entrega, financiación o crédito, ubicación, tamaño, cochera, otro.', 'Venta · CRM › Posible mejora 6')
@@ -167,14 +167,14 @@ def adcard(verb, owner, parts, how_v, how_t, title, a, bul, hacer, donde, big, t
             f'<div class="cx"><span class="ql k-camp">{I("building")}</span><span class="qm">Proyecto</span><span class="qn">{a["pj"]} · {a["pj_n"]} de {a["pj_tot"]} lo piden</span></div>'
             f'<div class="cx"><span class="ql qbq">{I("users")}</span><span class="qm">Público</span><span class="qn">{a["viv"]} vivienda · {a["inv"]} inversión</span></div></div>'
             f'<div class="qbc"><span class="op">Ver análisis y qué hacer</span><span class="cl">Plegar</span>{I("chev")}</div></summary>'
-            f'<div class="qh"><div class="qi"><span class="n">{I("eye")}</span>Qué muestra el CRM</div><ul class="i3-b">{lis}</ul></div>'
+            f'<div class="qbody"><div class="qh"><div class="qi"><span class="n">{I("eye")}</span>Qué muestra el CRM</div><ul class="i3-b">{lis}</ul></div>'
             f'<div class="qh"><div class="qi"><span class="n">{I("arrow")}</span>Qué hacer</div><p class="qp">{hacer}</p><div class="qz">{I("pin")}<span><b>Dónde se cambia:</b> {donde}</span></div></div>'
             f'<div class="qh"><div class="qi"><span class="n">{I("target")}</span>Efecto esperado</div><div class="res"><div class="big">{big}</div><div class="rt"><div class="txt">{txt}</div>'
             f'<div class="cmp"><span class="fill" style="width:{cmpw:.1f}%"></span><span class="mk c" style="left:calc({cmpk:.1f}% - 1px)"><b>{cmplab}</b></span></div>'
             f'<div class="cmp-lg"><span><i class="sw"></i>este anuncio</span><span><i class="sm"></i>{cmplab}</span></div></div></div></div>'
             f'<div class="qh"><div class="qi"><span class="n">{I("pulse")}</span>Cómo lo medimos</div><p class="qp">{medimos}</p><div class="qca">{I("shield")}<span><b>Guardiana:</b> {guard}</span></div></div>'
             f'<div class="qh qbs"><div class="qi"><span class="n">{I("gauge")}</span>Por qué este índice {gauge(score, True)}</div><div class="qcb">{qj}</div>'
-            f'<p class="qbi">{why} Techo por el dato central ({techo}): {score if False else {"Hecho":100,"Señal":79,"Indicio":54}[techo]}. Rúbrica v1, sin calibrar: el resultado se registra al cierre del período.</p></div></details>')
+            f'<p class="qbi">{why} Techo por el dato central ({techo}): {score if False else {"Hecho":100,"Señal":79,"Indicio":54}[techo]}. Rúbrica v1, sin calibrar: el resultado se registra al cierre del período.</p></div></div></details>')
 avg = 100 * CAL_A / B
 aL = ADS['120247657051160615']; aG = ADS['120250550832800615']; aN = ADS['120250791067620615']; aE = ADS['120250284174290615']; aT = ADS['120250768745120562']
 ins_cards = [
@@ -250,24 +250,25 @@ insp = ('<section class="panel p-insights">' + head('Insights y accionables · d
 PANELS.append(insp)
 
 # ================= 10 · META · ANUNCIOS EN PROMETHEO =================
-def adx(a, color, soft, verdict, vc):
+def adx(a, color, soft, verdict, vc, status='Revisar'):
     b = max(a['b'], 1)
-    tiles = (f'<div class="ad-t" data-s=""><span>{I("chat")}Contactos</span><b>{a["n"]}</b></div>'
-             + (f'<div class="ad-t" data-s="{"good" if a["cal"]/b >= .2 else "warn"}"><span>{I("checkc")}Calificó</span><b>{pct(a["cal"], b)}<small>{a["cal"]} de {a["b"]}</small></b></div>' if a['b'] >= 10 else
-              f'<div class="ad-t" data-s="warn"><span>{I("checkc")}Calificó</span><b>s/d<small>{a["b"]} procesadas</small></b></div>')
-             + f'<div class="ad-t" data-s=""><span>{I("users")}Inv. / viv.</span><b>{a["inv"]} / {a["viv"]}</b></div>')
-    rows = [('Conversó', a['convo'], a['compra']), ('Procesado por la IA', a['b'], a['compra']), ('Hot lead', a['hot'], a['compra']), ('Pide financiación', a['fin'], a['compra']), ('Una sola vez', a['unavez'], a['compra']), ('No Fit', a['nofit'], a['n'])]
-    fun = ''.join(f'<div class="qcg pc"><span>{k}</span><i style="width:{100*v/max(t,1):.0f}%"></i><b>{v}<small>{pct(v, t)}</small></b></div>' for k, v, t in rows)
-    return (f'<div class="adx" style="--ax:{color};--axb:{soft}"><div class="adx-h"><span class="adx-ic">{I("anun")}</span><div style="min-width:0"><b>{esc(a["name"][:58])}</b>'
-            f'<span>{I("building")}pide {a["pj"]} ({a["pj_n"]} de {a["pj_tot"]}) · {a["desde"]} al {a["hasta"]} · ID {a["id"]}</span></div></div>'
-            f'<div class="adx-tiles">{tiles}</div><div class="adx-fun">{fun}</div><div class="adx-v" style="--vc:{vc[0]};--vb:{vc[1]}">{I("bulb")}<span>{verdict}</span></div></div>')
+    cal = (f'<b>{pct(a["cal"], b)}</b><span>{a["cal"]} de {a["b"]} procesadas</span>' if a['b'] >= 10 else f'<b>s/d</b><span>{a["b"]} procesadas</span>')
+    stats = (f'<div class="adf-s"><div><em>Contactos</em><b>{a["n"]}</b><span>{a["compra"]} de compra</span></div>'
+             f'<div><em>Calificó</em>{cal}</div><div><em>Inv. / viv.</em><b>{a["inv"]} / {a["viv"]}</b><span>finalidad declarada</span></div></div>')
+    rows = [('Conversó', a['convo'], a['compra']), ('Procesado por la IA', a['b'], a['compra']), ('Hot lead', a['hot'], a['compra']),
+            ('Pide financiación', a['fin'], a['compra']), ('Una sola vez', a['unavez'], a['compra']), ('No Fit', a['nofit'], a['n'])]
+    fun = ''.join(f'<div class="adf-r"><span>{k}</span>{mbar(100 * v / max(t, 1))}<b>{v}<small>{pct(v, t)}</small></b></div>' for k, v, t in rows)
+    return (f'<div class="adf"><div class="adf-h"><span class="adf-ic">{I("anun")}</span><div class="adf-t"><b>{esc(a["name"][:70])}</b>'
+            f'<span>{I("building")}pide {a["pj"]} · {a["pj_n"]} de {a["pj_tot"]} · {a["desde"]} al {a["hasta"]}</span></div>'
+            f'<span class="adf-st" data-s="{vc}">{status}</span></div><div class="adf-id">ID {a["id"]}</div>'
+            f'{stats}<div class="adf-f">{fun}</div><div class="adf-v">{I("bulb")}<span>{verdict}</span></div></div>')
 GOOD = ('var(--good)', 'var(--good-bg)'); WARN = ('var(--warn)', 'var(--warn-bg)'); CRIT = ('var(--crit)', 'var(--crit-bg)')
 coh_ads = [a for a in D['ads'] if a['pj_tot'] >= 3 and any(p.lower() in a['name'].lower() for p in ['liberti', 'green line', 'maker', 'drago', 'obra avanza'])]
-fichas = (adx(aL, 'var(--vio)', 'var(--vio-soft)', 'Trae volumen, pero la mitad termina en No Fit por precio. Corregir el copy y la primera respuesta.', CRIT)
-          + adx(aT, 'var(--blu)', 'var(--blu-soft)', 'Corrió en el arranque (22 al 29/07). Nombre genérico ("TKVA 2"): casi nadie dijo proyecto. No volver a uno genérico.', WARN)
-          + adx(aG, 'var(--pnk)', 'var(--pnk-soft)', 'El único activo desde agosto, con hot leads constantes. Sostenerlo y excluir inmobiliarias.', GOOD)
-          + adx(aN, 'var(--good)', 'var(--good-bg)', 'Nuevo (desde el 02/10): la mayor proporción de hot leads. n chico: es una prueba.', GOOD)
-          + adx(aE, 'var(--warn)', 'var(--warn-bg)', 'Cayó entero en el hueco del agente: sin datos de quién escribió. Revisar a mano.', CRIT))
+fichas = (adx(aL, '', '', 'Trae volumen, pero la mitad termina en No Fit por precio. Corregir el copy y la primera respuesta.', 'crit', 'Corregir')
+          + adx(aT, '', '', 'Corrió en el arranque (22 al 29/07). Nombre genérico ("TKVA 2"): casi nadie dijo proyecto. No volver a uno genérico.', 'warn', 'Aprendizaje')
+          + adx(aG, '', '', 'El único activo desde agosto, con hot leads constantes. Sostenerlo y excluir inmobiliarias.', 'good', 'Sostener')
+          + adx(aN, '', '', 'Nuevo (desde el 02/10): la mayor proporción de hot leads. n chico: es una prueba.', 'good', 'Probar')
+          + adx(aE, '', '', 'Cayó entero en el hueco del agente: sin datos de quién escribió. Revisar a mano.', 'crit', 'Revisar'))
 meta = ('<section class="panel p-metaprom">' + head('Meta · lo que Prometheo ya sabe de cada anuncio', 'Sin el export de Meta,', 'igual sabemos qué trae cada anuncio.',
                                                     'Cada consulta que llega desde un anuncio trae su ID de anuncio. Con eso, Prometheo dice qué proyecto pide, quién es y si califica. Lo que falta es el gasto.',
                                                     'Datos de Prometheo: ID Anuncio y nombre del anuncio por contacto. Vigencia = primera y última consulta registrada con ese ID, no las fechas de la campaña en Meta.')
@@ -276,7 +277,7 @@ meta = ('<section class="panel p-metaprom">' + head('Meta · lo que Prometheo ya
         + kpi('target', 'pnk', 'pro', 'Contactos con anuncio', pct(D['con_ad'], D['total']), None, '', None, f'{D["con_ad"]} de {num(D["total"])}', None, 'Indicio: la mayor parte de la pauta va a la landing y a los formularios de LT, que no pasan el ID.')
         + kpi('checkc', 'grn', 'calc', 'Coherencia anuncio → proyecto', pct(sum(a['pj_n'] for a in coh_ads), sum(a['pj_tot'] for a in coh_ads)), None, '', None, f'{sum(a["pj_n"] for a in coh_ads)} de {sum(a["pj_tot"] for a in coh_ads)} piden el proyecto del anuncio', None, 'Sobre los anuncios que nombran un proyecto.')
         + kpi('layers', 'amb', 'pro', 'Multi-toque', str(D['multi_ad']), None, '', None, 'contactos con más de un ID de anuncio')
-        + '</div>' + sec('Ficha por anuncio · los de más contactos y los que hay que mirar') + f'<div class="adg">{fichas}</div>'
+        + '</div>' + sec('Ficha por anuncio · los de más contactos y los que hay que mirar') + f'<div class="adfg">{fichas}</div>'
         + qbd('Porcentajes sobre la demanda de compra del anuncio (sin inmobiliarias, proveedores ni No Fit); No Fit sobre todos los contactos del anuncio.',
               'Primer anuncio registrado en el contacto. Calificación sobre conversaciones procesadas por la IA. Inversión / vivienda es Indicio: se lee como orden.')
         + sec('Qué le dice esto a la pauta') + '<div class="fxg c3">'

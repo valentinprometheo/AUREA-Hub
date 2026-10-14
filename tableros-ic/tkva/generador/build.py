@@ -57,7 +57,7 @@ table.tt td{line-height:1.45}
 #cv-ia:checked~.shell .st-ia{display:block}
 #cv-meta:checked~.shell .st-meta{display:block}
 </style>'''
-HEAD = HEAD + EXTRA_CSS
+HEAD = HEAD + EXTRA_CSS + '<style>' + open('extra2.css', encoding='utf-8').read() + '</style>'
 
 TABS = ['panorama', 'reporte', 'evolucion', 'ventacrm', 'vendedores', 'distrib', 'corredores', 'demanda', 'criterio',
         'insights', 'metaprom', 'tokens', 'audiencias', 'integraciones']

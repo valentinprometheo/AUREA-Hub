@@ -150,20 +150,21 @@ def act(verb, owner, parts, title, mide, base, dato, cite, hacer, donde, efecto,
                  for (n, m), p in zip(PARTS, parts))
     capped = '' if sum(parts) <= lim else f' El cálculo da {sum(parts)}: se aplica el techo.'
     return (f'<details class="{cls}" data-v="{verb}"><summary><div class="qbg"><span class="qbz"><span class="qcp">{I(ic)}</span>{vl}</span>'
-            f'<span class="{OWN[owner]}">{owner}</span>{mc(mcard)}{gauge(score)}</div>'
+            f'<span class="{OWN[owner]}">{owner}</span>{gauge(score)}</div>'
+            f'<div class="mcrow">{mc(mcard)}</div>'
             f'<div class="qbr">{title}</div><div class="qbh">'
             f'<div class="cx"><span class="ql qbq">{I("target")}</span><span class="qm">Qué mide</span><span class="qn">{mide}</span></div>'
             f'<div class="cx"><span class="ql qbt">{I("filter")}</span><span class="qm">Base</span><span class="qn">{base}</span></div>'
             f'<div class="cx"><span class="ql qce">{I("chat")}</span><span class="qm">Dato</span><span class="qn">{dato} <cite>{cite}</cite></span></div>'
             f'</div><div class="qbc"><span class="op">Qué hago ahora</span><span class="cl">Plegar</span>{I("chev")}</div></summary>'
-            f'<div class="qh"><div class="qi"><span class="n">{I("arrow")}</span>Qué hacer</div><p class="qp">{hacer}</p>'
+            f'<div class="qbody"><div class="qh"><div class="qi"><span class="n">{I("arrow")}</span>Qué hacer</div><p class="qp">{hacer}</p>'
             f'<div class="qz">{I("pin")}<span><b>Dónde se cambia:</b> {donde}</span></div></div>'
             f'<div class="qh"><div class="qi"><span class="n">{I("target")}</span>Efecto esperado</div><p class="qp">{efecto}</p></div>'
             f'<div class="qh"><div class="qi"><span class="n">{I("pulse")}</span>Cómo lo medimos</div><p class="qp">{medimos}</p>'
             f'<div class="qca">{I("shield")}<span><b>Guardiana:</b> {guard}</span></div></div>'
             f'<div class="qh qbs"><div class="qi"><span class="n">{I("gauge")}</span>Por qué este índice {gauge(score, True)}</div>'
             f'<div class="qcb">{qj}</div><p class="qbi">{why}{capped} Techo por el dato central ({techo}): {lim}. '
-            f'Rúbrica v1, sin calibrar: el resultado se registra al cierre del período.</p></div></details>')
+            f'Rúbrica v1, sin calibrar: el resultado se registra al cierre del período.</p></div></div></details>')
 
 def legend():
     return (f'<div class="sxl">{I("gauge")}<b>Índice data-driven</b><span>cuánto de cada acción se apoya en datos:</span>'
@@ -274,3 +275,28 @@ def vcd(color, icon, title, sub, rows, q):
     vq = ''.join(f'<div data-s="{s}"><b>{b}</b><span>{t}</span></div>' for s, b, t in q)
     return (f'<div class="vcd"><div class="vcd-h"><span class="vcd-av" style="background:{color}">{I(icon)}</span><div><b>{title}</b>'
             f'<span>{sub}</span></div></div><div class="vcd-b"><div class="vcd-fun">{fun}</div><div class="vq">{vq}</div></div></div>')
+
+
+# ---------- Citas (a voz de quien consulta) ----------
+def vq(theme, n, unit, quote_txt, meta, act_who, act_txt, m=None):
+    who = mc(m) if m else f'<span class="vq-who">{act_who}</span>'
+    return (f'<div class="vqc"><div class="vqh"><span class="vqk">{theme}</span><span class="vqn"><b>{n}</b>{unit}</span></div>'
+            f'<blockquote class="vqq">«{quote_txt}»</blockquote><div class="vqm">{I("building")}<span>{meta}</span></div>'
+            f'<div class="vqa"><div class="vqal">{I("arrow")}Qué cambiar {who}</div><p>{act_txt}</p></div></div>')
+
+# ---------- Núcleo de criterio comercial ----------
+def nucleo(rows):
+    """rows: (campo, desc, variable|None, carga, carga_icon, cov|None, lvlkey, estado)"""
+    h = ('<div class="nuc"><div class="nuc-r nuc-hd"><span>Campo del núcleo</span><span>Variable en Prometheo</span><span>Lo carga</span>'
+         '<span>Cobertura</span><span>Nivel</span><span>Estado</span></div>')
+    for campo, desc, var, carga, ic, cov, lk, est in rows:
+        v = f'<code class="nuc-var">{var}</code>' if var else '<span class="nuc-none">sin variable</span>'
+        c = (f'<span class="nuc-cov"><span class="mtrk"><i style="width:{max(cov,2):.0f}%"></i></span><b>{num(cov)}%</b></span>'
+             if cov is not None else '<span class="nuc-none">—</span>')
+        h += (f'<div class="nuc-r"><div class="nuc-c"><b>{campo}</b><span>{desc}</span></div><div>{v}</div>'
+              f'<div><span class="nuc-who">{I(ic)}{carga}</span></div><div>{c}</div><div>{lvl(lk)}</div><div class="nuc-e">{est}</div></div>')
+    return h + '</div>'
+
+# ---------- Mini barra con pista visible ----------
+def mbar(p, cls=''):
+    return f'<span class="mtrk{(" " + cls) if cls else ""}"><i style="width:{max(min(p,100),1.5):.1f}%"></i></span>'

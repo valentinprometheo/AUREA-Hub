@@ -416,6 +416,23 @@ vend = ('<section class="panel p-vendedores">' + head('Vanesa y el agente · qui
 PANELS.append(vend)
 
 # ================= 5 · PROYECTOS =================
+def pjt(PJ, PN):
+    mxn = max(p['n'] for p in PJ)
+    head_ = ('<div class="pjt"><div class="pjt-r pjt-hd"><span>Proyecto</span><span>Consultas</span><span>Califican</span>'
+             '<span>Inversión · vivienda</span><span>Piden financiación</span><span>Tipología más pedida</span><span>No Fit</span><span>Hot leads</span></div>')
+    rows = ''
+    for i, p in enumerate(PJ):
+        cr = 100 * p['cal'] / max(p['conv'], 1); iv = p['inv'] + p['viv']
+        split = (f'<span class="pjt-split"><i style="width:{100*p["inv"]/iv:.0f}%"></i></span>' if iv else '<span class="pjt-split"></span>')
+        tips = ''.join(f'<span class="pjt-tip">{x.strip()}</span>' for x in p['tip'].split(',') if x.strip())
+        rows += (f'<div class="pjt-r"><div class="pjt-p"><span class="pjt-n">{i+1:02d}</span><b>{p["p"]}</b></div>'
+                 f'<div class="pjt-m"><b>{p["n"]}</b><span>{pct(p["n"], PN)} del total</span>{mbar(100 * p["n"] / mxn)}</div>'
+                 f'<div class="pjt-m"><b>{pct(p["cal"], p["conv"])}</b><span>{p["cal"]} de {p["conv"]}</span>{mbar(cr * 100 / 40, "ok")}</div>'
+                 f'<div class="pjt-m"><b>{p["inv"]} · {p["viv"]}</b><span>inversión · vivienda</span>{split}</div>'
+                 f'<div class="pjt-m"><b>{p["fin_req"]}</b><span>{pct(p["fin_req"], p["n"])} de sus consultas</span></div>'
+                 f'<div class="pjt-tips">{tips}</div><div class="pjt-m mut"><b>{p["nofit"]}</b></div><div class="pjt-m hot"><b>{p["hot"]}</b></div></div>')
+    return head_ + rows + '</div>'
+
 PJ = D['proj']; PN = D['proy_n']
 top3 = PJ[:3]
 dist_ = ('<section class="panel p-distrib">' + head('Proyectos · qué se pide de cada uno', 'Maker Núñez, Liberti y Maker Crespo', 'concentran la demanda.',
@@ -423,9 +440,7 @@ dist_ = ('<section class="panel p-distrib">' + head('Proyectos · qué se pide d
                                                    f'Proyecto de interés lo carga el agente ({num(D["cov"]["Proyecto"][1],0)}% de las conversaciones procesadas, Señal). Un lead puede consultar por más de un proyecto: los totales no suman 100%. Base: consultas de compra procesadas del 22/07 al 14/10.')
          + '<div class="g4">' + ''.join(kpi('building', t, 'pro', p['p'], str(p['n']), pct(p['n'], PN), 'd-flat', None, f'consultas · {p["cal"]} calificadas', None, f'% sobre las {PN} consultas que dicen proyecto.') for p, t in zip(top3, ['blu', 'pnk', '']))
          + kpi('layers', 'amb', 'pro', 'Resto de proyectos', str(sum(p['n'] for p in PJ[3:])), '3 proyectos', 'd-flat', None, 'Green Line, Maker Belgrano y Drago Select') + '</div>'
-         + table(['Proyecto', 'Consultas', 'Califican', 'Inversión / Vivienda', 'Piden financiación', 'Tipología más pedida', 'No Fit', 'Hot leads'],
-                 [[p['p'], f'{p["n"]} <span class="qcw">{pct(p["n"], PN)} del total</span>', f'{pct(p["cal"], p["conv"])} <span class="qcw">{p["cal"]} de {p["conv"]}</span>', f'{p["inv"]} / {p["viv"]}',
-                   f'{p["fin_req"]} <span class="qcw">{pct(p["fin_req"], p["n"])}</span>', p['tip'], p['nofit'], p['hot']] for p in PJ], 860)
+         + pjt(PJ, PN)
          + qbd('Green Line es el que mejor califica y el único donde inversión supera a vivienda. Liberti trae volumen, pero 1 de cada 3 termina en No Fit: el precio de 2 ambientes desde USD 140.000 frena a quien busca apto crédito.',
                'Inversión / Vivienda: destino, objetivo o tag (Indicio, 35% de las conversaciones procesadas). Tipología más pedida: solo leads que pidieron una sola tipología, para no contar lo que ofreció el agente. No Fit por proyecto: tag No Fit con ese proyecto cargado.')
          + sec('Tokko · lo que llega del catálogo al CRM') + '<div class="g4">'

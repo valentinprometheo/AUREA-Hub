@@ -965,10 +965,10 @@ P["integraciones"] = (
 # ---------- navegación ----------
 NAV = [
     ("Resumen", None, [("panorama", "grid", "Panorama"), ("evolucion", "trend", "Evolución"), ("action", "bolt", "Action Driven")]),
-    ("crm", "crm", [("ventacrm", "building", "Venta · CRM"), ("usuarios", "route", "Usuarios y embudo"), ("soporte", "wrench", "Soporte técnico"),
+    ("CRM", "crm", [("ventacrm", "building", "Venta · CRM"), ("usuarios", "route", "Usuarios y embudo"), ("soporte", "wrench", "Soporte técnico"),
                     ("resueltas", "checkc", "Resueltas sin contacto humano"), ("demanda", "pin", "Demanda"), ("criterio", "compass", "Criterio comercial"),
                     ("audiencias", "users", "Audiencias"), ("tokens", "bolt", "Consumo de Tokens - CRM")]),
-    ("marketing", "mega", [("pauta", "route", "Pauta y venta"), ("tiktok", "play", "TikTok Ads", "var(--vio)"), ("instagram", "ig", "Instagram", "var(--pnk)"),
+    ("Marketing", "mega", [("pauta", "route", "Pauta y venta"), ("tiktok", "play", "TikTok Ads", "var(--vio)"), ("instagram", "ig", "Instagram", "var(--pnk)"),
                            ("facebook", "fb", "Facebook", "var(--blu)"), ("email", "mail", "Email Marketing", "var(--src-mail)"), ("wamkt", "wa", "WhatsApp Marketing", "var(--src-wpp)")]),
     ("De dónde sale esto", None, [("calidad", "shield", "Calidad de datos"), ("integraciones", "plug", "Integraciones")]),
 ]
@@ -984,7 +984,7 @@ side = [f'<aside class="side"><div class="brand2"><img src="{logo}" alt="AUREA H
 for name, icon, items in NAV:
     labels = "".join(navlabel(t) for t in items)
     if icon:
-        side.append(f'<details class="ngrp" name="ngrp"{" open" if name == "crm" else ""}><summary><span class="ng-ic">{ic(icon)}</span><span class="ng-t">{name}</span>{ic("chev")}</summary><div class="ng-b">{labels}</div></details>')
+        side.append(f'<details class="ngrp" name="ngrp"{" open" if name == "CRM" else ""}><summary><span class="ng-ic">{ic(icon)}</span><span class="ng-t">{name}</span>{ic("chev")}</summary><div class="ng-b">{labels}</div></details>')
     else:
         side.append(f'<div class="navlab">{name}</div>{labels}')
 side.append('<div class="side-foot"><button class="themebtn" type="button" onclick="tgl()"><svg class="i sun"><use href="#i-sun"/></svg><svg class="i moon"><use href="#i-moon"/></svg><span>Tema claro / oscuro</span></button></div></aside>')
@@ -1017,7 +1017,7 @@ extra_css = "<style>" + "".join(
 .ngrp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:8px 11px;border-radius:var(--r-s);font-size:12.8px;font-weight:700;color:var(--ink);background:var(--grad-soft);box-shadow:inset 0 -2px 0 0 color-mix(in srgb,var(--vio) 35%,transparent)}
 .ngrp>summary::-webkit-details-marker{display:none}
 .ng-ic{width:22px;height:22px;border-radius:7px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex-shrink:0}.ng-ic svg.i{width:13px;height:13px;color:#fff}
-.ng-t{flex:1;text-transform:lowercase}
+.ng-t{flex:1}
 .ngrp>summary>svg.i:last-child{width:15px;height:15px;color:var(--ink3);transition:transform .2s}.ngrp[open]>summary>svg.i:last-child{transform:rotate(180deg)}
 .ng-b{padding:4px 0 4px 6px}
 .dd-pill{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--ink2);padding:6px 12px 6px 9px;border-radius:999px;background:var(--surface);border:1px solid transparent;background-image:linear-gradient(var(--surface),var(--surface)),var(--grad);background-origin:border-box;background-clip:padding-box,border-box}

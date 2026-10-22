@@ -1549,6 +1549,16 @@ b.hot{color:var(--crit-ink);background:var(--crit-bg);padding:2px 8px;border-rad
 .hq>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--grad-soft)}.hq>summary::-webkit-details-marker{display:none}
 .hq>summary b{font-size:14px;color:var(--ink)}.hq>summary span{margin-left:auto;font-size:12px;color:var(--ink2)}.hq>summary svg.i{width:15px;height:15px;color:var(--ink3);transition:transform .2s}.hq[open]>summary svg.i{transform:rotate(180deg)}
 .hq .qcf{border:0!important;box-shadow:none!important;border-radius:0}
+/* v5.1 · contraste: toda caja blanca sobre el fondo */
+.qx,.qcf,.qbu,.chs,.area,.crit2,.adx,.chsec,.hq,.segt,.srclegend,.modehint,.yeq,.bridge,.cn-sec,.cn,.pm,.i3,.tr-camp,.hier2>div,.bigsub,.go-mej,.period,.mode,.dd-pill,.updbar,.iobar,.subsec,.zcard,.vid,.kv>div,.cc-r,.qte{--cbrd:color-mix(in srgb,var(--vio) 20%,var(--line))}
+.qx,.qcf,.qbu,.chs,.area,.crit2,.adx,.chsec,.hq,.segt,.srclegend,.modehint,.yeq,.bridge,.cn-sec,.pm,.i3,.tr-camp,.hier2>div,.subsec{background:var(--surface)!important;border:1px solid var(--cbrd)!important;box-shadow:0 1px 2px rgba(40,25,90,.06),0 16px 36px -20px rgba(60,40,120,.55)!important}
+.hq>summary{background:var(--surface)!important;border-left:4px solid transparent;border-image:var(--grad) 1}
+.hq[open]>summary{border-bottom:1px solid var(--line2)}
+.bigsub{background:linear-gradient(120deg,var(--grad-soft),var(--surface) 75%)!important;box-shadow:0 16px 36px -20px rgba(60,40,120,.55)}
+.updbar,.iobar{background:var(--surface);border:1px solid var(--cbrd);border-radius:var(--r-m);padding:8px 14px;box-shadow:0 10px 26px -20px rgba(60,40,120,.5)}
+.period,.mode,.dd-pill,.demo{box-shadow:0 8px 20px -14px rgba(60,40,120,.55)}
+.cn{background:var(--surface)!important;border:1px solid var(--cbrd)!important}
+.kv>div,.cc-r,.qch,.ad-meta span,.ad-meta2 span,.tr-m span{border:1px solid var(--line)!important}
 @media (max-width:900px){.chsec-h,.tr-chd,.tr-ad{grid-template-columns:1fr}.hier2{grid-template-columns:1fr}.tr-m{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){.areas,.zg{grid-template-columns:1fr}.ad-meta,.ad-meta2{grid-template-columns:1fr}.client b{font-size:24px}}
 </style>"""

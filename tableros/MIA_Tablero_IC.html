@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MIA · Inteligencia Comercial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;600;700&family=Newsreader:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+:root{--violeta:#7C5CBF;--azul:#5B8FD9;--rosa:#C77AA8;
+--bg:#f6f5fa;--surf:#fff;--surf2:#f1eff7;--txt:#1d1b26;--mut:#5e5a6e;--line:#e3e0ec;
+--ok:#1f8a4c;--okbg:#e5f4ea;--warn:#a86400;--warnbg:#fdf1dc;--bad:#b42335;--badbg:#fbe6e9;--neu:#5e5a6e;--neubg:#eeedf2;
+--crm:#5a49a8;--mkt:#2f6fb8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121119;--surf:#1b1a24;--surf2:#24222f;--txt:#ecebf3;--mut:#a7a3b8;--line:#33303f;--ok:#5fd08f;--okbg:#173524;--warn:#f0b35a;--warnbg:#3a2a10;--bad:#ff7d8e;--badbg:#3d1820;--neu:#a7a3b8;--neubg:#2a2834;--crm:#a99af0;--mkt:#7fb2f0}}
+:root[data-theme="dark"]{--bg:#121119;--surf:#1b1a24;--surf2:#24222f;--txt:#ecebf3;--mut:#a7a3b8;--line:#33303f;--ok:#5fd08f;--okbg:#173524;--warn:#f0b35a;--warnbg:#3a2a10;--bad:#ff7d8e;--badbg:#3d1820;--neu:#a7a3b8;--neubg:#2a2834;--crm:#a99af0;--mkt:#7fb2f0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.5 Arimo,Helvetica,Arial,sans-serif}
+.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+nav{background:var(--surf);border-right:1px solid var(--line);padding:18px 12px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{display:flex;gap:10px;align-items:center;padding:0 6px 14px;border-bottom:1px solid var(--line)}
+.orb{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff 0,#C77AA8 30%,#7C5CBF 60%,#5B8FD9 100%)}
+.brand b{display:block;font-size:15px}.brand small{color:var(--mut);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.grp{margin-top:16px}
+.grp h4{display:flex;gap:8px;align-items:center;margin:0 6px 6px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.grp h4 .ic{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;color:#fff}
+.ic.crm{background:var(--crm)}.ic.mkt{background:var(--mkt)}.ic.gen{background:var(--neu)}
+.grp h4 em{font-style:normal;font-weight:700;color:var(--txt)}
+nav button{display:flex;width:100%;gap:8px;align-items:center;text-align:left;border:0;background:none;color:var(--txt);padding:7px 10px 7px 14px;border-radius:8px;font:inherit;font-size:13px;cursor:pointer;border-left:3px solid transparent}
+.grp.c button{border-left-color:color-mix(in srgb,var(--crm) 35%,transparent)}
+.grp.m button{border-left-color:color-mix(in srgb,var(--mkt) 35%,transparent)}
+nav button:hover{background:var(--surf2)}
+nav button.on{background:var(--surf2);font-weight:700;box-shadow:inset 0 -2px 0 0 var(--violeta)}
+nav .dot{margin-left:auto;font-size:10px;color:var(--mut)}
+main{padding:22px 28px 60px;min-width:0}
+header.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:6px}
+h1{margin:0;font-size:22px}h1 i,h2 i{font-family:Newsreader,serif;font-weight:500;color:var(--violeta)}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surf)}
+.seg button{border:0;background:none;color:var(--txt);padding:6px 14px;font:inherit;font-size:12px;cursor:pointer}
+.seg button.on{background:var(--violeta);color:#fff}
+.hair{height:2px;background:linear-gradient(90deg,var(--violeta),var(--azul),var(--rosa));border-radius:2px;margin:10px 0 14px}
+.banner{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:16px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;font-size:13px}
+.banner b{color:var(--violeta)}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700}
+.p-mod{background:var(--warnbg);color:var(--warn)}.p-crm{background:color-mix(in srgb,var(--crm) 15%,transparent);color:var(--crm)}.p-mkt{background:color-mix(in srgb,var(--mkt) 15%,transparent);color:var(--mkt)}.p-calc{background:var(--neubg);color:var(--neu)}
+.p-ok{background:var(--okbg);color:var(--ok)}.p-warn{background:var(--warnbg);color:var(--warn)}.p-bad{background:var(--badbg);color:var(--bad)}
+section.tab{display:none}section.tab.on{display:block}
+h2{font-size:19px;margin:0 0 2px}.sub{color:var(--mut);margin:0 0 16px;font-size:13px}
+.srcline{display:flex;gap:8px;align-items:center;margin-bottom:4px;font-size:12px;color:var(--mut)}
+.grid{display:grid;gap:12px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.card h3{margin:0 0 8px;font-size:14px}
+.kpi .lab{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.kpi .num{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;margin:2px 0}
+.kpi .d{font-size:12px;font-weight:700}.up{color:var(--ok)}.dn{color:var(--bad)}.eq{color:var(--neu)}
+.kpi .base{font-size:11px;color:var(--mut)}
+.hero{display:grid;grid-template-columns:1.1fr 1.4fr;gap:16px;align-items:center}
+.hero .big{font-size:52px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.stack{display:flex;height:22px;border-radius:6px;overflow:hidden;margin:8px 0}
+.stack span{display:block}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--mut)}.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.funnel{display:flex;flex-wrap:wrap;gap:0;align-items:stretch}
+.step{flex:1 1 120px;background:var(--surf2);border-radius:10px;padding:10px 12px;margin:4px 0}
+.step .v{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}.step .n{font-size:12px;color:var(--mut)}
+.arrow{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 8px;min-width:64px}
+.arrow b{font-size:17px;font-variant-numeric:tabular-nums}.arrow small{font-size:10px;color:var(--mut)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surf)}
+table{border-collapse:collapse;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child,th.l,td.l{text-align:left}
+thead th{background:var(--surf2);font-size:11px;color:var(--mut);font-weight:700;vertical-align:bottom}
+thead tr.src th{font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px}
+th.s-mkt{color:var(--mkt);border-bottom:2px solid var(--mkt)}th.s-crm{color:var(--crm);border-bottom:2px solid var(--crm)}th.s-calc{color:var(--neu);border-bottom:2px solid var(--neu)}
+tbody tr:hover{background:var(--surf2)}tr.tot td{font-weight:700;background:var(--surf2)}
+td small{color:var(--mut)}
+abbr{text-decoration:underline dotted;cursor:help}
+.adv{}body.basic .adv{display:none!important}
+.read{margin-top:16px;border-left:3px solid var(--violeta);background:var(--surf);border-radius:0 10px 10px 0;padding:10px 14px;font-size:13px}
+.read b:first-child{font-family:Newsreader,serif;font-style:italic;font-size:15px;color:var(--violeta);font-weight:500}
+.bar{height:8px;background:var(--surf2);border-radius:4px;overflow:hidden}.bar span{display:block;height:100%;background:var(--azul)}
+.hb{display:grid;grid-template-columns:150px 1fr 60px;gap:8px;align-items:center;font-size:12.5px;margin:5px 0}
+.hb .val{text-align:right;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:12px;background:var(--surf2)}
+.chip.tag::before{content:"# ";color:var(--violeta);font-weight:700}.chip.var::before{content:"{ } ";color:var(--azul);font-weight:700}
+/* action cards */
+.ac{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.ac .top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.seal{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;text-transform:uppercase;letter-spacing:.05em}
+.v-Corregir{background:var(--badbg);color:var(--bad)}.v-Proteger{background:var(--warnbg);color:var(--warn)}.v-Separar{background:var(--neubg);color:var(--neu)}.v-Medir{background:var(--neubg);color:var(--txt)}.v-Decidir{background:var(--warnbg);color:var(--warn)}.v-Activar{background:var(--okbg);color:var(--ok)}
+.owner{font-size:11px;color:var(--mut)}
+.ac h3{margin:8px 0 4px;font-size:15px}
+.score{display:flex;gap:10px;align-items:center;font-size:12px}.score b{font-size:18px}
+.score .bar{flex:1;max-width:220px}.score .bar span.b-hip{background:var(--warn)}.score .bar span.b-crit{background:var(--bad)}
+.ac details{margin-top:8px;font-size:13px}.ac summary{cursor:pointer;color:var(--violeta);font-weight:700}
+.ac dl{display:grid;grid-template-columns:150px 1fr;gap:4px 12px;margin:8px 0 0}.ac dt{color:var(--mut)}.ac dd{margin:0}
+body.basic .ac.more{display:none}
+/* integraciones */
+.int{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.intc{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--surf)}
+.intc .h{display:flex;gap:10px;align-items:center}.logo{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px}
+.prom{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.6fr;gap:16px}
+.chan{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chan span{display:flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:5px 10px;font-size:12px;background:var(--surf2)}
+.empty{border:1px dashed var(--line);border-radius:12px;padding:22px;text-align:center;color:var(--mut)}
+.note{font-size:12px;color:var(--mut)}
+@media (max-width:980px){.g4{grid-template-columns:repeat(2,1fr)}.g3,.g2,.hero,.prom{grid-template-columns:1fr}}
+@media (max-width:760px){.app{grid-template-columns:1fr}nav{position:static;height:auto}main{padding:16px}.g4{grid-template-columns:1fr 1fr}.hb{grid-template-columns:110px 1fr 50px}.ac dl{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<nav>
+  <div class="brand"><div class="orb"></div><div><b>MIA · Mercado Inmobiliario Argentino</b><small>Inteligencia Comercial</small></div></div>
+
+  <div class="grp"><h4><span class="ic gen"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><em>Resumen</em></h4>
+    <button data-t="panorama" class="on">Panorama</button>
+    <button data-t="evolucion">Evolución</button>
+    <button data-t="acciones">Qué hago ahora</button>
+  </div>
+
+  <div class="grp c"><h4><span class="ic crm"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><span>Desde el <em>CRM</em> · Prometheo</span></h4>
+    <button data-t="venta">Venta · CRM</button>
+    <button data-t="resueltas">Resueltas sin contacto humano</button>
+    <button data-t="demanda">Demanda (buscadores)</button>
+    <button data-t="criterio">Criterio comercial</button>
+    <button data-t="audiencias">Audiencias</button>
+    <button data-t="consumo">Consumo y costos</button>
+  </div>
+
+  <div class="grp m"><h4><span class="ic mkt"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 11v2l13 5V6L3 11z"/><path d="M16 9a3 3 0 0 1 0 6"/></svg></span><span>Desde <em>Canales de Marketing</em></span></h4>
+    <button data-t="atribucion">Pauta → Venta (cruce)</button>
+    <button data-t="tiktok">TikTok Ads</button>
+    <button data-t="instagram">Meta Ads · Instagram</button>
+    <button data-t="facebook">Meta Ads · Facebook</button>
+    <button data-t="email">Email Marketing</button>
+    <button data-t="wamkt">WhatsApp Marketing</button>
+  </div>
+
+  <div class="grp"><h4><span class="ic gen"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 7H6a3 3 0 0 0 0 6h3M15 7h3a3 3 0 0 1 0 6h-3M8 10h8"/></svg></span><em>De dónde sale esto</em></h4>
+    <button data-t="integraciones">Integraciones</button>
+    <button data-t="calidad">Calidad de datos</button>
+  </div>
+</nav>
+
+<main>
+<header class="top">
+  <h1>Tablero de <i>Inteligencia Comercial</i></h1>
+  <div class="ctrl">
+    <div class="seg" id="mode"><button data-m="basic" class="on">Básico</button><button data-m="adv">Avanzado</button></div>
+    <div class="seg" id="theme"><button data-th="light">Claro</button><button data-th="dark">Oscuro</button></div>
+  </div>
+</header>
+<div class="hair"></div>
+<div class="banner">
+  <span><b>Meta y TikTok ven hasta el clic. Prometheo ve del clic a la suscripción.</b> El cruce por ID de anuncio / código de pauta es el producto.</span>
+  <span>Período <b>1 al 15/10/2026</b> vs 16 al 30/09</span>
+  <span class="pill p-mod">DATOS MODELADOS · sin export real</span>
+</div>
+
+<!-- PANORAMA -->
+<section class="tab on" id="panorama">
+  <h2>¿Cómo <i>venimos</i>?</h2>
+  <p class="sub">Todo lo que pasó por Prometheo en la quincena, sin importar el canal de entrada.</p>
+  <div class="grid g4" id="kpis"></div>
+  <div class="card" style="margin-top:12px"><h3>Embudo del anunciante (quien paga la suscripción) <span class="pill p-crm">Prometheo</span></h3><div class="funnel" id="funnel"></div>
+  <p class="note">Las tasas entre pasos son la cifra protagonista. Las barras no están a escala a propósito.</p></div>
+  <div class="grid g2" style="margin-top:12px">
+    <div class="card"><h3>Conversaciones por canal de entrada <span class="pill p-crm">Prometheo</span></h3><div id="canalIn"></div></div>
+    <div class="card"><h3>Tipo de contacto <span class="pill p-crm">variable tipo_contacto</span></h3><div id="tipo"></div>
+      <p class="note">Solo el <b>anunciante</b> (inmobiliaria, dueño directo, desarrolladora) entra a calificación. El buscador se mide como demanda.</p></div>
+  </div>
+  <div class="read"><b>Y entonces qué.</b> El agente resolvió solo 2 de cada 3 conversaciones y el embudo pago se concentra en anunciantes. Las suscripciones vienen sobre todo de pautas dirigidas a inmobiliarias (TT-04, IG-02): la pauta a buscadores llena el CRM pero no vende. Ver <a href="#" data-go="atribucion">Pauta → Venta</a>.</div>
+</section>
+
+<!-- EVOLUCION -->
+<section class="tab" id="evolucion">
+  <h2><i>Evolución</i></h2><p class="sub">Últimas 6 quincenas. Cada serie con mínimo, máximo y delta.</p>
+  <div class="grid g3" id="spark"></div>
+  <div class="read"><b>Y entonces qué.</b> El costo por calificado bajó tres quincenas seguidas desde que la pauta separa anunciante de buscador. No requiere acción; vigilar que la tasa de calificación no caiga si se sube el presupuesto.</div>
+</section>
+
+<!-- VENTA CRM -->
+<section class="tab" id="venta">
+  <div class="srcline"><span class="pill p-crm">CRM · Prometheo</span> export modelado al 15/10/2026</div>
+  <h2>Venta · <i>CRM</i></h2>
+  <p class="sub">Calificación del anunciante. Definición del cliente pendiente: se usa el molde del rubro como <b>propuesta a validar</b>.</p>
+  <div class="grid g4" id="ventaK"></div>
+  <div class="grid g2" style="margin-top:12px">
+    <div class="card"><h3>Definición usada (propuesta a validar)</h3>
+      <table><tbody>
+      <tr><td class="l">Es anunciante (inmobiliaria, dueño directo o desarrolladora)</td><td><span class="pill p-bad">Obligatorio</span></td></tr>
+      <tr><td class="l">Publica en zona y operación que MIA cubre</td><td><span class="pill p-bad">Obligatorio</span></td></tr>
+      <tr><td class="l">Tiene propiedades activas para publicar (≥1)</td><td><span class="pill p-neu p-calc">Suma</span></td></tr>
+      <tr><td class="l">Hoy paga otro portal o busca canal nuevo</td><td><span class="pill p-calc">Suma</span></td></tr>
+      <tr><td class="l">Plan de interés declarado</td><td><span class="pill p-calc">Suma</span></td></tr>
+      <tr><td class="l">Decisor en la conversación</td><td><span class="pill p-calc">Suma</span></td></tr>
+      </tbody></table><p class="note">Regla: obligatorios + 2 de 4 sumas. Estricto: 3 de 4.</p></div>
+    <div class="card"><h3>Por qué no califican (610 − 236 = 374)</h3><div id="noCal"></div></div>
+  </div>
+  <div class="card adv" style="margin-top:12px"><h3>Etapa declarada vs etapa por evidencia</h3>
+    <div class="tw"><table><thead><tr><th>Etapa (Smart Tag)</th><th>Declarada</th><th>Por evidencia</th><th>Diferencia</th></tr></thead><tbody>
+    <tr><td>Calificado</td><td>261</td><td>236</td><td class="dn">−25</td></tr>
+    <tr><td>Demo agendada</td><td>84</td><td>78</td><td class="dn">−6</td></tr>
+    <tr><td>Suscripto</td><td>29</td><td>29</td><td class="eq">0</td></tr></tbody></table></div></div>
+  <div class="read"><b>Y entonces qué.</b> 236 calificados (rango 181 a 236). El faltante más grande es "sin dato de cantidad de propiedades": el agente no lo pregunta en Instagram. Validar la definición con MIA antes de que este número titule.</div>
+</section>
+
+<!-- RESUELTAS -->
+<section class="tab" id="resueltas">
+  <div class="srcline"><span class="pill p-crm">CRM · Prometheo</span> tag <code>Resuelto sin humano</code> + variable <code>resuelto_por</code></div>
+  <h2>Conversaciones <i>resueltas sin contacto humano</i></h2>
+  <p class="sub">Charlas que el agente cerró sin que nadie del equipo tuviera que escribir.</p>
+  <div class="card hero">
+    <div><div class="kpi"><div class="lab">Resueltas sin contacto humano</div></div>
+      <div class="big">1.214</div><div style="font-size:15px;margin-top:6px">de <b>1.840</b> conversaciones · <b>66,0%</b></div>
+      <div class="kpi"><span class="d up">▲ +7,2 pp</span> <span class="base">vs 58,8% (1.003 de 1.706) la quincena anterior</span></div></div>
+    <div><div class="stack"><span style="width:66%;background:var(--ok)"></span><span style="width:22.7%;background:var(--azul)"></span><span style="width:11.3%;background:var(--neu)"></span></div>
+      <div class="legend"><span><i style="background:var(--ok)"></i>Resueltas por el agente 1.214</span><span><i style="background:var(--azul)"></i>Derivadas a humano 418</span><span><i style="background:var(--neu)"></i>Sin respuesta del contacto 208</span></div>
+      <p class="note">Equivale a ~<b>101 horas</b> de atención ahorradas (5 min por charla, supuesto a validar).</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:12px">
+    <div class="card"><h3>Qué resolvió el agente solo</h3><div id="resQue"></div></div>
+    <div class="card"><h3>Resueltas por canal</h3><div class="tw"><table id="resCanal"></table></div></div>
+  </div>
+  <div class="read"><b>Y entonces qué.</b> El agente resuelve muy bien al buscador (link a la app, filtros, MIA Tools). Lo que se deriva es casi todo anunciante: está bien que llegue al humano. Guardiana: satisfacción en charlas resueltas (no tenemos encuesta; ver Calidad de datos).</div>
+</section>
+
+<!-- DEMANDA -->
+<section class="tab" id="demanda">
+  <div class="srcline"><span class="pill p-crm">CRM · Prometheo</span> base: 1.020 buscadores</div>
+  <h2>¿Qué pide <i>el mercado</i>?</h2><p class="sub">Lo que buscan compradores, inquilinos e inversores. Sirve para vender a las inmobiliarias: "esto te piden en tu zona".</p>
+  <div class="grid g3">
+    <div class="card"><h3>Operación</h3><div id="dOp"></div></div>
+    <div class="card"><h3>Zonas más pedidas</h3><div id="dZona"></div></div>
+    <div class="card"><h3>MIA Tools consultadas</h3><div id="dTool"></div></div>
+  </div>
+  <div class="card adv" style="margin-top:12px"><h3>Pedido sin oferta (Bolsa de Pedidos)</h3><div class="tw"><table><thead><tr><th>Pedido</th><th>Consultas</th><th>Avisos activos en MIA</th><th>Cobertura</th></tr></thead><tbody>
+  <tr><td>Alquiler 2 amb. Córdoba Capital ≤ $450k</td><td>84</td><td>21</td><td><span class="pill p-bad">Baja</span></td></tr>
+  <tr><td>Casa con patio GBA Norte, compra USD 90–130k</td><td>61</td><td>38</td><td><span class="pill p-warn">Media</span></td></tr>
+  <tr><td>Campo 50–200 ha, inversión</td><td>22</td><td>4</td><td><span class="pill p-bad">Baja</span></td></tr>
+  </tbody></table></div><p class="note">Avisos activos: modelado; con la base de MIA se cruza real.</p></div>
+  <div class="read"><b>Y entonces qué.</b> El alquiler en Córdoba Capital tiene 4 consultas por aviso: es el argumento de venta para inmobiliarias cordobesas en la próxima pauta.</div>
+</section>
+
+<!-- CRITERIO -->
+<section class="tab" id="criterio">
+  <div class="srcline"><span class="pill p-crm">CRM · Prometheo</span> base: 236 calificados</div>
+  <h2>Criterio <i>comercial</i></h2><p class="sub">Núcleo de cinco campos sobre el anunciante calificado. Capa variable: Jobs to be Done (qué trabajo contrata el anunciante a MIA).</p>
+  <div class="tw"><table><thead><tr><th>Campo</th><th>Cobertura</th><th>Nivel</th><th class="l">Valor más frecuente</th></tr></thead><tbody id="critT"></tbody></table></div>
+  <div class="card adv" style="margin-top:12px"><h3>Impacto × Evento disparador (a quién llamar primero)</h3><div class="tw"><table><thead><tr><th></th><th>Subió el portal actual</th><th>Propiedad vacía &gt; 60 días</th><th>Nueva captación</th><th>Sin disparador</th></tr></thead><tbody>
+  <tr><td>Impacto alto (&gt; 10 propiedades)</td><td><b>22</b></td><td>9</td><td>6</td><td>11</td></tr>
+  <tr><td>Impacto medio (3–10)</td><td>18</td><td>14</td><td>8</td><td>19</td></tr>
+  <tr><td>Impacto bajo (1–2)</td><td>5</td><td>21</td><td>4</td><td>38</td></tr></tbody></table></div>
+  <p class="note">Base 175 con impacto cargado (74%). Celda prioritaria: 22 inmobiliarias grandes que dicen que su portal subió el precio.</p></div>
+  <div class="read"><b>Y entonces qué.</b> "Me subió el portal" es el disparador dominante: el mensaje de venta es precio. Impacto y causa raíz están en Indicio: reforzar el prompt antes de usarlos para priorizar.</div>
+</section>
+
+<!-- AUDIENCIAS -->
+<section class="tab" id="audiencias">
+  <div class="srcline"><span class="pill p-crm">CRM · Prometheo</span> → listas para TikTok y Meta</div>
+  <h2><i>Audiencias</i></h2><p class="sub">Cada lista declara su tag de origen y su tamaño real.</p>
+  <div class="tw"><table><thead><tr><th>Lista</th><th class="l">Tag de origen</th><th>Tamaño</th><th class="l">Uso</th><th class="l">Estado</th></tr></thead><tbody>
+  <tr><td>Anunciantes calificados</td><td class="l"><span class="chip tag">Calificado</span></td><td>236</td><td class="l">Semilla similar (TikTok / Meta)</td><td class="l"><span class="pill p-warn">Falta llegar a 1.000</span></td></tr>
+  <tr><td>Hot leads</td><td class="l"><span class="chip tag">Hot lead</span></td><td>70</td><td class="l">Retargeting CTWA “demo hoy”</td><td class="l"><span class="pill p-ok">Lista</span></td></tr>
+  <tr><td>Suscriptos actuales</td><td class="l"><span class="chip tag">Suscripto</span></td><td>29 + base</td><td class="l">Exclusión</td><td class="l"><span class="pill p-ok">Lista</span></td></tr>
+  <tr><td>Buscadores</td><td class="l"><span class="chip tag">Buscador</span></td><td>1.020</td><td class="l">Exclusión en pauta a anunciantes</td><td class="l"><span class="pill p-ok">Lista</span></td></tr>
+  <tr><td>Propietarios que venden (dueño directo)</td><td class="l"><span class="chip var">perfil_anunciante = dueño</span></td><td>260</td><td class="l">Similar para TT-01 / FB-01</td><td class="l"><span class="pill p-warn">Medir</span></td></tr>
+  </tbody></table></div>
+  <div class="read"><b>Y entonces qué.</b> Excluir a los 1.020 buscadores de la pauta de anunciantes es lo más barato que se puede hacer esta quincena.</div>
+</section>
+
+<!-- CONSUMO -->
+<section class="tab" id="consumo">
+  <div class="srcline"><span class="pill p-crm">CRM · Prometheo</span> panel de consumo <span class="pill p-mod">escenario [CÁLCULO]</span></div>
+  <h2>Consumo <i>y costos</i></h2><p class="sub">Tres costos separados: suscripción, saldo de IA y mensajes de Meta.</p>
+  <div class="grid g4">
+    <div class="card kpi"><div class="lab">Suscripción Prometheo</div><div class="num">USD 149</div><div class="base">plan Enterprise / mes</div></div>
+    <div class="card kpi"><div class="lab">Saldo de IA (quincena)</div><div class="num">USD 736</div><div class="base">1.840 conv × USD 0,40 (proyección)</div></div>
+    <div class="card kpi"><div class="lab">Meta · mensajes WhatsApp</div><div class="num">ARS 161.208</div><div class="base">1.800 marketing × ARS 89,56</div></div>
+    <div class="card kpi"><div class="lab">Costo IA por resuelta sin humano</div><div class="num">USD 0,40</div><div class="base">base: 1.214 resueltas</div></div>
+  </div>
+  <div class="card adv" style="margin-top:12px"><h3>Reparto del gasto de IA</h3><div id="iaRep"></div><p class="note">Buscadores = 55% de las charlas: no compran suscripción. Línea aparte para la no-demanda del anunciante.</p></div>
+  <div class="read"><b>Y entonces qué.</b> Más de la mitad del saldo de IA lo consumen buscadores que se resuelven con un link a la app. Un flujo corto para buscadores baja el costo sin tocar la venta.</div>
+</section>
+
+<!-- ATRIBUCION -->
+<section class="tab" id="atribucion">
+  <div class="srcline"><span class="pill p-mkt">Canales de Marketing</span> × <span class="pill p-crm">CRM · Prometheo</span> cruce por ID de anuncio / código de pauta</div>
+  <h2>Pauta → <i>Venta</i>, una por una</h2>
+  <p class="sub">Cada fila es una pauta. A la izquierda lo que informa la plataforma; a la derecha lo que pasó en Prometheo. Nunca se suman entre sí.</p>
+  <div class="seg" id="fCanal" style="margin-bottom:10px"></div>
+  <div class="tw"><table id="atrT"></table></div>
+  <p class="note">IC 95% = intervalo de Wilson de la tasa de calificación. <span class="pill p-warn">n &lt; 30</span> = muestra chica, no comparar. ROAS 12m = suscripciones × ARS 45.000 × 12 / gasto (sin churn, modelado).</p>
+  <div class="card" style="margin-top:12px"><h3>Cómo sabe Prometheo de qué pauta vino cada charla</h3>
+    <div class="grid g2"><div><b style="font-size:12px">Variables</b><div class="chips" style="margin-top:6px">
+      <span class="chip var">canal_ingreso</span><span class="chip var">pauta_origen (ad_id / código)</span><span class="chip var">utm_source</span><span class="chip var">utm_campaign</span><span class="chip var">ctwa_clid (Meta)</span><span class="chip var">ttclid (TikTok, vía landing)</span><span class="chip var">tipo_contacto</span><span class="chip var">perfil_anunciante</span><span class="chip var">cant_propiedades</span><span class="chip var">portal_actual</span><span class="chip var">plan_interes</span><span class="chip var">zona</span><span class="chip var">operacion</span><span class="chip var">evento_disparador</span><span class="chip var">objecion_principal</span><span class="chip var">resultado_contacto</span><span class="chip var">resuelto_por</span><span class="chip var">fecha_suscripcion</span></div></div>
+    <div><b style="font-size:12px">Tags (Smart Tags y prioridad)</b><div class="chips" style="margin-top:6px">
+      <span class="chip tag">Origen · TikTok Ads</span><span class="chip tag">Origen · Meta IG</span><span class="chip tag">Origen · Meta FB</span><span class="chip tag">Origen · Email</span><span class="chip tag">Origen · WA Marketing</span><span class="chip tag">Origen · Orgánico</span><span class="chip tag">Anunciante</span><span class="chip tag">Buscador</span><span class="chip tag">Soporte app</span><span class="chip tag">Identificado</span><span class="chip tag">Calificado</span><span class="chip tag">Hot lead</span><span class="chip tag">Demo agendada</span><span class="chip tag">Suscripto</span><span class="chip tag">No fit</span><span class="chip tag">Resuelto sin humano</span><span class="chip tag">Derivado a humano</span></div></div></div>
+    <p class="note">TikTok no pasa el ID de anuncio a un DM. Por eso cada pauta lleva un <b>código en el mensaje prellenado</b> ("Hola MIA, vengo de TT-04") o un link con UTM; Prometheo lo guarda en <code>pauta_origen</code>.</p></div>
+  <div class="read"><b>Y entonces qué.</b> TT-02 (MIA Map) es la pauta más barata por conversación y la peor por suscripción: trae buscadores. IG-02 y TT-04 venden. Mover presupuesto de TT-02 a TT-04 es la decisión de la quincena (card en Qué hago ahora).</div>
+</section>
+
+<!-- TIKTOK -->
+<section class="tab" id="tiktok">
+  <div class="srcline"><span class="pill p-mkt">Canales de Marketing</span> TikTok Ads Manager · export modelado 15/10</div>
+  <h2>TikTok <i>Ads</i></h2><p class="sub">Las métricas que entrega marketing, agrupadas como las lee TikTok, y al final lo que ve Prometheo.</p>
+  <div class="grid g4" id="ttK"></div>
+  <h3 style="margin:16px 0 6px;font-size:14px">1 · Distribución y costo</h3><div class="tw"><table id="tt1"></table></div>
+  <h3 style="margin:16px 0 6px;font-size:14px">2 · Interacción</h3><div class="tw"><table id="tt2"></table></div>
+  <h3 style="margin:16px 0 6px;font-size:14px">3 · Reproducción de video</h3><div class="tw"><table id="tt3"></table></div>
+  <div class="card adv" style="margin-top:8px"><h3>Cuartiles de reproducción</h3><div id="ttQ"></div></div>
+  <h3 style="margin:16px 0 6px;font-size:14px">4 · Conversión: Píxel de TikTok vs Prometheo</h3><div class="tw"><table id="tt4"></table></div>
+  <p class="note">El píxel cuenta registros en la web/app; Prometheo cuenta conversaciones y suscripciones. Son dos preguntas distintas: no se suman ni se reemplazan.</p>
+  <div class="read"><b>Y entonces qué.</b> TT-02 tiene el mejor gancho (3 s) y la peor venta: el video funciona, la audiencia no. TT-04 tiene completion bajo pero 4 suscripciones con 61 charlas: subir presupuesto y probar un gancho más fuerte en los primeros 3 s.</div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="tab" id="instagram">
+  <div class="srcline"><span class="pill p-mkt">Canales de Marketing</span> Meta Ads Manager · ubicación Instagram</div>
+  <h2>Meta Ads · <i>Instagram</i></h2><p class="sub">Feed, Reels y Click to WhatsApp.</p>
+  <div class="tw"><table id="igT"></table></div>
+  <div class="read"><b>Y entonces qué.</b> IG-03 (Click to WhatsApp) trae la mayor cantidad de anunciantes por peso; IG-01 (Amoblador IA) gusta pero trae buscadores. Mantener IG-03; IG-01 pasa a objetivo de descarga de app, fuera del embudo comercial.</div>
+</section>
+
+<!-- FACEBOOK -->
+<section class="tab" id="facebook">
+  <div class="srcline"><span class="pill p-mkt">Canales de Marketing</span> Meta Ads Manager · ubicación Facebook</div>
+  <h2>Meta Ads · <i>Facebook</i></h2><p class="sub">Dueños directos y Bolsa de Pedidos.</p>
+  <div class="tw"><table id="fbT"></table></div>
+  <div class="read"><b>Y entonces qué.</b> FB-01 trae dueños directos con baja calificación (25%): muchos tienen una sola propiedad y no deciden por plan pago. Medir si el plan gratuito los convierte después antes de cortar.</div>
+</section>
+
+<!-- EMAIL -->
+<section class="tab" id="email">
+  <div class="srcline"><span class="pill p-mkt">Canales de Marketing</span> plataforma de email (Gmail / envío masivo) · export 15/10</div>
+  <h2>Email <i>Marketing</i></h2><p class="sub">Titula el empalme: clic que termina en una conversación de Prometheo. La apertura no titula.</p>
+  <div class="tw"><table id="emT"></table></div>
+  <div class="read"><b>Y entonces qué.</b> La reactivación de anunciantes vencidos empalma 21% de los clics y trajo 2 suscripciones. El newsletter a buscadores no vende: es contenido, no se mide con el mismo vara.</div>
+</section>
+
+<!-- WA MKT -->
+<section class="tab" id="wamkt">
+  <div class="srcline"><span class="pill p-mkt">Canales de Marketing</span> difusiones desde Prometheo · API oficial</div>
+  <h2>WhatsApp <i>Marketing</i></h2><p class="sub">Titula la respuesta, no la lectura. Tier y calidad del número son métricas del tablero.</p>
+  <div class="grid g4" id="waK"></div>
+  <div class="tw" style="margin-top:12px"><table id="waT"></table></div>
+  <div class="read"><b>Y entonces qué.</b> 12,3% de respuesta sobre entregados y 3 suscripciones por ARS 161 mil. Bloqueos en 0,6%: margen para una segunda difusión segmentada por zona.</div>
+</section>
+
+<!-- ACCIONES -->
+<section class="tab" id="acciones">
+  <h2>¿Qué hago <i>ahora</i>?</h2>
+  <p class="sub">Cards de acción ordenadas por impacto. Rúbrica de score versión 1, sin calibrar. Como los datos son modelados, ningún score pasa de 54. En Básico se ven tres.</p>
+  <div id="cards"></div>
+</section>
+
+<!-- INTEGRACIONES -->
+<section class="tab" id="integraciones">
+  <h2>¿De dónde <i>sale esto</i>?</h2><p class="sub">Dos familias de fuentes. El CRM es uno solo: todos los canales de conversación entran por Prometheo.</p>
+  <h3 style="display:flex;gap:8px;align-items:center;font-size:14px"><span class="ic crm" style="width:22px;height:22px;border-radius:6px;display:grid;place-items:center;color:#fff">●</span>CRM</h3>
+  <div class="int">
+    <div class="intc prom"><div><div class="h"><div class="logo" style="background:var(--violeta)">P</div><div><b>Prometheo</b><br><span class="pill p-warn">Pendiente de export</span></div></div>
+      <p class="note">Conversaciones, tags, variables, calificación, resolución sin humano y suscripción. Última actualización: <b>sin export, datos modelados</b>.</p></div>
+      <div><b style="font-size:12px">Canales de conversación que viven dentro de Prometheo</b>
+      <div class="chan"><span>WhatsApp (API)</span><span>Gmail</span><span>Instagram DM</span><span>Facebook Messenger</span><span>TikTok DM</span></div>
+      <p class="note">No se listan como integraciones aparte: su dato llega por Prometheo.</p></div></div>
+  </div>
+  <h3 style="display:flex;gap:8px;align-items:center;font-size:14px;margin-top:20px"><span class="ic mkt" style="width:22px;height:22px;border-radius:6px;display:grid;place-items:center;color:#fff">●</span>Canales de Marketing</h3>
+  <div class="int">
+    <div class="intc"><div class="h"><div class="logo" style="background:#111">TT</div><div><b>TikTok Ads</b><br><span class="pill p-warn">A conectar</span></div></div><p class="note">Gasto, distribución, video, píxel por anuncio y día.</p></div>
+    <div class="intc"><div class="h"><div class="logo" style="background:#1877F2">M</div><div><b>Meta Ads</b> (IG + FB)<br><span class="pill p-warn">A conectar</span></div></div><p class="note">Gasto, alcance, clics y conversaciones por anuncio.</p></div>
+    <div class="intc"><div class="h"><div class="logo" style="background:#b04a7a">@</div><div><b>Email Marketing</b><br><span class="pill p-warn">A conectar</span></div></div><p class="note">Envíos, aperturas, clics, bajas.</p></div>
+    <div class="intc"><div class="h"><div class="logo" style="background:#1f8a5c">W</div><div><b>WhatsApp Marketing</b><br><span class="pill p-warn">A conectar</span></div></div><p class="note">Difusiones, plantillas, tier y calidad.</p></div>
+  </div>
+  <h3 style="font-size:14px;margin-top:20px">Faltantes declarados</h3>
+  <ul class="note"><li>Export de Prometheo: no existe todavía; todo el tablero es modelado.</li><li>Registro de suscripción (cierre): hoy vive fuera del CRM. Sin él no hay ciclo cerrado.</li><li>Cortes de saldo de IA: sin panel de consumo.</li><li>Precio real de los planes de MIA: se usó ARS 45.000/mes.</li></ul>
+</section>
+
+<!-- CALIDAD -->
+<section class="tab" id="calidad">
+  <h2>Calidad <i>de datos</i></h2><p class="sub">Cobertura por variable, nivel de evidencia y dónde se usa.</p>
+  <div class="tw"><table id="calT"></table></div>
+  <p class="note">Escalera: Hecho ≥ 80% · Señal 40–79% · Indicio 10–39% · No reportable &lt; 10%.</p>
+  <div class="read"><b>Y entonces qué.</b> La atribución de TikTok depende del código en el mensaje: 71% de cobertura. Hasta pasar 80%, las cifras por pauta de TikTok se leen como Señal.</div>
+</section>
+</main>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),fmt=n=>n.toLocaleString('es-AR'),pct=(a,b,d=1)=>b?(100*a/b).toFixed(d).replace('.',','):'–';
+const ars=n=>'$'+fmt(Math.round(n));
+function hbars(el,rows,color){document.querySelector(el).innerHTML=rows.map(([k,v,t])=>{const m=Math.max(...rows.map(r=>r[1]));return `<div class="hb"><span>${k}</span><div class="bar"><span style="width:${100*v/m}%;background:${color||'var(--azul)'}"></span></div><span class="val">${t||fmt(v)}</span></div>`}).join('')}
+function kpi(l,n,d,base,good=true){const up=d.startsWith('+');const cls=d==='0'?'eq':(up===good?'up':'dn');return `<div class="card kpi"><div class="lab">${l}</div><div class="num">${n}</div><div class="d ${cls}">${up?'▲':'▼'} ${d}</div><div class="base">${base}</div></div>`}
+function wilson(k,n){if(!n)return[0,0];const z=1.96,p=k/n,d=1+z*z/n,c=p+z*z/(2*n),r=z*Math.sqrt(p*(1-p)/n+z*z/(4*n*n));return[(c-r)/d,(c+r)/d]}
+
+// PANORAMA
+$('#kpis').innerHTML=kpi('Conversaciones','1.840','+7,9%','vs 1.706 · todos los canales')+kpi('Resueltas sin contacto humano','1.214','+21,0%','66,0% del total · vs 1.003')+kpi('Anunciantes calificados','236','+12,4%','de 610 anunciantes · vs 210 · propuesta a validar')+kpi('Suscripciones','29','+16,0%','vs 25 · registro manual');
+const fun=[['Conversaciones',1840],['Anunciantes',610],['Calificados',236],['Hot leads',70],['Demo agendada',78],['Suscripción',29]];
+$('#funnel').innerHTML=fun.map((s,i)=>(i?`<div class="arrow"><b>${i==4?pct(78,236,0):pct(s[1],fun[i-1][1],0)}%</b><small>${i==4?'de calif.':'pasa'}</small></div>`:'')+`<div class="step"><div class="v">${fmt(s[1])}</div><div class="n">${s[0]}</div></div>`).join('');
+hbars('#canalIn',[['WhatsApp',820],['Instagram DM',430],['TikTok DM',260],['Facebook Messenger',210],['Gmail',120]],'var(--crm)');
+hbars('#tipo',[['Buscador',1020],['Inmobiliaria',310],['Dueño directo',260],['Soporte app',150],['Spam / otros',60],['Desarrolladora',40]],'var(--crm)');
+
+// EVOLUCION
+const ev=[['Conversaciones',[1320,1410,1505,1580,1706,1840],true],['Resueltas sin humano %',[48,51,55,57,58.8,66],true],['Calificados',[150,168,181,196,210,236],true],['Suscripciones',[14,17,19,22,25,29],true],['Costo por calificado (ARS)',[16900,15200,14100,13300,12400,10960],false],['Hot sin seguimiento 24 h',[19,17,15,14,12,9],false]];
+$('#spark').innerHTML=ev.map(([n,v,g])=>{const mn=Math.min(...v),mx=Math.max(...v),W=220,H=50,pts=v.map((y,i)=>[i*W/5,H-4-(y-mn)/(mx-mn||1)*(H-8)]);const d=((v[5]-v[4])/v[4]*100);const good=(d>=0)===g;
+return `<div class="card"><div class="kpi"><div class="lab">${n}${g?'':' · menos es mejor'}</div><div class="num" style="font-size:22px">${fmt(v[5])}</div><div class="d ${good?'up':'dn'}">${d>=0?'▲ +':'▼ '}${d.toFixed(1).replace('.',',')}% vs quincena anterior</div></div>
+<svg viewBox="-4 0 232 ${H}" width="100%" height="${H}"><polyline fill="none" stroke="var(--violeta)" stroke-width="2" points="${pts.map(p=>p.join(',')).join(' ')}"/><circle cx="${pts[5][0]}" cy="${pts[5][1]}" r="4" fill="var(--violeta)"/></svg>
+<div class="note" style="display:flex;justify-content:space-between"><span>mín ${fmt(mn)}</span><span>máx ${fmt(mx)}</span></div></div>`}).join('');
+
+// VENTA
+$('#ventaK').innerHTML=kpi('Anunciantes','610','+9,3%','base curada de calificación')+kpi('Calificados','236','+12,4%','38,7% · rango 181 (estricto) a 236')+kpi('Hot leads','70','+9,4%','9 sin seguimiento en 24 h')+kpi('Demo → suscripción','37,2%','+2,1 pp','29 de 78 demos');
+hbars('#noCal',[['Sin cantidad de propiedades',121],['Menos de 2 sumas',98],['Zona sin cobertura',64],['No fit: solo quiere publicar gratis',58],['No fit: no decide (empleado)',33]],'var(--warn)');
+
+// RESUELTAS
+hbars('#resQue',[['Buscador: link a app y filtros',612],['Buscador: MIA Tools (UVA, alquiler)',258],['Anunciante: planes y precios',212],['Soporte app (cuenta, avisos)',132]],'var(--ok)');
+$('#resCanal').innerHTML='<thead><tr><th>Canal</th><th>Conversaciones</th><th>Resueltas</th><th>%</th></tr></thead><tbody>'+[['WhatsApp',820,520],['Instagram DM',430,301],['TikTok DM',260,196],['Facebook Messenger',210,127],['Gmail',120,70]].map(r=>`<tr><td>${r[0]}</td><td>${fmt(r[1])}</td><td>${fmt(r[2])}</td><td>${pct(r[2],r[1])}%</td></tr>`).join('')+'<tr class="tot"><td>Total</td><td>1.840</td><td>1.214</td><td>66,0%</td></tr></tbody>';
+
+// DEMANDA
+hbars('#dOp',[['Alquiler',551,'54%'],['Compra',347,'34%'],['Inversión',122,'12%']]);
+hbars('#dZona',[['Córdoba Capital',214],['CABA',198],['GBA Norte',143],['Rosario',97],['La Plata',66]]);
+hbars('#dTool',[['Simulador UVA',188],['MIA Map',161],['Calculadora alquiler',97],['Amoblador IA',74],['Generador de contratos',52]]);
+
+// CRITERIO
+const crit=[['Problema','82%','Hecho','p-ok','Pago alto en portal sin consultas'],['Impacto','74%','Señal','p-warn','3 a 10 propiedades sin rotar'],['Causa raíz','31%','Indicio','p-bad','Avisos sin foto ni precio actualizado'],['Evento disparador','63%','Señal','p-warn','Le subió el precio el portal actual'],['Resultado de contacto','88%','Hecho','p-ok','Demo agendada con fecha']];
+$('#critT').innerHTML=crit.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td><span class="pill ${r[3]}">${r[2]}</span></td><td class="l">${r[4]}</td></tr>`).join('');
+
+// CONSUMO
+hbars('#iaRep',[['Conversación buscador',405,'55%'],['Conversación anunciante',184,'25%'],['Extracción de variables',88,'12%'],['Smart Tags',44,'6%'],['Soporte',15,'2%']],'var(--neu)');
+
+// ADS DATA
+const ads=[
+// id, canal, nombre, objetivo, gasto, imp, alcance, clics, interacciones, conv, anunc, calif, hot, demos, susc, v3s%, v6s%, q25,q50,q75,q100, pixel
+['TT-01','TikTok','“Publicá gratis tu propiedad”','Dueños directos',380000,410000,236000,5330,9120,142,118,41,14,15,5,38,24,61,40,27,18,210],
+['TT-02','TikTok','“MIA Map: precios por barrio”','Buscadores',300000,520000,301000,7800,18400,188,12,3,1,1,0,46,31,70,52,38,29,340],
+['TT-03','TikTok','“Simulador de crédito UVA”','Inversores',220000,290000,182000,3480,6200,74,9,4,2,2,1,35,22,58,37,24,16,150],
+['TT-04','TikTok','“Inmobiliarias: subí tu cartera”','Inmobiliarias',260000,180000,120000,1980,2650,61,54,29,11,12,4,29,17,49,30,18,11,66],
+['IG-01','Instagram','Reel “Amoblador con IA”','Buscadores',280000,340000,190000,4080,11300,121,22,8,3,3,1],
+['IG-02','Instagram','Carrusel “Plan inmobiliarias”','Inmobiliarias',310000,210000,128000,2310,3100,96,81,38,12,14,5],
+['IG-03','Instagram','Click to WhatsApp “Demo gratis”','Inmobiliarias',350000,230000,141000,2760,2900,168,102,34,13,12,4],
+['FB-01','Facebook','“Vendé sin intermediarios”','Dueños directos',240000,260000,150000,2860,4100,109,88,22,6,6,2],
+['FB-02','Facebook','“Bolsa de Pedidos”','Inmobiliarias',160000,150000,96000,1350,1700,47,31,9,2,2,1]];
+const PLAN=45000;
+function atrRows(f){const rs=ads.filter(a=>!f||a[1]===f);let t=[0,0,0,0,0,0,0,0];
+const body=rs.map(a=>{const[ ,, , ,g,imp,,cl,,cv,an,ca,ho,de,su]=a;[g,imp,cl,cv,an,ca,de,su].forEach((x,i)=>t[i]+=x);const w=wilson(ca,an);
+return `<tr><td><b>${a[0]}</b> <small>${a[2]}</small></td><td class="l adv"><small>${a[3]}</small></td><td>${ars(g)}</td><td class="adv">${fmt(imp)}</td><td>${fmt(cl)}</td><td class="adv">${pct(cl,imp,2)}%</td><td>${fmt(cv)}</td><td>${fmt(an)}</td><td>${ca} ${an<30?'<span class="pill p-warn">n&lt;30</span>':''}</td><td class="adv">${pct(ca,an,0)}% <small>(${(w[0]*100).toFixed(0)}–${(w[1]*100).toFixed(0)})</small></td><td class="adv">${ho}</td><td class="adv">${de}</td><td><b>${su}</b></td><td>${ca?ars(g/ca):'–'}</td><td class="adv">${su?ars(g/su):'–'}</td><td>${(su*PLAN*12/g).toFixed(1).replace('.',',')}x</td></tr>`}).join('');
+return `<thead><tr class="src"><th></th><th class="adv"></th><th class="s-mkt" colspan="1">Plataforma</th><th class="s-mkt adv"></th><th class="s-mkt"></th><th class="s-mkt adv"></th><th class="s-crm" colspan="1">Prometheo</th><th class="s-crm"></th><th class="s-crm"></th><th class="s-crm adv"></th><th class="s-crm adv"></th><th class="s-crm adv"></th><th class="s-crm"></th><th class="s-calc">Cálculo</th><th class="s-calc adv"></th><th class="s-calc"></th></tr>
+<tr><th>Pauta</th><th class="l adv">Público</th><th>Gasto</th><th class="adv">Impresiones</th><th>Clics</th><th class="adv"><abbr title="Clics / impresiones">CTR</abbr></th><th>Conversaciones</th><th>Anunciantes</th><th>Calificados</th><th class="adv"><abbr title="Calificados / anunciantes, con intervalo de confianza 95% (Wilson)">% calif. (IC 95%)</abbr></th><th class="adv">Hot</th><th class="adv">Demos</th><th>Suscripciones</th><th><abbr title="Gasto / calificados">Costo por calificado</abbr></th><th class="adv"><abbr title="Gasto / suscripciones">CAC</abbr></th><th><abbr title="Suscripciones × ARS 45.000 × 12 / gasto. Modelado, sin churn">ROAS 12m</abbr></th></tr></thead><tbody>${body}
+<tr class="tot"><td>Total ${f||'pauta'}</td><td class="adv"></td><td>${ars(t[0])}</td><td class="adv">${fmt(t[1])}</td><td>${fmt(t[2])}</td><td class="adv">${pct(t[2],t[1],2)}%</td><td>${fmt(t[3])}</td><td>${fmt(t[4])}</td><td>${t[5]}</td><td class="adv">${pct(t[5],t[4],0)}%</td><td class="adv"></td><td class="adv">${t[6]}</td><td>${t[7]}</td><td>${ars(t[0]/t[5])}</td><td class="adv">${ars(t[0]/t[7])}</td><td>${(t[7]*PLAN*12/t[0]).toFixed(1).replace('.',',')}x</td></tr></tbody>`}
+const fc=['Todas','TikTok','Instagram','Facebook'];
+$('#fCanal').innerHTML=fc.map((c,i)=>`<button data-c="${i?c:''}" class="${i?'':'on'}">${c}</button>`).join('');
+$('#fCanal').onclick=e=>{if(!e.target.dataset)return;[...$('#fCanal').children].forEach(b=>b.classList.toggle('on',b===e.target));$('#atrT').innerHTML=atrRows(e.target.dataset.c)};
+$('#atrT').innerHTML=atrRows('');
+$('#igT').innerHTML=atrRows('Instagram');$('#fbT').innerHTML=atrRows('Facebook');
+
+// TIKTOK
+const tt=ads.filter(a=>a[1]==='TikTok'),tg=tt.reduce((s,a)=>s+a[4],0);
+$('#ttK').innerHTML=kpi('Gasto TikTok',ars(tg),'+12,0%','4 pautas · TikTok Ads',false)+kpi('Conversaciones en Prometheo',fmt(tt.reduce((s,a)=>s+a[9],0)),'+18,3%','con código de pauta')+kpi('Calificados',''+tt.reduce((s,a)=>s+a[11],0),'+9,1%','Prometheo')+kpi('Suscripciones',''+tt.reduce((s,a)=>s+a[14],0),'+25,0%','Prometheo · registro manual');
+const H=(c,arr)=>`<thead><tr>${c.map((x,i)=>`<th class="${x[1]||''}">${x[0]}</th>`).join('')}</tr></thead><tbody>${arr}</tbody>`;
+$('#tt1').innerHTML=H([['Pauta'],['<abbr title="Veces que se mostró el anuncio">Impresiones</abbr>'],['<abbr title="Usuarios únicos que lo vieron">Alcance</abbr>'],['<abbr title="Impresiones / alcance">Frecuencia</abbr>'],['<abbr title="Costo por mil impresiones">CPM</abbr>'],['<abbr title="Costo por clic">CPC</abbr>'],['Gasto']],tt.map(a=>`<tr><td><b>${a[0]}</b> <small>${a[2]}</small></td><td>${fmt(a[5])}</td><td>${fmt(a[6])}</td><td>${(a[5]/a[6]).toFixed(2).replace('.',',')}</td><td>${ars(a[4]/a[5]*1000)}</td><td>${ars(a[4]/a[7])}</td><td>${ars(a[4])}</td></tr>`).join(''));
+$('#tt2').innerHTML=H([['Pauta'],['<abbr title="Clics al destino (web, app, WhatsApp)">Clics (destino)</abbr>'],['<abbr title="Clics / impresiones">CTR</abbr>'],['<abbr title="Me gusta, comentarios, compartidos y visitas al perfil pagos">Interacciones de pago</abbr>'],['Tasa de interacción','adv']],tt.map(a=>`<tr><td><b>${a[0]}</b> <small>${a[2]}</small></td><td>${fmt(a[7])}</td><td>${pct(a[7],a[5],2)}%</td><td>${fmt(a[8])}</td><td class="adv">${pct(a[8],a[5],2)}%</td></tr>`).join(''));
+$('#tt3').innerHTML=H([['Pauta'],['<abbr title="% de impresiones que vio 3 segundos o más. Mide el gancho">Visualizaciones 3 s</abbr>'],['<abbr title="Vio 6 s o interactuó en ese lapso">Visualizaciones 6 s</abbr>'],['<abbr title="% que vio el video completo">Tasa de finalización</abbr>'],['P25','adv'],['P50','adv'],['P75','adv']],tt.map(a=>`<tr><td><b>${a[0]}</b> <small>${a[2]}</small></td><td>${a[15]}% <small>${fmt(Math.round(a[5]*a[15]/100))}</small></td><td>${a[16]}%</td><td><b>${a[21-0-1]}%</b></td><td class="adv">${a[17]}%</td><td class="adv">${a[18]}%</td><td class="adv">${a[19]}%</td></tr>`).join(''));
+$('#ttQ').innerHTML=tt.map(a=>`<div style="margin:6px 0"><b style="font-size:12px">${a[0]}</b><div style="display:flex;gap:4px;align-items:flex-end;height:60px">${[100,a[17],a[18],a[19],a[20]].map((q,i)=>`<div style="flex:1;text-align:center;font-size:10px;color:var(--mut)"><div style="height:${q*.45}px;background:var(--azul);border-radius:3px 3px 0 0;opacity:${1-i*.15}"></div>${['inicio','25%','50%','75%','100%'][i]} · ${q}%</div>`).join('')}</div></div>`).join('');
+$('#tt4').innerHTML=`<thead><tr class="src"><th></th><th class="s-mkt">Píxel TikTok</th><th class="s-mkt"></th><th class="s-mkt adv"></th><th class="s-crm">Prometheo</th><th class="s-crm"></th><th class="s-crm"></th><th class="s-crm adv"></th><th class="s-calc">Cálculo</th><th class="s-calc"></th></tr><tr><th>Pauta</th><th><abbr title="Acciones clave registradas por el píxel (registro / descarga)">Conversiones</abbr></th><th><abbr title="Gasto / conversiones del píxel">CPA</abbr></th><th class="adv"><abbr title="Conversiones / clics">CVR</abbr></th><th>Conversaciones</th><th>Calificados</th><th>Suscripciones</th><th class="adv">Hot</th><th>Costo por calificado</th><th><abbr title="Suscripciones × ARS 45.000 × 12 / gasto">ROAS 12m</abbr></th></tr></thead><tbody>`+tt.map(a=>`<tr><td><b>${a[0]}</b> <small>${a[2]}</small></td><td>${a[21]}</td><td>${ars(a[4]/a[21])}</td><td class="adv">${pct(a[21],a[7])}%</td><td>${a[9]}</td><td>${a[11]}</td><td><b>${a[14]}</b></td><td class="adv">${a[12]}</td><td>${ars(a[4]/a[11])}</td><td>${(a[14]*PLAN*12/a[4]).toFixed(1).replace('.',',')}x</td></tr>`).join('')+'</tbody>';
+
+// EMAIL
+const em=[['Reactivación anunciantes vencidos',4200,4080,1510,290,22,61,14,2],['Newsletter buscadores · octubre',12000,11640,3260,640,118,35,0,0]];
+$('#emT').innerHTML=`<thead><tr class="src"><th></th><th class="s-mkt adv">Plataforma</th><th class="s-mkt"></th><th class="s-mkt adv"></th><th class="s-mkt"></th><th class="s-mkt adv"></th><th class="s-crm">Prometheo</th><th class="s-crm"></th><th class="s-crm"></th><th class="s-calc">Cálculo</th></tr><tr><th>Campaña</th><th class="adv">Enviados</th><th>Entregados</th><th class="adv">Aperturas</th><th>Clics</th><th class="adv">Bajas</th><th><abbr title="Clics que terminan en conversación de Prometheo">Empalme</abbr></th><th>Calificados</th><th>Suscripciones</th><th><abbr title="Empalmes / clics">Tasa de empalme</abbr></th></tr></thead><tbody>`+em.map(e=>`<tr><td>${e[0]}</td><td class="adv">${fmt(e[1])}</td><td>${fmt(e[2])}</td><td class="adv">${fmt(e[3])} <small>${pct(e[3],e[2])}%</small></td><td>${fmt(e[4])} <small>CTR ${pct(e[4],e[2])}%</small></td><td class="adv">${e[5]}</td><td><b>${e[6]}</b></td><td>${e[7]}</td><td>${e[8]}</td><td>${pct(e[6],e[4])}%</td></tr>`).join('')+'</tbody>';
+
+// WA
+$('#waK').innerHTML=kpi('Tasa de respuesta','12,3%','+2,4 pp','214 de 1.742 entregados')+kpi('Calificados','19','+5','Prometheo')+kpi('Tier de envío','10.000','+1 nivel','subió desde 1.000')+kpi('Calidad del número','Alta','0','bloqueos 0,6% (11)');
+$('#waT').innerHTML=`<thead><tr><th>Difusión</th><th>Enviados</th><th>Entregados</th><th class="adv">Leídos</th><th>Respuestas</th><th class="adv">Bloqueos</th><th>Calificados</th><th>Suscripciones</th><th class="adv">Costo Meta</th></tr></thead><tbody><tr><td>“Plan Pro −30% inmobiliarias” · plantilla marketing</td><td>1.800</td><td>1.742</td><td class="adv">1.290 <small>74%</small></td><td><b>214</b> <small>12,3%</small></td><td class="adv">11</td><td>19</td><td>3</td><td class="adv">ARS 161.208</td></tr></tbody>`;
+
+// CARDS
+const cards=[
+['Decidir','Marketing','Presupuesto TikTok · TT-02 trae 188 charlas y 0 suscripciones',52,'hip','Gasto, conversaciones y suscripciones por código de pauta (TikTok × Prometheo).','Pasar ARS 150.000 de TT-02 a TT-04 durante una quincena.','TikTok Ads Manager · grupo de anuncios.','+2 a +4 suscripciones con el mismo gasto total.','Suscripciones de TT-04 / gasto. Guardiana: % de calificados de TT-04 no baja de 40%.','Dato modelado (techo 54); la diferencia entre pautas es grande, pero TT-02 y TT-03 tienen n &lt; 30 anunciantes.'],
+['Separar','AUREA','Flujo buscador · 55% del saldo de IA lo consume quien no compra',50,'hip','Reparto del gasto de IA por tipo de contacto.','Al detectar "Buscador", responder con link a la app y MIA Tools en 2 mensajes y cerrar con tag Resuelto sin humano.','Prometheo · prompt del agente, sector de ruteo.','−25% a −35% de costo de IA por conversación de buscador.','USD por conversación de buscador. Guardiana: % resueltas sin humano no baja de 66%.','Modelado; mecanismo conocido en otras cuentas.'],
+['Activar','Ventas','Hot leads · 9 de 70 sin seguimiento en 24 h',48,'hip','Tag Hot lead sin derivación ni seguimiento.','Alerta al vendedor de turno cuando entra un Hot lead; demo ofrecida en el mismo día.','Prometheo · automatización de derivación.','Cero hot sin seguimiento; +2 demos por quincena.','Hot sin seguimiento en 24 h. Guardiana: tasa demo → suscripción no cae.','Modelado; la regla es estándar del rubro.'],
+['Corregir','AUREA','Cantidad de propiedades · 121 anunciantes no califican por falta del dato',46,'hip','Por qué no califican.','Agregar la pregunta "¿cuántas propiedades manejás?" en el primer bloque del agente en Instagram y TikTok.','Prometheo · prompt + variable cant_propiedades.','Calificados más cerca del rango real; mejor priorización.','Cobertura de cant_propiedades ≥ 80%. Guardiana: abandono en el primer bloque.','Modelado.'],
+['Medir','Marketing','Atribución TikTok · 71% de las charlas trae el código de pauta',44,'hip','Cobertura de pauta_origen en TikTok DM.','Mensaje prellenado con código en todas las pautas y link con UTM a landing con píxel.','TikTok Ads · URL y mensaje del anuncio.','Cobertura ≥ 90%: la pestaña TikTok pasa a Hecho.','Cobertura de pauta_origen por canal.','Modelado; techo de No reportable si no se arregla.'],
+['Decidir','Dirección','Definición de calificado · el número aún es propuesta a validar',40,'hip','Molde del rubro adaptado a un portal con suscripción.','Validar con MIA obligatorios y sumas (reunión de 30 min).','Doc 1 · bloque B3.','El número de calificados puede titular.','Diferencia entre definición vieja y nueva.','Sin definición del cliente.']];
+$('#cards').innerHTML=cards.map((c,i)=>`<div class="ac ${i>2?'more':''}"><div class="top"><span class="seal v-${c[0]}">${c[0]}</span><span class="owner">Dueño: <b>${c[1]}</b></span></div><h3>${c[2]}</h3>
+<div class="score"><b>${c[3]}%</b><div class="bar"><span class="b-${c[4]}" style="width:${c[3]}%"></span></div><span class="pill p-warn">hipótesis · dato modelado</span></div>
+<p class="note">${c[5]}</p><details><summary>Qué hacer</summary><dl><dt>Qué hacer</dt><dd>${c[6]}</dd><dt>Dónde se cambia</dt><dd>${c[7]}</dd><dt>Efecto esperado</dt><dd>${c[8]}</dd><dt>Cómo lo medimos</dt><dd>${c[9]}</dd><dt>Por qué este score</dt><dd>${c[10]}</dd></dl></details></div>`).join('');
+
+// CALIDAD
+const cal=[['tipo_contacto',96,'Panorama, Venta'],['canal_ingreso',100,'Panorama, Resueltas'],['resuelto_por',94,'Resueltas'],['pauta_origen · Meta (ctwa_clid)',92,'Pauta → Venta'],['pauta_origen · TikTok (código)',71,'TikTok'],['utm_campaign · Gmail',38,'Email'],['cant_propiedades',58,'Venta, Criterio'],['portal_actual',66,'Criterio'],['plan_interes',47,'Venta'],['evento_disparador',63,'Criterio'],['causa_raiz',31,'Criterio'],['fecha_suscripcion (cierre)',0,'Venta · hoy fuera del CRM'],['satisfacción post-resolución',0,'Resueltas']];
+const lvl=v=>v>=80?['Hecho','p-ok']:v>=40?['Señal','p-warn']:v>=10?['Indicio','p-bad']:['No reportable','p-bad'];
+$('#calT').innerHTML='<thead><tr><th>Variable</th><th>Cobertura</th><th></th><th>Nivel</th><th class="l">Dónde se usa</th></tr></thead><tbody>'+cal.map(r=>{const l=lvl(r[1]);return `<tr><td>${r[0]}</td><td>${r[1]}%</td><td style="width:140px"><div class="bar"><span style="width:${r[1]}%"></span></div></td><td><span class="pill ${l[1]}">${l[0]}</span></td><td class="l">${r[2]}</td></tr>`}).join('')+'</tbody>';
+
+// NAV + MODE + THEME
+function go(t){document.querySelectorAll('section.tab').forEach(s=>s.classList.toggle('on',s.id===t));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));window.scrollTo(0,0)}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.t));
+document.querySelectorAll('[data-go]').forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.go)});
+document.body.classList.add('basic');
+$('#mode').onclick=e=>{const m=e.target.dataset.m;if(!m)return;document.body.classList.toggle('basic',m==='basic');[...$('#mode').children].forEach(b=>b.classList.toggle('on',b===e.target))};
+$('#theme').onclick=e=>{const t=e.target.dataset.th;if(!t)return;document.documentElement.dataset.theme=t;[...$('#theme').children].forEach(b=>b.classList.toggle('on',b===e.target))};
+</script>
+</body>
+</html>

@@ -50,10 +50,10 @@ def src(k):
     return f'<span class="qq {c}">{ic(i)}{t}</span>'
 
 
-def kpi(icon, tone, s, label, value, delta="", up=True, bsc="", adv="", qcp=""):
+def kpi(icon, tone, s, label, value, delta="", up=True, bsc="", adv="", qcp="", flat=False):
     d = ""
     if delta:
-        cls = "qbr" if up else "qbr dn"
+        cls = "d-flat" if flat else "qbr" if up else "qbr dn"
         d = f'<span class="qbt {cls}">{ic("up" if delta.startswith("+") else "down")}{delta}</span>'
     z = f'<span class="bsc">{bsc}</span><span class="adv">{adv or bsc}</span>' if bsc else ""
     p = f'<div class="qcp">{qcp}</div>' if qcp else ""
@@ -132,23 +132,37 @@ VERB_IC = {"activar": "bolt", "proteger": "shield", "corregir": "wrench", "separ
 OWNER = {"Ventas": "o-ven", "Marketing": "o-mkt", "AUREA": "o-aurea", "Dirección": "o-cob"}
 
 
+RUB_NAMES = ["Base y denominador", "Fuente y trazabilidad", "Cobertura", "Profundidad", "Evidencia previa", "Cierre medible"]
+RUB_MAX = [20, 15, 15, 20, 15, 15]
+TECHO = 54  # dato modelado: techo de la regla R2 de aurea-ic-dashboard
+
+
+def score_of(c):
+    return min(sum(c["rub"]), TECHO)
+
+
 def action(c, extra=False):
+    total = sum(c["rub"])
+    score = score_of(c)
     rub = "".join(f'<div class="qd"><span>{k}</span><span class="qe"><i style="width:{100 * a / b:.0f}%"></i></span><b>{a}/{b}</b></div>'
-                  for k, a, b in c["rub"])
+                  for k, a, b in zip(RUB_NAMES, c["rub"], RUB_MAX))
+    techo = f"Suma de la rúbrica {total}; con dato modelado el techo es {TECHO}." if total > TECHO else f"Suma de la rúbrica {total}, por debajo del techo de {TECHO} por dato modelado."
     cls = "i3 av adv" if extra else "i3 av"
     return (f'<details class="{cls}" data-v="{c["v"]}"><summary><div class="qbg"><span class="qby"><span class="qcd">{ic(VERB_IC[c["v"]])}</span>{c["v"].capitalize()}</span>'
-            f'<span class="qce {OWNER[c["owner"]]}">{c["owner"]}</span>{sx(c["score"])}</div><div class="qbl">{c["title"]}</div>'
+            f'<span class="qce {OWNER[c["owner"]]}">{c["owner"]}</span>{sx(score)}</div><div class="qbl">{c["title"]}</div>'
             f'<div class="qbh"><div class="cx"><span class="ql qbm">{ic("target")}</span><span class="qm">Qué mide</span><span class="qn">{c["mide"]}</span></div>'
             f'<div class="cx"><span class="ql qbi">{ic("filter")}</span><span class="qm">Base</span><span class="qn">{c["base"]}</span></div>'
             f'<div class="cx"><span class="ql qbn">{ic("chat")}</span><span class="qm">Dato</span><span class="qn">{c["dato"]}</span></div></div>'
-            f'<div class="qbd"><span class="op">Action Driven · qué hago</span><span class="cl">Plegar</span>{ic("chev")}</div></summary>'
+            f'<div class="ad-do">{ic("arrow")}<div><b>Qué hacemos</b><span>{c["corto"]}</span></div></div>'
+            f'<div class="ad-meta"><span>{ic("user")}<b>{c["owner"]}</b></span><span>{ic("clock")}<b>{c["cuando"]}</b></span><span>{ic("target")}<b>{c["meta"]}</b></span></div>'
+            f'<div class="qbd"><span class="op">Ver el detalle: dónde, cómo se mide y por qué este índice</span><span class="cl">Plegar</span>{ic("chev")}</div></summary>'
             f'<div class="qa"><div class="qb"><span class="n">{ic("arrow")}</span>Qué hacer</div><p class="qp">{c["hacer"]}</p>'
             f'<div class="qu">{ic("pin")}<span><b>Dónde se cambia:</b> {c["donde"]}</span></div></div>'
             f'<div class="qa"><div class="qb"><span class="n">{ic("target")}</span>Efecto esperado</div><p class="qp">{c["efecto"]}</p></div>'
             f'<div class="qa"><div class="qb"><span class="n">{ic("pulse")}</span>Cómo lo medimos</div><p class="qp">{c["medimos"]}</p>'
             f'<div class="qbs">{ic("shield")}<span><b>Guardiana:</b> {c["guardiana"]}</span></div></div>'
-            f'<div class="qa qbo"><div class="qb"><span class="n">{ic("gauge")}</span>Por qué este índice Data Driven {sx(c["score"], True)}</div>'
-            f'<div class="qbz">{rub}</div><p class="qbj">{c["porque"]} Dato modelado: techo 54. Rúbrica v1, sin calibrar: el resultado se registra al cierre del período.</p></div></details>')
+            f'<div class="qa qbo"><div class="qb"><span class="n">{ic("gauge")}</span>Por qué este índice Data Driven {sx(score, True)}</div>'
+            f'<div class="qbz">{rub}</div><p class="qbj">{c["porque"]} {techo} Rúbrica v1, sin calibrar: el resultado se registra al cierre del período.</p></div></details>')
 
 
 def adx(a, color):
@@ -223,9 +237,9 @@ P = {}
 P["panorama"] = (
     '<div class="iobar"><span class="demo-tag">' + ic("info") + 'Dato ilustrativo</span><span class="iohint">Demo de Inteligencia Comercial para MIA · cifras modeladas con la estructura real de Prometheo</span></div>'
     '<div class="hero-grid"><div class="hero"><div class="hero-sph sph-bg"></div><div class="hero-top"><span class="hero-kick">Panorama · 1 al 15 de octubre 2026</span><span class="hero-per">comparado con la quincena anterior</span></div>'
-    '<div class="hero-h">Más charlas, dos de cada tres resueltas por el agente y 29 inmobiliarias y dueños dados de alta.</div>'
-    '<div class="hero-sub"><span class="bsc">Entraron <b>1.840 conversaciones</b> (+8%) por WhatsApp, Gmail, Instagram, Facebook y TikTok. <b>1.214 se resolvieron sin contacto humano</b> y salieron <b>29 altas</b> de suscripción.</span>'
-    '<span class="adv">1.840 conversaciones (+7,9%) · 610 anunciantes · 236 calificados (39% de los anunciantes) · 78 demos · 29 altas. Costo por calificado de la pauta paga: $13.351.</span></div>'
+    '<div class="hero-h">1.840 conversaciones en quince días, <em>dos de cada tres resueltas sin intervención humana.</em></div>'
+    '<div class="hero-sub"><span class="bsc"><b>+8%</b> contra la quincena anterior, por los cinco canales. El agente cerró <b>1.214 charlas</b> sin derivarlas, entre <b>181 y 236 anunciantes</b> calificaron y <b>29</b> se dieron de alta.</span>'
+    '<span class="adv">1.840 conversaciones (+7,9%) · 610 anunciantes · 181 a 236 calificados (30% a 39% de los anunciantes, criterio a validar) · 78 demos · 29 altas. Costo por calificado de la pauta paga: $13.351.</span></div>'
     '<div class="chart-scale"><span>Conversaciones por día · mín 98 · máx 142</span><span>más es mejor ↑</span></div>'
     '<div class="hchart"><svg viewBox="0 0 600 150" preserveAspectRatio="none" role="img"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>'
     '<path d="M 6 88 L 90 80 L 174 72 L 258 66 L 342 70 L 426 52 L 510 44 L 594 30 L 594 150 L 6 150 Z" fill="url(#hg)"/><path d="M 6 88 L 90 80 L 174 72 L 258 66 L 342 70 L 426 52 L 510 44 L 594 30" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><circle cx="594" cy="30" r="4.5" fill="#fff"/></svg>'
@@ -240,7 +254,7 @@ P["panorama"] = (
     '<div class="g4">'
     + kpi("chat", "blu", "pro", "Conversaciones", "1.840", "+7,9%", bsc="Personas que escribieron por cualquiera de los 5 canales.", adv="1.840 contra 1.706 · 610 anunciantes, 1.020 buscadores, 210 soporte u otros.", qcp="<b>Conversación</b>: contacto nuevo o reactivado en Prometheo, por fecha de ingreso.")
     + kpi("checkc", "grn", "pro", "Resueltas sin contacto humano", "1.214", "+21%", bsc="66% de todas las charlas, sin que nadie del equipo escriba.", adv="1.214 de 1.840 · quincena anterior 1.003 de 1.706 (58,8%).", qcp="Tag <b>Resuelto sin humano</b> y variable resuelto_por = agente.")
-    + kpi("target", "", "calc", "Anunciantes calificados", "236", "+12%", bsc="39% de los anunciantes que escribieron.", adv="236 de 610 · rango 181 (estricto) a 236 · propuesta a validar.", qcp="<b>Calificado (propuesta)</b>: anunciante en zona y operación que MIA cubre + 2 de 4: propiedades activas, paga otro portal, plan de interés, decisor.")
+    + kpi("target", "", "calc", "Anunciantes calificados · rango", "181–236", "+12%", bsc="30% a 39% de los anunciantes · criterio propuesto, a validar con MIA.", adv="Estricto 181 (3 de 4 sumas) · amplio 236 (2 de 4) sobre 610 anunciantes · quincena anterior 210 (amplio).", qcp="<b>Calificado (propuesta)</b>: anunciante en zona y operación que MIA cubre + 2 de 4: propiedades activas, paga otro portal, plan de interés, decisor.")
     + kpi("lock", "pnk", "erp", "Altas de suscripción", "29", "+4", bsc="37% de las demos terminó en alta.", adv="Cruce del tag Suscripto con el registro de altas de MIA.", qcp="<b>Alta</b>: plan pago activado.")
     + '</div><div class="adv mt"><div class="g4">'
     + kpi("dollar", "", "calc", "Costo por calificado · pauta paga", "$13.351", "+7,7%", up=False, bsc="TikTok + Meta ÷ sus calificados · menos es mejor", qcp="$2.500.000 ÷ 188 calificados atribuidos.")
@@ -262,22 +276,64 @@ P["panorama"] = (
     + yeq("El agente resuelve solo 2 de cada 3 charlas y la pauta dirigida a inmobiliarias es la que vende. La pauta a buscadores llena el CRM pero no da altas: ver Pauta → Venta en Canales Marketing.")
 )
 
-P["evolucion"] = head_sec("Evolución · quincena a quincena", "Seis quincenas,", "con mínimo, máximo y delta.", "Cómo vienen las cifras clave.", "Cada serie lleva escala y delta contra la quincena anterior.")
-EV = [("Conversaciones", [1320, 1410, 1505, 1580, 1706, 1840], True, "pro"), ("Resueltas sin humano %", [48, 51, 55, 57, 58.8, 66], True, "pro"),
-      ("Calificados", [150, 168, 181, 196, 210, 236], True, "calc"), ("Altas", [14, 17, 19, 22, 25, 29], True, "erp"),
-      ("Costo por calificado (ARS)", [16900, 15200, 14100, 13300, 12400, 13351], False, "calc"), ("Hot sin seguimiento 24 h", [19, 17, 15, 14, 12, 9], False, "pro")]
-ev = []
-for name, v, good, s in EV:
-    mn, mx = min(v), max(v)
-    pts = " ".join(f"{6 + i * 117.6:.0f},{110 - (y - mn) / (mx - mn or 1) * 90:.0f}" for i, y in enumerate(v))
-    d = (v[5] - v[4]) / v[4] * 100
-    ok = (d >= 0) == good
-    ev.append(f'<div class="qx"><div class="qw">{ic("trend")}{name}{src(s)}<span class="r">{"más es mejor ↑" if good else "menos es mejor ↓"}</span></div>'
-              f'<div class="qy" style="font-size:26px">{n(v[5], 1 if isinstance(v[5], float) else 0)}</div>'
-              f'<span class="qbt {"qbr" if ok else "qbr dn"}" style="color:var({"--good" if ok else "--crit"})">{"+" if d >= 0 else ""}{n(d, 1)}% vs quincena anterior</span>'
-              f'<svg viewBox="0 0 600 120" preserveAspectRatio="none" style="width:100%;height:90px;margin-top:8px"><polyline points="{pts}" fill="none" stroke="var(--vio)" stroke-width="2.4" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>'
-              f'<div class="chart-x"><span>mín {n(mn)}</span><span>máx {n(mx)}</span></div></div>')
-P["evolucion"] += '<div class="g3">' + "".join(ev) + "</div>" + yeq("El costo por calificado subió esta quincena (+7,7%) porque TT-02 sumó gasto sin calificados. El resto de las series mejora. Acción en Action Driven.")
+WEEKS = ["S1 sep", "S2 sep", "S3 sep", "S4 sep", "S1 oct", "S2 oct"]
+
+
+def barchart(vals, color, fmt=lambda v: n(v), maxv=None):
+    """Barras por tramo semanal con eje y grilla, como Evolución de EDFAN."""
+    top = maxv or max(vals) * 1.15
+    out = []
+    for k in range(5):
+        y = 206 - k * 46.5
+        out.append(f'<line class="gl" x1="50" x2="992" y1="{y:.1f}" y2="{y:.1f}"/><text x="44" y="{y + 3:.1f}" text-anchor="end">{fmt(top * k / 4)}</text>')
+    step = 942 / len(vals)
+    for i, v in enumerate(vals):
+        h = v / top * 186
+        x = 50 + i * step + step * .2
+        w = step * .6
+        out.append(f'<rect x="{x:.1f}" y="{206 - h:.1f}" width="{w:.1f}" height="{h:.1f}" rx="3" fill="{color}" opacity="{1 if i >= len(vals) - 2 else .45}"/>'
+                   f'<text x="{x + w / 2:.1f}" y="224" text-anchor="middle">{WEEKS[i]}</text>')
+    out.append(f'<text class="lbl" x="{x + w / 2:.1f}" y="{206 - h - 4:.1f}" text-anchor="middle">{fmt(vals[-1])}</text>')
+    return f'<svg class="chart" viewBox="0 0 1000 230" role="img" preserveAspectRatio="xMidYMid meet">{"".join(out)}</svg>'
+
+
+def evo_card(icon, title, s, right, vals, color, legend, fmt=lambda v: n(v), maxv=None):
+    return (f'<div class="qcf pad"><div class="qw">{ic(icon)}{title}{src(s)}<span class="r">{right}</span></div>'
+            f'{barchart(vals, color, fmt, maxv)}<div class="chart-lg"><span><i style="background:{color}"></i>{legend}</span>'
+            f'<span><i style="background:{color};opacity:.45"></i>quincenas anteriores</span></div></div>')
+
+
+EV_CONV = [770, 810, 838, 868, 896, 944]
+EV_CAL = [94, 102, 101, 109, 112, 124]
+EV_ALTA = [10, 12, 12, 13, 13, 16]
+EV_PCT = [34, 35, 36, 37, 38, 40]
+EV_RES = [55, 57, 58, 60, 64, 68]
+pct = lambda v: f"{v:.0f}%"
+CANALES = [("TikTok Ads", 465, 193, 77, 30, 10), ("Meta Ads · Instagram", 385, 205, 80, 29, 10), ("Meta Ads · Facebook", 156, 119, 31, 8, 3),
+           ("Email Marketing", 96, 28, 14, 4, 2), ("WhatsApp Marketing", 214, 38, 19, 5, 3), ("Orgánico y sin atribución", 524, 27, 15, 2, 1)]
+P["evolucion"] = (
+    head_sec("Evolución · semana a semana", "Conversaciones, calificados y altas", "por tramo semanal.",
+             "Cómo vienen las conversaciones, cuántos anunciantes califican y cuántos terminan en alta.",
+             "Cada quincena se divide en dos tramos semanales. 1 al 15 sep: 1.580 conversaciones, 196 calificados, 22 altas. 16 al 30 sep: 1.706, 210 y 25. 1 al 15 oct: 1.840, 236 y 29. En color pleno, la quincena actual.")
+    + '<div class="g4">'
+    + kpi("chat", "blu", "pro", "Conversaciones · quincena", "1.840", "+7,9%", bsc="1.706 · 1.580 las dos anteriores")
+    + kpi("checkc", "", "calc", "Calificados · amplio", "236", "+12%", bsc="210 · 196 las dos anteriores")
+    + kpi("lock", "pnk", "erp", "Altas", "29", "+16%", bsc="25 · 22 las dos anteriores")
+    + kpi("pulse", "grn", "calc", "% de calificación", "39%", "+1,4 p.p.", bsc="sobre anunciantes · subió 6 semanas seguidas")
+    + '</div><div class="g2">'
+    + evo_card("chat", "Conversaciones por semana", "pro", f"mín {n(min(EV_CONV))} · máx {n(max(EV_CONV))}", EV_CONV, "var(--blu)", "Conversaciones · los 5 canales")
+    + evo_card("checkc", "Calificados por semana", "calc", f"mín {min(EV_CAL)} · máx {max(EV_CAL)}", EV_CAL, "var(--good)", "Calificados · criterio propuesto a validar")
+    + '</div><div class="g2">'
+    + evo_card("lock", "Altas por semana", "erp", "total 1–15 sep 22 · 16–30 sep 25 · 1–15 oct 29", EV_ALTA, "var(--pnk)", "Altas de suscripción")
+    + evo_card("pulse", "% de calificación por semana", "calc", f"de {EV_PCT[0]}% a {EV_PCT[-1]}%", EV_PCT, "var(--vio)", "Calificados ÷ anunciantes", pct, 50)
+    + '</div><div class="adv"><div class="g2">'
+    + evo_card("bot", "% resueltas sin contacto humano por semana", "pro", f"de {EV_RES[0]}% a {EV_RES[-1]}%", EV_RES, "var(--good)", "Resueltas sin contacto humano ÷ conversaciones", pct, 100)
+    + '<div class="qcf" style="overflow:hidden"><div class="tblwrap"><table style="min-width:560px"><thead><tr><th>Canal · 1 al 15 oct</th><th>Charlas</th><th>Anunciantes</th><th>% califica</th><th>Demos</th><th>Altas</th></tr></thead><tbody>'
+    + "".join(f"<tr><td><b>{c}</b></td><td>{n(ch)}</td><td>{an}</td><td>{100 * ca / an:.0f}%</td><td>{de}</td><td>{al}</td></tr>" for c, ch, an, ca, de, al in CANALES)
+    + '</tbody></table></div><p class="qcm" style="padding:0 14px 12px">% califica sobre anunciantes de cada canal. Orgánico: 27 anunciantes, muestra chica.</p></div>'
+    + "</div></div>"
+    + yeq("Las conversaciones crecen todas las semanas y la calificación acompaña (de 34% a 40%). Las altas suben más despacio: dependen de que la demo se haga el mismo día, por eso la acción está en el seguimiento de hot leads.")
+)
 
 P["ventacrm"] = (
     head_sec("Venta · CRM · el estado de cada anunciante", "Quién califica, a quién atender primero", "y qué mejorar en el CRM.",
@@ -305,6 +361,17 @@ P["ventacrm"] = (
 P["resueltas"] = (
     head_sec("Resueltas sin contacto humano", "1.214 conversaciones,", "cerradas por el agente sin que nadie del equipo escriba.",
              "Cuántas charlas resolvió el agente solo, en qué y por qué canal.", "Tag Resuelto sin humano + variable resuelto_por. Una charla resuelta es la que cierra con la respuesta dada y sin derivación ni intervención humana.")
+    + '<div class="g4">'
+    + kpi("checkc", "grn", "pro", "Resueltas sin contacto humano", "1.214", "+21%", bsc="66,0% de 1.840 conversaciones.")
+    + kpi("pulse", "", "calc", "% resueltas", "66,0%", "+7,2 p.p.", bsc="quincena anterior 58,8% (1.003 de 1.706)")
+    + kpi("users", "blu", "pro", "Derivadas a humano", "418", "+3%", flat=True, bsc="22,7% · casi todas de anunciantes")
+    + kpi("clock", "pnk", "calc", "Horas de equipo ahorradas", "≈ 101 h", "+18 h", bsc="5 min por charla, supuesto a validar")
+    + '</div><div class="adv mt"><div class="g4">'
+    + kpi("bolt", "", "pro", "Primera respuesta del agente", "< 1 min", bsc="mediana de la quincena")
+    + kpi("x", "amb", "pro", "Sin respuesta del contacto", "208", "−4%", bsc="11,3% · no escribieron después del primer mensaje")
+    + kpi("repeat", "", "pro", "Reabiertas en 48 h", "41", bsc="3,4% de las resueltas · guardiana de la resolución")
+    + kpi("chat", "blu", "pro", "Resueltas de buscadores", "870", bsc="85% de los 1.020 buscadores")
+    + '</div></div>'
     + f'<div class="cq"><div class="cq-top"><div><div class="cq-k">{ic("bot")}Agente de MIA · Prometheo</div><div class="cq-t">Dos de cada tres charlas <em>no necesitaron a nadie.</em></div>'
     '<div class="cq-s">Equivale a unas 101 horas de atención del equipo en la quincena (5 minutos por charla, supuesto a validar).</div></div>'
     '<div class="cq-nums"><div><b>1.214</b><span>resueltas sin contacto humano</span><i>66,0% de 1.840 · antes 58,8%</i></div><div><b>418</b><span>derivadas a humano</span><i>22,7%</i></div><div><b>208</b><span>sin respuesta del contacto</span><i>11,3%</i></div></div></div>'
@@ -321,6 +388,12 @@ P["resueltas"] = (
 P["demanda"] = (
     head_sec("Demanda · qué piden los buscadores", "Lo que busca la gente en MIA,", "para vendérselo a las inmobiliarias.",
              "Compradores, inquilinos e inversores: qué operación, dónde y con qué herramienta.", "Base: 1.020 buscadores. Sirve para el pitch a inmobiliarias: «esto te piden en tu zona».")
+    + '<div class="g4">'
+    + kpi("users", "blu", "pro", "Buscadores", "1.020", "+6%", bsc="55% de las conversaciones")
+    + kpi("home", "", "pro", "Buscan alquilar", "54%", "+2 p.p.", bsc="551 de 1.020", adv="551 de 1.020 · compra 347 · inversión 122")
+    + kpi("pin", "pnk", "pro", "Zona más pedida", "Córdoba Capital", bsc="214 consultas · 21% de los que declaran zona")
+    + kpi("box", "amb", "pro", "Pedidos sin oferta", "167", "+11%", up=False, bsc="consultas sin avisos suficientes en MIA")
+    + '</div>'
     + '<div class="g3">'
     + bars("Operación", "pro", [("Alquiler", 551, "54%"), ("Compra", 347, "34%"), ("Inversión", 122, "12%")])
     + bars("Zonas más pedidas", "pro", [("Córdoba Capital", 214), ("CABA", 198), ("GBA Norte", 143), ("Rosario", 97), ("La Plata", 66)], color="var(--blu)")
@@ -333,7 +406,13 @@ P["demanda"] = (
 
 P["criterio"] = (
     head_sec("Criterio comercial · sobre los 236 calificados", "Qué le duele al anunciante", "y qué lo hace escribir hoy.",
-             "Los cinco campos del núcleo y a quién llamar primero.", "Capa variable: Jobs to be Done (qué trabajo contrata el anunciante a MIA). Impacto y causa raíz son señales blandas: sin refuerzo en el prompt nacen en Indicio.")
+             "Los cinco campos del núcleo y a quién llamar primero.", "Perfil B2B de suscripción con recompra (inmobiliarias y desarrolladoras): capa variable Gap Selling + resultado de contacto. Impacto y causa raíz son señales blandas: sin refuerzo en el prompt nacen en Indicio.")
+    + '<div class="g4">'
+    + kpi("quote", "", "pro", "Problema declarado", "82%", bsc="193 de 236 calificados · Hecho")
+    + kpi("flame", "amb", "pro", "Impacto alto", "48", bsc="27% de 175 con impacto cargado · Señal")
+    + kpi("bolt", "blu", "pro", "Disparador hace menos de 30 días", "61%", bsc="91 de 149 con disparador · Señal")
+    + kpi("cal", "grn", "pro", "Avance con fecha", "52", "+9", bsc="resultado de contacto cargado por el equipo")
+    + '</div>'
     + table(["Campo", "Cobertura", "Nivel", "Valor más frecuente"],
             [["Problema", "82%", '<span class="lvl" style="background:var(--good-bg);color:var(--good-ink)">Hecho</span>', "Paga mucho en un portal y no le llegan consultas"],
              ["Impacto", "74%", '<span class="lvl" style="background:var(--warn-bg);color:var(--warn-ink)">Señal</span>', "3 a 10 propiedades sin rotar"],
@@ -343,12 +422,24 @@ P["criterio"] = (
     + '<div class="adv mt">' + table(["Impacto × evento disparador", "Subió el portal", "Propiedad vacía +60 días", "Nueva captación", "Sin disparador"],
                                     [["Alto (más de 10 propiedades)", "<b>22</b>", 9, 6, 11], ["Medio (3 a 10)", 18, 14, 8, 19], ["Bajo (1 o 2)", 5, 21, 4, 38]], minw=620)
     + '<p class="qcm">Base: 175 con impacto cargado (74%). Celda prioritaria: 22 inmobiliarias grandes a las que el portal les subió el precio.</p></div>'
+    + '<div class="adv mt"><div class="qg">'
+    + "".join(f'<div class="qc" style="--q:var(--vio);--qb:var(--vio-soft)"><div class="qc-h"><span class="qc-ic">{ic("quote")}</span><span class="qc-th">{t}</span><span class="qc-n">{k}</span></div><blockquote>{ic("quote")}{q}</blockquote><div class="qc-m">{ic("user")}{w}</div></div>'
+              for t, k, q, w in [("Problema declarado", "cita", "Pago el portal todos los meses y este mes me entraron dos consultas.", "Inmobiliaria · Córdoba · 14 propiedades"),
+                                 ("Evento disparador", "cita", "Nos aumentaron 40% el plan y estamos viendo alternativas.", "Inmobiliaria · CABA · 22 propiedades"),
+                                 ("Impacto", "cita", "Tengo tres departamentos vacíos desde agosto.", "Dueño directo · La Plata")])
+    + '</div><p class="qcm">Citas de una persona cada una: explican un número, no son un patrón.</p></div>'
     + yeq("«Me subió el portal» es el disparador dominante: el mensaje de venta es precio. Impacto y causa raíz todavía no alcanzan para priorizar sin refuerzo del prompt.")
 )
 
 P["audiencias"] = (
     head_sec("Audiencias · listas para la pauta", "Cada lista con su tag de origen", "y su tamaño real.",
              "Quién entra como semilla, quién como exclusión.", "Similares en TikTok y Meta desde 1.000 coincidencias reales. La señal QualifiedLead (Conversions API y Events API de TikTok) vale solo si el tag de calificado está bien cargado.")
+    + '<div class="g4">'
+    + kpi("seed", "grn", "pro", "Semilla de similares", "236", bsc="de 1.000 coincidencias necesarias · 24%")
+    + kpi("flame", "amb", "pro", "Hot leads para retargeting", "70", bsc="tag Hot lead")
+    + kpi("x", "", "pro", "Excluidos de la pauta a anunciantes", "1.049", bsc="1.020 buscadores + 29 altas")
+    + kpi("checkc", "blu", "calc", "Listas listas para usar", "3 de 5", bsc="2 esperan volumen o medición")
+    + '</div>'
     + table(["Lista", "Tag de origen", "Tamaño", "Uso", "Estado"],
             [["Anunciantes calificados", "Calificado", 236, "Semilla de similares (TikTok y Meta)", '<span class="fx-st pend">Falta llegar a 1.000</span>'],
              ["Hot leads", "Hot lead", 70, "Retargeting Click to WhatsApp «demo hoy»", '<span class="fx-st ok">Lista</span>'],
@@ -371,6 +462,11 @@ P["tokens"] = (
            "El buscador no compra suscripción: va en una línea aparte, como la no-demanda en real estate.")
     + '<div class="qx"><div class="qw">' + ic("wa") + "Costo de Meta · quincena" + src("calc") + '</div><div class="kv"><div><div class="v">$0</div><div class="k">servicio · dentro de ventana y cupo</div></div><div><div class="v">$161.208</div><div class="k">marketing · 1.800 plantillas</div></div><div><div class="v">$0</div><div class="k">utilidad</div></div><div><div class="v">$161.208</div><div class="k">total</div></div></div><p class="qcm">Marketing ARS 89,56 por plantilla (rate card oficial, sin impuestos). El dato real sale de la factura de Meta.</p></div>'
     + "</div>"
+    + '<div class="g2">'
+    + '<div class="qx"><div class="qw">' + ic("alert") + "Cortes de saldo" + src("pro") + '</div><div class="empty-st" style="text-align:center;padding:18px 10px;color:var(--ink3);font-size:12.5px;border:1px dashed var(--line);border-radius:12px">' + ic("info", "width:20px;height:20px;color:var(--ink4)") + '<p style="margin:6px 0 0"><b style="color:var(--ink2)">Sin datos suficientes en este período.</b><br>Falta conectar el panel de consumo de Prometheo. Si el saldo llega a cero, el agente deja de responder: se declara en Integraciones.</p></div></div>'
+    + bars("Puerta de entrada", "pro", [("Click to WhatsApp (IG-03)", 168, "168", "9%"), ("Mensaje directo en redes", 900, "900", "49%"), ("WhatsApp orgánico y difusión", 652, "652", "35%"), ("Gmail", 120, "120", "7%")],
+           "Solo el 9% entra por Click to WhatsApp: la ventana gratis de 72 h cubre poco del servicio. El resto entra en el cupo de 1.000 mensajes por mes.", color="var(--blu)")
+    + '</div>'
     + yeq("Más de la mitad del saldo de IA lo consumen buscadores que se resuelven con un link a la app. Un flujo corto para buscadores baja el costo sin tocar la venta.")
 )
 
@@ -413,7 +509,7 @@ P["tiktok"] = (
     '<p class="qcq"><span class="bsc">Las métricas que entrega marketing, agrupadas como las lee TikTok, y al final qué pasó en Prometheo con cada pauta.</span>'
     '<span class="adv">TikTok manda en gasto, distribución, video y píxel. Prometheo manda en charlas, calificación y altas. El píxel cuenta registros en la web; Prometheo cuenta conversaciones: son dos preguntas distintas.</span></p></div>'
     + '<div class="g4">'
-    + kpi("dollar", "grn", "tt", "Inversión de la quincena", ars(tg), "+12%", bsc="4 pautas", qcp=f"CPM {ars(tg / sum(a['imp'] for a in TT) * 1000)}")
+    + kpi("dollar", "grn", "tt", "Inversión de la quincena", ars(tg), "+12%", flat=True, bsc="4 pautas", qcp=f"CPM {ars(tg / sum(a['imp'] for a in TT) * 1000)}")
     + kpi("chat", "blu", "pro", "Charlas en Prometheo", str(sum(a["conv"] for a in TT)), "+18%", bsc="con código de pauta")
     + kpi("checkc", "", "pro", "Calificados", str(sum(a["calif"] for a in TT)), "+9%", bsc=f"{100 * sum(a['calif'] for a in TT) / sum(a['anun'] for a in TT):.0f}% de los anunciantes de TikTok")
     + kpi("lock", "pnk", "erp", "Altas", str(sum(a["susc"] for a in TT)), "+2", bsc="cruce del tag con el registro de altas")
@@ -445,7 +541,7 @@ def meta_panel(canal, title, lectura):
         '<p class="qcq"><span class="bsc">El cruce Meta × Prometheo de cada anuncio: qué pasó con cada clic dentro del CRM.</span>'
         '<span class="adv">Meta manda en inversión, alcance, impresiones y clics; Prometheo manda en cuántas charlas hubo y qué pasó con ellas. <b>CTR</b> = clics ÷ impresiones.</span></p></div>'
         + '<div class="g4">'
-        + kpi("dollar", "grn", "meta", "Inversión de la quincena", ars(g), "+6%", bsc=f"{len(rows)} anuncios")
+        + kpi("dollar", "grn", "meta", "Inversión de la quincena", ars(g), "+6%", flat=True, bsc=f"{len(rows)} anuncios")
         + kpi("chat", "blu", "pro", "Charlas", str(sum(a["conv"] for a in rows)), "+10%", bsc="Meta informa más conversaciones iniciadas: manda Prometheo.")
         + kpi("checkc", "", "pro", "Calificados", str(sum(a["calif"] for a in rows)), "+14%", bsc=f"{100 * sum(a['calif'] for a in rows) / sum(a['anun'] for a in rows):.0f}% de los anunciantes")
         + kpi("lock", "pnk", "erp", "Altas", str(sum(a["susc"] for a in rows)), "+1", bsc="cruce del tag con el registro de altas")
@@ -466,9 +562,10 @@ P["email"] = (
     + kpi("lock", "pnk", "erp", "Altas", "2", "+1", bsc="anunciantes vencidos que volvieron")
     + kpi("mail", "", "mail", "Bajas", "140", "+8%", up=False, bsc="0,9% de los entregados")
     + "</div>"
-    + table(["Campaña", f'Enviados {src("mail")}', "Entregados", "Aperturas", "Clics", "Bajas", f'Empalme {src("pro")}', "Calificados", "Altas", f'Tasa de empalme {src("calc")}'],
-            [["Reactivación anunciantes vencidos", "4.200", "4.080", "1.510 · 37%", "290 · 7,1%", 22, "<b>61</b>", 14, 2, "21%"],
-             ["Newsletter buscadores · octubre", "12.000", "11.640", "3.260 · 28%", "640 · 5,5%", 118, "<b>35</b>", 0, 0, "5%"]], minw=900)
+    + table(["Campaña", f'Enviados {src("mail")}', "Entregados", "Aperturas", "Clics", "Bajas", f'Empalme {src("pro")}', "Calificados", "Altas", f'CTOR {src("calc")}', "Tasa de empalme"],
+            [["Reactivación anunciantes vencidos", "4.200", "4.080", "1.510 · 37%", "290 · 7,1%", 22, "<b>61</b>", 14, 2, "19%", "21%"],
+             ["Newsletter buscadores · octubre", "12.000", "11.640", "3.260 · 28%", "640 · 5,5%", 118, "<b>35</b>", 0, 0, "20%", "5%"]], minw=980)
+    + '<p class="qcm">Empalme: contacto que escribe a Prometheo dentro de las 72 h del clic (ventana propuesta, a validar). 18 empalmes llegaron sin código de campaña: faltante estructural, no se reparten. La apertura se infla por precarga de imágenes: no titula.</p>'
     + yeq("La reactivación de anunciantes vencidos empalma 21% de los clics y trajo 2 altas. El newsletter a buscadores no vende: es contenido y se mide con otra vara.")
 )
 
@@ -487,32 +584,44 @@ P["wamkt"] = (
 )
 
 # --- Action Driven ---
-RUB = lambda b, f, c, p, e, ci: [("Base", b, 20), ("Fuente", f, 15), ("Cobertura", c, 15), ("Profundidad", p, 20), ("Evidencia", e, 15), ("Cierre", ci, 15)]
+# rub: puntos por componente (base, fuente, cobertura, profundidad, evidencia previa, cierre), niveles de score-data-driven.md
 CARDS = [
-    dict(v="decidir", owner="Marketing", score=52, title="Presupuesto TikTok · TT-02 trae 188 charlas y 0 altas", mide="Gasto, charlas y altas por código de pauta", base="4 pautas de TikTok, 465 charlas", dato="TT-02: $300.000, 3 calificados, 0 altas · TT-04: $260.000, 29 calificados, 4 altas",
-         hacer="Pasar $150.000 de TT-02 a TT-04 durante una quincena. TT-02 sigue, con objetivo de descarga de app.", donde="TikTok Ads Manager · presupuesto por grupo de anuncios", efecto="+2 a +4 altas con el mismo gasto total.",
-         medimos="Altas de TT-04 ÷ gasto, al cierre de la quincena.", guardiana="% de calificados de TT-04 no baja de 40% al subir presupuesto.", porque="La diferencia entre pautas es grande, pero TT-02 y TT-03 tienen menos de 30 anunciantes.", rub=RUB(14, 10, 8, 12, 4, 6)),
-    dict(v="separar", owner="AUREA", score=50, title="Flujo buscador · 55% del saldo de IA lo consume quien no compra", mide="Reparto del gasto de IA por tipo de contacto", base="1.840 charlas · USD 736", dato="1.020 buscadores · USD 405",
+    dict(v="decidir", owner="Marketing", rub=[14, 5, 7, 15, 5, 15], title="Presupuesto TikTok · TT-02 trae 188 charlas y 0 altas",
+         mide="Gasto, charlas y altas por código de pauta", base="87 anunciantes de TikTok · 465 charlas", dato="TT-02: 3 calificados, 0 altas · TT-04: 29 y 4",
+         corto="Pasar $150.000 de TT-02 a TT-04 durante una quincena.", cuando="Esta semana", meta="+2 a +4 altas",
+         hacer="Pasar $150.000 de TT-02 a TT-04 durante una quincena. TT-02 sigue con objetivo de descarga de app, fuera del embudo comercial.", donde="TikTok Ads Manager · presupuesto por grupo de anuncios", efecto="+2 a +4 altas con el mismo gasto total de TikTok.",
+         medimos="Altas de TT-04 ÷ gasto, al cierre de la quincena, con la misma base.", guardiana="% de calificados de TT-04 no baja de 40% al subir el presupuesto.", porque="Base 14: 87 anunciantes. Fuente 5: dato modelado. Cobertura 7: código de pauta al 71%. Profundidad 15: contrastado entre pautas. Evidencia 5: buena práctica. Cierre 15: misma métrica, fecha y guardiana."),
+    dict(v="activar", owner="Ventas", rub=[14, 5, 11, 10, 5, 15], title="Hot leads · 9 de 70 sin seguimiento en 24 h",
+         mide="Hot leads sin derivación ni seguimiento", base="70 hot leads de la quincena", dato="9 sin seguimiento (antes 12)",
+         corto="Aviso inmediato al vendedor de turno y demo ofrecida el mismo día.", cuando="Esta semana", meta="0 hot sin seguimiento",
+         hacer="Aviso al vendedor de turno cuando entra un hot lead; demo ofrecida el mismo día con dos horarios cerrados.", donde="Prometheo · acción del Smart Tag Hot lead (prompt listo abajo)", efecto="Cero hot sin seguimiento y +2 demos por quincena.",
+         medimos="Hot leads sin seguimiento a las 24 h, cada semana.", guardiana="Tasa de demo a alta no cae (hoy 37%).", porque="Base 14: 70 hot leads. Fuente 5: modelado. Cobertura 11: tag al 88%. Profundidad 10: diagnóstico. Evidencia 5: estándar del rubro. Cierre 15."),
+    dict(v="separar", owner="AUREA", rub=[20, 5, 15, 10, 5, 15], title="Flujo buscador · 55% del saldo de IA lo consume quien no compra",
+         mide="Reparto del gasto de IA por tipo de contacto", base="1.840 charlas · USD 736 proyectados", dato="1.020 buscadores · USD 405",
+         corto="Al buscador, link a la app y MIA Tools en dos mensajes, y cerrar.", cuando="Próxima quincena", meta="−25% a −35% costo IA buscador",
          hacer="Al detectar Buscador, responder con link a la app y MIA Tools en dos mensajes y cerrar con el tag Resuelto sin humano.", donde="Prometheo · prompt del agente, sector de ruteo", efecto="−25% a −35% del costo de IA por charla de buscador.",
-         medimos="USD por charla de buscador.", guardiana="% resueltas sin contacto humano no baja de 66%.", porque="Mecanismo conocido en otras cuentas; el reparto es proyección.", rub=RUB(14, 8, 8, 12, 4, 6)),
-    dict(v="activar", owner="Ventas", score=48, title="Hot leads · 9 de 70 sin seguimiento en 24 h", mide="Hot leads sin derivación ni seguimiento", base="70 hot leads de la quincena", dato="9 sin seguimiento (antes 12)",
-         hacer="Aviso al vendedor de turno cuando entra un Hot lead; demo ofrecida el mismo día con dos horarios.", donde="Prometheo · acción del Smart Tag Hot lead", efecto="Cero hot sin seguimiento; +2 demos por quincena.",
-         medimos="Hot sin seguimiento a las 24 h, cada semana.", guardiana="Tasa de demo a alta no cae.", porque="La regla es estándar del rubro; el dato es modelado.", rub=RUB(14, 8, 8, 10, 4, 6)),
-    dict(v="corregir", owner="AUREA", score=46, title="Cantidad de propiedades · 121 anunciantes no califican por falta del dato", mide="Motivo de no calificación", base="374 que no califican", dato="121 sin cant_propiedades, casi todos de Instagram y TikTok",
-         hacer="Sumar «¿cuántas propiedades manejás hoy?» en el primer bloque del agente para anunciantes.", donde="Prometheo · prompt + variable cant_propiedades", efecto="Calificados más cerca del rango real y mejor orden de llamada.",
-         medimos="Cobertura de cant_propiedades.", guardiana="Abandono en el primer bloque de preguntas.", porque="Faltante de captura identificado; el efecto es estimado.", rub=RUB(12, 8, 6, 10, 4, 6)),
-    dict(v="medir", owner="Marketing", score=44, title="Atribución TikTok · 71% de las charlas trae el código de pauta", mide="Cobertura de pauta_origen en TikTok", base="465 charlas de TikTok", dato="330 con código · 135 sin pauta",
-         hacer="Mensaje prellenado con código en todas las pautas y link con UTM a una landing con píxel.", donde="TikTok Ads · URL y mensaje del anuncio", efecto="Cobertura de 90% o más: la pestaña TikTok pasa a Hecho.",
-         medimos="% de charlas de TikTok con pauta_origen.", guardiana="Charlas totales de TikTok (que no bajen por fricción del link).", porque="Sin esto, las cifras por pauta de TikTok quedan en Señal.", rub=RUB(12, 8, 6, 8, 4, 6)),
-    dict(v="decidir", owner="Dirección", score=40, title="Definición de calificado · el número todavía es propuesta", mide="Criterio de calificación del anunciante", base="610 anunciantes", dato="236 (amplio) a 181 (estricto)",
-         hacer="Validar con MIA obligatorios y sumas en una reunión de 30 minutos.", donde="Doc 1 · bloque B3", efecto="El número de calificados puede titular.",
-         medimos="Diferencia entre la definición propuesta y la validada.", guardiana="Que no cambie la cohorte entre pestañas.", porque="Es una decisión de definición, no un dato.", rub=RUB(10, 6, 6, 8, 4, 6)),
+         medimos="USD por charla de buscador procesada.", guardiana="% resueltas sin contacto humano no baja de 66%.", porque="Base 20: 1.840 charlas. Fuente 5: proyección. Cobertura 15: tipo de contacto al 96%. Profundidad 10. Evidencia 5. Cierre 15."),
+    dict(v="corregir", owner="AUREA", rub=[20, 5, 7, 10, 5, 10], title="Cantidad de propiedades · 121 anunciantes no califican por falta del dato",
+         mide="Motivo de no calificación", base="374 que no califican", dato="121 sin cant_propiedades",
+         corto="Preguntar «¿cuántas propiedades manejás hoy?» en el primer bloque.", cuando="Próxima quincena", meta="Cobertura 80% o más",
+         hacer="Sumar «¿cuántas propiedades manejás hoy?» en el primer bloque del agente para anunciantes, sin repreguntar si ya está.", donde="Prometheo · prompt + variable cant_propiedades (prompt listo abajo)", efecto="El rango de calificados se achica y el orden de llamada mejora.",
+         medimos="Cobertura de cant_propiedades.", guardiana="Abandono en el primer bloque de preguntas.", porque="Base 20. Fuente 5. Cobertura 7: 58%. Profundidad 10. Evidencia 5. Cierre 10: sin fecha cerrada."),
+    dict(v="medir", owner="Marketing", rub=[20, 5, 7, 5, 5, 10], title="Atribución TikTok · 71% de las charlas trae el código de pauta",
+         mide="Cobertura de pauta_origen en TikTok", base="465 charlas de TikTok", dato="330 con código · 135 sin pauta",
+         corto="Código en el mensaje prellenado y UTM en todas las pautas.", cuando="Próxima quincena", meta="Cobertura 90%",
+         hacer="Mensaje prellenado con código en todas las pautas y link con UTM a una landing con píxel.", donde="TikTok Ads · URL y mensaje del anuncio", efecto="Cobertura de 90% o más: TikTok pasa de Señal a Hecho.",
+         medimos="% de charlas de TikTok con pauta_origen.", guardiana="Charlas totales de TikTok no bajan por fricción del link.", porque="Base 20. Fuente 5. Cobertura 7. Profundidad 5: descriptivo. Evidencia 5. Cierre 10."),
+    dict(v="decidir", owner="Dirección", rub=[20, 0, 0, 5, 5, 5], title="Definición de calificado · hoy es un rango de 181 a 236",
+         mide="Criterio de calificación del anunciante", base="610 anunciantes", dato="181 estricto · 236 amplio",
+         corto="Validar con MIA obligatorios y sumas en 30 minutos.", cuando="Antes del próximo corte", meta="Un solo número",
+         hacer="Validar con MIA obligatorios, sumas y señales de hot lead en una reunión de 30 minutos.", donde="Doc 1 · bloque B3", efecto="El número de calificados deja de ser rango y puede titular.",
+         medimos="Diferencia entre la definición propuesta y la validada.", guardiana="Que la cohorte no cambie entre pestañas.", porque="Es una decisión de definición, no un dato."),
 ]
 
 PM = [
-    ("pmA", "activar", "AUREA", "var(--warn)", "Alta", "Aviso al vendedor cuando entra un hot lead", "El tag Hot lead ya existe. Falta que el aviso llegue al vendedor de turno y que se ofrezca la demo el mismo día.", "70", "hot leads en la quincena", 48,
+    ("pmA", "activar", "AUREA", "var(--warn)", "Alta", "Aviso al vendedor cuando entra un hot lead", "El tag Hot lead ya existe. Falta que el aviso llegue al vendedor de turno y que se ofrezca la demo el mismo día.", "70", "hot leads en la quincena", 54,
      "Necesito cambiar la acción del Smart Tag &quot;Hot lead&quot; del asistente de MIA.\n- Que envíe una notificación al vendedor de turno con nombre, canal de ingreso, cantidad de propiedades y plan de interés.\n- No cambies el prompt de asignación del tag.\nAntes de guardar, mostrame cómo queda la acción y a quién le llega. No apliques nada hasta que te confirme con &quot;Sí, confirmar&quot;."),
-    ("pmB", "corregir", "AUREA", "var(--crit)", "Urgente", "Preguntar cuántas propiedades maneja el anunciante", "121 anunciantes no califican porque falta el dato. La pregunta va en el primer bloque, una sola vez.", "121", "sin cant_propiedades", 46,
+    ("pmB", "corregir", "AUREA", "var(--crit)", "Urgente", "Preguntar cuántas propiedades maneja el anunciante", "121 anunciantes no califican porque falta el dato. La pregunta va en el primer bloque, una sola vez.", "121", "sin cant_propiedades", 54,
      "Necesito sumar una pregunta al asistente de MIA cuando el contacto es Anunciante.\n- En el primer bloque: &quot;¿Cuántas propiedades manejás hoy?&quot;.\n- Guardar la respuesta en la variable &quot;cant_propiedades&quot; (número).\n- No preguntarlo si ya está cargado.\nAntes de guardar, mostrame el sector del prompt como queda. No apliques nada hasta que te confirme con &quot;Sí, confirmar&quot;."),
 ]
 
@@ -530,11 +639,24 @@ def pm(p):
 P["action"] = (
     head_sec("Action Driven · acciones con dueño", "Qué hacemos esta quincena,", "ordenado por impacto.",
              "Cada acción con un verbo, un dueño y su índice Data Driven: cuánto se apoya en datos.", "Rúbrica de score v1, sin calibrar. Con datos modelados ningún índice pasa de 54. En Básico se ven las tres de mayor impacto; en Avanzado, todas.")
+    + '<div class="g4">'
+    + kpi("bolt", "", "calc", "Acciones de la quincena", str(len(CARDS)), bsc="3 de alto impacto en Básico.")
+    + kpi("user", "blu", "calc", "Dueños", "4", bsc="Marketing 2 · AUREA 2 · Ventas 1 · Dirección 1")
+    + kpi("lock", "pnk", "calc", "Efecto esperado en altas", "+2 a +5", bsc="si se ejecutan las dos primeras")
+    + kpi("gauge", "amb", "calc", "Índice Data Driven medio", f"{sum(score_of(c) for c in CARDS) / len(CARDS):.0f}%", bsc="techo 54 por dato modelado")
+    + '</div>'
+    + sub("Plan de la quincena · para el dueño de MIA")
+    + '<div class="plan">' + table(["#", "Acción", "Dueño", "Para cuándo", "Meta", "Índice Data Driven"],
+            [[f"<b>{i + 1}</b>", f'<span class="ac-v" data-v="{c["v"]}">{c["v"].capitalize()}</span> <b>{c["corto"]}</b>', c["owner"], c["cuando"], c["meta"], sx(score_of(c))] for i, c in enumerate(CARDS)], minw=820) + '</div>'
+    + sub("Las acciones, una por una")
     + DD_LEGEND
-    + '<div class="igrid avg">' + "".join(action(c, i > 2) for i, c in enumerate(CARDS)) + "</div>"
+    + '<div class="igrid avg ad-grid">' + "".join(action(c, i > 2) for i, c in enumerate(CARDS)) + "</div>"
     + '<p class="qcm bsc">Las tres de mayor impacto. En <b>Avanzado</b> se ven las 6.</p>'
     + f'<div class="subsec mejora mpx"><div class="ss-h"><div class="ss-ic mpx-ic">{ic("flame")}</div><div><div class="ss-k">Subsector · Posibles mejoras</div><h2>Del hallazgo al prompt, <em>listo para pedir.</em></h2>'
     f'<span class="mpx-pill">{ic("flame")}Potenciado por <b>Mi Prometheo</b></span></div></div><div class="pm-list">' + "".join(pm(p) for p in PM) + "</div></div>"
+    + '<div class="adv mt">' + table(["Registro de calibración", "Índice al proponer", "Resultado al cierre", "Estado"],
+                                    [[c["title"].split(" · ")[0], f"{score_of(c)}%", "se registra el 30/10", '<span class="fx-st pend">abierta</span>'] for c in CARDS], minw=620)
+    + '<p class="qcm">Rúbrica de score versión 1, sin calibrar: se calibra con 20 cards cerradas.</p></div>'
     + yeq("Primero la plata: mover presupuesto de TT-02 a TT-04 y cortar el costo de IA de buscadores. Después, el seguimiento de hot leads, que es la venta más cercana.")
 )
 
@@ -557,6 +679,12 @@ def lvl(v):
 P["calidad"] = (
     head_sec("Calidad de datos · Data Driven", "Cada número con base, cobertura y origen.", "Lo que falta, se dibuja.",
              "Qué tan confiable es cada variable que usa el tablero.", "Escalera: Hecho 80% o más · Señal 40 a 79% · Indicio 10 a 39% · No reportable menos de 10%. Con cobertura menor a 80%, doble lectura.")
+    + '<div class="g4">'
+    + kpi("checkc", "grn", "calc", "Variables en Hecho", "4", bsc="80% o más de cobertura")
+    + kpi("pulse", "blu", "calc", "Variables en Señal", "6", bsc="40 a 79%: se muestran con su base")
+    + kpi("alert", "amb", "calc", "Variables en Indicio", "2", bsc="10 a 39%: no titulan")
+    + kpi("x", "", "calc", "No reportables", "2", bsc="cierre y satisfacción: faltantes de proceso")
+    + '</div>'
     + table(["Variable", "Cobertura", "", "Nivel", "Dónde se usa"],
             [[f"<b>{a}</b>", f"{v}%", f'<div class="qf" style="width:140px"><div class="qh" style="width:{v}%;background:var(--vio)"></div></div>', lvl(v), w] for a, v, w in CAL], minw=620)
     + yeq("La atribución de TikTok depende del código en el mensaje: 71% de cobertura. Hasta pasar 80%, las cifras por pauta de TikTok se leen como Señal.")
@@ -596,9 +724,9 @@ P["integraciones"] = (
 # ---------- navegación ----------
 NAV = [
     ("Resumen", None, [("panorama", "grid", "Panorama"), ("evolucion", "trend", "Evolución"), ("action", "bolt", "Action Driven")]),
-    ("CRM", "crm", [("ventacrm", "crm", "Venta · CRM"), ("resueltas", "checkc", "Resueltas sin contacto humano"), ("demanda", "box", "Demanda"), ("criterio", "compass", "Criterio comercial"),
+    ("crm", "crm", [("ventacrm", "crm", "Venta · CRM"), ("resueltas", "checkc", "Resueltas sin contacto humano"), ("demanda", "box", "Demanda"), ("criterio", "compass", "Criterio comercial"),
                     ("audiencias", "users", "Audiencias"), ("tokens", "bolt", "Consumo de Tokens - CRM")]),
-    ("Canales Marketing", "mega", [("pauta", "route", "Pauta → Venta"), ("tiktok", "play", "TikTok Ads", "#EE1D52"), ("instagram", "ig", "Meta Ads · Instagram", "var(--pnk)"),
+    ("marketing", "mega", [("pauta", "route", "Pauta → Venta"), ("tiktok", "play", "TikTok Ads", "#EE1D52"), ("instagram", "ig", "Meta Ads · Instagram", "var(--pnk)"),
                                    ("facebook", "fb", "Meta Ads · Facebook", "var(--src-meta)"), ("email", "mail", "Email Marketing", "var(--src-mail)"), ("wamkt", "wa", "WhatsApp Marketing", "var(--src-wpp)")]),
     ("De dónde sale esto", None, [("calidad", "shield", "Calidad de datos"), ("integraciones", "plug", "Integraciones")]),
 ]
@@ -614,8 +742,7 @@ side = [f'<aside class="side"><div class="brand"><div class="sph sph-bg"></div><
 for name, icon, items in NAV:
     labels = "".join(navlabel(t) for t in items)
     if icon:
-        sub_t = "Prometheo · un solo CRM" if name == "CRM" else "TikTok · Meta · Email · WhatsApp"
-        side.append(f'<details class="ngrp" name="ngrp"{" open" if name == "CRM" else ""}><summary><span class="ng-ic">{ic(icon)}</span><span class="ng-t"><b>{name}</b><span>{sub_t}</span></span>{ic("chev")}</summary><div class="ng-b">{labels}</div></details>')
+        side.append(f'<details class="ngrp" name="ngrp"{" open" if name == "crm" else ""}><summary><span class="ng-ic">{ic(icon)}</span><span class="ng-t">{name}</span>{ic("chev")}</summary><div class="ng-b">{labels}</div></details>')
     else:
         side.append(f'<div class="navlab">{name}</div>{labels}')
 side.append(f'<div class="side-foot"><button class="themebtn" type="button" onclick="tgl()"><svg class="i sun"><use href="#i-sun"/></svg><svg class="i moon"><use href="#i-moon"/></svg><span>Tema claro / oscuro</span></button></div></aside>')
@@ -639,16 +766,27 @@ extra_css = "<style>" + "".join(
     f"#dn-{i}:checked~.shell .nav[data-t={i}]{{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}}"
     f"#dn-{i}:checked~.shell .nav[data-t={i}] svg.i{{color:#fff}}#dn-{i}:checked~.shell .p-{i}{{display:block}}" for i in ids) + """
 :root{--src-tt:#EE1D52}.s-tt{background:var(--src-tt)}
-.ngrp{margin-top:10px;border:1px solid var(--line2);border-radius:var(--r-m);background:var(--surface2);overflow:hidden}
-.ngrp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:9px;padding:9px 10px}
+.ngrp{margin-top:8px;border-top:1px solid var(--line2)}
+.ngrp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:12px 10px 6px}
 .ngrp>summary::-webkit-details-marker{display:none}
-.ng-ic{width:28px;height:28px;border-radius:9px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex-shrink:0}.ng-ic svg.i{width:15px;height:15px;color:#fff}
-.ng-t{min-width:0;flex:1}.ng-t b{display:block;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}.ng-t span{display:block;font-size:10px;color:var(--ink3)}
-.ngrp>summary>svg.i:last-child{width:15px;height:15px;color:var(--ink3);transition:transform .2s}.ngrp[open]>summary>svg.i:last-child{transform:rotate(180deg)}
+.ng-ic{display:flex;align-items:center}.ng-ic svg.i{width:14px;height:14px;color:var(--vio)}
+.ng-t{flex:1;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:lowercase;color:var(--ink2)}
+.ngrp>summary>svg.i:last-child{width:14px;height:14px;color:var(--ink4);transition:transform .2s}.ngrp[open]>summary>svg.i:last-child{transform:rotate(180deg)}
 .ng-b{padding:2px 6px 8px}
 .dd-pill{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--ink2);padding:6px 12px 6px 9px;border-radius:999px;background:var(--surface);border:1px solid transparent;background-image:linear-gradient(var(--surface),var(--surface)),var(--grad);background-origin:border-box;background-clip:padding-box,border-box}
 .dd-pill svg.i{width:14px;height:14px;color:var(--vio)}.dd-pill b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-tr.tot td{background:var(--surface2)}.qbr.dn{color:var(--crit)}
+tr.tot td{background:var(--surface2)}
+.plan td:nth-child(2),.plan th:nth-child(2),.plan td:nth-child(3),.plan th:nth-child(3),.plan td:nth-child(4),.plan th:nth-child(4){text-align:left}.plan td:nth-child(2){white-space:normal}
+.hero-h em{font-family:var(--serif);font-weight:400;font-style:italic}
+.ad-grid{align-items:stretch}.ad-grid>.i3:not([open])>summary{height:100%;display:flex;flex-direction:column}
+.ad-grid .qbl{min-height:2.7em}.ad-grid .qbh{flex:1}.ad-grid .qbd{margin-top:auto}
+.ad-do{display:flex;gap:9px;align-items:flex-start;margin-top:12px;padding:11px 12px;border-radius:12px;background:var(--tb,var(--surface2));border:1px solid color-mix(in srgb,var(--tone,var(--vio)) 30%,transparent)}
+.ad-do>svg.i{width:16px;height:16px;color:var(--tone,var(--vio));flex-shrink:0;margin-top:2px}.ad-do b{display:block;font-size:9.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--tone,var(--vio))}
+.ad-do span{display:block;font-size:13.5px;font-weight:700;line-height:1.35;color:var(--ink);margin-top:2px;min-height:2.7em}
+.ad-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:8px 0 10px}.ad-meta span{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink3);background:var(--surface2);border:1px solid var(--line2);border-radius:9px;padding:6px 8px;min-width:0}
+.ad-meta svg.i{width:12px;height:12px;flex-shrink:0;color:var(--ink3)}.ad-meta b{color:var(--ink);font-weight:700}
+.i3.av[data-v=corregir]{--tb:var(--sv-corregir-bg)}.i3.av[data-v=proteger]{--tb:var(--sv-proteger-bg)}.i3.av[data-v=separar]{--tb:var(--sv-separar-bg)}.i3.av[data-v=medir]{--tb:var(--sv-medir-bg)}.i3.av[data-v=decidir]{--tb:var(--sv-decidir-bg)}.i3.av[data-v=activar]{--tb:var(--sv-activar-bg)}
+@media (max-width:900px){.ad-meta{grid-template-columns:1fr}}.qbr.dn{color:var(--crit)}
 </style>"""
 # ícono TikTok (nota musical) que no trae el set de referencia
 tt_icon = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.6 2.4 4.5 5 5"/></symbol></defs></svg>'

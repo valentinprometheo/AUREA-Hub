@@ -98,7 +98,12 @@ def srclegend(*items):
     return '<div class="srclegend">' + "".join(f'<div class="slg">{"".join(src(k) for k in ks)}<span>{t}</span></div>' for ks, t in items) + "</div>"
 
 
+GRAD_BAR = {"var(--vio)": "var(--grad)", "var(--blu)": "linear-gradient(90deg,#5B8FD9,#7C5CBF)", "var(--pnk)": "linear-gradient(90deg,#C77AA8,#7C5CBF)",
+            "var(--good)": "linear-gradient(90deg,#7C5CBF,#5B8FD9)", "var(--warn)": "linear-gradient(90deg,#C77AA8,#B5751F)"}
+
+
 def bars(title, s, rows, note="", right="", color="var(--vio)", icon="pie", cls="qx"):
+    color = GRAD_BAR.get(color, color)
     m = max(r[1] for r in rows)
     out = "".join(
         f'<div class="qi"><span class="qj">{r[0]}</span><span class="qk">{r[2] if len(r) > 2 and r[2] else n(r[1])}'
@@ -248,12 +253,12 @@ def adcard(a):
     cpc = ars(a["gasto"] / a["calif"]) if a["calif"] else "–"
     return (f'<div class="adx" style="--ax:{col};--axb:{soft}"><div class="adx-h"><span class="adx-ic">{ic(icon)}</span>'
             f'<div style="min-width:0"><span class="ad-k">{a["canal"]} · {a["fmt"]} <code>{a["id"]}</code></span><b>{a["nombre"]}</b><span>{ic("target")}{a["publico"]}</span></div></div>'
-            f'<div class="adx-tiles"><div class="qch"><span>{ic("chat")}Charlas</span><b>{a["conv"]}</b></div>'
-            f'<div class="qch" data-s="{s1}"><span>{ic("checkc")}Califica</span><b>{pc(a["calif"], a["b2b"])}</b></div>'
-            f'<div class="qch" data-s="{s2}"><span>{ic("lock")}Altas</span><b>{a["altas"]}</b></div></div>'
+            f'<div class="adx-tiles"><div class="qch t1"><span>{ic("chat")}Charlas</span><b>{a["conv"]}</b></div>'
+            f'<div class="qch t2"><span>{ic("checkc")}Califica<i class="st-dot" data-s="{s1}"></i></span><b>{pc(a["calif"], a["b2b"])}</b></div>'
+            f'<div class="qch t3"><span>{ic("lock")}Altas<i class="st-dot" data-s="{s2}"></i></span><b>{a["altas"]}</b></div></div>'
             f'<div class="adx-fun">{fun}</div>'
             f'<div class="ad-meta2"><span>Gasto<b>{ars(a["gasto"])}</b></span><span>Por calificada<b>{cpc}</b></span><span>Registros en la app<b>{a["reg"]}</b></span></div>'
-            f'<div class="adx-v" style="--vc:{vc}">{ic("bulb")}<span>{a["lectura"]}.</span></div></div>')
+            f'<div class="adx-v ad-v" data-s="{s2}">{ic("bulb")}<span><b>{a["lectura"].split(":")[0]}</b>{":" + a["lectura"].split(":", 1)[1] if ":" in a["lectura"] else ""}.</span></div></div>')
 
 
 def ads_table(rows):
@@ -1071,6 +1076,34 @@ b.hot{color:var(--crit-ink);background:var(--crit-bg);padding:2px 8px;border-rad
 .ad-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.ad-meta span{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:6px;font-size:11px;color:var(--ink3);background:var(--surface2);border:1px solid var(--line2);border-radius:10px;padding:7px 9px}
 .ad-meta svg.i{width:13px;height:13px;color:var(--ink3);grid-row:span 2}.ad-meta em{font-style:normal;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.ad-meta b{color:var(--ink);font-size:12.5px;font-weight:700}
 .i3.av[data-v=corregir]{--tb:var(--sv-corregir-bg)}.i3.av[data-v=proteger]{--tb:var(--sv-proteger-bg)}.i3.av[data-v=separar]{--tb:var(--sv-separar-bg)}.i3.av[data-v=medir]{--tb:var(--sv-medir-bg)}.i3.av[data-v=decidir]{--tb:var(--sv-decidir-bg)}.i3.av[data-v=activar]{--tb:var(--sv-activar-bg)}
+/* paleta y degradés del Panorama, sutiles, en todas las cards */
+.qx,.qcf.pad,.chs,.area,.crit2{position:relative;overflow:hidden}
+.qx::before,.qcf.pad::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad);opacity:.55}
+.qx::after,.qcf.pad::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--pnk) 14%,transparent),transparent 70%);pointer-events:none}
+.qcg::before{background:var(--ct);opacity:.9}
+.g4>.qbu:first-child{background:var(--grad-soft);border-color:color-mix(in srgb,var(--vio) 22%,var(--line))}
+.g4>.qbu:first-child .qy{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.qbk{background:var(--grad-soft)!important}.qbk svg.i{color:var(--vio)!important}
+.chs{background:linear-gradient(180deg,var(--cs),var(--surface) 55%)}.chs .kv>div:first-child{background:var(--surface)!important}
+.area{background:linear-gradient(160deg,var(--grad-soft) 0,var(--surface) 45%)}.ar-ic{background:var(--grad)}.ar-ic svg.i{color:#fff}
+.crit2{background:linear-gradient(170deg,var(--grad-soft) 0,var(--surface) 40%)}
+/* card de anuncio */
+.adx-h{background:var(--grad-soft)!important;border-left:0!important;position:relative}
+.adx-h::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--grad);opacity:.5}
+.adx-ic{background:var(--grad)!important;box-shadow:0 6px 14px -8px rgba(124,92,191,.8)}.adx-ic svg.i{color:#fff!important}
+.adx-h b{font-size:15px!important}
+.adx-tiles .qch{background:var(--surface2)!important;border-color:var(--line2)!important}
+.adx-tiles .qch span,.adx-tiles .qch b{color:var(--ink)!important}.adx-tiles .qch span{color:var(--ink3)!important}
+.adx-tiles .qch.t2{background:var(--grad-soft)!important;border-color:color-mix(in srgb,var(--vio) 25%,transparent)!important}
+.adx-tiles .qch.t3{background:var(--grad)!important;border-color:transparent!important;box-shadow:0 8px 18px -12px rgba(124,92,191,.9)}
+.adx-tiles .qch.t3 span,.adx-tiles .qch.t3 b{color:#fff!important}.adx-tiles .qch.t3 b{font-size:20px}
+.st-dot{width:7px;height:7px;border-radius:50%;margin-left:auto;display:inline-block}.st-dot[data-s=good]{background:var(--good)}.st-dot[data-s=warn]{background:var(--warn)}.st-dot[data-s=crit]{background:var(--crit)}
+.qch.t3 .st-dot{box-shadow:0 0 0 2px rgba(255,255,255,.85)}
+.qcb i{background:var(--grad)!important;opacity:.85}
+.ad-v{background:var(--grad-soft)!important;border-top:1px solid color-mix(in srgb,var(--vio) 18%,transparent)!important;color:var(--ink)!important}
+.ad-v svg.i{color:var(--vio)!important}.ad-v b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ad-v[data-s=crit]{box-shadow:inset 3px 0 0 var(--crit)}.ad-v[data-s=warn]{box-shadow:inset 3px 0 0 var(--warn)}.ad-v[data-s=good]{box-shadow:inset 3px 0 0 var(--good)}
+.zn{background:var(--grad-soft)}
 @media (max-width:900px){.areas,.zg{grid-template-columns:1fr}.ad-meta,.ad-meta2{grid-template-columns:1fr}.client b{font-size:24px}}
 </style>"""
 tt_icon = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>'

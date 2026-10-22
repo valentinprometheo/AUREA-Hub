@@ -948,7 +948,6 @@ CHN = "".join(f'<span class="qcl" style="margin:4px 4px 0 0">{ic(i)}{t}</span>' 
 P["integraciones"] = (
     head_sec("Integraciones · de dónde sale este tablero", "Todas las fuentes,", "en tres sectores.",
              "Qué alimenta el tablero, qué está conectado y cuándo se actualizó cada fuente.", "Cada fuente manda en lo suyo: Prometheo en charlas y calificación, cada canal en su gasto y alcance, la app en registros y publicaciones.")
-    + '<div class="bridge"><div class="eq"><b>TikTok y Meta ven hasta el clic</b> × <b>Prometheo ve del clic al alta</b></div><p>El cruce por <b>ID de anuncio</b> (Meta) y por <b>código de anuncio</b> (TikTok, email y WhatsApp) es el producto.</p></div>'
     + f'<div class="cn-sec"><div class="cn-sh"><span class="cn-si">{ic("crm")}</span><div><b>CRM</b><span>Un solo CRM: todos los canales de conversación entran por Prometheo</span></div></div>'
     + f'<div class="cn-g" style="grid-template-columns:1fr"><div class="cn"><div class="cn-h"><span class="qcn" style="--c:linear-gradient(135deg,#7C5CBF,#5B8FD9)">{ic("bot")}</span><div><b>Prometheo</b><span class="qco off"><i></i>Esperando export</span></div></div>'
     + f'<div class="cn-d"><p>Conversaciones, Smart Tags, variables, calificación, resolución sin humano y escalamientos. Los cinco canales viven adentro de Prometheo:</p><div style="margin-top:8px">{CHN}</div></div>'

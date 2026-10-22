@@ -1009,8 +1009,8 @@ extra_css = "<style>" + "".join(
     f"#dn-{i}:checked~.shell .nav[data-t={i}]{{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(124,92,191,.6)}}"
     f"#dn-{i}:checked~.shell .nav[data-t={i}] svg.i{{color:#fff}}#dn-{i}:checked~.shell .p-{i}{{display:block}}" for i in ids) + """
 :root{--src-tt:var(--ink);--src-app:#6F6888;--brand-font:'Manrope',var(--hel)}.s-tt{background:var(--src-tt)}.s-app{background:var(--src-app)}
-.brand2{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:6px 10px 16px;border-bottom:1px solid var(--line2);margin-bottom:6px}
-.brand2 img{height:34px;width:auto}.brand2 span{font-family:var(--brand-font);font-weight:700;font-size:15px;line-height:1.15;letter-spacing:-.01em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand2{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:14px 10px 20px;border-bottom:1px solid var(--line2);margin-bottom:6px}
+.brand2 img{height:72px;width:auto;filter:drop-shadow(0 8px 18px rgba(124,92,191,.25))}.brand2 span{font-family:var(--brand-font);font-weight:700;font-size:16px;line-height:1.15;letter-spacing:-.01em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .client{display:flex;flex-direction:column;line-height:1}.client span{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
 .client b{font-family:var(--brand-font);font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-top:5px}
 .ngrp{margin:6px 0 2px}

@@ -949,15 +949,15 @@ P["integraciones"] = (
     head_sec("Integraciones · de dónde sale este tablero", "Todas las fuentes,", "en tres sectores.",
              "Qué alimenta el tablero, qué está conectado y cuándo se actualizó cada fuente.", "Cada fuente manda en lo suyo: Prometheo en charlas y calificación, cada canal en su gasto y alcance, la app en registros y publicaciones.")
     + f'<div class="cn-sec"><div class="cn-sh"><span class="cn-si">{ic("crm")}</span><div><b>CRM</b><span>Un solo CRM: todos los canales de conversación entran por Prometheo</span></div></div>'
-    + f'<div class="cn-g" style="grid-template-columns:1fr"><div class="cn"><div class="cn-h"><span class="qcn" style="--c:linear-gradient(135deg,#7C5CBF,#5B8FD9)">{ic("bot")}</span><div><b>Prometheo</b><span class="qco off"><i></i>Esperando export</span></div></div>'
+    + f'<div class="cn-g" style="grid-template-columns:1fr"><div class="cn"><div class="cn-h"><span class="qcn" style="--c:linear-gradient(135deg,#7C5CBF,#5B8FD9)">{ic("bot")}</span><div><b>Prometheo</b><span class="qco on"><i></i>Conectado</span></div></div>'
     + f'<div class="cn-d"><p>Conversaciones, Smart Tags, variables, calificación, resolución sin humano y escalamientos. Los cinco canales viven adentro de Prometheo:</p><div style="margin-top:8px">{CHN}</div></div>'
     + f'<div class="cn-f"><button class="qcc" type="button">{ic("sliders")}Configuración</button></div></div></div></div>'
     + f'<div class="cn-sec"><div class="cn-sh"><span class="cn-si">{ic("mega")}</span><div><b>Canales Marketing</b><span>Gasto, alcance y envíos de cada canal</span></div></div><div class="cn-g">'
-    + cn("play", "var(--ink)", "TikTok Ads", False, "Gasto, distribución, video y píxel por anuncio y día.")
-    + cn("ig", "linear-gradient(45deg,#C77AA8,#7C5CBF)", "Meta Ads · Instagram", False, "Inversión, alcance, clics y ubicaciones por anuncio.")
-    + cn("fb", "var(--blu)", "Meta Ads · Facebook", False, "Inversión, alcance, clics y edad del público por anuncio.")
-    + cn("mail", "var(--src-mail)", "Email Marketing", False, "Envíos, entregas, aperturas, clics y bajas.")
-    + cn("wa", "var(--src-wpp)", "WhatsApp Marketing", False, "Difusiones, plantillas, leídos, tier y calidad.")
+    + cn("play", "var(--ink)", "TikTok Ads", True, "Gasto, distribución, video y píxel por anuncio y día.")
+    + cn("ig", "linear-gradient(45deg,#C77AA8,#7C5CBF)", "Meta Ads · Instagram", True, "Inversión, alcance, clics y ubicaciones por anuncio.")
+    + cn("fb", "var(--blu)", "Meta Ads · Facebook", True, "Inversión, alcance, clics y edad del público por anuncio.")
+    + cn("mail", "var(--src-mail)", "Email Marketing", True, "Envíos, entregas, aperturas, clics y bajas.")
+    + cn("wa", "var(--src-wpp)", "WhatsApp Marketing", True, "Difusiones, plantillas, leídos, tier y calidad.")
     + "</div></div>"
     + f'<div class="cn-sec"><div class="cn-sh"><span class="cn-si">{ic("layers")}</span><div><b>Otras integraciones</b><span>Producto, cierre y costos</span></div></div><div class="cn-g">'
     + cn("phone", "var(--vio)", "Datos de la app de MIA", False, "Descargas, registros, avisos publicados y usuarios activos.")
@@ -1344,9 +1344,9 @@ _tk = _tk[:_ix] + hist_card("Histórico · tokens de IA", "calc", IA_H, "#5B8FD9
 P["tokens"] = _tk
 
 # --- integraciones: Google
-P["integraciones"] = P["integraciones"].replace(cn("fb", "var(--blu)", "Meta Ads · Facebook", False, "Inversión, alcance, clics y edad del público por anuncio."),
-                                                cn("fb", "var(--blu)", "Meta Ads · Facebook", False, "Inversión, alcance, clics y edad del público por anuncio.")
-                                                + cn("google", "linear-gradient(135deg,#5B8FD9,#7C5CBF)", "Google Ads", False, "Costo, clics, palabras clave y conversiones por campaña."))
+P["integraciones"] = P["integraciones"].replace(cn("fb", "var(--blu)", "Meta Ads · Facebook", True, "Inversión, alcance, clics y edad del público por anuncio."),
+                                                cn("fb", "var(--blu)", "Meta Ads · Facebook", True, "Inversión, alcance, clics y edad del público por anuncio.")
+                                                + cn("google", "linear-gradient(135deg,#5B8FD9,#7C5CBF)", "Google Ads", True, "Costo, clics, palabras clave y conversiones por campaña."))
 
 
 # ---------- navegación ----------

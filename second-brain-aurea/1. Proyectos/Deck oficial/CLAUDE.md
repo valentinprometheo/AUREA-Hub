@@ -30,6 +30,11 @@ Hay cuatro piezas circulando y ninguna es "la" final:
 - 2026-10-23: se detecta que el deck de IC en la carpeta de venta tiene cifras derogadas y una frase
   de borrador. Pendiente de decidir si se corrige o se reemplaza por el deck nuevo.
 
+## Candidato a versión final
+**AUREA Hub · Growth V2** (23/10): ya cuenta el ecosistema completo con paquetes. Es el mejor
+candidato a reemplazar al deck de IC del 28/09. Pendientes de coherencia con el estimador en
+`aurea-estetica-documentacion/references/genero-propuesta-paquetes.md`.
+
 ## Próximo paso
 Decidir el modelo de pricing (`2. Áreas/pricing/`) y con eso armar la versión única con
 `aurea-estetica-documentacion` (género deck oficial, variante institucional). Si se adopta otra

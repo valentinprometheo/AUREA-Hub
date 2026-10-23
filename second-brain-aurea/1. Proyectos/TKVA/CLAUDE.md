@@ -4,6 +4,7 @@
 Desarrollista inmobiliaria (Tokko). Contacto: Vanesa Jaimovich. Plan de crecimiento contratado y tablero de IC bonificado.
 
 ## Estado
+Cliente activo confirmado por Valen (23/10).
 Mejora continua y monitoreo hasta el 31/10. Relación tensa; no está definido qué pasa después del 31/10.
 
 ## Decisiones (log)

@@ -10,10 +10,10 @@
   escritas. Si se va a repetir, conviene decidir si es una tercera familia o si pasa a la Familia A.
 
 ## Abierto
-- [ ] **El archivo de "growth" con otro branding.** Valen comentó que el último archivo hecho en
-  growth tiene un branding distinto y que tal vez se haga algo así. No está en el Drive conectado
-  (búsqueda por "growth" del 23/10: solo aparece el sales deck de Growth Larriera, de mayo). Falta
-  el archivo o el link para analizarlo.
+- [x] **El archivo de growth con otro branding: "AUREA Hub · Growth" V2** (23/10, en iteración).
+  Documentado como género nuevo "Propuesta por paquetes" en `aurea-estetica-documentacion`
+  (`genero-propuesta-paquetes.md`, ejemplo `assets/ejemplos/growth-v2.html`). Es la Familia A con una
+  capa encima: acento violeta sin itálica, sin bandas oscuras, imagen de producto, sin precios.
 - [ ] Si se adopta ese branding para una línea nueva (growth, marca propia de marketing), se define
   como familia o sub-marca nueva antes de usarla, para no romper la regla de una estética por familia.
 

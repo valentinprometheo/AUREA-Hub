@@ -10,6 +10,7 @@ Hot lead: propuesta enviada (presupuesto 01/09, deck HTML 17/09), esperando resp
 - 2026-09-14: estrategia de proyecto anual sin desglose de precios, base 200 + 50 por canal; Kiri limita a AUREA a WhatsApp marketing e IC (Follow up 14/09).
 
 ## Próximo paso
+La propuesta enviada es del formato viejo por ítems. Si se retoma, rehacerla en paquetes (Growth V2 + estimador).
 Seguimiento de la propuesta. Si responde, revisar precios contra el modelo vigente (la propuesta tiene Licencia USD 150, hoy derogada).
 
 ## Abierto

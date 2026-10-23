@@ -6,7 +6,30 @@
   con USD 0,40 por conversación, Meta en pesos y aparte.
 - **Precio de AUREA** (lo que cobra AUREA): este archivo.
 
-## Estado hoy: conviven dos modelos
+## Vigente (provisorio, desde 23/10/2026): paquetes con el Estimador de presupuesto
+Valen: "por ahora este". Herramienta: **Estimador de presupuesto · AUREA Hub** (artifact
+https://claude.ai/artifact/CZbWPxJoPKr3uUR9beq268, uso interno). Pieza para el cliente: **AUREA Hub ·
+Growth V2** (sin precios). Criterio completo en la skill `aurea-ic-conocimiento` v1.3.0 (`02`).
+
+| Valores por defecto (250 conv./mes) | Esencial | Crecimiento | Escala |
+|---|---|---|---|
+| Horas · setup (USD 50/h) | ~49 h · USD 2.450 | ~92 h · USD 4.600 | ~140 h · USD 7.000 |
+| IC | no | USD 400/mes desde el mes 4 | USD 900/mes desde el mes 4 |
+| Mejora Continua | Estabilización 12 h, después Start 6 h | Estabilización 16 h, después Start | Estabilización 24 h, después Pro 10 h |
+| Meses 1 a 3 / desde el mes 12 | ~USD 1.000 / ~580 | ~USD 1.710 / ~980 | ~USD 2.510 / ~1.680 |
+| Año 1 cliente · le queda a AUREA | ~USD 9.400 · 2.200 (35%) | ~USD 15.800 · 4.200 (33%) | ~USD 25.800 · 7.500 (33%) |
+| Facturación mínima para no pasar el 4% | ~USD 14.500/mes | ~USD 24.500/mes | ~USD 42.000/mes |
+
+Se resolvió la hora: **USD 50** (el estimador manda sobre los USD 45 del documento del CTO).
+
+### Lo que conviene mirar del estimador
+- Con los valores por defecto, el margen de AUREA sobre fees queda en 33% a 35%, apenas arriba de la
+  alerta del 30%: cualquier desvío de horas lo come. Por eso el setup "nunca se bonifica".
+- Escala con una facturación de USD 25.000/mes da 6,7%: la alerta del 4% lo marca en rojo. Escala es
+  para clientes de USD 42.000/mes o más (o con ticket alto).
+- El precio de IC (400 y 900) lo pone Javi; sus horas de producción y su profit share siguen a definir.
+
+## Historia: cómo se llegó (conviven en documentos viejos)
 
 | | Modelo en las skills (vigente en documentos) | Modelo de paquetes (propuesta del CTO) |
 |---|---|---|
@@ -28,8 +51,9 @@ El documento del CTO dice "propuesta de trabajo para discutir con los socios".
 - 23/10 (PAVIR): se presentan Esencial, Crecimiento y Escala.
 - El documento del CTO usa **USD 45** la hora: unificar con los USD 50 del 14/09.
 
-## Decisión abierta (bloquea propuestas)
-- [ ] ¿El modelo de paquetes es el vigente? Si sí, hay que actualizar `aurea-ic-conocimiento`
+## Decisión abierta
+- [x] ¿El modelo de paquetes es el vigente? **Sí, provisorio (23/10).** Ya integrado en las skills.
+- [ ] Antes: ¿el modelo de paquetes es el vigente? Si sí, hay que actualizar `aurea-ic-conocimiento`
   (precio de IC), `aurea-estetica-documentacion` (nuevos servicios y género presupuesto) y el
   ejemplo DRAKON, y rehacer la propuesta de EAF con los tres paquetes (lo pide el propio documento).
 - [ ] Resuelve dos pendientes de `aurea-ic-conocimiento/hallazgos.md`: "el precio de IC se fijó sin

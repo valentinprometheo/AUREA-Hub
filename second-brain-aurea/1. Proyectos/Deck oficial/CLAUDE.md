@@ -24,7 +24,7 @@ Hay cuatro piezas circulando y ninguna es "la" final:
   pieza de venta. Sacarla.
 - "Cómo lo cobramos · como en DRAKON": nombra a un cliente en una pieza para partners; los casos van
   anónimos salvo permiso (`aurea-ic-conocimiento`).
-- Precio de IC (USD 200 + 50 por canal): depende de la decisión de pricing.
+- Precio de IC (USD 200 + 50 por canal): derogado el 23/10; en paquetes la pieza no lleva precios.
 
 ## Decisiones (log)
 - 2026-10-23: se detecta que el deck de IC en la carpeta de venta tiene cifras derogadas y una frase
@@ -36,6 +36,5 @@ candidato a reemplazar al deck de IC del 28/09. Pendientes de coherencia con el 
 `aurea-estetica-documentacion/references/genero-propuesta-paquetes.md`.
 
 ## Próximo paso
-Decidir el modelo de pricing (`2. Áreas/pricing/`) y con eso armar la versión única con
-`aurea-estetica-documentacion` (género deck oficial, variante institucional). Si se adopta otra
-estética para esta pieza, se define primero en `2. Áreas/marca-y-documentos/`.
+Cerrar Growth V2 (las tres diferencias con el estimador) y retirar de la carpeta de venta el deck de
+IC del 28/09. Pricing ya decidido: paquetes (`2. Áreas/pricing/`).

@@ -24,17 +24,17 @@ Hay cuatro piezas circulando y ninguna es "la" final:
   pieza de venta. Sacarla.
 - "Cómo lo cobramos · como en DRAKON": nombra a un cliente en una pieza para partners; los casos van
   anónimos salvo permiso (`aurea-ic-conocimiento`).
-- Precio de IC (USD 200 + 50 por canal): derogado el 23/10; en paquetes la pieza no lleva precios.
+- Precio de IC (USD 200 + 50 por canal): sigue vigente hasta que se cierre el modelo de paquetes.
 
 ## Decisiones (log)
 - 2026-10-23: se detecta que el deck de IC en la carpeta de venta tiene cifras derogadas y una frase
   de borrador. Pendiente de decidir si se corrige o se reemplaza por el deck nuevo.
 
 ## Candidato a versión final
-**AUREA Hub · Growth V2** (23/10): ya cuenta el ecosistema completo con paquetes. Es el mejor
-candidato a reemplazar al deck de IC del 28/09. Pendientes de coherencia con el estimador en
+**AUREA Hub · Growth V2** (23/10, en construcción): cuenta el ecosistema completo con paquetes. Es
+el mejor candidato a reemplazar al deck de IC del 28/09 cuando se apruebe. Pendientes de coherencia con el estimador en
 `aurea-estetica-documentacion/references/genero-propuesta-paquetes.md`.
 
 ## Próximo paso
-Cerrar Growth V2 (las tres diferencias con el estimador) y retirar de la carpeta de venta el deck de
-IC del 28/09. Pricing ya decidido: paquetes (`2. Áreas/pricing/`).
+Mientras Growth V2 se termina: corregir en el deck de IC del 28/09 lo derogado (licencia USD 150,
+"85% menos", la frase de borrador y el nombre de DRAKON).

@@ -1,7 +1,7 @@
 # ESTADO · AUREA Hub
 
 Última vez: 2026-10-23 · armado inicial del brain con notas de Gemini (21/07 a 23/10) y skills.
-Próximo paso: cotizar PAVIR, EAF y Gómez de Montanari con el estimador y mandarles Growth V2.
+Próximo paso: seguimiento de EAF y DRAKON con sus presupuestos vigentes; terminar de armar el modelo por paquetes.
 
 ## Esta semana (fechas duras)
 | Fecha | Qué | Cliente | Quién |
@@ -36,7 +36,7 @@ Próximo paso: cotizar PAVIR, EAF y Gómez de Montanari con el estimador y manda
 | G&D Developers | **a recuperar** (suspendió) | jul | motivo desconocido |
 
 ## Decisiones que bloquean
-- [x] Modelo de pricing: paquetes con el estimador, provisorio (23/10).
+- [ ] Modelo de paquetes (Growth V2 + estimador): en construcción. Mientras, presupuestos como EAF y DRAKON.
 - [ ] Deck oficial único sin cifras derogadas (`1. Proyectos/Deck oficial/`).
 - [ ] Subir las 19 skills corregidas y desinstalar la calificación suelta.
 - [ ] Dónde viven las tareas del equipo (para la rutina nocturna).

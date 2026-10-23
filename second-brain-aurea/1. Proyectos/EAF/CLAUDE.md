@@ -11,7 +11,7 @@ Hot lead: presupuesto presentado el 07/10, reunión post presupuesto el 22/10 (s
 - 2026-10: el modelo de pricing del CTO propone rehacer la propuesta de EAF con los tres paquetes (USD 4.500 de setup y USD 900/mes en Crecimiento).
 
 ## Próximo paso
-La propuesta enviada es del formato viejo por ítems. Si se retoma, rehacerla en paquetes (Growth V2 + estimador).
+El presupuesto enviado es el formato vigente. Revisar solo los costos de plataforma derogados el 13/10 (Licencia USD 150, tokens USD 0,30 a 0,45) si se reenvía.
 Recuperar qué se habló el 22/10 (la nota salió vacía: revisar transcripción o memoria del equipo).
 
 ## Abierto

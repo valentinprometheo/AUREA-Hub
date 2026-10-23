@@ -10,8 +10,8 @@
   escritas. Si se va a repetir, conviene decidir si es una tercera familia o si pasa a la Familia A.
 
 ## Abierto
-- [x] **El archivo de growth con otro branding: "AUREA Hub · Growth" V2** (23/10, en iteración).
-  Documentado como género nuevo "Propuesta por paquetes" en `aurea-estetica-documentacion`
+- [x] **El archivo de growth con otro branding: "AUREA Hub · Growth" V2** (23/10, en construcción).
+  Documentado como género en construcción "Propuesta por paquetes" en `aurea-estetica-documentacion`
   (`genero-propuesta-paquetes.md`, ejemplo `assets/ejemplos/growth-v2.html`). Es la Familia A con una
   capa encima: acento violeta sin itálica, sin bandas oscuras, imagen de producto, sin precios.
 - [ ] Si se adopta ese branding para una línea nueva (growth, marca propia de marketing), se define

@@ -6,10 +6,15 @@
   con USD 0,40 por conversación, Meta en pesos y aparte.
 - **Precio de AUREA** (lo que cobra AUREA): este archivo.
 
-## Vigente (provisorio, desde 23/10/2026): paquetes con el Estimador de presupuesto
-Valen: "por ahora este". Herramienta: **Estimador de presupuesto · AUREA Hub** (artifact
+## Vigente hoy
+Los presupuestos de **EAF** (07/10) y **DRAKON** (01/09 y 17/09): fee de implementación, licencia,
+IC por canal y Mejora Continua. Es lo que se usa con clientes hasta que el modelo nuevo esté cerrado
+(costos de plataforma siempre desde `ic-costos-y-rentabilidad-de-prometheo`).
+
+## En construcción (desde 23/10/2026): paquetes con el Estimador de presupuesto
+Valen: "es muy nuevo, se está creando". No se usa con clientes todavía. Herramienta: **Estimador de presupuesto · AUREA Hub** (artifact
 https://claude.ai/artifact/CZbWPxJoPKr3uUR9beq268, uso interno). Pieza para el cliente: **AUREA Hub ·
-Growth V2** (sin precios). Criterio completo en la skill `aurea-ic-conocimiento` v1.3.0 (`02`).
+Growth V2** (sin precios). En la skill `aurea-ic-conocimiento` v1.3.0 (`02`) figura como [A VALIDAR].
 
 | Valores por defecto (250 conv./mes) | Esencial | Crecimiento | Escala |
 |---|---|---|---|
@@ -20,7 +25,7 @@ Growth V2** (sin precios). Criterio completo en la skill `aurea-ic-conocimiento`
 | Año 1 cliente · le queda a AUREA | ~USD 9.400 · 2.200 (35%) | ~USD 15.800 · 4.200 (33%) | ~USD 25.800 · 7.500 (33%) |
 | Facturación mínima para no pasar el 4% | ~USD 14.500/mes | ~USD 24.500/mes | ~USD 42.000/mes |
 
-Se resolvió la hora: **USD 50** (el estimador manda sobre los USD 45 del documento del CTO).
+La hora: el estimador usa **USD 50** y el documento del CTO, USD 45 (a cerrar).
 
 ### Lo que conviene mirar del estimador
 - Con los valores por defecto, el margen de AUREA sobre fees queda en 33% a 35%, apenas arriba de la
@@ -52,8 +57,7 @@ El documento del CTO dice "propuesta de trabajo para discutir con los socios".
 - El documento del CTO usa **USD 45** la hora: unificar con los USD 50 del 14/09.
 
 ## Decisión abierta
-- [x] ¿El modelo de paquetes es el vigente? **Sí, provisorio (23/10).** Ya integrado en las skills.
-- [ ] Antes: ¿el modelo de paquetes es el vigente? Si sí, hay que actualizar `aurea-ic-conocimiento`
+- [ ] ¿Cuándo pasa a vigente el modelo de paquetes? Hoy está en construcción (23/10). Si sí, hay que actualizar `aurea-ic-conocimiento`
   (precio de IC), `aurea-estetica-documentacion` (nuevos servicios y género presupuesto) y el
   ejemplo DRAKON, y rehacer la propuesta de EAF con los tres paquetes (lo pide el propio documento).
 - [ ] Resuelve dos pendientes de `aurea-ic-conocimiento/hallazgos.md`: "el precio de IC se fijó sin

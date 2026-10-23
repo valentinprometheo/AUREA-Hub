@@ -26,9 +26,7 @@ CONTEXTO_OK = re.compile(r'derogad|histór|antes decía|qué decía antes|no se 
                          r', no "|\\bni "|nunca|prohib|cerrada', re.I)
 # Cifras derogadas por la skill de costos (13/10/2026) y la metodología v1.31
 DEROGADAS = ['Licencia USD 150', 'desde USD 149', 'desde ~USD 149', 'pendiente de unificar 149 vs 150',
-             '0,30 a 0,45', 'USD 20 cada 2.000', '0,0618', 'Recarga automática con piso', 'USD 0,35 por conversación',
-             # precios de AUREA derogados por los paquetes (23/10/2026)
-             'USD 850 por mes durante la implementación', 'USD 200 por mes con un canal incluido', 'Start · Estabilidad:** USD 200']
+             '0,30 a 0,45', 'USD 20 cada 2.000', '0,0618', 'Recarga automática con piso', 'USD 0,35 por conversación']
 CSS_TOKENS = re.compile(r'^aurea-(blue|purple|green|orange|teal|coral)')
 res = []
 

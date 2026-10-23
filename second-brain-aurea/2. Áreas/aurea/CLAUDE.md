@@ -26,3 +26,11 @@ Perfil a sumar: especialista en performance marketing (gap principal del equipo 
 Español rioplatense con voseo. Colega senior: directo, sin relleno, verbos precisos. Números
 defendibles ("valores de referencia, no promesas"). Cierre de valor: "Venimos a potenciar lo humano.
 La tecnología es un copiloto, no un reemplazo."
+
+## Aprendizajes de clientes (patrones, no instancias)
+- **Costos variables avisados por escrito antes de activar.** TKVA, MIA y EDFAN reclamaron en
+  octubre costos o alcances que dicen que no se avisaron (integraciones pro, canales extra, horas sin
+  cargo). Regla propuesta: cada propuesta lleva una tabla de "qué se cobra aparte y cuándo" y el
+  cliente la confirma antes del go-live. Candidato a la metodología (protocolo de entrega).
+- **El alcance del soporte se escribe.** Cuando no está escrito, el cliente lo lee como ilimitado.
+- **IC necesita venta que medir.** En una app en pre-lanzamiento (MIA) el valor está en el soporte.

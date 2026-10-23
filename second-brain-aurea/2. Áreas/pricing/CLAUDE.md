@@ -21,6 +21,13 @@
 (Esencial, Crecimiento y Escala) y un contrato de duración mínima anual (notas de Gemini, 23/10).
 El documento del CTO dice "propuesta de trabajo para discutir con los socios".
 
+## Lo que se fue decidiendo en reuniones (notas de Gemini)
+- 14/09 (Follow up equipo): implementación con Prometheo desde USD 850, IC USD 200/mes + 50 por
+  canal, contrato anual, implementación de 3 meses como máximo. Hora de trabajo: **USD 50**.
+- 15/10: niveles cerrados, con IC dentro de la base y un nivel Pro para lo avanzado.
+- 23/10 (PAVIR): se presentan Esencial, Crecimiento y Escala.
+- El documento del CTO usa **USD 45** la hora: unificar con los USD 50 del 14/09.
+
 ## Decisión abierta (bloquea propuestas)
 - [ ] ¿El modelo de paquetes es el vigente? Si sí, hay que actualizar `aurea-ic-conocimiento`
   (precio de IC), `aurea-estetica-documentacion` (nuevos servicios y género presupuesto) y el

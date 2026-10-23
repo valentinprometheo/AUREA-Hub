@@ -29,8 +29,10 @@
 ## Mapa (PARA)
 - **0. Inbox/**: captura sin decidir.
 - **1. Proyectos/**: un cliente o lead por carpeta. Tienen fin (cierre, renovación o baja).
-  - Activos: `EDFAN Productos`, `EDFAN Real Estate`, `ZATOH`, `BETROX`, `MIA App`, `TKVA`.
-  - Hot leads (propuesta enviada, esperando respuesta): `DRAKON`, `PAVIR`, `EAF`, `MAMUT`.
+  - Activos: `EDFAN Productos`, `EDFAN Real Estate`, `ZATOH`, `BETROX` (Grupo EDFAN), `MIA App`,
+    `TKVA`, `NexChange`.
+  - Hot leads (propuesta enviada): `DRAKON`, `PAVIR` (ya en MVP con relevamiento), `EAF`, `MAMUT`.
+  - Leads nuevos: `Gómez de Montanari`, `Patagonearte`.
   - A recuperar: `G&D Developers` (suspendió él).
   - Internos: `AUREA Growth` (adquisición propia), `Deck oficial`.
 - **2. Áreas/**: lo que no termina. `aurea/` (identidad, equipo, voz), `partners/`, `pricing/`,

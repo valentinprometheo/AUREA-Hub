@@ -1,0 +1,62 @@
+{
+  "_comentario": "Config de /brain-dreaming para AUREA. Copiar a ~/.config/dreaming/config.json en la máquina que corre la rutina. Reemplazar brain_root por la ruta real de la carpeta sincronizada de Drive.",
+  "brain_root": "~/Google Drive/Unidades compartidas/AUREA/AUREA-Brain",
+  "transcripts_root": "~/.claude/projects",
+  "code_root": "~/Code",
+  "state_dir": "~/.config/dreaming/state",
+  "carpetas": {
+    "inbox": "0. Inbox",
+    "proyectos": "1. Proyectos",
+    "areas": "2. Áreas",
+    "archivo": "4. Archivo"
+  },
+  "archivo_estado": "ESTADO.md",
+  "repo_a_proyecto": {
+    "AUREA-Hub": "1. Proyectos/AUREA Growth"
+  },
+  "repos_git_a_barrer": ["AUREA-Hub"],
+  "excluir_paths": ["_privado", "Personal", "Contratos firmados"],
+  "paths_no_durables": ["/private/tmp/", "/scratchpad/", "/.claude/plans/"],
+  "reuniones": {
+    "_fuente": "Notas de Gemini en Google Drive, no Granola. El procedimiento está en 3. Recursos/dreaming-reuniones-gemini.md.",
+    "fuente": "google-drive-gemini",
+    "drive_query": "title contains 'Notes by Gemini' and mimeType = 'application/vnd.google-apps.document'",
+    "idioma_preferido": "(Spanish)",
+    "titulos_privados": ["personal", "médico", "terapia"],
+    "procesador_dedicado": {}
+  },
+  "topes": {
+    "max_log_por_proyecto": 2,
+    "max_marcas_por_proyecto": 3,
+    "max_botonera_nuevos": 7,
+    "max_chars_prompt": 1200
+  },
+  "ventana": {
+    "horas": 24,
+    "techo_horas_si_hubo_hueco": 72
+  },
+  "botonera": {
+    "dias_vida_no_va": 3,
+    "default_corre_en_siguiente_corrida": true,
+    "nunca_default_va": ["mandar", "enviar", "borrador", "responder", "borrar", "eliminar", "pagar", "invitar", "mover", "modificar", "cotizar", "propuesta"]
+  },
+  "gmail": {
+    "query": "newer_than:1d -category:promotions -category:social -from:calendar-notification@google.com -from:gemini-notes@google.com",
+    "_verificar": "Confirmar el remitente real de los mails de notas de Gemini y ajustarlo arriba.",
+    "page_size": 50,
+    "excluir_remitentes": [],
+    "etiquetas_privadas": ["Privado"]
+  },
+  "tareas": {
+    "_comentario": "A definir: dónde viven las tareas del equipo (Notion está conectado). Sin este bloque, los compromisos quedan como marcas en el estado del cliente.",
+    "fuentes": [],
+    "prefijo_tareas_del_agente": "🤖",
+    "dias_dedupe": 14
+  },
+  "calendario": {
+    "fuente": "google-calendar",
+    "id": "primary",
+    "duracion_min": 30
+  },
+  "pasos_obligatorios": ["defaults_botonera", "recoleccion", "sesiones", "reuniones", "mails", "tareas_done"]
+}
